@@ -121,7 +121,10 @@ img {
   }
 }
 
-/* Styles pour les écrans de moins de 540px */
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------Styles pour les écrans de moins de 540px--------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------*/
+
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none; /* Masquer les liens dans la navigation */
@@ -131,8 +134,15 @@ img {
     display: block; /* Affiche l'icône */
     margin-top: -15px; /* Ajuste la position verticale de l'icône */
   }
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+  }
+
 }
 
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
 /* Style principal du contenu */
 main {
   font-size: 130%; /* Taille de police agrandie */
