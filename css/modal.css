@@ -3,6 +3,11 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif; /* Police par défaut */
   --font-slab: var(--font-default); /* Police alternative réutilisant la police par défaut */
   --modal-duration: 0.8s; /* Durée de l'animation des modals */
+  /*-- Police --*/
+  --font-size-middle:16px;
+  --font-size-base:18px;/*base proportionnelle a la police de base du navigateur soit 18px */
+  --font-size-large:20px;
+  --font-size-xlarge:23px;
 }
 
 /* Réinitialisation globale des marges et des espacements */
@@ -19,14 +24,16 @@
 
 /* Styles généraux du corps de la page */
 body {
-  margin: 0; /* Supprime les marges par défaut */
   display: flex; /* Utilise un modèle flexbox */
   flex-direction: column; /* Aligne les éléments enfants verticalement */
   background-image: url("background.png"); /* Ajoute une image de fond */
   font-family: var(--font-default); /* Applique la police par défaut définie dans :root */
-  font-size: 1rem; /* Définit la taille de la police */
+  font-size: var(--font-size-base); /* Définit la taille de la police */
+  min-width: 250px;
   max-width: 1300px; /* Limite la largeur maximale à 1300px */
   margin: 0 auto; /* Centre le corps de la page horizontalement */
+  width: 100%;
+
 }
 
 /* Styles pour les paragraphes */
@@ -43,100 +50,6 @@ img {
   height: auto;
 }
 
-/*-------------------------------------------------------------------------------------*/
-/*-------------------------------------------- Header ---------------------------------*/
-/*-------------------------------------------------------------------------------------*/
-/* Logo de l'en-tête flottant à gauche */
-.header-logo {
-  float: left; /* Positionne le logo à gauche */
-}
-
-
-/*-- Conteneur principal --*/
-.topnav {  overflow: hidden; /* Cache tout débordement pour éviter que le contenu dépasse */
-  margin: 3.5%; /* Ajoute une marge autour de la barre de navigation */
-}
-
-/*-- Conteneur principale nav-bar en mode desktop*/
-.main-navbar {
-    float: right; /* Positionne le menu de navigation à droite */
-}
-
-/* Styles pour les liens dans la barre de navigation */
-.topnav a {
-  float: left; /* Positionne les liens les uns à côté des autres à gauche */
-  display: block; /* Chaque lien est affiché comme un bloc */
-  color: #000000; /* Couleur noire pour le texte des liens */
-  text-align: center; /* Centre le texte dans chaque lien */
-  padding: 12px 12px; /* Ajoute un espacement interne autour du texte */
-  margin: 5px; /* Ajoute un léger espacement externe entre les liens */
-  text-decoration: none; /* Supprime le soulignement par défaut des liens */
-  font-size: 20px; /* Définit la taille de la police des liens */
-  font-family: Roboto, sans-serif; /* Applique la police Roboto aux liens */
-}
-
-
-/* Effet au survol des liens dans la barre de navigation */
-.topnav a:hover {
-  background-color: #ff0000; /* Fond rouge au survol */
-  color: #ffffff; /* Texte en blanc au survol */
-  border-radius: 15px; /* Bords arrondis au survol */
-}
-
-/* Style des liens actifs dans la barre de navigation */
-.topnav a.active {
-  background-color: #ff0000; /* Fond rouge pour les liens actifs */
-  color: #ffffff; /* Texte blanc pour les liens actifs */
-  border-radius: 15px; /* Bords arrondis pour les liens actifs */
-}
-
-/* Icône dans la barre de navigation (cachée par défaut) */
-.topnav .icon {
-  display: none; /* Cachée par défaut */
-}
-
-
-/*--------------------------------------------------------------------------------------------------------------------------*/
-/* Style principal du contenu */
-main {
-  font-size: 130%; /* Taille de police agrandie */
-  font-weight: bolder; /* Texte en gras */
-  color: black; /* Couleur du texte en noir */
-  padding-top: 0.5vw; /* Espacement en haut */
-  padding-left: 2vw; /* Espacement à gauche */
-  padding-right: 2vw; /* Espacement à droite */
-  margin: 1px 20px 15px; /* Marges externes autour du contenu */
-  border-radius: 2rem; /* Bords arrondis */
-  text-align: justify; /* Justification du texte */
-}
-
-/* Bouton pour ouvrir le modal */
-.modal-btn {
-  font-size: 145%; /* Taille du texte agrandie */
-  background: #fe142f; /* Couleur de fond rouge vif */
-  display: flex; /* Utilise Flexbox */
-  margin: auto; /* Centre le bouton */
-  padding: 2em; /* Espacement interne */
-  color: #fff; /* Texte en blanc */
-  padding: 0.75rem 2.5rem; /* Espacement interne supplémentaire */
-  border-radius: 1rem; /* Bords arrondis du bouton */
-  cursor: pointer; /* Curseur en forme de pointeur au survol */
-}
-
-/* Changement de couleur au survol du bouton modal */
-.modal-btn:hover {
-  background: #3876ac; /* Changement de fond au survol */
-}
-
-/* Styles pour le pied de page */
-.footer {
-  margin: 20px; /* Marges autour du pied de page */
-  padding: 10px; /* Espacement interne */
-  font-family: var(--font-slab); /* Police définie dans :root */
-}
-
-/* Modal form */
-/* Style des boutons généraux */
 button {
   background: #fe142f; /* Fond rouge */
   margin-top: 0.5em; /* Espace au-dessus du bouton */
@@ -144,19 +57,115 @@ button {
   color: #fff; /* Texte blanc */
   border-radius: 15px; /* Bords arrondis */
   cursor: pointer; /* Curseur en pointeur au survol */
-  font-size: 16px; /* Taille de police */
+  font-size: var(--font-size-middle); /* Taille de police */
+  position: absolute;
 }
+/*-------------------------------------------------------------------------------------*/
+/*-------------------------------------------- Header ---------------------------------*/
+/*-------------------------------------------------------------------------------------*/
+header {
+  width: 100%;
+  height:10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+header img {
+  width: 20%; /**/
+}
+/*-- Conteneur principal --*/
+.topnav {  
+  display: flex;
+  overflow: hidden; /* Cache tout débordement pour éviter que le contenu dépasse */
+  margin:3vw 1vw; /* Ajoute une marge autour de la barre de navigation */
+  flex-direction: row;
+  justify-content: flex-end;
+  color: #000;
+
+}
+
+
+/* Styles pour les liens dans la barre de navigation */
+.topnav a {
+  text-align: center; /* Centre le texte dans chaque lien */
+  padding: 12px 12px; /* Ajoute un espacement interne autour du texte */
+  margin: 5px; /* Ajoute un léger espacement externe entre les liens */
+  text-decoration: none; /* Supprime le soulignement par défaut des liens */
+  font-size: 20px; /* Définit la taille de la police des liens */
+
+}
+
+/* ----Style spécifique  */
+.topnav .accueil {
+  background-color: #ff0000; /* Fond rouge pour les liens actifs */
+  color: #ffffff; /* Texte blanc pour les liens actifs */
+  border-radius: 1rem; /* Bords arrondis pour les liens actifs */
+  display: none;
+}
+.modal-btn1 {
+  display: none;
+}
+/* Icône dans la barre de navigation (cachée par défaut) */
+.topnav i {
+  display: none; /* Cachée par défaut */
+}
+
+/* Effet au survol des liens dans la barre de navigation */
+.topnav a:hover {
+  background-color: #ff0000; /* Fond rouge au survol */
+  color: #ffffff; /* Texte en blanc au survol */
+  border-radius: 1rem; /* Bords arrondis au survol */
+  border-bottom:white solid 2px  ;
+}
+/*-------------------------------------------------------------------------------------*/
+/*-------------------------------------------- MAIN  ---------------------------------*/
+/*-------------------------------------------------------------------------------------*/
+/* Section principale de la "hero" */
+.hero-section {
+  width: 90%;
+  height:60vh;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  margin:0 auto;
+  background-color: #000;
+  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2); /* Ombre autour de la section */
+  margin-top:2rem;
+}
+.hero-content {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: space-between;
+}
+
+.hero-section h1 {
+  font-size: 5rem; /* Taille de police */
+  color: #fff; /* Texte blanc */
+  margin-right: 30px; /* Espacement à droite */
+  position: absolute;
+  width: 55%;
+  z-index: 1;
+}
+
+/* Changement de couleur au survol du bouton modal */
+.modal-btn:hover {
+  background: #3876ac; /* Changement de fond au survol */
+}
+
+
+/* Modal form */
+
 
 /* Effet au survol pour les boutons avec la classe .button */
 .button:hover {
   background: #3876ac; /* Change la couleur de fond au survol */
 }
-
-/* Classe pour des polices plus petites */
-.smFont {
-  font-size: 16px; /* Taille de police plus petite */
-}
-
+/***********************************************/
 /* Styles pour l'arrière-plan du modal (fenêtre modale) */
 .bground {
   display: none; /* Caché par défaut */
@@ -166,8 +175,7 @@ button {
   top: 0;
   height: 100%; /* Hauteur pleine */
   width: 100%; /* Largeur pleine */
-  overflow: auto; /* Active le défilement si nécessaire */
-  background-color: rgba(26, 39, 156, 0.4); /* Couleur de fond semi-transparente */
+
 }
 
 /* Contenu du modal */
@@ -194,7 +202,7 @@ button {
 /* Style pour les étiquettes (label) */
 label {
   font-family: var(--font-default); /* Police par défaut définie dans :root */
-  font-size: 17px; /* Taille de police */
+  font-size: var(--font-size-base); /* Taille de police */
   font-weight: normal; /* Poids de la police normal */
   display: inline-block;
   margin-bottom: 11px; /* Espace en dessous des labels */
@@ -214,7 +222,6 @@ input {
   width: 100%; /* Prend toute la largeur disponible */
   border-radius: 8px; /* Bords arrondis */
   font-size: 20px; /* Taille de police */
-  height: 48px; /* Hauteur définie */
 }
 
 /* Gestion des erreurs dans le formulaire */
@@ -320,19 +327,6 @@ input {
   transform: rotate(-45deg); /* Inclinaison pour former une croix */
 }
 
-/* Boutons de soumission */
-.btn-submit,
-.btn-signup {
-  background: #fe142f; /* Fond rouge vif */
-  display: block;
-  margin: 0 auto; /* Centre le bouton horizontalement */
-  border-radius: 7px; /* Bords arrondis */
-  font-size: 1rem; /* Taille de police */
-  padding: 12px 82px; /* Espacement interne */
-  color: #fff; /* Texte en blanc */
-  cursor: pointer; /* Curseur en pointeur */
-  border: 0; /* Pas de bordure */
-}
 
 /* Styles personnalisés pour les éléments select */
 .custom-select {
@@ -412,290 +406,9 @@ input {
 .text-label {
   font-weight: normal; /* Poids normal de la police */
   font-size: 16px; /* Taille de police */
-}
-
-/* Section principale de la "hero" */
-.hero-section {
-  min-height: 93vh; /* Hauteur minimale de la section */
-  border-radius: 10px; /* Bords arrondis */
-  display: grid; /* Grille pour la disposition */
-  grid-template-columns: repeat(12, 1fr); /* 12 colonnes dans la grille */
-  overflow: hidden; /* Cache le contenu qui déborde */
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2); /* Ombre autour de la section */
-  margin-bottom: 10px; /* Espace en bas de la section */
-}
-
-/* Contenu de la section "hero" */
-.hero-content {
-  padding: 51px 67px; /* Espacement interne */
-  grid-column: span 4; /* Occupe 4 colonnes dans la grille */
-  background: #232323; /* Fond sombre */
-  color: #fff; /* Texte en blanc */
-  position: relative;
-  text-align: left; /* Texte aligné à gauche */
-  min-width: 424px; /* Largeur minimale */
-}
-
-/* Effet décoratif après le contenu */
-.hero-content::after {
-  content: ""; /* Contenu vide */
-  width: 100%;
-  height: 100%;
-  background: #232323; /* Fond sombre */
-  position: absolute; /* Position absolue */
-  right: -80px; /* Décalage à droite */
-  top: 0;
-}
-
-/* Styles pour tous les enfants de la section "hero" */
-.hero-content > * {
-  position: relative;
-  z-index: 1; /* Superposition pour s'assurer qu'ils sont au-dessus de l'effet */
-}
-
-/* Titre principal de la section "hero" */
-.hero-headline {
-  font-size: 6rem; /* Taille énorme du texte */
-  font-weight: normal; /* Poids normal */
-  white-space: nowrap; /* Le texte ne va pas à la ligne */
-}
-
-/* Texte de la section "hero" */
-.hero-text {
-  width: 146%; /* Largeur étendue du texte */
-  font-weight: normal; /* Poids de la police normal */
-  margin-top: 57px; /* Espace au-dessus */
-  padding: 0; /* Pas d'espacement interne */
-}
-
-/* Bouton d'inscription dans la section "hero" */
-.btn-signup {
-  outline: none; /* Suppression du contour */
-  text-transform: capitalize; /* Capitalisation des mots */
-  font-size: 1.3rem; /* Taille de police */
-  padding: 15px 23px; /* Espacement interne */
-  margin: 0;
-  margin-top: 59px; /* Espace au-dessus */
-}
-
-/* Image dans la section "hero" */
-.hero-img {
-  grid-column: span 8; /* Occupe 8 colonnes dans la grille */
-}
-
-/* Image elle-même */
-.hero-img img {
-  width: 100%; /* Prend toute la largeur disponible */
-  height: 100%; /* Prend toute la hauteur disponible */
-  display: block; /* Affiche l'image en tant que bloc */
-  padding: 0; /* Pas d'espacement interne */
-}
-
-/* Styles pour les droits d'auteur */
-.copyrights {
-  color: #fe142f; /* Texte rouge vif */
-  padding: 0;
-  font-size: 1rem; /* Taille de police */
-  margin: 60px 0 30px; /* Marges en haut et en bas */
-  font-weight: bolder; /* Texte en gras */
-}
-
-/* Bouton d'inscription caché par défaut dans la section "hero" */
-.hero-section > .btn-signup {
-  display: none; /* Caché par défaut */
-}
-
-/* Styles pour le pied de page */
-footer {
-  padding-left: 2vw; /* Espacement interne à gauche */
-  padding-right: 2vw; /* Espacement interne à droite */
-  margin: 0 20px; /* Marges externes gauche et droite */
-}
-
-/* Animation pour l'ouverture du modal */
-@keyframes modalopen {
-  from {
-    opacity: 0; /* Départ avec une opacité nulle */
-    transform: translateY(-150px); /* Position de départ en haut */
-  }
-  to {
-    opacity: 1; /* Fin avec une opacité pleine */
-  }
-}
-/* Style de la flèche à l'intérieur de l'élément select */
-.select-selected:after {
-  position: absolute; /* Positionnement absolu à l'intérieur de l'élément select */
-  content: ""; /* Ajout d'un contenu vide pour représenter la flèche */
-  top: 10px; /* Position verticale de la flèche */
-  right: 13px; /* Position horizontale de la flèche */
-  width: 11px; /* Largeur de la flèche */
-  height: 11px; /* Hauteur de la flèche */
-  border: 3px solid transparent; /* Bordure transparente sauf pour le bas et la gauche */
-  border-bottom-color: #f00; /* Bordure inférieure rouge pour créer la flèche */
-  border-left-color: #f00; /* Bordure gauche rouge pour compléter la flèche */
-  transform: rotate(-48deg); /* Rotation pour orienter la flèche vers le bas */
-  border-radius: 5px 0 5px 0; /* Arrondit les coins pour un effet stylisé */
-}
-
-/* Faire pointer la flèche vers le haut lorsque la boîte select est ouverte */
-.select-selected.select-arrow-active:after {
-  transform: rotate(135deg); /* Rotation pour faire pointer la flèche vers le haut */
-  top: 13px; /* Ajustement de la position de la flèche */
-}
-
-/* Style des éléments sélectionnés et des options */
-.select-items div,
-.select-selected {
-  color: #000; /* Couleur du texte en noir */
-  padding: 11px 16px; /* Espacement interne */
-  border: 1px solid transparent; /* Bordure transparente sauf en bas */
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; /* Bordure en bas légèrement visible */
-  cursor: pointer; /* Curseur pointeur pour indiquer la sélection possible */
-  border-radius: 8px; /* Bords arrondis */
-  height: 48px; /* Hauteur fixe des éléments */
-}
-
-/* Style des options dans le select */
-.select-items {
-  position: absolute; /* Positionnement absolu pour apparaître sous le select */
-  background-color: #fff; /* Fond blanc pour les options */
-  top: 89%; /* Position verticale des options */
-  left: 0;
-  right: 0;
-  z-index: 99; /* Superposition élevée pour s'assurer que les options sont visibles */
-}
-
-/* Masquer les options lorsque le select est fermé */
-.select-hide {
-  display: none;
-}
-
-/* Style des options au survol et lorsqu'elles sont sélectionnées */
-.select-items div:hover,
-.same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1); /* Fond légèrement grisé au survol ou sélectionné */
-}
-
-/* Fin du style personnalisé pour le select */
-
-/* Style pour les étiquettes de texte */
-.text-label {
-  font-weight: normal; /* Poids normal de la police */
-  font-size: 16px; /* Taille de police */
-}
-
-/* Section principale de la "hero" */
-.hero-section {
-  min-height: 93vh; /* Hauteur minimale de la section */
-  border-radius: 10px; /* Bords arrondis */
-  display: grid; /* Grille pour la disposition */
-  grid-template-columns: repeat(12, 1fr); /* 12 colonnes dans la grille */
-  overflow: hidden; /* Cache le contenu qui déborde */
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2); /* Ombre autour de la section */
-  margin-bottom: 10px; /* Espace en bas de la section */
-}
-
-/* Contenu de la section "hero" */
-.hero-content {
-  padding: 51px 67px; /* Espacement interne */
-  grid-column: span 4; /* Occupe 4 colonnes dans la grille */
-  background: #232323; /* Fond sombre */
-  color: #fff; /* Texte en blanc */
-  position: relative;
-  text-align: left; /* Texte aligné à gauche */
-  min-width: 424px; /* Largeur minimale */
-}
-
-/* Effet décoratif après le contenu */
-.hero-content::after {
-  content: ""; /* Contenu vide */
-  width: 100%;
-  height: 100%;
-  background: #232323; /* Fond sombre */
-  position: absolute; /* Position absolue */
-  right: -80px; /* Décalage à droite */
-  top: 0;
-}
-
-/* Styles pour tous les enfants de la section "hero" */
-.hero-content > * {
-  position: relative;
-  z-index: 1; /* Superposition pour s'assurer qu'ils sont au-dessus de l'effet */
-}
-
-/* Titre principal de la section "hero" */
-.hero-headline {
-  font-size: 6rem; /* Taille énorme du texte */
-  font-weight: normal; /* Poids normal */
-  white-space: nowrap; /* Le texte ne va pas à la ligne */
-}
-
-/* Texte de la section "hero" */
-.hero-text {
-  width: 146%; /* Largeur étendue du texte */
-  font-weight: normal; /* Poids de la police normal */
-  margin-top: 57px; /* Espace au-dessus */
-  padding: 0; /* Pas d'espacement interne */
-}
-
-/* Bouton d'inscription dans la section "hero" */
-.btn-signup {
-  outline: none; /* Suppression du contour */
-  text-transform: capitalize; /* Capitalisation des mots */
-  font-size: 1.3rem; /* Taille de police */
-  padding: 15px 23px; /* Espacement interne */
-  margin: 0;
-  margin-top: 59px; /* Espace au-dessus */
-}
-
-/* Image dans la section "hero" */
-.hero-img {
-  grid-column: span 8; /* Occupe 8 colonnes dans la grille */
-}
-
-/* Image elle-même */
-.hero-img img {
-  width: 100%; /* Prend toute la largeur disponible */
-  height: 100%; /* Prend toute la hauteur disponible */
-  display: block; /* Affiche l'image en tant que bloc */
-  padding: 0; /* Pas d'espacement interne */
-}
-
-/* Styles pour les droits d'auteur */
-.copyrights {
-  color: #fe142f; /* Texte rouge vif */
-  padding: 0;
-  font-size: 1rem; /* Taille de police */
-  margin: 60px 0 30px; /* Marges en haut et en bas */
-  font-weight: bolder; /* Texte en gras */
-}
-
-/* Bouton d'inscription caché par défaut dans la section "hero" */
-.hero-section > .btn-signup {
-  display: none; /* Caché par défaut */
-}
-
-.hidden {
-  display: none;
-}
-
-/* Styles pour le pied de page */
-footer {
-  padding-left: 2vw; /* Espacement interne à gauche */
-  padding-right: 2vw; /* Espacement interne à droite */
-  margin: 0 20px; /* Marges externes gauche et droite */
-}
 
 
-/* Animation pour l'ouverture du modal */
-@keyframes modalopen {
-  from {
-    opacity: 0; /* Départ avec une opacité nulle */
-    transform: translateY(-150px); /* Position de départ en haut */
-  }
-  to {
-    opacity: 1; /* Fin avec une opacité pleine */
-  }
+
 }
 /***************************************************************************************************************************/
 /******************************************* MEDIA QUERIES *****************************************************************/

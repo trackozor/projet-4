@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" >
-    <meta name="description" content="Réservez votre place pour le marathon national de jeux vidéos. Événement gaming ouvert à tous, places limitées. Inscrivez-vous dès maintenant !">
-    <title>Reservation</title>
-    <!-- Meta tag pour rendre la page responsive, adapté aux mobiles -->
-    <meta name="viewport" content="width=device-width,initial-scale=1" >   
-    <!-- Inclusion de la feuille de style principale -->
-    <link rel="stylesheet" href="./css/modal.css" >  
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" >
+    <meta charset="utf-8"> <!-- Définition de l'encodage des caractères en UTF-8 -->
+    <meta name="description" content="Réservez votre place pour le marathon national de jeux vidéos. Événement gaming ouvert à tous, places limitées. Inscrivez-vous dès maintenant !"> <!-- Meta description de la page -->
+    <title> GameOn réservation marathon du jeu</title> <!-- Titre de la page -->
+    <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Meta tag pour rendre la page responsive -->
+    <link rel="stylesheet" href="./css/modal.css"> <!-- Inclusion de la feuille de style principale -->
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"> <!-- Inclusion de la police Google Font "DM Sans" -->
   </head>
 
   <body>  
@@ -17,130 +15,105 @@
     <!-- ***************************************************************************************************************** -->
     <header>
       <!-- Barre de navigation en haut de la page -->
-      <nav class="topnav" id="myTopnav">
-        <!-- Logo de l'entreprise -->
-        <img alt="logo" src="./images/Logo.png" >
-
+        <img alt="logo" src="./images/Logo.png"> <!-- Logo de l'entreprise -->
 
         <!-- ***************************************************************************************************************** -->
         <!-- **************************************** NAV -BAR  **************************************************************** -->
         <!-- ***************************************************************************************************************** -->
-        <div class="main-navbar">
-          <a href="#" class="active"><span>Accueil</span></a>
-          <a href="#"><span>Détails de l'évènement</span></a>
-          <a href="#"><span>À propos</span></a>
-          <a href="#"><span>Contact</span></a>
-          <a href="#"><span>Évènements passés</span></a>
-          <!-- Icône de menu pour les petits écrans -->
-          <a href="javascript:void(0);" class="icon" onclick="editNav()" aria-label="Ouvrir le menu de navigation">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
-      </nav>
+        <nav class="topnav"> <!-- Liens de la barre de navigation -->
+          <a href="#" class="accueil"><span>Accueil</span></a> <!-- Lien Accueil -->
+          <a href="#"><span>Détails de l'évènement</span></a> <!-- Lien Détails de l'évènement -->
+          <a href="#"><span>À propos</span></a> <!-- Lien À propos -->
+          <a href="#"><span>Contact</span></a> <!-- Lien Contact -->
+          <a href="#"><span>Évènements passés</span></a> <!-- Lien Évènements passés -->
+          <a href="javascript:void(0);" class="icon" onclick="editNav()" aria-label="Ouvrir le menu de navigation"><i class="fa fa-bars"></i></a> <!-- Icône de menu pour les petits écrans -->
+        </nav>
     </header>
-
-
 
     <!-- ***************************************************************************************************************** -->
     <!-- **************************************** SECTION PRINCIPALE  **************************************************************** -->
     <!-- ***************************************************************************************************************** -->
     <main>
-      <section class="hero-section">
-        <!-- Texte et bouton d'inscription -->
-        <div class="hero-content">
-          <h1 class="hero-headline">Marathon national de jeux vidéos</h1>
-          <p class="hero-text">
-            Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux
-            réservations... Places limitées !
-          </p>
-          <!-- Bouton pour s'inscrire à l'évènement dans la section hero  mode desktop -->
-          <button type="button" class="btn-signup modal-btn">je m'inscris</button>
+      <section class="hero-section"> <!-- Section principale (hero) -->
+        <div class="hero-content"> <!-- Contenu texte du "hero" -->
+          <h1 class="title">Marathon national de jeux vidéos</h1> <!-- Titre principal -->
+          <p>Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p> <!-- Description de l'évènement -->
+          <button type="button" class="modal-btn">je m'inscris</button> <!-- Bouton d'inscription dans la section hero (desktop) -->
         </div>
-        <!-- Image de fond pour la section "hero" -->
-        <div class="hero-img">
-          <img src="./images/bg_img.jpg" alt="img" >
-        </div>
-        <!-- Deuxième bouton d'inscription position mobile -->
-        <button type="button" class="btn-signup modal-btn">je m'inscris</button>
+        <img src="./images/bg_img.jpg" alt="logo GameOn">
+        <button type="button" class="modal-btn1">je m'inscris</button> <!-- Deuxième bouton d'inscription (mobile) -->
       </section>
 
       <!-- ***************************************************************************************************************** -->
-      <!-- **************************************** HEADER  **************************************************************** -->
+      <!-- **************************************** Fenêtre Modale  **************************************************************** -->
       <!-- ***************************************************************************************************************** -->
-      <dialog class="bground">
-        <div class="content">
-          <!-- Bouton de fermeture de la modale -->
-          <span class="close"></span>
+      <dialog class="bground"> <!-- Fenêtre modale -->
+        <div class="content"> <!-- Contenu de la fenêtre modale -->
+          <span class="close"></span> <!-- Bouton de fermeture de la modale -->
 
-          <!-- Contenu du formulaire -->
-          <div class="modal-body">
-            <!-- Formulaire de réservation -->
-            <form name="reserve" action="./index.html" method="get" onsubmit="return validate();">
-              
+          <div class="modal-body"> <!-- Corps de la modale -->
+            <form name="reserve" action="./index.html" method="get" onsubmit="return validate();"> <!-- Formulaire de réservation -->
+
               <!-- Champ pour le prénom -->
               <fieldset class="formData">
-                <label for="first">Prénom</label>
-                <input class="text-control" type="text" id="first" name="first" minlength="2" required />
+                <label for="first">Prénom</label> <!-- Label pour le champ prénom -->
+                <input class="text-control" type="text" id="first" name="first" minlength="2" required> <!-- Champ de saisie pour le prénom -->
 
                 <!-- Champ pour le nom -->
-                <label for="last">Nom</label>
-                <input class="text-control" type="text" id="last" name="last" required />
+                <label for="last">Nom</label> <!-- Label pour le champ nom -->
+                <input class="text-control" type="text" id="last" name="last" required> <!-- Champ de saisie pour le nom -->
               
                 <!-- Champ pour l'email -->
-                <label for="email">E-mail</label>
-                <input class="text-control" type="email" id="email" name="email" required />
+                <label for="email">E-mail</label> <!-- Label pour le champ email -->
+                <input class="text-control" type="email" id="email" name="email" required> <!-- Champ de saisie pour l'email -->
 
                 <!-- Champ pour la date de naissance -->
-                <label for="birthdate">Date de naissance</label>
-                <input class="text-control" type="date" id="birthdate" name="birthdate" required />
+                <label for="birthdate">Date de naissance</label> <!-- Label pour la date de naissance -->
+                <input class="text-control" type="date" id="birthdate" name="birthdate" required> <!-- Champ de saisie pour la date de naissance -->
 
                 <!-- Champ pour indiquer le nombre de participations passées -->
-                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
-                <input class="text-control" type="number" id="quantity" name="quantity" min="0" max="99" required />
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label> <!-- Label pour le nombre de participations -->
+                <input class="text-control" type="number" id="quantity" name="quantity" min="0" max="99" required> <!-- Champ de saisie pour le nombre de participations -->
               </fieldset>
-            
 
               <!-- Sélection du tournoi auquel participer -->
-              <p class="text-label">À quel tournoi souhaitez-vous participer cette année ?</p>
-              <!-- Sélection localisation tournoi -->
-              <fieldset class="formData">
-                <legend>À quel tournoi souhaitez-vous participer cette année ?</legend>
-                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
+              <p class="text-label">À quel tournoi souhaitez-vous participer cette année ?</p> <!-- Titre pour le choix du tournoi -->
+              
+              <fieldset class="formData"> <!-- Sélection localisation tournoi -->
+                <legend>À quel tournoi souhaitez-vous participer cette année ?</legend> <!-- Légende pour le groupe de choix -->
+                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
                 <label class="checkbox-label" for="location1"><span class="checkbox-icon"></span>New York</label>
 
-                <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco" />
+                <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco">
                 <label class="checkbox-label" for="location2"><span class="checkbox-icon"></span>San Francisco</label>
 
-                <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle" />
+                <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle">
                 <label class="checkbox-label" for="location3"><span class="checkbox-icon"></span>Seattle</label>
 
-                <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago" />
+                <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago">
                 <label class="checkbox-label" for="location4"><span class="checkbox-icon"></span>Chicago</label>
 
-                <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" />
+                <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston">
                 <label class="checkbox-label" for="location5"><span class="checkbox-icon"></span>Boston</label>
 
-                <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland" />
+                <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland">
                 <label class="checkbox-label" for="location6"><span class="checkbox-icon"></span>Portland</label>
               </fieldset>
 
               <!-- Cases à cocher pour les conditions d'utilisation et notification -->
-              <fieldset class="formData">
-                <legend>Consentement et notifications</legend>
-                <input class="checkbox-input" type="checkbox" id="checkbox1" required />
-                <label class="checkbox2-label" for="checkbox1"><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label>
+              <fieldset class="formData"> <!-- Groupe pour les cases à cocher -->
+                <legend>Consentement et notifications</legend> <!-- Légende pour le groupe de cases à cocher -->
+                <input class="checkbox-input" type="checkbox" id="checkbox1" required> <!-- Case à cocher pour les conditions d'utilisation -->
+                <label class="checkbox-label" for="checkbox1"><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label>
 
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2"><span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label>
+                <input class="checkbox-input" type="checkbox" id="checkbox2"> <!-- Case à cocher pour les notifications -->
+                <label class="checkbox-label" for="checkbox"><span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label>
               </fieldset>
 
-              <!-- Bouton de soumission du formulaire -->
-              <input class="btn-submit" type="submit" value="C'est parti" aria-label="Envoyer le formulaire d'inscription" />
-              <!-- Message de confirmation caché par défaut -->
-              <div id="confirmation-message" class="hidden">Merci ! Votre réservation a été reçue.</div>
-
-              <!-- Modale d'erreur cachée par défaut -->
-              <div id="error-modal" class="hidden">
+              <input class="btn-submit" type="submit" value="C'est parti" aria-label="Envoyer le formulaire d'inscription"> <!-- Bouton de soumission du formulaire -->
+              <div id="confirmation-message" class="hidden">Merci ! Votre réservation a été reçue.</div> <!-- Message de confirmation caché -->
+              
+              <div id="error-modal" class="hidden"> <!-- Modale d'erreur cachée par défaut -->
                 <div class="modal-content">
                   <p id="error-message"></p>
                   <button type="button" id="close-modal-btn" aria-label="Fermer la fenêtre modale">OK</button>
@@ -152,12 +125,16 @@
       </dialog>
     </main>
 
-    <!-- Pied de page -->
+    <!-- ***************************************************************************************************************** -->
+    <!-- **************************************** FOOTER  **************************************************************** -->
+    <!-- ***************************************************************************************************************** -->
     <footer>
-      <p class="copyrights">Copyright 2014 - 2024, GameOn Inc.</p>
+      <p class="copyrights">Copyright 2014 - 2024, GameOn Inc.</p> <!-- Pied de page avec les informations de copyright -->
     </footer>
 
-    <!-- Inclusion du fichier JavaScript pour gérer le modal -->
-    <script src="./js/modal.js"></script>
+    <!-- ***************************************************************************************************************** -->
+    <!-- **************************************** SCRIPT  **************************************************************** -->
+    <!-- ***************************************************************************************************************** -->
+    <script src="./js/modal.js"></script> <!-- Inclusion du fichier JavaScript pour gérer le modal -->
   </body>
 </html>
