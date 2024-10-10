@@ -24,7 +24,7 @@ body {
   flex-direction: column; /* Aligne les éléments enfants verticalement */
   background-image: url("background.png"); /* Ajoute une image de fond */
   font-family: var(--font-default); /* Applique la police par défaut définie dans :root */
-  font-size: 18px; /* Définit la taille de la police */
+  font-size: 1rem; /* Définit la taille de la police */
   max-width: 1300px; /* Limite la largeur maximale à 1300px */
   margin: 0 auto; /* Centre le corps de la page horizontalement */
 }
@@ -37,7 +37,10 @@ p {
 
 /* Styles pour les images */
 img {
-  padding-right: 1rem; /* Ajoute un espacement à droite des images */
+  padding-right: 1vw; /* Ajoute un espacement à droite des images */
+  object-fit: cover;
+  width: auto;
+  height: auto;
 }
 
 /*-------------------------------------------------------------------------------------*/
@@ -50,8 +53,7 @@ img {
 
 
 /*-- Conteneur principal --*/
-.topnav {
-  overflow: hidden; /* Cache tout débordement pour éviter que le contenu dépasse */
+.topnav {  overflow: hidden; /* Cache tout débordement pour éviter que le contenu dépasse */
   margin: 3.5%; /* Ajoute une marge autour de la barre de navigation */
 }
 
@@ -91,54 +93,6 @@ img {
 /* Icône dans la barre de navigation (cachée par défaut) */
 .topnav .icon {
   display: none; /* Cachée par défaut */
-}
-
-/* Styles pour les écrans de moins de 768px */
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none; /* Masquer les liens de la navigation */
-  }
-  .topnav a.icon {
-    float: right; /* Icône flottant à droite */
-    display: block; /* Afficher l'icône */
-  }
-}
-
-/* Réactivité de la barre de navigation pour les petits écrans (max 768px) */
-@media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative; /* Positionnement relatif pour la navigation */
-  }
-  .topnav.responsive .icon {
-    position: absolute; /* Icône positionnée en haut à droite */
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none; /* Supprime le flottement des liens */
-    display: block; /* Affiche les liens en bloc */
-    text-align: left; /* Aligne les liens à gauche */
-  }
-}
-
-/*---------------------------------------------------------------------------------------------------------------------------*/
-/*----------------------------------------------------Styles pour les écrans de moins de 540px--------------------------------*/
-/*----------------------------------------------------------------------------------------------------------------------------*/
-
-@media screen and (max-width: 540px) {
-  .topnav a {
-    display: none; /* Masquer les liens dans la navigation */
-  }
-  .topnav a.icon {
-    float: right; /* Icône flottant à droite */
-    display: block; /* Affiche l'icône */
-    margin-top: -15px; /* Ajuste la position verticale de l'icône */
-  }
-  .topnav {
-    display: flex;
-    justify-content: space-between;
-  }
-
 }
 
 
@@ -558,46 +512,6 @@ footer {
   margin: 0 20px; /* Marges externes gauche et droite */
 }
 
-/* Styles réactifs pour les écrans de moins de 800px */
-@media screen and (max-width: 800px) {
-  .hero-section {
-    display: block; /* Affiche la section en tant que bloc */
-    box-shadow: unset; /* Supprime l'ombre */
-  }
-  .hero-content {
-    background: #fff; /* Fond blanc */
-    color: #000; /* Texte noir */
-    padding: 20px; /* Espacement interne réduit */
-  }
-  .hero-content::after {
-    content: unset; /* Supprime l'effet décoratif */
-  }
-  .hero-content .btn-signup {
-    display: none; /* Cache le bouton d'inscription */
-  }
-  .hero-headline {
-    font-size: 4.5rem; /* Taille réduite du titre */
-    white-space: normal; /* Le texte peut aller à la ligne */
-  }
-  .hero-text {
-    width: unset; /* Largeur normale */
-    font-size: 1.5rem; /* Taille de police réduite */
-  }
-  .hero-img img {
-    border-radius: 10px; /* Bords arrondis pour l'image */
-    margin-top: 40px; /* Espace au-dessus de l'image */
-  }
-  .hero-section > .btn-signup {
-    display: block; /* Affiche le bouton d'inscription */
-    margin: 32px auto 10px; /* Marges externes */
-    padding: 12px 35px; /* Espacement interne */
-  }
-  .copyrights {
-    margin-top: 50px; /* Espace en haut */
-    text-align: center; /* Texte centré */
-  }
-}
-
 /* Animation pour l'ouverture du modal */
 @keyframes modalopen {
   from {
@@ -772,9 +686,24 @@ footer {
   margin: 0 20px; /* Marges externes gauche et droite */
 }
 
-/* Styles réactifs pour les écrans de moins de 800px */
+
+/* Animation pour l'ouverture du modal */
+@keyframes modalopen {
+  from {
+    opacity: 0; /* Départ avec une opacité nulle */
+    transform: translateY(-150px); /* Position de départ en haut */
+  }
+  to {
+    opacity: 1; /* Fin avec une opacité pleine */
+  }
+}
+/***************************************************************************************************************************/
+/******************************************* MEDIA QUERIES *****************************************************************/
+/**************************************************************************************************************************/
+
+/*-------------------------------------- Tablette moins de 800 px -----------------------------------*/
 @media screen and (max-width: 800px) {
-  .hero-section {
+    .hero-section {
     display: block; /* Affiche la section en tant que bloc */
     box-shadow: unset; /* Supprime l'ombre */
   }
@@ -810,15 +739,56 @@ footer {
     margin-top: 50px; /* Espace en haut */
     text-align: center; /* Texte centré */
   }
+
 }
 
-/* Animation pour l'ouverture du modal */
-@keyframes modalopen {
-  from {
-    opacity: 0; /* Départ avec une opacité nulle */
-    transform: translateY(-150px); /* Position de départ en haut */
+
+/*-------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------- Tablette moins de 768px px ------------------------*/
+  /* Styles pour les écrans de moins de 768px */
+@media screen and (max-width: 768px) {
+  .topnav a {
+    display: none; /* Masquer les liens de la navigation */
   }
-  to {
-    opacity: 1; /* Fin avec une opacité pleine */
+  .topnav a.icon {
+    float: right; /* Icône flottant à droite */
+    display: block; /* Afficher l'icône */
+  }
+  .topnav.responsive {
+    position: relative; /* Positionnement relatif pour la navigation */
+  }
+  .topnav.responsive .icon {
+    position: absolute; /* Icône positionnée en haut à droite */
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none; /* Supprime le flottement des liens */
+    display: block; /* Affiche les liens en bloc */
+    text-align: left; /* Aligne les liens à gauche */
   }
 }
+
+
+/*-------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------- mobile  moins de 768px px ------------------------*/
+@media screen and (min-width:250px) and (max-width: 548px) {
+  .topnav a {
+    display: none; /* Masquer les liens dans la navigation */
+  }
+  .topnav a.icon {
+    float: right; /* Icône flottant à droite */
+    display: block; /* Affiche l'icône */
+    margin-top: -15px; /* Ajuste la position verticale de l'icône */
+  }
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
+
