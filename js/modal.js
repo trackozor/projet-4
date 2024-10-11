@@ -1,7 +1,7 @@
 // Fonction pour activer/désactiver le menu en version responsive
 function editNav() {
   // On récupère l'élément avec l'id "myTopnav"
-  var x = document.getElementById("myTopnav");
+  var x = document.getElementById("Topnav");
   // Si la classe est "topnav", on ajoute "responsive" pour afficher le menu
   if (x.className === "topnav") {
     x.className += " responsive";
