@@ -1,8 +1,8 @@
 /* Déclaration des variables CSS globales */
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif; /* Police par défaut */
-  --font-slab: var(--font-default); /* Police alternative réutilisant la police par défaut */
   --modal-duration: 0.8s; /* Durée de l'animation des modals */
+
   /*-- Police --*/
   --font-size-middle:16px;
   --font-size-base:18px;/*base proportionnelle a la police de base du navigateur soit 18px */
@@ -24,12 +24,10 @@
 
 /* Styles généraux du corps de la page */
 body {
-  background-image: url("background.png"); /* Ajoute une image de fond */
   font-family: var(--font-default); /* Applique la police par défaut définie dans :root */
   font-size: var(--font-size-base); /* Définit la taille de la police */
   margin: 0 auto; /* Centre le corps de la page horizontalement */
   height: 100%;
-
 }
 
 /* Styles pour les paragraphes */
@@ -84,13 +82,13 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 5% 0;
-  padding-right: 2%;
+  margin: 3vw 0;
+  padding-right: 2vw;
 
 }
 header img { 
-  margin-left: 5vw;/**/
-  height:30%;
+  margin-left: 5%;
+  margin-bottom:3%;
 }
 
 /*-------------------------------------------------------------------------------------*/
@@ -99,7 +97,6 @@ header img {
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  gap: 2vw;
 }
 
 /* Lien dans la liste*/
@@ -107,10 +104,11 @@ header img {
    text-decoration: none; /* Supprime le soulignement */
     color: black; 
     font-weight: 700;
+    padding:0 0.5rem;
 }
 
 /* Effet au survol des liens dans la barre de navigation */
-.topnav a:hover {
+.topnav span:hover {
   background-color: #ff0000; /* Fond rouge au survol */
   color: #ffffff; /* Texte en blanc au survol */
   border-radius: 0.5rem;
@@ -137,14 +135,14 @@ header img {
 /* Conteneur principale*/
 .hero-section {
   width: 90%;
-  height:65vh;
+  height:60vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin:0 auto;
   background-color: #000;
+  border-radius: 0.5rem;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2); /* Ombre autour de la section */
-  margin-top:2vh;
 }
 
 /* Conteneur zone de texte (gauche)*/
@@ -154,7 +152,7 @@ header img {
   flex-direction: column;
   color: white;
   justify-content:center;
-  padding-left: 5%;
+  padding-left: 4%;
   z-index: 0;
   position:relative;
 
@@ -169,10 +167,16 @@ header img {
   z-index: 1;
   top:5%;
 }
-.hero-section p
+.hero-section p {
+  margin: 5vh 0;
+  padding-top: 20vh;
+}
+
 .hero-section img {
   width: 60%;
+  border-radius: 0  0.5rem  0.5rem 0 ;
 }
+
 /* Affichage conditionnelle bouton "je m'inscris" mobile */
 .button-mobile {
   display: none;
@@ -183,9 +187,9 @@ header img {
 /*-------------------------------------------------------------------------------------*/
 
 footer {
-  color: red;
+  color:red;
   font-weight: 900;
-  padding: 5vh 2vh;
+  padding: 10vh 2vh;
 
 }
 
@@ -256,8 +260,7 @@ footer {
 }
 
 /* Styles pour les cases à cocher (checkbox) */
-.checkbox-label,
-.checkbox2-label {
+.checkbox-label{
   position: relative;
   margin-left: 36px; /* Décalage vers la droite */
   font-size: 12px; /* Taille de police réduite */
@@ -265,8 +268,7 @@ footer {
 }
 
 /* Styles des icônes de cases à cocher */
-.checkbox-label .checkbox-icon,
-.checkbox2-label .checkbox-icon {
+.checkbox-label .checkbox-icon {
   display: block;
   width: 20px;
   height: 20px;
@@ -279,8 +281,7 @@ footer {
 }
 
 /* Effets visuels pour les cases cochées */
-.checkbox-label .checkbox-icon::after,
-.checkbox2-label .checkbox-icon::after {
+.checkbox-label .checkbox-icon::after {
   content: "";
   width: 13px;
   height: 13px;
@@ -355,20 +356,7 @@ footer {
   background-color: #fff; /* Fond blanc pour les éléments sélectionnés */
 }
 
-/* Style de la flèche à l'intérieur de l'élément select */
-.select-selected:after {
-  position: absolute; /* Positionnement absolu à l'intérieur de l'élément select */
-  content: ""; /* Ajout d'un contenu vide pour représenter la flèche */
-  top: 10px; /* Position verticale de la flèche */
-  right: 13px; /* Position horizontale de la flèche */
-  width: 11px; /* Largeur de la flèche */
-  height: 11px; /* Hauteur de la flèche */
-  border: 3px solid transparent; /* Bordure transparente sauf pour le bas et la gauche */
-  border-bottom-color: #f00; /* Bordure inférieure rouge pour créer la flèche */
-  border-left-color: #f00; /* Bordure gauche rouge pour compléter la flèche */
-  transform: rotate(-48deg); /* Rotation pour orienter la flèche vers le bas */
-  border-radius: 5px 0 5px 0; /* Arrondit les coins pour un effet stylisé */
-}
+
 
 /* Faire pointer la flèche vers le haut lorsque la boîte select est ouverte */
 .select-selected.select-arrow-active:after {
@@ -376,21 +364,6 @@ footer {
   top: 13px; /* Ajustement de la position de la flèche */
 }
 
-
-/* Style des options dans le select */
-.select-items {
-  position: absolute; /* Positionnement absolu pour apparaître sous le select */
-  background-color: #fff; /* Fond blanc pour les options */
-  top: 89%; /* Position verticale des options */
-  left: 0;
-  right: 0;
-  z-index: 99; /* Superposition élevée pour s'assurer que les options sont visibles */
-}
-
-/* Masquer les options lorsque le select est fermé */
-.select-hide {
-  display: none;
-}
 
 
 /* Fin du style personnalisé pour le select */
@@ -406,7 +379,12 @@ footer {
 
 /*-------------------------------------- Écran Large -----------------------------------*/
 @media screen and (min-width: 1440px) {
-
+  body {
+    width:1330px;
+  }
+  .hero-section image {
+    width: 55%;
+  }
 }
 
 
@@ -416,14 +394,27 @@ footer {
 /*------------------------------------- Tablette moins de 768px px ------------------------*/
   /* Styles pour les écrans de moins de 768px */
 @media screen and (min-width:426px) and (max-width: 1023px) {
-
+  header {
+    width: 95%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
+.topnav i {
+  display: flex;
+  color: red;
+}
 
+.topnav ul {
+  display: none;
+}
 /*-------------------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
-/*------------------------------------- mobile  moins de 768px px ------------------------*/
+/*------------------------------------- mobile  compris entre 250 px et de 425px  ------------------------*/
 @media screen and (min-width:250px) and (max-width: 425px) {
 
   /* ajustement du body  pour mobile*/
@@ -431,11 +422,14 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin: 0 auto;;
   }
 
   /* ajustement du header  pour mobile*/
   header {
     justify-content: space-between;
+    align-items: center;
 
   }
 
@@ -444,17 +438,65 @@ footer {
   header img {
     height: 3vh;
   }
-  /*affichage icone*/
+  /*affichage icône*/
   
   .topnav ul {
     display: none;
   }
+
   .topnav i {
     display: flex;
     color:red; /* Couleur rouge pour l'icône */
-    font-size: 24px; /* Taille de l'icône */
+    font-size: 2rem; /* Taille de l'icône */
     cursor: pointer; /* Changer le curseur au survol */
   }
+
+  .hero-section{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width:95%;
+    box-shadow: none;
+    margin: 0 auto;
+  }
+
+  .hero-section img {
+    width:100%;
+    border-radius: 0.5rem;
+    padding-bottom: 10vh;
+  }
+
+
+
+
+  .hero-content {
+    color: black;
+    width: 100%;
+    height:30vh;
+    margin:0 auto;
+  }
+
+  .hero-content h2 {
+    color: black;
+    width: 100%;
+    font-size: 2rem;
+    margin:0.5vh 0;
+    padding: 0;
+  }
+  .hero-content i {
+    display: none; 
+  }
+  .signup   {
+    position: absolute;
+    top:65vh;
+    margin: 0 auto;
+    z-index: 2;
+
+  }
+  .hero-content p {
+    margin:1% 0;
+    padding:6% 0;
+    margin-top: 14vh;
+    font-size: 11px
+  }
 }
-
-
