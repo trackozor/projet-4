@@ -1,172 +1,149 @@
 /* Déclaration des variables CSS globales */
 :root {
-  --font-default: "DM Sans", Arial, Helvetica, sans-serif; /* Police par défaut */
-  --modal-duration: 0.8s; /* Durée de l'animation des modals */
+  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+  --modal-duration: 0.8s;
 
   /*-- Police --*/
-  --font-size-middle:16px;
-  --font-size-base:18px;/*base proportionnelle a la police de base du navigateur soit 18px */
-  --font-size-large:20px;
-  --font-size-xlarge:23px;
+  --font-size-middle: 16px;
+  --font-size-base: 18px;
+  --font-size-large: 20px;
+  --font-size-xlarge: 23px;
 }
 
 /* Réinitialisation globale des marges et des espacements */
 * {
-  box-sizing: border-box; /* Assure que le padding et les bordures sont inclus dans la largeur et la hauteur */
-  margin: 0; /* Supprime les marges par défaut */
-  padding: 0; /* Supprime les espacements par défaut */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Début des styles pour la Landing Page */
-/*--------------------------------------------------------------------------------------------------------------------------*/
-*/*--------------------------------------------- Style desktop first--------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------------------------------------------*/
 
-/* Styles généraux du corps de la page */
+/* Style du corps de la page */
 body {
-  font-family: var(--font-default); /* Applique la police par défaut définie dans :root */
-  font-size: var(--font-size-base); /* Définit la taille de la police */
-  margin: 0 auto; /* Centre le corps de la page horizontalement */
+  font-family: var(--font-default);
+  font-size: var(--font-size-base);
+  margin: 0 auto;
   height: 100%;
 }
 
 /* Styles pour les paragraphes */
 p {
-  margin-bottom: 0; /* Supprime la marge inférieure */
-  padding: 0.5vw; /* Ajoute un espacement interne basé sur la largeur de la fenêtre */
+  padding: 0.5vw;
+  margin-bottom: 0;
 }
 
-
+/* Styles des boutons */
 button {
   width: 20vh;
-  background: #fe142f; /* Fond rouge */
-  padding: 1% 5%; /* Espacement interne */
-  color: #fff; /* Texte blanc */
-  border-radius: 0.5rem; /* Bords arrondis */
-  cursor: pointer; /* Curseur en pointeur au survol */
-  font-size: var(--font-size-middle); /* Taille de police */
+  background: #fe142f;
+  padding: 1% 5%;
+  color: #fff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: var(--font-size-middle);
   position: relative;
-  transition: background-color 0.3s ease; /* Animation de transition */
-
+  transition: background-color 0.3s ease;
 }
 
-/* Style pour les étiquettes (label) */
+/* Styles des étiquettes */
 label {
-  font-family: var(--font-default); /* Police par défaut définie dans :root */
-  font-size: var(--font-size-base); /* Taille de police */
-  font-weight: normal; /* Poids de la police normal */
+  font-family: var(--font-default);
+  font-size: var(--font-size-base);
+  font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px; /* Espace en dessous des labels */
+  margin-bottom: 11px;
 }
 
-/* Style pour l’accessibilité */
-
+/* Styles pour l'accessibilité */
 .sr-only {
-  position: absolute; /* Position absolue pour cacher l'élément hors de l'écran */
-  width: 1px; /* Largeur minimale */
-  height: 1px; /* Hauteur minimale */
-  padding: 0; /* Pas de padding */
-  margin: -1px; /* Éloigne l'élément hors de l'écran */
-  overflow: hidden; /* Cache le débordement */
-  clip: rect(0, 0, 0, 0); /* Cacher l'élément */
-  border: 0; /* Pas de bordure */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
-/**/
-/*-------------------------------------------------------------------------------------*/
-/*-------------------------------------------- Header ---------------------------------*/
-/*-------------------------------------------------------------------------------------*/
+/* Styles pour le Header */
 header {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin: 3vw 0;
   padding-right: 2vw;
-
 }
-header img { 
+
+header img {
   margin-left: 5%;
-  margin-bottom:3%;
+  margin-bottom: 3%;
 }
 
-/*-------------------------------------------------------------------------------------*/
-/*-- Conteneur principal Barre de navigation --*/
-.topnav ul  {
+/* Barre de navigation */
+.topnav ul {
   display: flex;
-  flex-direction: row;
   list-style-type: none;
 }
 
-/* Lien dans la liste*/
 .topnav a {
-   text-decoration: none; /* Supprime le soulignement */
-    color: black; 
-    font-weight: 700;
-    padding:0 0.5rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  padding: 0 0.5rem;
 }
 
-/* Effet au survol des liens dans la barre de navigation */
 .topnav span:hover {
-  background-color: #ff0000; /* Fond rouge au survol */
-  color: #ffffff; /* Texte en blanc au survol */
+  background-color: #ff0000;
+  color: #ffffff;
   border-radius: 0.5rem;
-  border-bottom:white solid 2px  ;
+  border-bottom: 2px solid white;
   font-weight: 500;
-  padding:0.4rem ;
+  padding: 0.4rem;
   text-decoration: underline;
 }
-/* ----Style spécifique  */
+
 .accueil {
   display: none;
 }
-/* Icône dans la barre de navigation (cachée par défaut) */
+
 .topnav i {
-  display: none; /* Cachée par défaut */
+  display: none;
 }
 
-/*-------------------------------------------------------------------------------------*/
-/*-------------------------------------------- MAIN  ---------------------------------*/
-/*-------------------------------------------------------------------------------------*/
-
-
-/*------------------------- Section Principale ----------------------------------------*/
-/* Conteneur principale*/
+/* Section Principale */
 .hero-section {
   width: 90%;
-  height:60vh;
+  height: 60vh;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin:0 auto;
+  margin: 0 auto;
   background-color: #000;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2); /* Ombre autour de la section */
+  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Conteneur zone de texte (gauche)*/
+/* Contenu texte (gauche) */
 .hero-content {
   width: 40%;
   display: flex;
   flex-direction: column;
   color: white;
-  justify-content:center;
+  justify-content: center;
   padding-left: 4%;
-  z-index: 0;
-  position:relative;
-
+  position: relative;
 }
 
-/* Titres */
 .hero-section h2 {
-  font-size: 4.5rem; /* Taille de police */
-  color: white; /* Texte blanc */
+  font-size: 4.5rem;
+  color: white;
   position: absolute;
   width: 65vw;
-  z-index: 1;
-  top:5%;
+  top: 5%;
 }
+
 .hero-section p {
   margin: 5vh 0;
   padding-top: 20vh;
@@ -174,19 +151,31 @@ header img {
 
 .hero-section img {
   width: 60%;
-  border-radius: 0  0.5rem  0.5rem 0 ;
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
-/*-------------------------------------------------------------------------------------*/
-/*-------------------------------------------- footer  ---------------------------------*/
-/*-------------------------------------------------------------------------------------*/
-
+/* Footer */
 footer {
-  color:red;
+  color: red;
   font-weight: 900;
   padding: 10vh 2vh;
-
 }
+
+/* Media Queries pour écrans larges */
+@media screen and (min-width: 1440px) {
+  body {
+    width: 1330px;
+  }
+
+  .hero-section {
+    height: 70vh;
+  }
+
+  .hero-section img {
+    width: 60vw;
+  }
+}
+
 
 
 /* Styles pour l'arrière-plan du modal */
