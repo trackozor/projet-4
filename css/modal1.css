@@ -23,17 +23,13 @@
 
 /* Style du corps de la page */
 body {
+    min-width: 320px; /* Assure une largeur minimale pour les petits écrans */
+    max-width: 1200px; /* Limite la largeur du contenu à 1200px sur les grands écrans */
     font-family: var(--font-default);
     font-size: var(--font-size-base);
     margin: 0 auto;
     height: 100%;
 
-}
-
-/* Styles pour les paragraphes */
-p {
-    padding: 0.5vw;
-    margin-bottom: 0;
 }
 
 /* Styles des boutons */
@@ -42,6 +38,7 @@ button {
     background: #fe142f;
     padding: 1% 5%;
     color: #fff;
+    border: none;;
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: var(--font-size-middle);
@@ -88,12 +85,12 @@ header {
     display: flex; /* Utilise le flexbox pour disposer les éléments à l'intérieur */
     justify-content: space-between; /* Les éléments à l'intérieur sont espacés pour occuper toute la largeur disponible */
     align-items: center; /* Aligne verticalement les éléments au centre du conteneur */
-    margin: 3vw 0; /* Ajoute une marge verticale de 3% de la largeur de la fenêtre (vueport) */
+    margin: 3vw 0; /* Ajoute une marge verticale de 3% de la largeur de la fenêtre  */
     padding-right: 2vw; /* Ajoute un padding de 2% de la largeur de la fenêtre à droite */
 }
 
 header img {
-    width: 50%; /* L'image occupe 50% de la largeur du conteneur parent */
+    width: 30vw; /* L'image occupe 50% de la largeur du conteneur parent */
     height: auto; /* La hauteur est ajustée automatiquement pour maintenir le ratio de l'image */
     margin-left: 5%; /* Ajoute une marge de 5% à gauche de l'image */
     margin-bottom: 3%; /* Ajoute une marge de 3% en bas de l'image */
@@ -136,14 +133,16 @@ header img {
     display: flex; /* Active la mise en page flexbox pour disposer les éléments en colonne */
     flex-direction: column; /* Les éléments à l'intérieur sont organisés en colonne (du haut vers le bas) */
     background-color: white; /* Définit un fond blanc pour la section */
-    height: 60vh; /* La hauteur de la section est de 60% de la hauteur de la fenêtre (viewport) */
+    height: 60%; /* La hauteur de la section est de 60% de la hauteur de la fenêtre (viewport) */
     width: 95%; /* La section occupe 95% de la largeur de son conteneur parent */
     margin: 0 auto; /* Centrage horizontal de la section (marges égales de chaque côté) */
     box-shadow: none; /* Désactive les ombres autour de la section */
 }
 
 .hero-section img {
-    width: 100%; /* L'image à l'intérieur de la section occupe toute la largeur disponible */
+    width: 90%; /* L'image à l'intérieur de la section occupe toute la largeur disponible */
+    border-radius: 0.5rem;
+    margin: 5% auto;
 }
 
 .hero-content {
@@ -154,16 +153,16 @@ header img {
 .hero-content h2 {
     color: black; /* Le texte du titre h2 est en noir */
     width: 100%; /* Le titre prend toute la largeur disponible */
-    font-size: 2rem; /* Taille du texte définie à 2 rem (basée sur la taille de la police par défaut) */
-}
-
-.hero-content i {
-    display: none; /* Cache tous les éléments <i> à l'intérieur de hero-content */
+    font-size: 2.6rem; /* Taille du texte définie à 2 rem (basée sur la taille de la police par défaut) */
 }
 
 .signup {
-    position: absolute; /* L'élément signup est positionné absolument par rapport à son conteneur parent */
-    top: 70vh; /* Il est placé à 70% de la hauteur de la fenêtre par rapport au haut de la page */
+    display: none;
+}
+.signup1 {
+    display: block;
+    justify-content: center;
+    margin: 4% auto;
 }
 
 
@@ -174,7 +173,9 @@ header img {
 footer {
     color: red;
     font-weight: 900;
-    padding: 10vh 2vh;
+    padding: 2% 0;
+    text-align: center;
+    font-size: 0.6rem;
 }
 /* ------------------------------------------------------------------ ------------------------------------------------------------------------------------------------*-*/
 /*                                                                                                                                                                        */
@@ -337,45 +338,31 @@ footer {
 }
 
 /* ------------------------------------------------------------------ */
-/*                    MEDIA QUERIES POUR ÉCRANS LARGES                */
+/*                    MEDIA QUERIES POUR                              */
+/*      Smartphones grands, petits pliables et petits tablettes       */
 /* ------------------------------------------------------------------ */
 
-@media screen and (min-width: 1024px) {
-  /* Styles pour écrans larges (desktop) */
-
-body {
-    font-size: var(--font-size-large);
-    width: 1330px;
+/* Styles pour appareils entre 481px et 767px */
+@media screen and (min-width: 481px) and (max-width: 767px) {
 }
 
-.hero-section {
-    height: 70vh;
+/* ------------------------------------------------------------------ */
+/*                    MEDIA QUERIES POUR                              */
+/*        Tablettes et petits ordinateurs portables                   */
+/* ------------------------------------------------------------------ */
+
+  /* Styles pour appareils entre 768px et 1024px */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
 }
 
-.hero-section h2 {
-    font-size: 5rem;
-    width: 50vw;
+/* Ordinateurs portables et écrans carrés */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* Styles pour appareils entre 1025px et 1440px */
 }
 
-.hero-section img {
-    width: 60vw;
+/* Écrans de bureau larges et téléviseurs */
+@media screen and (min-width: 1441px) {
+  /* Styles pour appareils plus larges que 1441px */
 }
 
-  /* Ajustement des paragraphes */
-p {
-    font-size: var(--font-size-large);
-    padding: 1vw;
-}
 
-  /* Styles pour les boutons */
-button {
-    width: 25vh;
-    padding: 1% 6%;
-}
-
-  /* Ajout de marges plus grandes sur header */
-header {
-    margin: 2vw 0;
-    padding-right: 4vw;
-}
-}
