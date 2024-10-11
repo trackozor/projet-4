@@ -24,15 +24,10 @@
 
 /* Styles généraux du corps de la page */
 body {
-  display: flex; /* Utilise un modèle flexbox */
-  flex-direction: column; /* Aligne les éléments enfants verticalement */
   background-image: url("background.png"); /* Ajoute une image de fond */
   font-family: var(--font-default); /* Applique la police par défaut définie dans :root */
   font-size: var(--font-size-base); /* Définit la taille de la police */
-  min-width: 250px;
-  max-width: 1300px; /* Limite la largeur maximale à 1300px */
   margin: 0 auto; /* Centre le corps de la page horizontalement */
-  width: 100%;
 
 }
 
@@ -44,7 +39,6 @@ p {
 
 /* Styles pour les images */
 img {
-  padding-right: 1vw; /* Ajoute un espacement à droite des images */
   object-fit: cover;
   width: auto;
   height: auto;
@@ -55,10 +49,11 @@ button {
   margin-top: 0.5em; /* Espace au-dessus du bouton */
   padding: 1em; /* Espacement interne */
   color: #fff; /* Texte blanc */
-  border-radius: 15px; /* Bords arrondis */
+  border-radius: 0.5rem; /* Bords arrondis */
   cursor: pointer; /* Curseur en pointeur au survol */
   font-size: var(--font-size-middle); /* Taille de police */
-  position: absolute;
+  position: relative;
+  width: 15vw;
 }
 /*-------------------------------------------------------------------------------------*/
 /*-------------------------------------------- Header ---------------------------------*/
@@ -70,19 +65,19 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
+
+
 }
 header img {
-  width: 20%; /**/
+  width: 15%; 
+  margin-left: 5%;/**/
 }
 /*-- Conteneur principal --*/
 .topnav {  
   display: flex;
   overflow: hidden; /* Cache tout débordement pour éviter que le contenu dépasse */
-  margin:3vw 1vw; /* Ajoute une marge autour de la barre de navigation */
   flex-direction: row;
-  justify-content: flex-end;
-  color: #000;
+  
 
 }
 
@@ -90,11 +85,10 @@ header img {
 /* Styles pour les liens dans la barre de navigation */
 .topnav a {
   text-align: center; /* Centre le texte dans chaque lien */
-  padding: 12px 12px; /* Ajoute un espacement interne autour du texte */
   margin: 5px; /* Ajoute un léger espacement externe entre les liens */
   text-decoration: none; /* Supprime le soulignement par défaut des liens */
-  font-size: 20px; /* Définit la taille de la police des liens */
-
+  font-size: var(--font-size-base); /* Définit la taille de la police des liens */
+  font-weight: 700;
 }
 
 /* ----Style spécifique  */
@@ -124,11 +118,10 @@ header img {
 /*-------------------------------------------------------------------------------------*/
 /* Section principale de la "hero" */
 .hero-section {
-  width: 90%;
-  height:60vh;
+  width: 90vw;
+  height:65vh;
   display: flex;
   flex-direction: row;
-
   justify-content: space-between;
   margin:0 auto;
   background-color: #000;
@@ -136,20 +129,26 @@ header img {
   margin-top:2rem;
 }
 .hero-content {
-  width: 20%;
+  width: 40%;
+  height:100%;
   display: flex;
   flex-direction: column;
   color: white;
   justify-content: space-between;
+  z-index: 0;
+  padding: 0 2vw;
+  position:relative
+
 }
 
 .hero-section h1 {
   font-size: 5rem; /* Taille de police */
   color: #fff; /* Texte blanc */
   margin-right: 30px; /* Espacement à droite */
-  position: absolute;
-  width: 55%;
+  position: relative;
+  width: 70vw;
   z-index: 1;
+  top:3%;
 }
 
 /* Changement de couleur au survol du bouton modal */
@@ -415,43 +414,7 @@ input {
 /**************************************************************************************************************************/
 
 /*-------------------------------------- Tablette moins de 800 px -----------------------------------*/
-@media screen and (max-width: 800px) {
-    .hero-section {
-    display: block; /* Affiche la section en tant que bloc */
-    box-shadow: unset; /* Supprime l'ombre */
-  }
-  .hero-content {
-    background: #fff; /* Fond blanc */
-    color: #000; /* Texte noir */
-    padding: 20px; /* Espacement interne réduit */
-  }
-  .hero-content::after {
-    content: unset; /* Supprime l'effet décoratif */
-  }
-  .hero-content .btn-signup {
-    display: none; /* Cache le bouton d'inscription */
-  }
-  .hero-headline {
-    font-size: 4.5rem; /* Taille réduite du titre */
-    white-space: normal; /* Le texte peut aller à la ligne */
-  }
-  .hero-text {
-    width: unset; /* Largeur normale */
-    font-size: 1.5rem; /* Taille de police réduite */
-  }
-  .hero-img img {
-    border-radius: 10px; /* Bords arrondis pour l'image */
-    margin-top: 40px; /* Espace au-dessus de l'image */
-  }
-  .hero-section > .btn-signup {
-    display: block; /* Affiche le bouton d'inscription */
-    margin: 32px auto 10px; /* Marges externes */
-    padding: 12px 35px; /* Espacement interne */
-  }
-  .copyrights {
-    margin-top: 50px; /* Espace en haut */
-    text-align: center; /* Texte centré */
-  }
+@media screen and (min-width: 1440px) {
 
 }
 
@@ -461,7 +424,7 @@ input {
 
 /*------------------------------------- Tablette moins de 768px px ------------------------*/
   /* Styles pour les écrans de moins de 768px */
-@media screen and (max-width: 768px) {
+@media screen and (min-width:426px) and (max-width: 1023px) {
   .topnav a {
     display: none; /* Masquer les liens de la navigation */
   }
@@ -489,7 +452,7 @@ input {
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /*------------------------------------- mobile  moins de 768px px ------------------------*/
-@media screen and (min-width:250px) and (max-width: 548px) {
+@media screen and (min-width:250px) and (max-width: 425px) {
   .topnav a {
     display: none; /* Masquer les liens dans la navigation */
   }
