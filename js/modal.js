@@ -13,7 +13,7 @@ function editNav() {
 
 // Sélection des éléments du DOM nécessaires
 const modalbg = document.querySelector(".bground"); // La modal (formulaire)
-const modalBtn = document.querySelectorAll(".modal-btn"); // Boutons qui ouvrent la modal
+const modalBtn = document.querySelectorAll(".signup"); // Boutons qui ouvrent la modal
 const formData = document.querySelectorAll(".formData"); // Tous les champs du formulaire
 const closeBtn = document.querySelector(".close"); // Bouton pour fermer la modal
 
