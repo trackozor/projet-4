@@ -61,6 +61,7 @@ label {
   margin-bottom: 11px; /* Espace en dessous des labels */
 }
 
+/**/
 /*-------------------------------------------------------------------------------------*/
 /*-------------------------------------------- Header ---------------------------------*/
 /*-------------------------------------------------------------------------------------*/
@@ -70,6 +71,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin: 5% 0;
 
 
 }
@@ -89,23 +91,30 @@ header img {
 
 }
 
-/* Styles pour les liens dans la barre de navigation */
+/* Conteneur liste */
+.topnav ul  {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  gap: 2vw;
+}
+
+/* Lien dans la liste*/
 .topnav a {
-  text-align: center; /* Centre le texte dans chaque lien */
-  text-decoration: none; /* Supprime le soulignement par défaut des liens */
-  font-size: var(--font-size-base); /* Définit la taille de la police des liens */
-  padding: 0.6rem ;
-  color: black;
-  font-weight: 600;
+   text-decoration: none; /* Supprime le soulignement */
+    color: black; 
+    font-weight: 700;
 }
 
 /* Effet au survol des liens dans la barre de navigation */
 .topnav a:hover {
   background-color: #ff0000; /* Fond rouge au survol */
   color: #ffffff; /* Texte en blanc au survol */
-  border-radius: 0.5rem; /* Bords arrondis au survol */
-  border:white solid 2px  ;
+  border-radius: 0.5rem;
+  border-bottom:white solid 2px  ;
   font-weight: 500;
+  padding:0.4rem ;
+  text-decoration: underline;
 }
 /* ----Style spécifique  */
 .accueil {
@@ -149,7 +158,7 @@ header img {
 }
 
 /* Titres */
-.hero-section h1 {
+.hero-section h2 {
   font-size: 4.5rem; /* Taille de police */
   color: white; /* Texte blanc */
   position: absolute;
@@ -157,6 +166,7 @@ header img {
   z-index: 1;
   top:5%;
 }
+.hero-section p
 .hero-section img {
   width: 60%;
 }
@@ -386,15 +396,12 @@ footer {
 .text-label {
   font-weight: normal; /* Poids normal de la police */
   font-size: 16px; /* Taille de police */
-
-
-
 }
 /***************************************************************************************************************************/
 /******************************************* MEDIA QUERIES *****************************************************************/
 /**************************************************************************************************************************/
 
-/*-------------------------------------- Tablette moins de 800 px -----------------------------------*/
+/*-------------------------------------- Écran Large -----------------------------------*/
 @media screen and (min-width: 1440px) {
 
 }
@@ -436,12 +443,12 @@ footer {
   }
   /*affichage icone*/
   
-  .topnav span {
+  .topnav ul {
     display: none;
   }
   .topnav i {
     display: flex;
-    color: red; /* Couleur rouge pour l'icône */
+    color:red; /* Couleur rouge pour l'icône */
     font-size: 24px; /* Taille de l'icône */
     cursor: pointer; /* Changer le curseur au survol */
   }

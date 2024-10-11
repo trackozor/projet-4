@@ -17,17 +17,20 @@
     <!-- ***************************************************************************************************************** -->
     <header>
       <!-- Barre de navigation en haut de la page -->
-        <img alt="logo" src="./images/Logo.png" alt="logo GameON"> <!-- Logo de l'entreprise -->
+        <img alt="logo" src="./images/Logo.png" alt="logo GameON"> 
+        <<h1 class="sr-only">Bienvenue sur le site de GameON</h1> <!-- H1 caché pour l'accessibilité -->
 
         <!-- ***************************************************************************************************************** -->
         <!-- **************************************** NAV -BAR  **************************************************************** -->
         <!-- ***************************************************************************************************************** -->
         <nav class="topnav"> <!-- Liens de la barre de navigation -->
-          <a href="#" class="accueil"><span>Accueil</span></a> <!-- Lien Accueil -->
-          <a href="#"><span>Détails de l'évènement</span></a> <!-- Lien Détails de l'évènement -->
-          <a href="#"><span>À Propos</span></a> <!-- Lien À propos -->
-          <a href="#"><span>Contact</span></a> <!-- Lien Contact -->
-          <a href="#"><span>Évènements passés</span></a> <!-- Lien Évènements passés -->
+          <ul>
+            <li><a href="#" class="accueil"><span>Accueil</span></a></li> <!-- Lien Accueil -->
+            <li><a href="#"><span>Détails de l'évènement</span></a></li> <!-- Lien Détails de l'évènement -->
+            <li><a href="#"><span>À Propos</span></a></li> <!-- Lien À propos -->
+            <li><a href="#"><span>Contact</span></a></li> <!-- Lien Contact -->
+            <li><a href="#"><span>Évènements passés</span></a></li>
+          </ul><!-- Lien Évènements passés -->
           <a href="javascript:void(0);" class="icon" onclick="editNav()" aria-label="Ouvrir le menu de navigation"><i class="fa fa-bars"></i></a> <!-- Icône de menu pour les petits écrans -->
         </nav>
     </header>
@@ -38,7 +41,7 @@
     <main>
       <section class="hero-section"> <!-- Section principale (hero) -->
         <div class="hero-content"> <!-- Contenu texte du "hero" -->
-          <h1 class="title">Marathon national de jeux vidéos</h1> <!-- Titre principal -->
+          <h2 class="title">Marathon national de jeux vidéos</h2> <!-- Titre principal -->
           <p>Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p> <!-- Description de l'évènement -->
           <button type="button" class="button-desktop signup">Je M'inscris</button> <!-- Bouton d'inscription dans la section hero (desktop) -->
         </div>
