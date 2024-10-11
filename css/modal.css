@@ -45,9 +45,9 @@ img {
 }
 
 button {
+  width: 20vh;
   background: #fe142f; /* Fond rouge */
-  margin-top: 0.5em; /* Espace au-dessus du bouton */
-  padding: 1em; /* Espacement interne */
+  padding: 1% 5%; /* Espacement interne */
   color: #fff; /* Texte blanc */
   border-radius: 0.5rem; /* Bords arrondis */
   cursor: pointer; /* Curseur en pointeur au survol */
@@ -81,18 +81,19 @@ header {
 }
 header img { 
   margin-left: 5vw;/**/
+  height:30%;
 }
-/*-- Conteneur principal Barre de navigation --*/
 
+/*-------------------------------------------------------------------------------------*/
+/*-- Conteneur principal Barre de navigation --*/
 .topnav { 
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-right: 1%;
+  margin-left: 10%;
   
 
 }
-
 
 /* Styles pour les liens dans la barre de navigation */
 .topnav a {
@@ -134,28 +135,29 @@ header img {
   margin:0 auto;
   background-color: #000;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2); /* Ombre autour de la section */
-  margin-top:2rem;
+  margin-top:2vh;
 }
 .hero-content {
   width: 40%;
-  height:100%;
+  height:90%;
   display: flex;
   flex-direction: column;
   color: white;
-  justify-content: space-between;
+  justify-content:flex-end;
+  padding-left: 5%;
   z-index: 0;
-  padding: 0 2vw;
-  position:relative
+  position:relative;
+  gap:10vh;
 
 }
 
 .hero-section h1 {
-  font-size: 5rem; /* Taille de police */
+  font-size: 4.5rem; /* Taille de police */
   color: #fff; /* Texte blanc */
-  position: relative;
+  position: absolute;
   width: 70vw;
   z-index: 1;
-  top:3%;
+  top:5%;
 }
 .button-mobile {
   display: none;
@@ -435,17 +437,14 @@ header img {
 
 /*------------------------------------- mobile  moins de 768px px ------------------------*/
 @media screen and (min-width:250px) and (max-width: 425px) {
-  .topnav a {
-    display: none; /* Masquer les liens dans la navigation */
+  body {
+  display: flex;
+  flex-direction: column
+
   }
-  .topnav a.icon {
-    float: right; /* Icône flottant à droite */
-    display: block; /* Affiche l'icône */
-    margin-top: -15px; /* Ajuste la position verticale de l'icône */
-  }
-  .topnav {
-    display: flex;
-    justify-content: space-between;
+  header{
+  width: 100vw;
+  height: 10vh;
   }
 
 }
