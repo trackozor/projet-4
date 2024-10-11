@@ -28,6 +28,7 @@ body {
   font-family: var(--font-default); /* Applique la police par défaut définie dans :root */
   font-size: var(--font-size-base); /* Définit la taille de la police */
   margin: 0 auto; /* Centre le corps de la page horizontalement */
+  height: 100%;
 
 }
 
@@ -37,12 +38,6 @@ p {
   padding: 0.5vw; /* Ajoute un espacement interne basé sur la largeur de la fenêtre */
 }
 
-/* Styles pour les images */
-img {
-  object-fit: cover;
-  width: auto;
-  height: auto;
-}
 
 button {
   width: 20vh;
@@ -71,7 +66,6 @@ label {
 /*-------------------------------------------------------------------------------------*/
 header {
   width: 100%;
-  height:10vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -125,9 +119,12 @@ header img {
 /*-------------------------------------------------------------------------------------*/
 /*-------------------------------------------- MAIN  ---------------------------------*/
 /*-------------------------------------------------------------------------------------*/
-/* Section principale de la "hero" */
+
+
+/*------------------------- Section Principale ----------------------------------------*/
+/* Conteneur principale*/
 .hero-section {
-  width: 90vw;
+  width: 90%;
   height:65vh;
   display: flex;
   flex-direction: row;
@@ -137,30 +134,46 @@ header img {
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2); /* Ombre autour de la section */
   margin-top:2vh;
 }
+
+/* Conteneur zone de texte (gauche)*/
 .hero-content {
   width: 40%;
-  height:90%;
   display: flex;
   flex-direction: column;
   color: white;
-  justify-content:flex-end;
+  justify-content:center;
   padding-left: 5%;
   z-index: 0;
   position:relative;
-  gap:10vh;
 
 }
 
+/* Titres */
 .hero-section h1 {
   font-size: 4.5rem; /* Taille de police */
-  color: #fff; /* Texte blanc */
+  color: white; /* Texte blanc */
   position: absolute;
-  width: 70vw;
+  width: 65vw;
   z-index: 1;
   top:5%;
 }
+.hero-section img {
+  width: 60%;
+}
+/* Affichage conditionnelle bouton "je m'inscris" mobile */
 .button-mobile {
   display: none;
+}
+
+/*-------------------------------------------------------------------------------------*/
+/*-------------------------------------------- footer  ---------------------------------*/
+/*-------------------------------------------------------------------------------------*/
+
+footer {
+  color: red;
+  font-weight: 900;
+  padding: 5vh 2vh;
+
 }
 
 /***********************************************/
@@ -350,17 +363,6 @@ header img {
   top: 13px; /* Ajustement de la position de la flèche */
 }
 
-/* Style des éléments sélectionnés et des options */
-.select-items div,
-.select-selected {
-  color: #000; /* Couleur du texte en noir */
-  padding: 11px 16px; /* Espacement interne */
-  border: 1px solid transparent; /* Bordure transparente sauf en bas */
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; /* Bordure en bas légèrement visible */
-  cursor: pointer; /* Curseur pointeur pour indiquer la sélection possible */
-  border-radius: 8px; /* Bords arrondis */
-  height: 48px; /* Hauteur fixe des éléments */
-}
 
 /* Style des options dans le select */
 .select-items {
@@ -377,11 +379,6 @@ header img {
   display: none;
 }
 
-/* Style des options au survol et lorsqu'elles sont sélectionnées */
-.select-items div:hover,
-.same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1); /* Fond légèrement grisé au survol ou sélectionné */
-}
 
 /* Fin du style personnalisé pour le select */
 
@@ -409,26 +406,7 @@ header img {
 /*------------------------------------- Tablette moins de 768px px ------------------------*/
   /* Styles pour les écrans de moins de 768px */
 @media screen and (min-width:426px) and (max-width: 1023px) {
-  .topnav a {
-    display: none; /* Masquer les liens de la navigation */
-  }
-  .topnav a.icon {
-    float: right; /* Icône flottant à droite */
-    display: block; /* Afficher l'icône */
-  }
-  .topnav.responsive {
-    position: relative; /* Positionnement relatif pour la navigation */
-  }
-  .topnav.responsive .icon {
-    position: absolute; /* Icône positionnée en haut à droite */
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none; /* Supprime le flottement des liens */
-    display: block; /* Affiche les liens en bloc */
-    text-align: left; /* Aligne les liens à gauche */
-  }
+
 }
 
 
@@ -437,15 +415,36 @@ header img {
 
 /*------------------------------------- mobile  moins de 768px px ------------------------*/
 @media screen and (min-width:250px) and (max-width: 425px) {
+
+  /* ajustement du body  pour mobile*/
   body {
   display: flex;
-  flex-direction: column
-
-  }
-  header{
-  width: 100vw;
-  height: 10vh;
+  flex-direction: column;
+  align-items: center;
   }
 
+  /* ajustement du header  pour mobile*/
+  header {
+    justify-content: space-between;
+
+  }
+
+  /* Logo */
+
+  header img {
+    height: 3vh;
+  }
+  /*affichage icone*/
+  
+  .topnav span {
+    display: none;
+  }
+  .topnav i {
+    display: flex;
+    color: red; /* Couleur rouge pour l'icône */
+    font-size: 24px; /* Taille de l'icône */
+    cursor: pointer; /* Changer le curseur au survol */
+  }
 }
+
 
