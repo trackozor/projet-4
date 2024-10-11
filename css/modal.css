@@ -177,11 +177,6 @@ header img {
   border-radius: 0  0.5rem  0.5rem 0 ;
 }
 
-/* Affichage conditionnelle bouton "je m'inscris" mobile */
-.button-mobile {
-  display: none;
-}
-
 /*-------------------------------------------------------------------------------------*/
 /*-------------------------------------------- footer  ---------------------------------*/
 /*-------------------------------------------------------------------------------------*/
@@ -193,200 +188,182 @@ footer {
 
 }
 
-/***********************************************/
-/* Styles pour l'arrière-plan du modal (fenêtre modale) */
+
+/* Styles pour l'arrière-plan du modal */
 .bground {
-  display: none; /* Caché par défaut */
-  position: fixed; /* Position fixe pour occuper tout l'écran */
-  z-index: 1; /* Niveau de superposition */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  height: 100%; /* Hauteur pleine */
-  width: 100%; /* Largeur pleine */
-
+  height: 100%;
+  width: 100%;
 }
 
 /* Contenu du modal */
 .content {
-  margin: 5% auto; /* Centré avec des marges */
-  width: 100%; /* Largeur maximale */
-  max-width: 500px; /* Largeur maximale du contenu */
-  animation-name: modalopen; /* Animation d'ouverture */
-  animation-duration: var(--modal-duration); /* Durée d'animation avec la variable globale */
-  background: #232323; /* Fond sombre */
-  border-radius: 10px; /* Bords arrondis */
-  overflow: hidden; /* Cache tout débordement */
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation: modalopen var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
   position: relative;
-  color: #fff; /* Texte blanc */
-  padding-top: 10px; /* Espacement en haut */
+  color: #fff;
+  padding-top: 10px;
 }
 
 /* Corps du modal */
 .modal-body {
-  padding: 15px 8%; /* Espacement interne */
-  margin: 15px auto; /* Marges externes */
+  padding: 15px 8%;
+  margin: 15px auto;
 }
-
 
 /* Style des champs de texte */
 .text-control {
-  margin: 0; /* Pas de marges */
-  padding: 8px; /* Espacement interne */
-  width: 100%; /* Prend toute la largeur disponible */
-  border-radius: 8px; /* Bords arrondis */
-  font-size: 20px; /* Taille de police */
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
 }
 
 /* Gestion des erreurs dans le formulaire */
 .formData[data-error]::after {
-  content: attr(data-error); /* Affiche le message d'erreur contenu dans l'attribut */
-  font-size: 0.4em; /* Taille de police réduite */
-  color: #e54858; /* Couleur rouge pour l'erreur */
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: #e54858;
   display: block;
-  margin-top: 7px; /* Espace au-dessus */
-  margin-bottom: 7px; /* Espace en dessous */
-  text-align: right; /* Alignement à droite */
+  margin: 7px 0;
+  text-align: right;
   line-height: 0.3;
-  opacity: 0; /* Invisible par défaut */
-  transition: 0.3s; /* Transition douce */
+  opacity: 0;
+  transition: 0.3s;
 }
 
 .formData[data-error-visible="true"]::after {
-  opacity: 1; /* Rendre visible les erreurs */
+  opacity: 1;
 }
 
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858; /* Bordure rouge pour les champs avec erreur */
+  border: 2px solid #e54858;
 }
 
 /* Styles pour les cases à cocher (checkbox) */
-.checkbox-label{
+.checkbox-label {
   position: relative;
-  margin-left: 36px; /* Décalage vers la droite */
-  font-size: 12px; /* Taille de police réduite */
-  font-weight: normal; /* Poids normal pour le texte */
+  margin-left: 36px;
+  font-size: 12px;
 }
 
-/* Styles des icônes de cases à cocher */
 .checkbox-label .checkbox-icon {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a; /* Bordure verte */
-  border-radius: 50%; /* Bordure arrondie */
+  border: 2px solid #279e7a;
+  border-radius: 50%;
   position: absolute;
   left: -30px;
   top: -1px;
-  transition: 0.3s; /* Transition douce pour les changements */
+  transition: 0.3s;
 }
 
-/* Effets visuels pour les cases cochées */
 .checkbox-label .checkbox-icon::after {
   content: "";
   width: 13px;
   height: 13px;
-  background-color: #279e7a; /* Remplissage vert */
+  background-color: #279e7a;
   border-radius: 50%;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0; /* Invisible par défaut */
+  opacity: 0;
   transition: 0.3s;
 }
 
-/* Case à cocher masquée */
 .checkbox-input {
   display: none;
 }
 
-/* Style pour les cases cochées */
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
-  opacity: 1; /* Rendre visible la coche */
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after {
+  opacity: 1;
 }
 
 /* Styles pour la croix de fermeture des modals */
 .close {
   position: absolute;
-  right: 15px; /* Positionnée à droite */
-  top: 15px; /* Positionnée en haut */
+  right: 15px;
+  top: 15px;
   width: 32px;
   height: 32px;
-  opacity: 1;
-  cursor: pointer; /* Curseur en pointeur */
-  transform: scale(0.7); /* Réduction de la taille */
+  cursor: pointer;
+  transform: scale(0.7);
 }
 
-/* Croisillons pour le bouton de fermeture */
 .close:before,
 .close:after {
   position: absolute;
   left: 15px;
-  content: " ";
+  content: "";
   height: 33px;
   width: 3px;
-  background-color: #fff; /* Couleur blanche */
+  background-color: #fff;
 }
 
 .close:before {
-  transform: rotate(45deg); /* Inclinaison pour former une croix */
+  transform: rotate(45deg);
 }
 
 .close:after {
-  transform: rotate(-45deg); /* Inclinaison pour former une croix */
+  transform: rotate(-45deg);
 }
-
 
 /* Styles personnalisés pour les éléments select */
 .custom-select {
   position: relative;
   font-family: Arial;
-  font-size: 1.1rem; /* Taille de police */
-  font-weight: normal; /* Poids de la police normal */
+  font-size: 1.1rem;
 }
 
-/* Masque les éléments select par défaut */
 .custom-select select {
   display: none;
 }
 
-/* Apparence des éléments sélectionnés */
 .select-selected {
-  background-color: #fff; /* Fond blanc pour les éléments sélectionnés */
+  background-color: #fff;
 }
 
-
-
-/* Faire pointer la flèche vers le haut lorsque la boîte select est ouverte */
 .select-selected.select-arrow-active:after {
-  transform: rotate(135deg); /* Rotation pour faire pointer la flèche vers le haut */
-  top: 13px; /* Ajustement de la position de la flèche */
+  transform: rotate(135deg);
+  top: 13px;
 }
-
-
-
-/* Fin du style personnalisé pour le select */
 
 /* Style pour les étiquettes de texte */
 .text-label {
-  font-weight: normal; /* Poids normal de la police */
-  font-size: 16px; /* Taille de police */
+  font-weight: normal;
+  font-size: 16px;
 }
-/***************************************************************************************************************************/
-/******************************************* MEDIA QUERIES *****************************************************************/
-/**************************************************************************************************************************/
 
-/*-------------------------------------- Écran Large -----------------------------------*/
+/*-------------------------------------- MEDIA QUERIES -----------------------------------*/
 @media screen and (min-width: 1440px) {
   body {
-    width:1330px;
+    width: 1330px;
   }
-  .hero-section image {
-    width: 55%;
+
+  .hero-section {
+    height: 70vh;
+  }
+
+  .hero-section img {
+    width: 60vw;
   }
 }
 
+.icon {
+  display: none;
+}
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -408,9 +385,6 @@ footer {
   color: red;
 }
 
-.topnav ul {
-  display: none;
-}
 /*-------------------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
@@ -423,7 +397,6 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;;
   }
 
   /* ajustement du header  pour mobile*/
@@ -455,15 +428,14 @@ footer {
     display: flex;
     flex-direction: column;
     background-color: white;
+    height: 60vh;
     width:95%;
-    box-shadow: none;
     margin: 0 auto;
+    box-shadow: none;
   }
 
   .hero-section img {
     width:100%;
-    border-radius: 0.5rem;
-    padding-bottom: 10vh;
   }
 
 
@@ -472,31 +444,19 @@ footer {
   .hero-content {
     color: black;
     width: 100%;
-    height:30vh;
-    margin:0 auto;
   }
 
   .hero-content h2 {
     color: black;
     width: 100%;
     font-size: 2rem;
-    margin:0.5vh 0;
-    padding: 0;
   }
   .hero-content i {
     display: none; 
   }
-  .signup   {
+  .signup  {
     position: absolute;
-    top:65vh;
-    margin: 0 auto;
-    z-index: 2;
-
+    top:70vh
   }
-  .hero-content p {
-    margin:1% 0;
-    padding:6% 0;
-    margin-top: 14vh;
-    font-size: 11px
-  }
+  
 }
