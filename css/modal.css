@@ -1,451 +1,416 @@
-/* Déclaration des variables CSS globales */
+/********************************************************************************************************/
+/*   Nom du fichier : modal.css                                                                         */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : Feuille de style pour le site d 'événement esport Game on                            */
+/*   Version : 1.0                                                                                      */
+/*   -----------------------------------------------------------------------                            */
+/*   Informations supplémentaires :                                                                     */
+/*   - Compatible avec les navigateurs : Chrome, Firefox, Edge                                          */
+/*   - Design responsive : Oui                                                                          */
+/*   - Conformité W3C : Oui                                                                             */
+/**********************************************************************************************************/
+
+/********************************************************************************************************/
+/*                               MOBILE FIRST                                                           */
+*/*******************************************************************************************************/
+
+/* ------------------------------------------------------------------ */
+/*                          VARIABLES                                 */
+/* ------------------------------------------------------------------ */
 :root {
-  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
-  --modal-duration: 0.8s;
+    --font-default: Arial, Helvetica, sans-serif;
+    --modal-duration: 0.8s;
 
-  /*-- Police --*/
-  --font-size-middle: 16px;
-  --font-size-base: 18px;
-  --font-size-large: 20px;
-  --font-size-xlarge: 23px;
+/*-- Police --*/
+    --font-size-middle: 16px;
+    --font-size-base: 18px;
+    --font-size-large: 20px;
+    --font-size-xlarge: 23px;
+}
+/* ------------------------------------------------------------------ */
+/*                          STYLES GLOBAUX                            */
+/* ------------------------------------------------------------------ */
+
+/*============= Réinitialisation globale des marges et des espacements ============ */
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* Réinitialisation globale des marges et des espacements */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Début des styles pour la Landing Page */
-
-/* Style du corps de la page */
+/*=============== Style du corps de la page =============*/
 body {
-  font-family: var(--font-default);
-  font-size: var(--font-size-base);
-  margin: 0 auto;
-  height: 100%;
+    min-width: 320px; /* Assure une largeur minimale pour les petits écrans */
+    max-width: 1200px; /* Limite la largeur du contenu à 1200px sur les grands écrans */
+    font-family: var(--font-default);
+    font-size: var(--font-size-base);
+    margin: 0 auto;
+    height: 100%;
+
 }
 
-/* Styles pour les paragraphes */
-p {
-  padding: 0.5vw;
-  margin-bottom: 0;
-}
-
-/* Styles des boutons */
+/*=================== Styles des boutons ================*/
 button {
-  width: 20vh;
-  background: #fe142f;
-  padding: 1% 5%;
-  color: #fff;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: var(--font-size-middle);
-  position: relative;
-  transition: background-color 0.3s ease;
+    width: 20vh;
+    background: #fe142f;
+    padding: 1% 5%;
+    color: #fff;
+    border: none;;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: var(--font-size-middle);
+    position: relative;
+    transition: background-color 0.3s ease;
 }
 
-/* Styles des étiquettes */
+/* ================ Styles pour les listes ==================*/
+ul {
+    list-style-type: none;
+}
+
+/*================= Styles des étiquettes =====================*/
 label {
-  font-family: var(--font-default);
-  font-size: var(--font-size-base);
-  font-weight: normal;
-  display: inline-block;
-  margin-bottom: 11px;
+    font-family: var(--font-default);
+    font-size: var(--font-size-base);
+    font-weight: normal;
+    display: inline-block;
+    margin-bottom: 11px;
 }
 
-/* Styles pour l'accessibilité */
+/*================= Style global pour les liens =================*/
+a {
+    color: inherit; /* Hérite de la couleur du texte parent (cela enlève le bleu par défaut) */
+    text-decoration: none; /* Enlève le soulignement */
+}
+
+/*====================== Styles pour l'accessibilité ============*/
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
-/* Styles pour le Header */
+/* ------------------------------------------------------------------ */
+/*                              HEADER                                */
+/* ------------------------------------------------------------------ */
+
+/*======= Conteneur ================*/
 header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 3vw 0;
-  padding-right: 2vw;
+    width: 100%; /* Le header prend 100% de la largeur de la page */
+    display: flex; /* Utilise le flexbox pour disposer les éléments à l'intérieur */
+    justify-content: space-between; /* Les éléments à l'intérieur sont espacés pour occuper toute la largeur disponible */
+    margin: 3vw 0; /* Ajoute une marge verticale de 3% de la largeur de la fenêtre  */
 }
 
+/* ========== Image =================*/
 header img {
-  margin-left: 5%;
-  margin-bottom: 3%;
+    width: 30vw; /* L'image occupe 50% de la largeur du conteneur parent */
+    height: auto; /* La hauteur est ajustée automatiquement pour maintenir le ratio de l'image */
+    margin-left: 5%; /* Ajoute une marge de 5% à gauche de l'image */
+    margin-bottom: 3%; /* Ajoute une marge de 3% en bas de l'image */
 }
 
-/* Barre de navigation */
-.topnav ul {
-  display: flex;
-  list-style-type: none;
-}
-
-.topnav a {
-  text-decoration: none;
-  color: black;
-  font-weight: 700;
-  padding: 0 0.5rem;
-}
-
-.topnav span:hover {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 0.5rem;
-  border-bottom: 2px solid white;
-  font-weight: 500;
-  padding: 0.4rem;
-  text-decoration: underline;
-}
-
-.accueil {
-  display: none;
-}
-
-.topnav i {
-  display: none;
-}
-
-/* Section Principale */
-.hero-section {
-  width: 90%;
-  height: 60vh;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  background-color: #000;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* Contenu texte (gauche) */
-.hero-content {
-  width: 40%;
+/* ------------------------------------------------------------------ */
+/*                        BARRE DE NAVIGATION                         */
+/* ------------------------------------------------------------------ */
+.topnav {
   display: flex;
   flex-direction: column;
-  color: white;
-  justify-content: center;
-  padding-left: 4%;
-  position: relative;
+  max-width: 100%;
+  position: ralative;
+
+}
+.nav-links {
+    display: none;
 }
 
-.hero-section h2 {
-  font-size: 4.5rem;
-  color: white;
-  position: absolute;
-  width: 65vw;
-  top: 5%;
+/* ==== style au survol ======*/
+.topnav span:hover {
+    background-color: #ff0000;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    border-bottom: 2px solid white;
+    font-weight: 500;
+    padding: 0.4rem;
+    text-decoration: underline;
 }
 
-.hero-section p {
-  margin: 5vh 0;
-  padding-top: 20vh;
+/* ====== Style Icône Liste =====*/
+.topnav i {
+    display: block;
+    color:red;
+    padding-right: 5vw;
 }
 
+/*=== Affichage conditionnel liste ====*/
+.nav-links {
+    display: none;
+}
+
+/*=== affichage liste au clic sur l' icône ====*/
+.topnav.responsive .nav-links {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    z-index: 1;
+    top: 2vh;
+    left:0;
+    
+}
+
+/* ------------------------------------------------------------------ */
+/*                           SECTION PRINCIPALE                       */
+/* ------------------------------------------------------------------ */
+
+/*===== Conteneur principale ========*/*
+.hero-section {
+    display: flex; /* Active la mise en page flexbox pour disposer les éléments en colonne */
+    flex-direction: column; /* Les éléments à l'intérieur sont organisés en colonne (du haut vers le bas) */
+    background-color: white; /* Définit un fond blanc pour la section */
+    width: 90%; /* La section occupe 95% de la largeur de son conteneur parent */
+    margin: 0 auto; /* Centrage horizontal de la section (marges égales de chaque côté) */
+    box-shadow: none; /* Désactive les ombres autour de la section */
+}
+
+/* ======== Image =================*/
 .hero-section img {
-  width: 60%;
-  border-radius: 0 0.5rem 0.5rem 0;
+    width: 100%; /* L'image à l'intérieur de la section occupe toute la largeur disponible */
+    border-radius: 0.5rem;
+    margin: 5% 0;
+}
+/* ========= Conteneur Parent Textes et titre =========*/
+.hero-content {
+    color: black; /* Le texte dans le conteneur hero-content est en noir */
 }
 
-/* Footer */
+/*========  Style Titre ===========*/
+.hero-content h2 {
+    color: black; /* Le texte du titre h2 est en noir */
+    width: 100%; /* Le titre prend toute la largeur disponible */
+    font-size: 2.2rem; /* Taille du texte définie à 2 rem (basée sur la taille de la police par défaut) */
+}
+ 
+/*========  Style Texte ===========*/
+.hero-content p {
+  width:95vw;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/*============ Affichage conditionnel bouton je m'inscris ====*/
+.desktop-signup {
+    display: none;/* Bouton mode desktop masqué par défaut */
+}
+.mobile-signup {
+    display: block;
+    justify-content: center;
+    margin: 4% auto;
+}
+
+
+/* ------------------------------------------------------------------ */
+/*                              FOOTER                                */
+/* ------------------------------------------------------------------ */
+
 footer {
-  color: red;
-  font-weight: 900;
-  padding: 10vh 2vh;
+    color: red;
+    font-weight: 900;
+    padding: 2% 0;
+    text-align: center;
+    font-size: 0.6rem;
 }
-
-/* Media Queries pour écrans larges */
-@media screen and (min-width: 1440px) {
-  body {
-    width: 1330px;
-  }
-
-  .hero-section {
-    height: 70vh;
-  }
-
-  .hero-section img {
-    width: 60vw;
-  }
-}
-
-
-
+/* ------------------------------------------------------------------ ------------------------------------------------------------------------------------------------*-*/
+/*                                                                                                                                                                        */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /* Styles pour l'arrière-plan du modal */
 .bground {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
 }
 
 /* Contenu du modal */
 .content {
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
-  animation: modalopen var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
+    margin: 5% auto;
+    width: 100%;
+    max-width: 500px;
+    animation: modalopen var(--modal-duration);
+    background: #232323;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    padding-top: 10px;
 }
 
 /* Corps du modal */
 .modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
+    padding: 15px 8%;
+    margin: 15px auto;
 }
 
 /* Style des champs de texte */
 .text-control {
-  margin: 0;
-  padding: 8px;
-  width: 100%;
-  border-radius: 8px;
-  font-size: 20px;
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 20px;
 }
 
 /* Gestion des erreurs dans le formulaire */
 .formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin: 7px 0;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: #e54858;
+    display: block;
+    margin: 7px 0;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
 }
 
 .formData[data-error-visible="true"]::after {
-  opacity: 1;
+    opacity: 1;
 }
 
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
+    border: 2px solid #e54858;
 }
 
 /* Styles pour les cases à cocher (checkbox) */
 .checkbox-label {
-  position: relative;
-  margin-left: 36px;
-  font-size: 12px;
+    position: relative;
+    margin-left: 36px;
+    font-size: 12px;
 }
 
 .checkbox-label .checkbox-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #279e7a;
-  border-radius: 50%;
-  position: absolute;
-  left: -30px;
-  top: -1px;
-  transition: 0.3s;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #279e7a;
+    border-radius: 50%;
+    position: absolute;
+    left: -30px;
+    top: -1px;
+    transition: 0.3s;
 }
 
 .checkbox-label .checkbox-icon::after {
-  content: "";
-  width: 13px;
-  height: 13px;
-  background-color: #279e7a;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: 0.3s;
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: #279e7a;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.3s;
 }
 
 .checkbox-input {
-  display: none;
+    display: none;
 }
 
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Styles pour la croix de fermeture des modals */
 .close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  transform: scale(0.7);
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transform: scale(0.7);
 }
 
 .close:before,
 .close:after {
-  position: absolute;
-  left: 15px;
-  content: "";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
+    position: absolute;
+    left: 15px;
+    content: "";
+    height: 33px;
+    width: 3px;
+    background-color: #fff;
 }
 
 .close:before {
-  transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .close:after {
-  transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 /* Styles personnalisés pour les éléments select */
 .custom-select {
-  position: relative;
-  font-family: Arial;
-  font-size: 1.1rem;
+    position: relative;
+    font-family: Arial;
+    font-size: 1.1rem;
 }
 
 .custom-select select {
-  display: none;
+    display: none;
 }
 
 .select-selected {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .select-selected.select-arrow-active:after {
-  transform: rotate(135deg);
-  top: 13px;
+    transform: rotate(135deg);
+    top: 13px;
 }
 
 /* Style pour les étiquettes de texte */
 .text-label {
-  font-weight: normal;
-  font-size: 16px;
+    font-weight: normal;
+    font-size: 16px;
 }
 
-/*-------------------------------------- MEDIA QUERIES -----------------------------------*/
-@media screen and (min-width: 1440px) {
-  body {
-    width: 1330px;
-  }
+/* ------------------------------------------------------------------ */
+/*                    MEDIA QUERIES POUR                              */
+/*      Smartphones grands, petits pliables et petits tablettes       */
+/* ------------------------------------------------------------------ */
 
-  .hero-section {
-    height: 70vh;
-  }
-
-  .hero-section img {
-    width: 60vw;
-  }
+/* Styles pour appareils entre 481px et 767px */
+@media screen and (min-width: 481px) and (max-width: 767px) {
 }
 
-.icon {
-  display: none;
+/* ------------------------------------------------------------------ */
+/*                    MEDIA QUERIES POUR                              */
+/*        Tablettes et petits ordinateurs portables                   */
+/* ------------------------------------------------------------------ */
+
+  /* Styles pour appareils entre 768px et 1024px */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
 }
 
-/*-------------------------------------------------------------------------------------------------------------------------*/
-/*-------------------------------------------------------------------------------------------------------------------------*/
-
-/*------------------------------------- Tablette moins de 768px px ------------------------*/
-  /* Styles pour les écrans de moins de 768px */
-@media screen and (min-width:426px) and (max-width: 1023px) {
-  header {
-    width: 95%;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+/* Ordinateurs portables et écrans carrés */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* Styles pour appareils entre 1025px et 1440px */
 }
 
-.topnav i {
-  display: flex;
-  color: red;
+/* Écrans de bureau larges et téléviseurs */
+@media screen and (min-width: 1441px) {
+  /* Styles pour appareils plus larges que 1441px */
 }
 
-/*-------------------------------------------------------------------------------------------------------------------------*/
-/*-------------------------------------------------------------------------------------------------------------------------*/
 
-/*------------------------------------- mobile  compris entre 250 px et de 425px  ------------------------*/
-@media screen and (min-width:250px) and (max-width: 425px) {
-
-  /* ajustement du body  pour mobile*/
-  body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  }
-
-  /* ajustement du header  pour mobile*/
-  header {
-    justify-content: space-between;
-    align-items: center;
-
-  }
-
-  /* Logo */
-
-  header img {
-    height: 3vh;
-  }
-  /*affichage icône*/
-  
-  .topnav ul {
-    display: none;
-  }
-
-  .topnav i {
-    display: flex;
-    color:red; /* Couleur rouge pour l'icône */
-    font-size: 2rem; /* Taille de l'icône */
-    cursor: pointer; /* Changer le curseur au survol */
-  }
-
-  .hero-section{
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    height: 60vh;
-    width:95%;
-    margin: 0 auto;
-    box-shadow: none;
-  }
-
-  .hero-section img {
-    width:100%;
-  }
-
-
-
-
-  .hero-content {
-    color: black;
-    width: 100%;
-  }
-
-  .hero-content h2 {
-    color: black;
-    width: 100%;
-    font-size: 2rem;
-  }
-  .hero-content i {
-    display: none; 
-  }
-  .signup  {
-    position: absolute;
-    top:70vh
-  }
-  
-}
