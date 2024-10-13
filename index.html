@@ -51,10 +51,13 @@
       <!-- ***************************************************************************************************************** -->
       <!-- **************************************** Fenêtre Modale  ******************************************************** -->
       <!-- ***************************************************************************************************************** -->
-      <div class="bground dialog-fallback hidden"> <!-- Fenêtre modale de repli -->
+      <div class="bground "> <!-- Fenêtre modale de repli -->
         <div class="content"> <!-- Contenu de la fenêtre modale -->
           <span class="close"></span> <!-- Bouton de fermeture de la modale -->
-
+          <!-- Bouton de fermeture avec Font Awesome -->
+          <button type="button" class="close" aria-label="Fermer la fenêtre">
+            <i class="fa fa-times"></i>
+          </button>
           <div class="modal-body"> <!-- Corps de la modale -->
             <form name="reserve" action="./index.html" method="get" onsubmit="return validate();"> <!-- Formulaire de réservation -->
 
