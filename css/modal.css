@@ -13,7 +13,7 @@
 
 /********************************************************************************************************/
 /*                               MOBILE FIRST                                                           */
-*/*******************************************************************************************************/
+/*******************************************************************************************************/
 
 /* ------------------------------------------------------------------ */
 /*                          VARIABLES                                 */
@@ -21,12 +21,11 @@
 :root {
     --font-default: Arial, Helvetica, sans-serif;
     --modal-duration: 0.8s;
-
-/*-- Police --*/
-    --font-size-middle: 16px;
-    --font-size-base: 18px;
-    --font-size-large: 20px;
-    --font-size-xlarge: 23px;
+    --font-size-small:0.8rem;
+    --font-size-middle:1.1rem;
+    --font-size-base:1rem;
+    --font-size-large:1.4rem ;
+    --font-size-xlarge:2rem;
 }
 /* ------------------------------------------------------------------ */
 /*                          STYLES GLOBAUX                            */
@@ -44,22 +43,27 @@ body {
     min-width: 320px; /* Assure une largeur minimale pour les petits écrans */
     max-width: 1200px; /* Limite la largeur du contenu à 1200px sur les grands écrans */
     font-family: var(--font-default);
-    font-size: var(--font-size-base);
     margin: 0 auto;
     height: 100%;
 
 }
-
+/*================== Taille de police ===================*/
+h2 {
+  font-size: var(--font-size-xlarge);/* Taille de police correspondant*/
+}
+p {
+  font-size: var(--font-size-small); /* Taille de police correspondant*/
+}
 /*=================== Styles des boutons ================*/
 button {
-    width: 20vh;
+    width: 10rem;
     background: #fe142f;
-    padding: 1% 5%;
+    padding: 2% 5%;
     color: #fff;
     border: none;;
     border-radius: 0.5rem;
     cursor: pointer;
-    font-size: var(--font-size-middle);
+    font-size: var(--font-size-small);
     position: relative;
     transition: background-color 0.3s ease;
 }
@@ -104,16 +108,16 @@ a {
 header {
     width: 100%; /* Le header prend 100% de la largeur de la page */
     display: flex; /* Utilise le flexbox pour disposer les éléments à l'intérieur */
-    justify-content: space-between; /* Les éléments à l'intérieur sont espacés pour occuper toute la largeur disponible */
-    margin: 3vw 0; /* Ajoute une marge verticale de 3% de la largeur de la fenêtre  */
+    position:relative; /**/
+    margin-top: 5% ; /* Ajoute une marge verticale de 3% de la largeur de la fenêtre  */
 }
 
 /* ========== Image =================*/
 header img {
-    width: 30vw; /* L'image occupe 50% de la largeur du conteneur parent */
-    height: auto; /* La hauteur est ajustée automatiquement pour maintenir le ratio de l'image */
+    width: 30%; /* L'image occupe 50% de la largeur du conteneur parent */
+    height: 2%; /* La hauteur est ajustée automatiquement pour maintenir le ratio de l'image */
     margin-left: 5%; /* Ajoute une marge de 5% à gauche de l'image */
-    margin-bottom: 3%; /* Ajoute une marge de 3% en bas de l'image */
+    position: fixed;
 }
 
 /* ------------------------------------------------------------------ */
@@ -123,11 +127,6 @@ header img {
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  position: ralative;
-
-}
-.nav-links {
-    display: none;
 }
 
 /* ==== style au survol ======*/
@@ -137,7 +136,7 @@ header img {
     border-radius: 0.5rem;
     border-bottom: 2px solid white;
     font-weight: 500;
-    padding: 0.4rem;
+    padding:0  0.4rem;
     text-decoration: underline;
 }
 
@@ -145,7 +144,8 @@ header img {
 .topnav i {
     display: block;
     color:red;
-    padding-right: 5vw;
+    cursor : pointer;
+
 }
 
 /*=== Affichage conditionnel liste ====*/
@@ -156,13 +156,19 @@ header img {
 /*=== affichage liste au clic sur l' icône ====*/
 .topnav.responsive .nav-links {
     display: flex;
-    flex-direction: row;
-    position: absolute;
-    z-index: 1;
-    top: 2vh;
-    left:0;
-    
+    flex-direction: column;
+    font-size: 1rem;
+    padding-right: 50vw;    
 }
+
+.topnav.responsive .nav-links a {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.topnav.responsive ul {
+  
+}
+
 
 /* ------------------------------------------------------------------ */
 /*                           SECTION PRINCIPALE                       */
@@ -192,14 +198,11 @@ header img {
 /*========  Style Titre ===========*/
 .hero-content h2 {
     color: black; /* Le texte du titre h2 est en noir */
-    width: 100%; /* Le titre prend toute la largeur disponible */
-    font-size: 2.2rem; /* Taille du texte définie à 2 rem (basée sur la taille de la police par défaut) */
 }
- 
 /*========  Style Texte ===========*/
 .hero-content p {
   width:95vw;
-  font-size: 0.9rem;
+  font-size:0.8rem;
   font-weight: 700;
 }
 
