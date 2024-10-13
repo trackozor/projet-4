@@ -54,10 +54,9 @@ body {
 /*================== Taille de police ===================*/
 h2 {
   font-size: var(--font-size-xlarge);/* Taille de police correspondant*/
+  margin:2% 0;
 }
-p {
-  font-size: var(--font-size-small); /* Taille de police correspondant*/
-}
+
 /*=================== Styles des boutons ================*/
 button {
     width: 10rem;
@@ -80,10 +79,10 @@ ul {
 /*================= Styles des étiquettes =====================*/
 label {
     font-family: var(--font-default);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-small);
     font-weight: normal;
     display: inline-block;
-    margin-bottom: 11px;
+    padding:3% 0;
 }
 
 /*================= Style global pour les liens =================*/
@@ -184,6 +183,7 @@ header img {
     padding-top: 10%;
     flex-wrap: nowrap;
     width: 90%;
+    z-index: 2;
     
 }
 
@@ -220,6 +220,7 @@ header img {
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+    padding-bottom: 5%;
 }
 /* ========= Conteneur Parent Textes et titre =========*/
 .hero-content {
@@ -234,12 +235,14 @@ header img {
 .hero-content h2 {
     color: black; /* Le texte du titre h2 est en noir */
     padding-left: 0;
+    padding: 2% 0;
 }
 /*========  Style Texte ===========*/
 .hero-content p {
   width:100%;
-  font-size:0.8rem;
+  font-size: 0.8rem;
   font-weight: 700;
+  padding-bottom: 5%;
 }
 
 /*============ Affichage conditionnel bouton je m'inscris ====*/
@@ -274,17 +277,16 @@ header img {
     margin:0 auto;
     
 }
-.formData ul{
-  width: 100%;
-  justify-content: center;
-  margin:0 auto;
-}
 
-.modal-body {
+
+.formData  {
+  display: block;
   margin: 0 auto;
-  justify-content:center;
-  margin:0 auto;
+  padding: 0;
   width: 100%;
+  box-sizing: content-box;
+  position: relative;
+  left:-5%;
 }
 .form-list li {
   display: flex;
@@ -329,8 +331,13 @@ footer {
 
   /* Styles pour appareils entre 768px et 1024px */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-}
+  .hero-section img {
+    height: 60vh;
+    width: 100%;
+    object-fit: cover;
 
+  } 
+}
 /* Ordinateurs portables et écrans carrés */
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
   /* Styles pour appareils entre 1025px et 1440px */
