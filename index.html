@@ -51,16 +51,19 @@
       <!-- ***************************************************************************************************************** -->
       <!-- **************************************** Fenêtre Modale  ******************************************************** -->
       <!-- ***************************************************************************************************************** -->
-      <div class="bground "> <!-- Fenêtre modale de repli -->
+     
+      <div class="bground "> <!-- Corps de la modale pour le repli -->
         <div class="content"> <!-- Contenu de la fenêtre modale -->
-          <span class="close"></span> <!-- Bouton de fermeture de la modale -->
-          <!-- Bouton de fermeture avec Font Awesome -->
-          <button type="button" class="close" aria-label="Fermer la fenêtre">
-            <i class="fa fa-times"></i>
-          </button>
-          <div class="modal-body"> <!-- Corps de la modale -->
-            <form name="reserve" action="./index.html" method="get" onsubmit="return validate();"> <!-- Formulaire de réservation -->
 
+          <!-- Bouton de fermeture de la fenêtre modale -->
+          <button type="button" class="close" aria-label="Fermer la fenêtre">
+            <span>+</span>
+          </button>
+
+
+          <!-- Corps de la modale -->
+          <div class="modal-body"> 
+            <form name="reserve" action="./index.html" method="get" onsubmit="return validate();"> <!-- Formulaire de réservation -->
               <!-- Champ pour le prénom -->
               <fieldset class="formData">
                 <legend class="sr-only">Informations Personnelles</legend> <!-- Légende pour décrire le groupe de champs -->
