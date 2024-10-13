@@ -1,7 +1,14 @@
 // Fonction pour activer/désactiver le menu en version responsive
 function editNav() {
   const navElement = document.getElementById("Topnav");
+   const modalbg = document.querySelector(".bground"); // Sélection de la modale
   navElement.classList.toggle("responsive"); // Ajoute ou enlève la classe "responsive" sur mobile
+   // Vérifie si la modale est ouverte et ajuste sa position
+  if (navElement.classList.contains("responsive")) {
+    modalbg.style.top = "20vh"; // Ajuste la position de la modale (valeur à adapter selon tes besoins)
+  } else {
+    modalbg.style.top = "5%"; // Remet la position d'origine de la modale
+  }
 }
 
 

@@ -91,6 +91,9 @@ a {
     text-decoration: none; /* Enlève le soulignement */
 }
 
+fieldset {
+  border:none;
+}
 /*---------------------------------------------------------------------------------------------------------------------------------*/
 /**--------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -187,12 +190,12 @@ header img {
     
 }
 
+/* ==== Style liens de la liste  ====*/
 .topnav.responsive .nav-links a {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
 }
-
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -262,7 +265,7 @@ header img {
                       /*                           Fenêtre modale                           */
                       /* ------------------------------------------------------------------ */
 
-/* Conteneur principal*/                    
+/* Conteneur principal pour le repli de la fenêtre modale */                    
 .bground {
     display: none;
     position: fixed;
@@ -271,14 +274,14 @@ header img {
     top: 5%;
     height: 100%;
     width: 100%;
-    background: #232323;
+    background: black;
     color: white;
     justify-content:center;
     margin:0 auto;
-    
 }
 
-
+.content 
+/* Conteneur parent section infos personnels --*/ 
 .formData  {
   display: block;
   margin: 0 auto;
@@ -288,6 +291,8 @@ header img {
   position: relative;
   left:-5%;
 }
+
+/*--*/
 .form-list li {
   display: flex;
   flex-direction: column;
@@ -296,7 +301,7 @@ header img {
   padding:0;
 
 }
-
+/*-- Bouton close en croix --*/
 .close {
   display:flex;
   width: 100%;
