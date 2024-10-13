@@ -25,11 +25,13 @@ modalbtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // Fonction pour afficher la modal
 function launchModal() {
   modalbg.style.display = "block"; // On modifie le style pour rendre la modal visible
+  document.body.style.overflow = "hidden"; // Empêche le défilement du body
 }
 
 // Fonction pour fermer la modal
 function closeModal() {
   modalbg.style.display = "none"; // On masque la modal en remettant son display à "none"
+  document.body.style.overflow = "auto"; // Réactive le défilement du body
 }
 
 // Ajoute un événement "click" au bouton "close" pour fermer la modal
