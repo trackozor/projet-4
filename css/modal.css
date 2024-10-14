@@ -80,9 +80,8 @@ ul {
 label {
     font-family: var(--font-default);
     font-size: var(--font-size-small);
-    font-weight: normal;
-    display: inline-block;
     padding:3% 0;
+    flex-wrap: nowrap;
 }
 
 /*================= Style global pour les liens =================*/
@@ -277,10 +276,7 @@ header img {
     justify-content:center;
     margin:0 auto;
 }
-/*-- texte ne faisant pas partie des liste de la fenêtre modale --*/
-.content p {
-  padding-left: 5%;
-}
+
 /*-- Style globale formulaire --*/ 
 .formData  {
   display: block;
@@ -289,9 +285,13 @@ header img {
   width: 100%;
   box-sizing: content-box;
   position: relative;
-  left:-5%;
+  left:-7.5vw;
+  bottom: 5vh;
 }
-
+.formData .legend {
+  padding-left:15%;
+  font-size: var(--font-size-small);
+}
 /*-- LIste infos personnels --*/
 .form-list li {
   display: flex;
@@ -301,23 +301,38 @@ header img {
   padding:0;
 }
 
-
+/* input infos personnels --*/
+.form-list input {
+  width: 100%;
+  padding: 4% 2%;
+  border: none;
+  border-radius: 0.5rem;
+}
+.location-list  {
+  display: flex;
+  flex-direction:row;
+  width: 100%;
+  flex-wrap: wrap;
+}
 /*-- Bouton close en croix --*/
 .close {
   display:flex;
   width: 100%;
   flex-direction: row-reverse;
   background-color: transparent;
+  
 }
 
 /* Creation de la croix avec un + retourné */
 .close  span {
-font-size:var(--font-size-base);
+font-size:var(--font-size-xlarge);
 font-weight:500;
 background-color: transparent;
 display: inline-block;
 transform: rotate(45deg) ;
 }
+
+
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
