@@ -1,13 +1,33 @@
 // Fonction pour activer/désactiver le menu en version responsive
+
 function editNav() {
   const navElement = document.getElementById("Topnav");
-   const modalbg = document.querySelector(".bground"); // Sélection de la modale
-  navElement.classList.toggle("responsive"); // Ajoute ou enlève la classe "responsive" sur mobile
-   // Vérifie si la modale est ouverte et ajuste sa position
+  const modalbg = document.querySelector(".bground"); // Sélection de la modale
+
+  // Ajoute ou enlève la classe "responsive" sur le menu de navigation
+  navElement.classList.toggle("responsive");
+
+  // Vérifie la largeur de l'écran
+  const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches; // Condition pour les tablettes
+  const isMobile = window.matchMedia("(max-width: 767px)").matches; // Condition pour les mobiles
+
+  // Si la navigation est en mode responsive
   if (navElement.classList.contains("responsive")) {
-    modalbg.style.top = "20vh"; // Ajuste la position de la modale (valeur à adapter selon tes besoins)
+    // Si c'est un mobile (moins de 768px)
+    if (isMobile) {
+      modalbg.style.top = "20vh"; // Ajuste la position de la modale pour les mobiles
+    }
+    // Si c'est une tablette (entre 768px et 1024px), ne bouge pas la modale
+    else if (isTablet) {
+      modalbg.style.top = "5%"; // Ne bouge pas la modale pour les tablettes
+    }
+    // Pour les écrans plus larges que 1024px, ajuster si nécessaire
+    else {
+      modalbg.style.top = "5%"; // Ne bouge pas non plus sur grand écran
+    }
   } else {
-    modalbg.style.top = "5%"; // Remet la position d'origine de la modale
+    // Quand le menu responsive est fermé, remet la position d'origine de la modale
+    modalbg.style.top = "5%";
   }
 }
 
@@ -47,63 +67,56 @@ window.addEventListener("click", (e) => {
 
 
 //-----------------------------------------------------------------------------------------
-// Fonction pour valider le formulaire
+// Fonction utilitaire pour les couleurs de la console
+const consoleColors = {
+  reset: "\x1b[0m", // Réinitialisation
+  fgGreen: "\x1b[32m", // Texte vert (OK)
+  fgYellow: "\x1b[33m", // Texte jaune (Avertissement)
+  fgRed: "\x1b[31m" // Texte rouge (Erreur)
+};
+
+d
+// Fonction principale pour valider le formulaire à la soumission
 function validate() {
-  // Initialise une variable de validation
   let isValid = true;
 
-  // Validation du champ "Prénom"
-  const firstName = document.getElementById('first');
-  if (firstName.value.length < 2) {
-    // Affiche un message si le prénom fait moins de 2 caractères
-    alert("Le prénom doit contenir au moins 2 caractères.");
-    isValid = false; // Le formulaire n'est pas valide
+  try {
+    console.log(`${consoleColors.fgYellow}Validation du formulaire en cours...${consoleColors.reset}`);
+    
+    // Supprime les erreurs existantes
+    removeErrorIndicators();
+
+    // Valide chaque champ en appelant la fonction validateField
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      validateField({ target: input });
+      if (input.classList.contains('error-input')) {
+        isValid = false;
+      }
+    });
+
+    console.log(`${consoleColors.fgGreen}Résultat de la validation du formulaire : ${isValid ? 'Valide' : 'Invalide'}${consoleColors.reset}`);
+  } catch (error) {
+    console.error(`${consoleColors.fgRed}Erreur lors de la validation du formulaire : ${error}${consoleColors.reset}`);
+    isValid = false;
   }
 
-  // Validation du champ "Nom"
-  const lastName = document.getElementById('last');
-  if (lastName.value.length < 2) {
-    // Affiche un message si le nom fait moins de 2 caractères
-    alert("Le nom doit contenir au moins 2 caractères.");
-    isValid = false; // Le formulaire n'est pas valide
-  }
-
-  // Validation du champ "Email"
-  const email = document.getElementById('email');
-  // Utilisation d'une expression régulière pour vérifier la validité de l'email
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email.value)) {
-    // Affiche un message si l'email n'est pas valide
-    alert("Veuillez entrer une adresse email valide.");
-    isValid = false; // Le formulaire n'est pas valide
-  }
-
-  // Validation du champ "Date de naissance"
-  const birthdate = document.getElementById('birthdate');
-  if (!birthdate.value) {
-    // Affiche un message si la date de naissance n'est pas remplie
-    alert("Veuillez entrer votre date de naissance.");
-    isValid = false; // Le formulaire n'est pas valide
-  }
-
-  // Validation de la sélection d'une ville (tournoi)
-  const locationChecked = document.querySelector('input[name="location"]:checked');
-  if (!locationChecked) {
-    // Affiche un message si aucune ville n'est sélectionnée
-    alert("Veuillez sélectionner une ville pour participer au tournoi.");
-    isValid = false; // Le formulaire n'est pas valide
-  }
-
-  // Vérification que les conditions d'utilisation sont acceptées
-  const conditionsAccepted = document.getElementById('checkbox1').checked;
-  if (!conditionsAccepted) {
-    // Affiche un message si les conditions d'utilisation ne sont pas acceptées
-    alert("Vous devez accepter les conditions d'utilisation.");
-    isValid = false; // Le formulaire n'est pas valide
-  }
-
-  // Retourne "true" si tout est valide, "false" sinon
   return isValid;
+}
+
+// Supprimer toutes les erreurs au début de la validation
+function removeErrorIndicators() {
+  try {
+    console.log(`${consoleColors.fgYellow}Suppression de toutes les erreurs existantes avant validation.${consoleColors.reset}`);
+    
+    const errorModals = document.querySelectorAll('.error-modal');
+    errorModals.forEach(modal => modal.remove());
+
+    const errorInputs = document.querySelectorAll('.error-input');
+    errorInputs.forEach(input => input.classList.remove('error-input'));
+  } catch (error) {
+    console.error(`${consoleColors.fgRed}Erreur lors de la suppression des erreurs existantes : ${error}${consoleColors.reset}`);
+  }
 }
 
 

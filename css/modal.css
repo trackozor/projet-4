@@ -344,8 +344,28 @@ transform: rotate(45deg) ;
 }
 #close-modal-btn {
   display: none;
-  display: block;
+
 }
+/* Bordure rouge pour les champs en erreur */
+.error-input {
+  border: 2px solid red;
+}
+
+/* Modale d'erreur */
+.error-modal {
+  background-color: #f8d7da;
+  color: #0b0c07;
+  padding: 10px;
+  border: 1px solid red;
+  margin-top: 5px;
+  display: none; /* Caché par défaut */
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  max-width: 300px;
+}
+
+
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
                       /* ------------------------------------------------------------------ */
@@ -365,12 +385,27 @@ footer {
 
   /* Styles pour appareils entre 768px et 1024px */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+  .topnav.responsive .nav-links {
+    display: flex;
+    flex-direction:row;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+
   .hero-section img {
-    height: 60vh;
+    height: auto;
     width: 100%;
     object-fit: cover;
-
   } 
+
+  .hero-section h2 {
+    font-size: 4rem;
+    padding:0;
+  }
+  .hero-section p {
+    font-size: var(--font-size-base);
+  }
 }
 /* Ordinateurs portables et écrans carrés */
 @media screen and (min-width: 1025px) and (max-width: 1440px) {

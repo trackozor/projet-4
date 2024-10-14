@@ -147,11 +147,13 @@
                 </ul>
               </fieldset>
               <button class="btn-submit" type="submit" aria-label="Envoyer le formulaire d'inscription">C'est parti</button> <!-- Bouton de soumission du formulaire -->
-              <div id="confirmation-modal">Merci ! Votre réservation a été reçue.</div> <!-- Message de confirmation caché -->
+              <div id="confirmation-modal">
+                <span Votre réservation a été reçue.></span> 
+                <button type="button" id="close-modal-btn" aria-label="Fermer la fenêtre modale">OK</button>
+              </div> <!-- Message de confirmation caché -->
               
               <div id="error-modal" class="hidden"> <!-- Modale d'erreur cachée par défaut -->
                   <p id="error-message"></p>
-                  <button type="button" id="close-modal-btn" aria-label="Fermer la fenêtre modale">OK</button>
               </div>
             </form>
           </div>
