@@ -93,6 +93,27 @@ a {
 fieldset {
   border:none;
 }
+
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+                        /* ------------------------------------------------------------------ */
+                        /*                          ANIMATIONS                                */
+                        /* ------------------------------------------------------------------ */
+
+/* Animation pour faire clignoter la bordure rouge */
+@keyframes borderBlink {
+    0% {
+        border-color: red;
+    }
+    50% {
+        border-color: transparent;
+    }
+    100% {
+        border-color: red;
+    }
+}
+
+
 /*---------------------------------------------------------------------------------------------------------------------------------*/
 /**--------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -368,6 +389,53 @@ transform: rotate(45deg) ;
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+                    /* ------------------------------------------------------------------ */
+                    /*                          BULLE D'ERREUR                            */
+                    /* ------------------------------------------------------------------ */
+
+.error-tooltip {
+    position: absolute;
+    background-color: #f8d7da; /* Rouge clair pour l'erreur */
+    border: 1px solid red; /* Bordure rouge */
+    border-radius: 4px;
+    padding: 10px;
+    color: #0b0c07; /* Couleur du texte */
+    font-size: var(--font-size-small);
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.error-tooltip::before {
+    content: "\26A0"; /* Icône d'avertissement */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Triangle en dessous de la bulle pour pointer vers l'input */
+.error-tooltip:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #f8d7da transparent transparent transparent;
+}
+
+/* Bordure rouge clignotante pour les champs en erreur */
+.error-input {
+    animation: borderBlink 1s infinite; /* Animation clignotante */
+}
+
+/* Pour les champs valides, on retire l'animation */
+.valid-input {
+    border: 2px solid green;
+    animation: none; /* On retire toute animation pour les champs valides */
+}
+
                       /* ------------------------------------------------------------------ */
                       /*                              FOOTER                                */
                       /* ------------------------------------------------------------------ */

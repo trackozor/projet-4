@@ -75,48 +75,140 @@ const consoleColors = {
   fgRed: "\x1b[31m" // Texte rouge (Erreur)
 };
 
-d
-// Fonction principale pour valider le formulaire à la soumission
-function validate() {
-  let isValid = true;
-
+document.addEventListener('DOMContentLoaded', function () {
   try {
-    console.log(`${consoleColors.fgYellow}Validation du formulaire en cours...${consoleColors.reset}`);
+    console.log('Initialisation réussie');
     
-    // Supprime les erreurs existantes
-    removeErrorIndicators();
-
-    // Valide chaque champ en appelant la fonction validateField
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => {
-      validateField({ target: input });
-      if (input.classList.contains('error-input')) {
-        isValid = false;
-      }
+      input.addEventListener('input', validateField);
+      input.addEventListener('blur', validateField); // Pour vérifier à la sortie du champ aussi
     });
 
-    console.log(`${consoleColors.fgGreen}Résultat de la validation du formulaire : ${isValid ? 'Valide' : 'Invalide'}${consoleColors.reset}`);
-  } catch (error) {
-    console.error(`${consoleColors.fgRed}Erreur lors de la validation du formulaire : ${error}${consoleColors.reset}`);
-    isValid = false;
-  }
+    const modalBtns = document.querySelectorAll('.modal-btn');
+    modalBtns.forEach(btn => btn.addEventListener('click', launchModal));
 
-  return isValid;
+  } catch (error) {
+    console.error('Erreur lors de l\'initialisation : ', error);
+  }
+});
+
+function launchModal() {
+  const modalbg = document.querySelector('.bground');
+  modalbg.style.display = 'block'; // Affiche la modale immédiatement
+  document.body.style.overflow = 'hidden'; // Empêche le défilement
 }
 
-// Supprimer toutes les erreurs au début de la validation
-function removeErrorIndicators() {
-  try {
-    console.log(`${consoleColors.fgYellow}Suppression de toutes les erreurs existantes avant validation.${consoleColors.reset}`);
-    
-    const errorModals = document.querySelectorAll('.error-modal');
-    errorModals.forEach(modal => modal.remove());
+function closeModal() {
+  const modalbg = document.querySelector('.bground');
+  modalbg.style.display = 'none';
+  document.body.style.overflow = 'auto'; // Réactive le défilement
+}
 
-    const errorInputs = document.querySelectorAll('.error-input');
-    errorInputs.forEach(input => input.classList.remove('error-input'));
+document.addEventListener('DOMContentLoaded', function () {
+  try {
+    console.log('Initialisation réussie');
+    
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('input', validateField);
+      input.addEventListener('blur', validateField); // Pour vérifier à la sortie du champ aussi
+    });
+
+    const modalBtns = document.querySelectorAll('.modal-btn');
+    modalBtns.forEach(btn => btn.addEventListener('click', launchModal));
+
   } catch (error) {
-    console.error(`${consoleColors.fgRed}Erreur lors de la suppression des erreurs existantes : ${error}${consoleColors.reset}`);
+    console.error('Erreur lors de l\'initialisation : ', error);
   }
+});
+
+function launchModal() {
+  const modalbg = document.querySelector('.bground');
+  modalbg.style.display = 'block'; // Affiche la modale immédiatement
+  document.body.style.overflow = 'hidden'; // Empêche le défilement
+}
+
+function closeModal() {
+  const modalbg = document.querySelector('.bground');
+  modalbg.style.display = 'none';
+  document.body.style.overflow = 'auto'; // Réactive le défilement
+}
+
+function validateField(event) {
+  const field = event.target;
+  let errorMessage = '';
+
+  try {
+    // Validation personnalisée pour chaque champ
+    switch (field.id) {
+      case 'first':
+        if (field.value.trim() === '') {
+          errorMessage = 'Le prénom est requis.';
+        } else if (field.value.length < 2) {
+          errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
+        } else if (!/^[a-zA-Z]+$/.test(field.value)) {
+          errorMessage = 'Le prénom ne doit contenir que des lettres.';
+        }
+        break;
+      // Ajoutez ici d'autres validations pour les autres champs (last, email, etc.)
+    }
+
+    if (errorMessage) {
+      showError(errorMessage, field);
+    } else {
+      removeError(field);
+    }
+
+  } catch (error) {
+    console.error('Erreur lors de la validation du champ : ', error);
+  }
+}
+
+function showError(message, inputElement) {
+  removeError(inputElement); // Supprime les anciennes erreurs
+
+  const errorTooltip = document.createElement('div');
+  errorTooltip.className = 'error-tooltip';
+  errorTooltip.textContent = message;
+
+  inputElement.classList.add('error-input'); // Ajoute la classe pour le clignotement de la bordure
+  inputElement.classList.remove('valid-input'); // Retire la classe valide, le cas échéant
+  inputElement.parentElement.appendChild(errorTooltip);
+
+  // Positionner la bulle d'erreur sous l'input
+  const rect = inputElement.getBoundingClientRect();
+  errorTooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+  errorTooltip.style.left = `${rect.left + window.scrollX}px`;
+}
+
+function removeError(inputElement) {
+  inputElement.classList.remove('error-input'); // Supprime l'animation clignotante
+  inputElement.classList.add('valid-input'); // Ajoute la bordure verte
+
+  const existingError = inputElement.parentElement.querySelector('.error-tooltip');
+  if (existingError) {
+    existingError.remove();
+  }
+}
+
+// Gérer la soumission du formulaire
+document.querySelector('form').addEventListener('submit', function(event) {
+  if (!validate()) {
+    event.preventDefault(); // Empêche la soumission si non valide
+  }
+});
+
+function validate() {
+  let isValid = true;
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach(input => {
+    validateField({ target: input });
+    if (input.classList.contains('error-input')) {
+      isValid = false;
+    }
+  });
+  return isValid;
 }
 
 
