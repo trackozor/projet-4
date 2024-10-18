@@ -8,28 +8,17 @@ function editNav() {
   navElement.classList.toggle("responsive");
 
   // Vérifie la largeur de l'écran
-  const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches; // Condition pour les tablettes
   const isMobile = window.matchMedia("(max-width: 767px)").matches; // Condition pour les mobiles
 
-  // Si la navigation est en mode responsive
-  if (navElement.classList.contains("responsive")) {
-    // Si c'est un mobile (moins de 768px)
-    if (isMobile) {
-      modalbg.style.top = "20vh"; // Ajuste la position de la modale pour les mobiles
-    }
-    // Si c'est une tablette (entre 768px et 1024px), ne bouge pas la modale
-    else if (isTablet) {
-      modalbg.style.top = "5%"; // Ne bouge pas la modale pour les tablettes
-    }
-    // Pour les écrans plus larges que 1024px, ajuster si nécessaire
-    else {
-      modalbg.style.top = "5%"; // Ne bouge pas non plus sur grand écran
-    }
+  // Si la navigation est en mode responsive et qu'on est sur mobile
+  if (navElement.classList.contains("responsive") && isMobile) {
+    modalbg.style.top = "20vh"; // Ajuste la position de la modale pour les mobiles
   } else {
-    // Quand le menu responsive est fermé, remet la position d'origine de la modale
-    modalbg.style.top = "5%";
+    // Ne change pas la position sur tablette et PC, et remet à l'origine si la navigation est fermée
+    modalbg.style.top = "1%";
   }
 }
+
 
 
 

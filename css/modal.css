@@ -404,12 +404,13 @@ footer {
     font-size: 0.6rem;
 }
 /* ------------------------------------------------------------------ */
-/*                    MEDIA QUERIES POUR                              */
-/*        Tablettes et petits ordinateurs portables                   */
+/*                    MEDIA QUERIES                                   */
+/*                                                                    */
 /* ------------------------------------------------------------------ */
 
-  /* Styles pour appareils entre 768px et 1024px */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  /* Styles pour appareils mobile large entre 425px et 767px */
+@media screen and (min-width: 425px) and (max-width: 767px) {
   .topnav.responsive .nav-links {
     display: flex;
     flex-direction:row;
@@ -432,6 +433,11 @@ footer {
     font-size: var(--font-size-base);
   }
 }
+
+/* Styles pour appareils tablettes */
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  }
 /* Ordinateurs portables et écrans carrés */
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
   /* Styles pour appareils entre 1025px et 1440px */
