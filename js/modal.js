@@ -15,7 +15,7 @@ function editNav() {
     modalbg.style.top = "20vh"; // Ajuste la position de la modale pour les mobiles
   } else {
     // Ne change pas la position sur tablette et PC, et remet à l'origine si la navigation est fermée
-    modalbg.style.top = "1%";
+    modalbg.style.top = "6%";
   }
 }
 
@@ -55,14 +55,6 @@ window.addEventListener("click", (e) => {
 });
 
 
-//-----------------------------------------------------------------------------------------
-// Fonction utilitaire pour les couleurs de la console
-const consoleColors = {
-  reset: "\x1b[0m", // Réinitialisation
-  fgGreen: "\x1b[32m", // Texte vert (OK)
-  fgYellow: "\x1b[33m", // Texte jaune (Avertissement)
-  fgRed: "\x1b[31m" // Texte rouge (Erreur)
-};
 
 document.addEventListener('DOMContentLoaded', function () {
   try {

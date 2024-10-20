@@ -172,9 +172,10 @@ header img {
     color:red;
     cursor : pointer;
     position: fixed;
-    right: 5%;
+    right: 3.4%;
     top:0.5%;
     padding: 0.4rem;
+    font-size: 1.4rem;
 }
 
 /* ====== Style  survol icône liste =====*/
@@ -289,7 +290,7 @@ header img {
     position: fixed;
     z-index: 1;
     right: 0%;
-    top: 5%;
+    top: 6%;
     height: 100%;
     width: 100%;
     background: black;
@@ -307,10 +308,10 @@ header img {
   box-sizing: content-box;
   position: relative;
   left:-7.5vw;
-  bottom: 5vh;
+  bottom: 5%;
 }
 .formData .legend {
-  padding-left:15%;
+  padding-left:10%;
   font-size: var(--font-size-small);
 }
 /*-- LIste infos personnels --*/
@@ -351,6 +352,7 @@ font-weight:500;
 background-color: transparent;
 display: inline-block;
 transform: rotate(45deg) ;
+font-size: 2.5rem;
 }
 
 .btn-submit{
@@ -436,6 +438,19 @@ footer {
 
 /* Styles pour appareils tablettes */
   @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .topnav {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0;
+    }
+    .topnav i {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+    }
 
   }
 /* Ordinateurs portables et écrans carrés */
