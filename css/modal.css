@@ -94,11 +94,9 @@ fieldset {
   border:none;
 }
 
-/*---------------------------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------------------------*/
-                        /* ------------------------------------------------------------------ */
-                        /*                          ANIMATIONS                                */
-                        /* ------------------------------------------------------------------ */
+
+
+/* ANIMATIONS */
 
 /* Animation pour faire clignoter la bordure rouge */
 @keyframes borderBlink {
@@ -114,14 +112,11 @@ fieldset {
 }
 
 
-/*---------------------------------------------------------------------------------------------------------------------------------*/
-/**--------------------------------------------------------------------------------------------------------------------------------*/
 
-                        /* ------------------------------------------------------------------ */
-                        /*                              HEADER                                */
-                        /* ------------------------------------------------------------------ */
 
-/*======= Conteneur ================*/
+/*  HEADER  */
+
+/* Conteneur */
 header {
     width: 90%; /* Le header prend 100% de la largeur de la page */
     display: flex; /* Utilise le flexbox pour disposer les éléments à l'intérieur */
@@ -132,7 +127,7 @@ header {
     background-color:white; /* Couleur de fond du header */
 }   
 
-/* ========== Image =================*/
+/* Image */
 header img {
     width:30vw;
     max-width: 150px;
@@ -143,12 +138,9 @@ header img {
     top:1.2%;
     background-color: white;
 }
-/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-                        /* ------------------------------------------------------------------ */
-                        /*                        BARRE DE NAVIGATION                         */
-                        /* ------------------------------------------------------------------ */
+
+/*                        BARRE DE NAVIGATION                         */
 .topnav {
   display: block;
   flex-direction: column;
@@ -162,7 +154,7 @@ header img {
     color: #ffffff;
     border-radius: 0.5rem;
     font-weight: 500;
-    padding: 0.3% ;
+    padding: 0.3rem ;
     text-decoration: underline;
 }
 
@@ -216,12 +208,8 @@ header img {
   justify-content: center;
 }
 
-/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-                      /* ------------------------------------------------------------------ */
-                      /*                           SECTION PRINCIPALE                       */
-                      /* ------------------------------------------------------------------ */
+/*                           SECTION PRINCIPALE                       */
 
 /*===== Conteneur principale ========*/*
 .hero-section {
@@ -410,37 +398,11 @@ footer {
 /*                                                                    */
 /* ------------------------------------------------------------------ */
 
-
-  /* Styles pour appareils mobile large entre 425px et 767px */
-@media screen and (min-width: 425px) and (max-width: 767px) {
-  .topnav.responsive .nav-links {
-    display: flex;
-    flex-direction:row;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-
-  .hero-section img {
-    height: auto;
-    width: 100%;
-    object-fit: cover;
-  } 
-
-  .hero-section h2 {
-    font-size: 4rem;
-    padding:0;
-  }
-  .hero-section p {
-    font-size: var(--font-size-base);
-  }
-}
-
 /* Styles pour appareils tablettes */
   @media screen and (min-width: 768px) and (max-width: 1024px) {
     .topnav {
       flex-direction: row;
-      justify-content: space-between;
+      justify-content:f;
       align-items: center;
       padding: 0;
     }
@@ -449,10 +411,20 @@ footer {
     }
 
     .nav-links {
+      width: 100%;
+      margin-top: 10%;
       display: flex;
       flex-wrap: nowrap;
       font-weight: 900;
       width: 100%;
+      justify-content:space-around
+    }
+
+    .hero-content h2 {
+      font-size: 2.3rem;
+    }
+    .hero-section p {
+      font-size: 1rem;
     }
 
   }
