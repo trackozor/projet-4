@@ -450,6 +450,9 @@ footer {
 
     .nav-links {
       display: flex;
+      flex-wrap: nowrap;
+      font-weight: 900;
+      width: 100%;
     }
 
   }
