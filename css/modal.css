@@ -140,7 +140,7 @@ header img {
 }
 
 
-/*                        BARRE DE NAVIGATION                         */
+/* BARRE DE NAVIGATION */
 .topnav {
   display: block;
   flex-direction: column;
@@ -148,7 +148,7 @@ header img {
   flex-wrap: nowrap;
 }
 
-/* ==== style au survol ======*/
+/* style au survol */
 .topnav span:hover {
     background-color: #ff0000;
     color: #ffffff;
@@ -158,7 +158,7 @@ header img {
     text-decoration: underline;
 }
 
-/* ====== Style Icône Liste =====*/
+/* Style Icône Liste */
 .topnav i {
     display: block;
     color:red;
@@ -170,7 +170,7 @@ header img {
     font-size: 1.4rem;
 }
 
-/* ====== Style  survol icône liste =====*/
+/* Style  survol icône liste */
 .topnav i:hover {
     background-color: #ff0000;
     color: #ffffff;
@@ -179,13 +179,13 @@ header img {
     padding: 0.4rem;
 }
 
-/*=== Affichage conditionnel liste ====*/
+/* Affichage conditionnel liste */
 .nav-links {
     display: none;
     margin-bottom:2%;
 }
 
-/*=== affichage liste au clic sur l' icône ====*/
+/* affichage liste au clic sur l' icône */
 .topnav.responsive .nav-links {
     display: flex;
     flex-direction:column;
@@ -201,7 +201,7 @@ header img {
     z-index: 2;  
 }
 
-/* ==== Style liens de la liste  ====*/
+/* Style liens de la liste  */
 .topnav.responsive .nav-links a {
   display: flex;
   flex-wrap: nowrap;
@@ -211,7 +211,7 @@ header img {
 
 /*                           SECTION PRINCIPALE                       */
 
-/*===== Conteneur principale ========*/*
+/* Conteneur principale */*
 .hero-section {
     display: flex; /* Active la mise en page flexbox pour disposer les éléments en colonne */
     flex-direction: column; /* Les éléments à l'intérieur sont organisés en colonne (du haut vers le bas) */
@@ -222,7 +222,7 @@ header img {
     justify-content: center;
 }
 
-/* ======== Image =================*/
+/*  Image */
 .hero-section img {
     width: 100%; /* L'image à l'intérieur de la section occupe toute la largeur disponible */
     border-radius: 0.5rem;
@@ -232,7 +232,7 @@ header img {
     align-items: center;
     padding-bottom: 5%;
 }
-/* ========= Conteneur Parent Textes et titre =========*/
+/* Conteneur Parent Textes et titre */
 .hero-content {
     display: flex; /* Active la mise en page flexbox pour disposer les éléments en ligne */
     flex-direction: column; /* Les éléments à l'intérieur sont organisés en ligne (du gauche à droite) */
@@ -241,13 +241,13 @@ header img {
     margin:0 auto
 }
 
-/*========  Style Titre ===========*/
+/* Style Titre */
 .hero-content h2 {
     color: black; /* Le texte du titre h2 est en noir */
     padding-left: 0;
     padding: 2% 0;
 }
-/*========  Style Texte ===========*/
+/*  Style Texte */
 .hero-content p {
   width:100%;
   font-size: 0.8rem;
@@ -255,7 +255,7 @@ header img {
   padding-bottom: 5%;
 }
 
-/*============ Affichage conditionnel bouton je m'inscris ====*/
+/* Affichage conditionnel bouton je m'inscris */
 .desktop-signup {
     display: none;/* Bouton mode desktop masqué par défaut */
 }
@@ -265,12 +265,7 @@ header img {
     margin: 4% auto;
 }
 
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-                      /* ------------------------------------------------------------------ */
-                      /*                           Fenêtre modale                           */
-                      /* ------------------------------------------------------------------ */
+/* Fenêtre modale */
 
 /* Conteneur principal pour le repli de la fenêtre modale */                    
 .bground {
@@ -376,16 +371,7 @@ font-size: 2.5rem;
   max-width: 300px;
 }
 
-
-/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-
-
-                      /* ------------------------------------------------------------------ */
-                      /*                              FOOTER                                */
-                      /* ------------------------------------------------------------------ */
+/* FOOTER */
 footer {
     color: red;
     font-weight: 900;
@@ -393,48 +379,86 @@ footer {
     text-align: center;
     font-size: 0.6rem;
 }
-/* ------------------------------------------------------------------ */
-/*                    MEDIA QUERIES                                   */
-/*                                                                    */
-/* ------------------------------------------------------------------ */
 
+/* MEDIA QUERIES */
 /* Styles pour appareils tablettes */
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .topnav {
-      flex-direction: row;
-      justify-content:f;
-      align-items: center;
-      padding: 0;
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .topnav {
+    flex-direction: row;
+    justify-content:f;
+    align-items: center;
+    padding: 0;
     }
-    .topnav i {
-      display: none;
-    }
-
-    .nav-links {
-      width: 100%;
-      margin-top: 10%;
-      display: flex;
-      flex-wrap: nowrap;
-      font-weight: 900;
-      width: 100%;
-      justify-content:space-around
-    }
-
-    .hero-content h2 {
-      font-size: 2.3rem;
-    }
-    .hero-section p {
-      font-size: 1rem;
-    }
-
+  .topnav i {
+    display: none;
   }
-/* Ordinateurs portables et écrans carrés */
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-  /* Styles pour appareils entre 1025px et 1440px */
-}
 
+  .nav-links {
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: nowrap;
+    font-weight: 900;
+    width: 100%;
+    justify-content:space-around
+  }
+
+  .hero-content h2 {
+    font-size: 2.3rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+}
+/* Ordinateurs portables et écrans carrés */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .header {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .topnav {
+    flex-direction: row;
+    padding: 0;
+  }
+    .topnav i {
+    display: none;
+  }
+
+  .nav-links {
+    width: 60%;
+    display: flex;
+    flex-wrap: nowrap;
+    font-weight: 900;
+    width: 100%;
+    justify-content:space-around
+  }
+
+  .hero-section {
+    display: flex;
+    flex-direction: row;
+    background-color: #0b0c07;
+  }
+
+  .hero-content {
+    justify-content: space-between;
+  }
+  .hero-section h2{
+    color: #ffffff;
+  }
+  .hero-section p{
+    color: #ffffff;
+  }
+  .desktop-signup {
+    display: flex;
+  }
+
+  .mobile-signup{
+    display: none;
+  }
+}
 /* Écrans de bureau larges et téléviseurs */
-@media screen and (min-width: 1441px) {
+@media screen and (min-width: 1440px) {
   /* Styles pour appareils plus larges que 1441px */
 }
 
