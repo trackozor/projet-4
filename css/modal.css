@@ -439,28 +439,47 @@ footer {
   }
 
   .hero-section {
-    width: 100%;
+    position: absolute;
+    z-index: 1;
+    width: 90%;
     display: flex;
     flex-direction: row;
     background-color: #0b0c07;
+    position: absolute;
+    margin: 0 auto;
   }
 
   .hero-content {
-    width: 45%;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .hero-section h2{
-    color: #ffffff;
     position: relative;
     z-index: 3;
+    width: 35%;
+    justify-content:center;
+    padding: 4%;
+  }
+  .hero-section h2{
+
+    color: #ffffff;
+    position: absolute;
+    z-index: 24;
     font-size: 4rem;
+    display: inline-block;
+    flex-direction: row;
+    flex-wrap: nowrap;
     width: 70vw;
-    left: 45%;
-  
+    top: 5%;
+
   }
   .hero-section p{
     color: #ffffff;
+  }
+
+  .hero-section img {
+    position: relative;
+    z-index: 2;
+    width: 70vw;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
   }
   .desktop-signup {
     display: flex;
