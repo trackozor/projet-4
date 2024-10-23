@@ -450,27 +450,30 @@ footer {
   }
 
   .hero-content {
-    position: relative;
-    z-index: 3;
-    width: 35%;
-    justify-content:center;
+    width: 40%;
+    justify-content:flex-end;
     padding: 4%;
+    margin-bottom: 5%;
   }
   .hero-section h2{
-
     color: #ffffff;
     position: absolute;
     z-index: 24;
-    font-size: 4rem;
+    font-size: 4.5rem;
     display: inline-block;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 70vw;
-    top: 5%;
+    width: 65vw;
+    top: 1%;
+    font-weight: 500;;
 
   }
   .hero-section p{
     color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-bottom: 15%;
+    line-height: 1.5rem;
   }
 
   .hero-section img {
@@ -483,6 +486,9 @@ footer {
   }
   .desktop-signup {
     display: flex;
+    font-size: 1.2rem;
+    padding: 2%;
+    justify-content: center;
   }
 
   .mobile-signup{
