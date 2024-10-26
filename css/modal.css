@@ -111,9 +111,6 @@ fieldset {
     }
 }
 
-
-
-
 /*  HEADER  */
 
 /* Conteneur */
@@ -273,10 +270,10 @@ header img {
     position: fixed;
     z-index: 1;
     right: 0%;
-    top: 6%;
+    top: 5%;
     height: 100%;
     width: 100%;
-    background: black;
+    background-color: black;
     color: white;
     justify-content:center;
     margin:0 auto;
@@ -288,7 +285,6 @@ header img {
   margin: 0 auto;
   padding: 0;
   width: 100%;
-  box-sizing: content-box;
   position: relative;
   left:-7.5vw;
   bottom: 5%;
@@ -354,21 +350,21 @@ font-size: 2.5rem;
 }
 /* Bordure rouge pour les champs en erreur */
 .error-input {
-  border: 2px solid red;
+  border: 12px solid red;
 }
 
 /* Modale d'erreur */
 .error-modal {
-  background-color: #f8d7da;
-  color: #0b0c07;
-  padding: 10px;
-  border: 1px solid red;
+  background-color: #e3fc03;
+  color:red;
+  padding: 2%;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-align: center;
+  border: 3px solid red;
   margin-top: 5px;
   display: none; /* Caché par défaut */
-  position: absolute;
-  z-index: 1;
-  width: auto;
-  max-width: 300px;
+
 }
 
 /* FOOTER */
@@ -379,7 +375,8 @@ footer {
     text-align: center;
     font-size: 0.6rem;
 }
-
+/*-------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------------*/
 /* MEDIA QUERIES */
 /* Styles pour appareils tablettes */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -410,32 +407,35 @@ footer {
     font-size: 1rem;
   }
 }
+/*------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------*/
 /* Ordinateurs portables et écrans carrés */
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
-  .header {
-    width: 100%;
-    justify-content: space-between;
-  }
   .logo {
+    position: relative;
     display: flex;
-    width: 15%;
-  }
+    padding: 2%;
 
-  .topnav {
-    flex-direction: row;
-    padding: 0;
   }
-    .topnav i {
+  .topnav i {
     display: none;
   }
 
-  .nav-links {
-    width: 60%;
+  .topnav li span {
+    font-size: 1rem;
+    font-weight: 700;    
+  }
+
+  .nav-links  {
+    gap: 2%;
     display: flex;
+    padding-top: 3%;
     flex-wrap: nowrap;
     font-weight: 900;
     width: 100%;
-    justify-content:space-around
+    position: relative;
+    left:15%;
+    justify-content: flex-end;
   }
 
   .hero-section {
@@ -455,6 +455,7 @@ footer {
     padding: 4%;
     margin-bottom: 5%;
   }
+
   .hero-section h2{
     color: #ffffff;
     position: absolute;
@@ -465,9 +466,9 @@ footer {
     flex-wrap: nowrap;
     width: 65vw;
     top: 1%;
-    font-weight: 500;;
-
+    font-weight: 500;
   }
+
   .hero-section p{
     color: #ffffff;
     font-size: 1.1rem;
@@ -484,20 +485,50 @@ footer {
     padding: 0;
     object-fit: cover;
   }
+
   .desktop-signup {
     display: flex;
     font-size: 1.2rem;
-    padding: 2%;
+    padding:3%;
     justify-content: center;
   }
 
   .mobile-signup{
     display: none;
   }
+  .bground {
+    position: fixed;
+    width: 100%;
+    background-color:white;
+    justify-content: center;
+    top: 10%;  
+  }
+
+  .content {
+    background-color: #0b0c07;
+    width: 50%;
+    display:block;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .modal-body {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .formData {
+    width: 100%;
+    justify-content: center;
+  }
+  
 }
-/* Écrans de bureau larges et téléviseurs */
+/*--------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------*/
 @media screen and (min-width: 1440px) {
   /* Styles pour appareils plus larges que 1441px */
 }
-
+body {
+  max-width: 1240px;
+}
 
