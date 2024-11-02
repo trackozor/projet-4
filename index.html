@@ -56,7 +56,7 @@
 
           <!-- Corps de la modale -->
           <div class="modal-body"> 
-            <form name="reserve" action="./index.html" method="get" onsubmit="return validate();"> <!-- Formulaire de réservation -->
+            <form name="reserve" action="./index.html" method="get" onsubmit="return novalidate();"> <!-- Formulaire de réservation -->
               <!-- Champ pour le prénom -->
               <fieldset class="formData">
                 <legend class="sr-only">Informations Personnelles</legend> <!-- Légende pour décrire le groupe de champs -->
@@ -127,12 +127,12 @@
                 <ul class="consentement">
                   <li>
                     <input class="checkbox-input" type="checkbox" id="checkbox1" required> <!-- Case à cocher pour les conditions d'utilisation -->
-                    <label class="checkbox-label" for="checkbox1"><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label>
+                    <label class="checkbox-label" for="checkbox1"><span class="checkbox-icon2"></span>J'ai lu et accepté les conditions d'utilisation.</label>
                   </li>
 
                   <li>
                     <input class="checkbox-input" type="checkbox" id="checkbox2"> <!-- Case à cocher pour les notifications -->
-                    <label class="checkbox-label" for="checkbox2"><span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label>
+                    <label class="checkbox-label" for="checkbox2"><span class="checkbox-icon2"></span>Je souhaite être prévenu des prochains évènements.</label>
                   </li>
 
                 </ul>

@@ -110,8 +110,9 @@ fieldset {
         border-color: red;
     }
 }
-
-/*  HEADER  */
+/*--------------------------------------------------------------------------------*/
+/*--------------------  HEADER  --------------------------------------------------*/
+/*---------------------------------------------------------------------------------*/
 
 /* Conteneur */
 header {
@@ -136,8 +137,8 @@ header img {
     background-color: white;
 }
 
-
-/* BARRE DE NAVIGATION */
+/*--------------------------------------------------------------------------------------*/
+/*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
 .topnav {
   display: block;
   flex-direction: column;
@@ -287,10 +288,10 @@ header img {
   width: 100%;
   position: relative;
   left:-7.5vw;
-  bottom: 5%;
+  bottom: 2%;
 }
 .formData .legend {
-  padding-left:10%;
+  padding-left:12%;
   font-size: var(--font-size-small);
 }
 /*-- LIste infos personnels --*/
@@ -299,7 +300,8 @@ header img {
   flex-direction: column;
   width: 100%;
   justify-content:center;
-  padding:0;
+  padding:0; 
+  
 }
 
 /* input infos personnels --*/
@@ -308,13 +310,68 @@ header img {
   padding: 4% 2%;
   border: none;
   border-radius: 0.5rem;
+
 }
+
+/*localisation*/
 .location-list  {
   display: flex;
   flex-direction:row;
   width: 100%;
   flex-wrap: wrap;
+  gap: 5%;
+  padding-left: 10%;
+  align-items: center;
 }
+
+.checkbox-input {
+  position:absolute ;
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+
+/* Icône de base pour le bouton radio (cercle vide) */
+.checkbox-icon {
+  display: inline-flex;
+  position: relative; /* Nécessaire pour positionner ::before et ::after */
+  width: 1.2rem; /* Taille du cercle externe */
+  height: 1rem;
+  margin-right: 10px;
+}
+
+/* Style de l'icône de base (cercle) */
+.checkbox-icon::before {
+  content: '';
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Cercle pour les boutons radio */
+  border: 2px solid green; /* Couleur de la bordure du cercle */
+  background-color: transparent; /* Fond transparent */
+  padding: 0;
+}
+
+/* Point central (caché par défaut) */
+.checkbox-icon::after {
+  content: '';
+  display: none; /* Caché par défaut */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.6rem; /* Taille du point central */
+  height: 0.6rem;
+  border-radius: 50%; /* Rond pour le point central */
+  background-color: green; /* Couleur du point central */
+}
+
+/* Afficher le point central lorsque l'input est sélectionné */
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after {
+  display: inline-flex; /* Affiche le point central lorsque coché */
+}
+
 /*-- Bouton close en croix --*/
 .close {
   display:flex;
@@ -341,7 +398,7 @@ font-size: 2.5rem;
   margin: 0 auto;
 }
 #confirmation-modal {
-  display: none;
+  display: none ;
   
 }
 #close-modal-btn {
@@ -406,40 +463,8 @@ footer {
   .hero-section p {
     font-size: 1rem;
   }
-}
-/*------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------*/
-/* Ordinateurs portables et écrans carrés */
-@media screen and (min-width: 1024px) and (max-width: 1439px) {
-  .logo {
-    position: relative;
-    display: flex;
-    padding: 2%;
-
-  }
-  .topnav i {
-    display: none;
-  }
-
-  .topnav li span {
-    font-size: 1rem;
-    font-weight: 700;    
-  }
-
-  .nav-links  {
-    gap: 2%;
-    display: flex;
-    padding-top: 3%;
-    flex-wrap: nowrap;
-    font-weight: 900;
-    width: 100%;
-    position: relative;
-    left:15%;
-    justify-content: flex-end;
-  }
-
   .hero-section {
-    position: absolute;
+    position: relative;
     z-index: 1;
     width: 90%;
     display: flex;
@@ -447,6 +472,8 @@ footer {
     background-color: #0b0c07;
     position: absolute;
     margin: 0 auto;
+    justify-content: center;
+    max-width: 1240px;
   }
 
   .hero-content {
@@ -501,7 +528,133 @@ footer {
     width: 100%;
     background-color:white;
     justify-content: center;
-    top: 10%;  
+    top: 20%;  
+  }
+
+  .content {
+    background-color: #0b0c07;
+    width: 50%;
+    display:block;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .modal-body {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .formData {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------*/
+/* Ordinateurs portables et écrans carrés */
+@media screen and (min-width: 1024px)  {
+  header {
+    position: fixed;
+    width: 100%;
+    padding: 2%;
+    z-index:5;
+    display: flex;
+    font-weight: 900;
+  }
+  .logo {
+    position: fixed;
+    display: flex;
+    padding: 2%;
+
+  }
+  .topnav i {
+    display: none;
+  }
+
+  .topnav li span {
+    font-size: 1rem;
+    font-weight: 700;    
+  }
+
+  .nav-links  {
+    gap: 2%;
+    display: flex;
+    padding-top: 3%;
+    flex-wrap: nowrap;
+    font-weight: 900;
+    width: 100%;
+    position: relative;
+    left:15%;
+    justify-content: flex-end;
+  }
+
+  .hero-section {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    background-color: #0b0c07;
+    position: absolute;
+    margin: 0 auto;
+    justify-content: center;
+    max-width: 1240px;
+  }
+
+  .hero-content {
+    width: 40%;
+    justify-content:flex-end;
+    padding: 4%;
+    margin-bottom: 5%;
+  }
+
+  .hero-section h2{
+    color: #ffffff;
+    position: absolute;
+    z-index: 4;
+    font-size: 4.5rem;
+    display: inline-block;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 65vw;
+    top: 1%;
+    font-weight: 500;
+  }
+
+  .hero-section p{
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-bottom: 15%;
+    line-height: 1.5rem;
+  }
+
+  .hero-section img {
+    position: relative;
+    z-index: 2;
+    width: 70vw;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+  }
+
+  .desktop-signup {
+    display: flex;
+    font-size: 1.2rem;
+    padding:3%;
+    justify-content: center;
+  }
+
+  .mobile-signup{
+    display: none;
+  }
+  .bground {
+    position: fixed;
+    width: 100%;
+    background-color:white;
+    justify-content: center;
+    padding-top: 10%;  
   }
 
   .content {
@@ -523,12 +676,3 @@ footer {
   }
   
 }
-/*--------------------------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------------------------*/
-@media screen and (min-width: 1440px) {
-  /* Styles pour appareils plus larges que 1441px */
-}
-body {
-  max-width: 1240px;
-}
-

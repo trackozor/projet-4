@@ -23,6 +23,7 @@ function editNav() {
 
 // Fonction pour afficher la modale
 function launchModal() {
+  resetForm();
   modalbg.style.display = 'block';
   modalbg.style.top = "5%"; // Position de départ de la modale
   document.body.style.overflow = 'hidden';
@@ -195,4 +196,16 @@ document.addEventListener('DOMContentLoaded', function () {
   } catch (error) {
     console.error('Erreur lors de l\'initialisation : ', error);
   }
-});
+  });
+// Fonction pour réinitialiser tous les champs et messages d'erreur
+function resetForm() {
+  inputs.forEach(input => {
+    input.value = ''; // Vide le champ
+    input.classList.remove('error-input'); // Retire la bordure rouge en cas d'erreur
+  });
+
+  // Supprime tous les messages d'erreur affichés
+  document.querySelectorAll('.error-modal').forEach(errorTooltip => {
+    errorTooltip.remove();
+  });
+}
