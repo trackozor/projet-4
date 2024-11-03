@@ -435,11 +435,13 @@ font-size: 2.5rem;
 /*---------------------------------------------------------------------------*/
 
 footer {
+    position: fixed;
     color: red;
     font-weight: 900;
     padding: 2% 0;
     text-align: center;
     font-size: 0.6rem;
+    bottom:15%
 }
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -447,8 +449,129 @@ footer {
 
 /*---------------------------------------------- MEDIA QUERIES -------------------------------------------------------------*/
 
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------Style pour téléphone en mode paysage---------------------------------*/
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  .topnav {
+    flex-direction: row; /* Organise les éléments horizontalement pour maximiser l'espace */
+    width: 100%;
+    justify-content: space-between; /* Espace entre les éléments pour aérer */
+  }
+
+  /* Ajustement de l'icône de menu en paysage */
+  .topnav i {
+    top: 1%;
+    right: 1%;
+    font-size: 1.2rem; /* Taille d'icône réduite pour s'adapter à l'écran */
+    padding: 0.3rem;
+  }
+
+  /* Style au survol */
+  .topnav span:hover {
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+  }
+
+  /* Ajustement des liens de la liste */
+  .topnav.responsive .nav-links {
+    flex-direction: row; /* Organise les liens horizontalement pour paysage */
+    font-size: 0.9rem; /* Taille de police légèrement réduite */
+    padding-top: 5%; /* Supprime le padding top pour un alignement plus serré */
+    width: 90%;
+  }
+
+  /* Style des liens dans la nav en paysage */
+  .topnav.responsive .nav-links a {
+    padding: 0.3rem;
+    margin: 0 0.5rem; /* Espacement entre les liens */
+  }
+
+  /* Section principale en mode paysage */
+  .hero-section {
+    flex-direction: row; /* Organise la section en lignes horizontales */
+    align-items: center; /* Centre verticalement les éléments */
+    background-color: #0b0c07;
+    height:60vh;
+    position: absolute;
+    justify-content: center;
+    padding: 0;
+    width: 95%;
+    margin: 0 auto;
+    top:18%
+  }
+
+  /* Ajustement de l'image */
+  .hero-section img {
+    width: 60vh; /* Prend la moitié de la largeur disponible */
+    margin: 0;
+    padding:0;
+    object-fit: cover;
+  }
+
+  /* Ajustement de la zone de contenu de texte en paysage */
+  .hero-content {
+    width: 40%; /* Prend la moitié de la largeur */
+    padding: 2%; /* Ajoute du padding pour aérer le texte */
+  }
+
+  /* Ajustement du titre */
+  .hero-content h2 {
+    font-size: 1.2rem;
+    padding: 0;
+    position: absolute;
+    top:2%;
+    color: white;
+  }
+
+  /* Ajustement du paragraphe */
+  .hero-content p {
+    font-size: 0.7rem;
+    padding-bottom: 3%;
+    color: white;
+  }
+
+  /* Bouton d'inscription mobile en paysage */
+  .mobile-signup {
+    display: none;
+  }
+  .desktop-signup {
+    display: block;
+    font-size:0.8rem;
+    width: 20vw;
+    border-radius: 5%;
+    padding: 0.5rem;
+    margin: 0 auto;
+  }
+}
+footer {
+  position: absolute;
+  bottom: 1%;
+  left: 0;
+  width: 50%;
+  color: red;
+  text-align: center;
+
+}
+/*----------------------------------Style pour téléphones pliable en mode plié---------------------------------*/
+@media screen and (min-width: 600px) and (max-width: 900px) and (orientation: portrait) {
+    /* Styles pour appareils pliables en mode compact */
+}
+
+/*----------------------------------Style pour téléphones pliable mode déplié ---------------------------------*/
+@media screen and (min-width: 900px) and (orientation: landscape) {
+    /* Styles pour appareils pliables en mode déplié */
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/*------------------------------Style pour petites tablettes entre 600px et 767px--------------------------*/
+@media screen and (min-width: 600px) and (max-width: 767px) {
+    /* Styles pour petites tablettes */
+}
+
+
 /*------------------------------- Styles pour appareils tablettes entre 768 px et 1023 px ----------------------------------*/ 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) and (min-height: 768px){
   .topnav {
     flex-direction: row;
     justify-content:f;
@@ -471,7 +594,9 @@ footer {
   }
 
   .hero-content h2 {
-    font-size: 2.3rem;
+    position: absolute;
+    width: 90vw;
+    font-size: 1rem;
   }
   .hero-section p {
     font-size: 1rem;
