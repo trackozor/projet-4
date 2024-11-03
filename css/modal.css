@@ -698,17 +698,35 @@ footer {
     justify-content: center;
   }
   .text-control {
-    font-size: 1rem;
+    font-size: 0.8rem;
     padding: 1% 0;
     margin: 0 ;
+  }
+  .modal-body .form-list input.text-control {
+    height: 1.5rem; /* Ajustez la hauteur selon vos besoins */
+    padding: 0.5rem 1rem; /* Ajustez le padding pour équilibrer la taille du texte et l'espacement */
+    font-size: 1rem; /* Taille de police pour rendre le texte plus lisible */
+    border-radius: 0.5rem; 
   }
   .formData {
     width: 95%;
     justify-content: center;
   }
+  .formData legend {
+    position: relative;
+    font-size: 1.5rem;
+    padding: 1% 0;
+    left:-3%;
+    
+  }
   .location-list {
     position: relative;
-    left: -2%;
+    left: 8%;
+    padding:0;
+    margin: 1% 0;
+  }
+  .consentement {
+    margin:0;
   }
 }
 
