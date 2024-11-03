@@ -205,12 +205,12 @@ header img {
     position: relative;
     text-align: center;
     justify-content: center;
-    top:15%;
-    padding-top: 10%;
+    padding-top: 15%;
     flex-wrap: nowrap;
     width: 90%;
     z-index: 2; 
-    margin:0 auto; 
+    margin:2% auto; 
+    right:10%;
 }
 
 /* Style liens de la liste  */
@@ -276,7 +276,7 @@ header img {
 .mobile-signup {
     display: block;
     justify-content: center;
-    margin: 1% auto;
+    margin: 5% auto;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -296,6 +296,7 @@ header img {
     color: white;
     justify-content:center;
     margin:0 auto;
+    padding-bottom: 2%;
 }
 
 /*-- Style globale formulaire --*/ 
@@ -455,7 +456,9 @@ margin-bottom: 0;
 
 footer  {
   display: flex;
+  width: 90%;
   position: relative;
+  z-index: 1;
   color: red;
   font-weight: 900;
   justify-content: center;
@@ -464,14 +467,16 @@ footer  {
 }
 footer p {
   display: flex;
+  flex-direction: row;
   position: relative;
-  z-index: 3;
+  z-index: 1;
   left:50%;
   text-align: center;
   font-size: 0.8rem;
   flex-wrap: nowrap ;
   justify-content: center;
   margin: 0 auto;
+  padding:2% 0;
 
 }
 
