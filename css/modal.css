@@ -139,6 +139,9 @@ header img {
 
 /*--------------------------------------------------------------------------------------*/
 /*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
+/*--------------------------------------------------------------------------------------*/
+
+/* conteneur */
 .topnav {
   display: block;
   flex-direction: column;
@@ -206,8 +209,9 @@ header img {
   justify-content: center;
 }
 
-
-/*                           SECTION PRINCIPALE                       */
+/*----------------------------------------------------------------------------------------------*/
+/*--------------------- SECTION PRINCIPALE------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------*/
 
 /* Conteneur principale */*
 .hero-section {
@@ -263,7 +267,9 @@ header img {
     margin: 4% auto;
 }
 
-/* Fenêtre modale */
+/*------------------------------------------------------------------------------------*/
+/*------------------ Fenêtre modale --------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 
 /* Conteneur principal pour le repli de la fenêtre modale */                    
 .bground {
@@ -424,7 +430,10 @@ font-size: 2.5rem;
 
 }
 
-/* FOOTER */
+/*---------------------------------------------------------------------------*/
+/*------------------------ FOOTER -------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
 footer {
     color: red;
     font-weight: 900;
@@ -432,17 +441,21 @@ footer {
     text-align: center;
     font-size: 0.6rem;
 }
+
 /*-------------------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------------------------------*/
-/* MEDIA QUERIES */
-/* Styles pour appareils tablettes */
+
+/*---------------------------------------------- MEDIA QUERIES -------------------------------------------------------------*/
+
+/*------------------------------- Styles pour appareils tablettes entre 768 px et 1023 px ----------------------------------*/ 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .topnav {
     flex-direction: row;
     justify-content:f;
     align-items: center;
     padding: 0;
-    }
+  }
+
   .topnav i {
     display: none;
   }
@@ -552,8 +565,12 @@ footer {
 
 /*------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
-/* Ordinateurs portables et écrans carrés */
-@media screen and (min-width: 1024px)  {
+
+/* -----------------Ordinateurs portable entre 1024 px et 1440px ------------------------------------------*/
+
+@media screen and (min-width: 1024px) and (max-width:1440px) {
+  /*------------header------------- */
+  /* Conteneur */
   header {
     position: fixed;
     width: 100%;
@@ -562,12 +579,16 @@ footer {
     display: flex;
     font-weight: 900;
   }
+
+  /* Logo */
   .logo {
     position: fixed;
     display: flex;
     padding: 2%;
-
   }
+
+  /*----------Barre de navigation-----*/
+  /* icône */
   .topnav i {
     display: none;
   }
@@ -577,20 +598,23 @@ footer {
     font-weight: 700;    
   }
 
+  /* menu textuelle */
   .nav-links  {
-    gap: 2%;
+    gap: 3%;
     display: flex;
     padding-top: 3%;
     flex-wrap: nowrap;
     font-weight: 900;
     width: 100%;
     position: relative;
-    left:15%;
+    left:-10%;
     justify-content: flex-end;
   }
 
+  /*------------section principale ------------- */
+  /* Conteneur */
   .hero-section {
-    position: relative;
+    position: absolute;
     z-index: 1;
     width: 90%;
     display: flex;
@@ -600,10 +624,11 @@ footer {
     margin: 0 auto;
     justify-content: center;
     max-width: 1240px;
+    height:80%
   }
 
   .hero-content {
-    width: 40%;
+    width: 50vw;
     justify-content:flex-end;
     padding: 4%;
     margin-bottom: 5%;
@@ -618,7 +643,7 @@ footer {
     flex-direction: row;
     flex-wrap: nowrap;
     width: 65vw;
-    top: 1%;
+    top: 15%;
     font-weight: 500;
   }
 
@@ -633,7 +658,7 @@ footer {
   .hero-section img {
     position: relative;
     z-index: 2;
-    width: 70vw;
+    width: 60vw;
     margin: 0;
     padding: 0;
     object-fit: cover;
@@ -676,3 +701,7 @@ footer {
   }
   
 }
+
+/* ------------------------------------------------------------------------------------------------------------------------*/
+/* ------------------------------------------------------------------------------------------------------------------------*/
+/* -----------------------------------------Écrans larges supérieur à 1440 px --------------------------------------------*/
