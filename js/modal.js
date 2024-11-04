@@ -14,10 +14,10 @@ function editNav() {
 
   // Si le menu est en mode responsive et que la modale est ouverte, décaler la modale vers le bas
   if (navElement.classList.contains("responsive") && modalOpen) {
-    modalbg.style.top = "20%";
+    modalbg.style.top = "10%";
   } else {
     // Si le menu est fermé ou l'écran n'est pas mobile, ramener la modale à sa position d'origine
-    modalbg.style.top = "5%";
+    modalbg.style.top = "4%";
   }
 }
 
