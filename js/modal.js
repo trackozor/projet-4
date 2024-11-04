@@ -18,7 +18,7 @@ function editNav() {
   if (navElement.classList.contains("responsive") && modalOpen && isMobile) {
     if (isLandscape) {
       // Mode responsive et mobile en paysage
-      modalnav.style.top = "5%"; // Position spécifique pour le mode paysage
+      modalnav.style.top = "1%"; // Position spécifique pour le mode paysage
     } else {
       // Mode responsive et mobile en portrait
       modalnav.style.top = "10%"; // Position spécifique pour le mode portrait

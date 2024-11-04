@@ -449,7 +449,6 @@ margin-bottom: 0;
   margin:0 auto;
   font-size: 0.6rem;
   text-align: center;
-
   color:red
 }
 
@@ -555,6 +554,11 @@ margin-bottom: 0;
     margin: 5% auto;
     
   }
+  .copyright {
+  width: 50vw;
+  justify-content: flex-start;
+  font-size: 0.8rem;
+  }
 }
 
 /*-------------------------------------------------------------------------------------------------------------*/
@@ -568,12 +572,17 @@ margin-bottom: 0;
 
   /* Ajustement de l'icône de menu en paysage */
   .topnav i {
-    top: 1%;
-    right: 1%;
-    font-size: 1.2rem; /* Taille d'icône réduite pour s'adapter à l'écran */
-    padding: 0.3rem;
+    display: none;
   }
 
+  .nav-links {
+    display: flex;
+    position: absolute;
+    flex-direction: row; /* Organise les liens verticalement pour plié */
+    font-size: 0.9rem; /* Taille de police légèrement réduite */
+    right:5%;
+    padding :0% 2%;
+  }
   /* Style au survol */
   .topnav span:hover {
     padding: 0.2rem;
