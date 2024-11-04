@@ -444,11 +444,13 @@ margin-bottom: 0;
 /*---------------------------------------------------------------------------*/
 
 .copyright {
-  width: 100vw;
+  width: 60vw;
   justify-content: center;
   margin:0 auto;
-  font-size: 0.8rem;
-  padding-bottom: 5%;
+  font-size: 0.6rem;
+  text-align: center;
+
+  color:red
 }
 
 
@@ -508,8 +510,8 @@ margin-bottom: 0;
 
   /* Ajustement de l'image */
   .hero-section img {
-    width: 75vw; /* Prend la moitié de la largeur disponible */
-    max-height: 60vh;
+    width: 65vw; /* Prend la moitié de la largeur disponible */
+    max-height: 70vh;
     margin: 0;
     padding:0;
     object-fit: cover;
@@ -518,24 +520,25 @@ margin-bottom: 0;
 
   /* Ajustement de la zone de contenu de texte en paysage */
   .hero-content {
-    width: 60%; /* Prend la moitié de la largeur */
-    padding: 2%; /* Ajoute du padding pour aérer le texte */
+    width: 55%; /* Prend la moitié de la largeur */
   }
 
   /* Ajustement du titre */
   .hero-content h2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     padding: 0;
     position: absolute;
-    width:80vw;
-    top:15%;
+    width:70vw;
+    top:10%;
+    left:5%;
     color: white;
   }
 
   /* Ajustement du paragraphe */
   .hero-content p {
     font-size: 0.8rem;
-    padding-top: 10%;
+    padding-top: 35%;
+    padding-left: 5%;
     color: white;
   }
 
@@ -549,158 +552,105 @@ margin-bottom: 0;
     width: 20vw;
     border-radius: 5%;
     padding: 0.5rem ;
-    margin: 0 auto;
-    margin-top:10%;
+    margin: 5% auto;
+    
   }
 }
 
 /*-------------------------------------------------------------------------------------------------------------*/
-/*----------------------------------Style pour téléphones pliable mode déplié ---------------------------------*/
-@media screen and (min-width: 800px) and (max-height:700px) and (orientation: landscape) {
-    /* Conteneur */
-  header {
-      width: 95%; /* Le header prend 100% de la largeur de la page */
-      display: flex; /* Utilise le flexbox pour disposer les éléments à l'intérieur */
-      position:relative; /**/
-      justify-content: space-between;
-      margin-bottom: 10%;
-      background-color:white; /* Couleur de fond du header */
-  }    
-
-  /* Image */
-  header img {
-    width:30vw;
-    max-width: 150px;
-    height:auto; /* L'image occupe 50% de la largeur du conteneur parent */
-    position: fixed;
-    object-fit: cover;
-    left:4.5%;
-    top:1.2%;
-    background-color: white;
-  }
-
-/*--------------------------------------------------------------------------------------*/
-/*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
-/*--------------------------------------------------------------------------------------*/
-
-/* conteneur */
+/*----------------------------------Style pour téléphones pliable mode plié ---------------------------------*/
+@media screen and (min-width: 767px) and (max-width: 1024px)  and (max-height:500px) and (orientation: landscape) {
   .topnav {
-    display: flex;
-    flex-direction: row;
-    width: 60%;
-    flex-wrap: nowrap;
-    
+    flex-direction: row; /* Organise les éléments horizontalement pour maximiser l'espace */
+    width: 100%;
+    justify-content: space-between; /* Espace entre les éléments pour aérer */
   }
 
-  /* style au survol */
-  .topnav span:hover {
-      background-color: #ff0000;
-      color: #ffffff;
-      border-radius: 0.5rem;
-      font-weight: 500;
-      padding: 0.3rem ;
-      text-decoration: underline;
-  }
-
-  /* Style Icône Liste */
+  /* Ajustement de l'icône de menu en paysage */
   .topnav i {
-      display: none;
+    top: 1%;
+    right: 1%;
+    font-size: 1.2rem; /* Taille d'icône réduite pour s'adapter à l'écran */
+    padding: 0.3rem;
   }
 
-
-  /* Affichage conditionnel liste */
-  .nav-links {
-      display: flex;
-      flex-direction: row;
-      margin-bottom:2%;
-  }
-  .nav-links ul {
-    width:100%;
-    margin:0 auto;
-    flex-direction: row;
-    text-align: center;
+  /* Style au survol */
+  .topnav span:hover {
+    padding: 0.2rem;
+    border-radius: 0.4rem;
   }
 
-  /* affichage liste au clic sur l' icône */
+  /* Ajustement des liens de la liste */
   .topnav.responsive .nav-links {
-      display: flex;
-      flex-direction:column;
-      font-size: 1rem;
-      position: relative;
-      text-align: center;
-      justify-content: center;
-      padding-top: 15%;
-      flex-wrap: nowrap;
-      width: 90%;
-      z-index: 2; 
-      margin:2% auto; 
-      right:10%;
+    flex-direction: row; /* Organise les liens horizontalement pour paysage */
+    font-size: 0.9rem; /* Taille de police légèrement réduite */
+    padding-top: 5%; /* Supprime le padding top pour un alignement plus serré */
+    width: 90%;
   }
 
-  /* Style liens de la liste  */
+  /* Style des liens dans la nav en paysage */
   .topnav.responsive .nav-links a {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
+    padding: 0.3rem;
+    margin: 0 0.5rem; /* Espacement entre les liens */
   }
 
-/*----------------------------------------------------------------------------------------------*/
-/*--------------------- SECTION PRINCIPALE------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------*/
-
-/* Conteneur principale */*
+  /* Section principale en mode paysage */
   .hero-section {
-      display: flex; /* Active la mise en page flexbox pour disposer les éléments en colonne */
-      flex-direction: column; /* Les éléments à l'intérieur sont organisés en colonne (du haut vers le bas) */
-      height: 40%;
-      padding-bottom: 2%;
-      background-color: white; /* Définit un fond blanc pour la section */
-      width: 100%; /* La section occupe 95% de la largeur de son conteneur parent */
-      margin: 0 auto; /* Centrage horizontal de la section (marges égales de chaque côté) */
-      box-shadow: none; /* Désactive les ombres autour de la section */
-      justify-content: center;
+    flex-direction: row; /* Organise la section en lignes horizontales */
+    align-items: center; /* Centre verticalement les éléments */
+    background-color: #0b0c07;
+    width: 95vw;
+    justify-content: center;
+    padding: 0;
+    margin: 5% auto;
   }
 
-  /*  Image */
+  /* Ajustement de l'image */
   .hero-section img {
-      width: 50%; /* L'image à l'intérieur de la section occupe toute la largeur disponible */
-      border-radius:5%;
-      object-fit: cover;
-      margin: 0 auto;
-      justify-content: center;
-      align-items: center;
+    width: 65vw; /* Prend la moitié de la largeur disponible */
+    max-height: 70vh;
+    margin: 0;
+    padding:0;
+    object-fit: cover;
+    border-radius: 0;
   }
-  /* Conteneur Parent Textes et titre */
+
+  /* Ajustement de la zone de contenu de texte en paysage */
   .hero-content {
-      display: flex; /* Active la mise en page flexbox pour disposer les éléments en ligne */
-      flex-direction: column; /* Les éléments à l'intérieur sont organisés en ligne (du gauche à droite) */
-      width: 100%;
-      justify-content: center;
-      margin:0 auto
+    width: 55%; /* Prend la moitié de la largeur */
   }
 
-  /* Style Titre */
+  /* Ajustement du titre */
   .hero-content h2 {
-      color: black; /* Le texte du titre h2 est en noir */
-      padding-left: 0;
-      font-size: 2.5rem;
-      margin: 0 auto;
-  }
-  /*  Style Texte */
-  .hero-content p {
-    width:100%;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    padding: 0;
+    position: absolute;
+    width:70vw;
+    top:10%;
+    left:5%;
+    color: white;
   }
 
-  /* Affichage conditionnel bouton je m'inscris */
-  .desktop-signup {
-      display: none;/* Bouton mode desktop masqué par défaut */
+  /* Ajustement du paragraphe */
+  .hero-content p {
+    font-size: 0.8rem;
+    padding-top: 35%;
+    padding-left: 5%;
+    color: white;
   }
+
+  /* Bouton d'inscription mobile en paysage */
   .mobile-signup {
-      display: block;
-      justify-content: center;
-      margin: 5% auto;
+    display: none;
+  }
+  .desktop-signup {
+    display: block;
+    font-size:1.2rem;
+    width: 20vw;
+    border-radius: 5%;
+    padding: 0.5rem ;
+    margin: 5% auto;
+    
   }
 }
 

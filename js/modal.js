@@ -1,24 +1,33 @@
 // Déclaration des éléments du DOM et variables nécessaires en début de fichier
 const navElement = document.getElementById("Topnav");
 const modalbg = document.querySelector(".bground");
+const modalnav = document.querySelector("hero-section");
 const modalbtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const inputs = document.querySelectorAll('input');
 const isMobile = window.matchMedia("(max-width: 767px)").matches;
+const isLandscape = window.matchMedia("(orientation: landscape)").matches;
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale
 
 // Fonction pour activer/désactiver le menu en version responsive
 function editNav() {
   navElement.classList.toggle("responsive");
 
-  // Si le menu est en mode responsive et que la modale est ouverte, décaler la modale vers le bas
-  if (navElement.classList.contains("responsive") && modalOpen) {
-    modalbg.style.top = "10%";
+ // Gérer le déplacement de la modale en fonction des différentes conditions
+  if (navElement.classList.contains("responsive") && modalOpen && isMobile) {
+    if (isLandscape) {
+      // Mode responsive et mobile en paysage
+      modalnav.style.top = "5%"; // Position spécifique pour le mode paysage
+    } else {
+      // Mode responsive et mobile en portrait
+      modalnav.style.top = "10%"; // Position spécifique pour le mode portrait
+    }
   } else {
-    // Si le menu est fermé ou l'écran n'est pas mobile, ramener la modale à sa position d'origine
-    modalbg.style.top = "4%";
+    // Si le menu est fermé ou que les conditions ne sont pas remplies, remettre la modale à sa position d'origine
+    modalnav.style.top = "5%";
   }
+
 }
 
 // Fonction pour afficher la modale
