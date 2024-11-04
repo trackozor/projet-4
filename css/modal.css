@@ -608,10 +608,11 @@ margin-bottom: 0;
     flex-direction: row; /* Organise la section en lignes horizontales */
     align-items: center; /* Centre verticalement les éléments */
     background-color: #0b0c07;
-    width: 95vw;
+    width: 90vw;
+    height:70vh;
     justify-content: center;
     padding: 0;
-    margin: 5% auto;
+    margin: 2% auto;
   }
 
   /* Ajustement de l'image */
@@ -631,19 +632,19 @@ margin-bottom: 0;
 
   /* Ajustement du titre */
   .hero-content h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     padding: 0;
     position: absolute;
     width:70vw;
-    top:10%;
-    left:5%;
+    top:15%;
+    left:7%;
     color: white;
   }
 
   /* Ajustement du paragraphe */
   .hero-content p {
     font-size: 0.8rem;
-    padding-top: 35%;
+    padding-top: 25%;
     padding-left: 5%;
     color: white;
   }
@@ -658,13 +659,13 @@ margin-bottom: 0;
     width: 20vw;
     border-radius: 5%;
     padding: 0.5rem ;
-    margin: 5% auto;
+    margin: 5%;
     
   }
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
-/*------------------------------Style pour petites tablettes entre 600px et 767px--------------------------*/
+/*------------------------------Style pour petites tablettes  et smartphone pliable déplie en portrait entre 600px et 767px--------------------------*/
 @media screen and (min-width: 600px) and (max-width: 767px) {
     /* Styles pour petites tablettes */
 }
@@ -690,26 +691,16 @@ margin-bottom: 0;
     flex-wrap: nowrap;
     font-weight: 900;
     width: 100%;
-    justify-content:space-around
+    justify-content:flex-start;
   }
 
-  .hero-content h2 {
-    position: absolute;
-    width: 90vw;
-    font-size: 1rem;
-  }
-  .hero-section p {
-    font-size: 1rem;
-  }
   .hero-section {
-    position: relative;
     z-index: 1;
-    width: 90%;
+    width: 90vw;
+    height: 60vh;
     display: flex;
     flex-direction: row;
-    background-color: #0b0c07;
-    position: absolute;
-    margin: 0 auto;
+    background-color: #0b0c07;    margin: 0 auto;
     justify-content: center;
     max-width: 1240px;
   }
@@ -724,28 +715,26 @@ margin-bottom: 0;
   .hero-section h2{
     color: #ffffff;
     position: absolute;
-    z-index: 24;
-    font-size: 4.5rem;
-    display: inline-block;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    z-index: 6;
+    font-size: 3rem;
     width: 65vw;
-    top: 1%;
+    top: 8%;
     font-weight: 500;
   }
 
   .hero-section p{
     color: #ffffff;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    padding-bottom: 15%;
-    line-height: 1.5rem;
+    line-height: 1rem;
+    padding-bottom: 20%;
   }
 
   .hero-section img {
     position: relative;
     z-index: 2;
-    width: 70vw;
+    width: 60vw;
+    max-height: 60vh;
     margin: 0;
     padding: 0;
     object-fit: cover;
