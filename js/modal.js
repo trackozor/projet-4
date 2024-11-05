@@ -18,14 +18,14 @@ function editNav() {
   if (navElement.classList.contains("responsive") && modalOpen && isMobile) {
     if (isLandscape) {
       // Mode responsive et mobile en paysage
-      modalnav.style.top = "1%"; // Position spécifique pour le mode paysage
+      modalnav.style.top = "15%"; // Position spécifique pour le mode paysage
     } else {
       // Mode responsive et mobile en portrait
       modalnav.style.top = "10%"; // Position spécifique pour le mode portrait
     }
   } else {
     // Si le menu est fermé ou que les conditions ne sont pas remplies, remettre la modale à sa position d'origine
-    modalnav.style.top = "5%";
+    modalnav.style.top = "6%";
   }
 
 }
