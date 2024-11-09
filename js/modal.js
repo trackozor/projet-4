@@ -34,7 +34,7 @@ function editNav() {
 function launchModal() {
   resetForm();
   modalbg.style.display = 'block';
-  modalbg.style.top = "5%"; // Position de départ de la modale
+  modalbg.style.top = "7%"; // Position de départ de la modale
   document.body.style.overflow = 'hidden';
   modalOpen = true; // Mettre à jour l'état d'ouverture de la modale
 }
