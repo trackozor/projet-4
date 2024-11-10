@@ -381,7 +381,7 @@ header img {
 
 
 /* Input de type checkbox invisible */
-.checkbox-input, .checkbox-input2 {
+.checkbox-input {
   position: absolute; /* Positionne l'input en dehors du flux normal */
   opacity: 0; /* Rends l'élément invisible */
   width: 0; /* Définit une largeur de 0 */
@@ -390,51 +390,68 @@ header img {
 
 
 /* Conteneur de l'icône de la case à cocher */
-.checkbox-icon {
-    display: inline-flex; /* Utilise Flexbox pour l'affichage en ligne */
-    position: relative; /* Nécessaire pour positionner les pseudo-éléments ::before et ::after */
-    width: 1.2rem; /* Définit la taille du cercle externe */
-    height: 0.7rem;
-    align-items: center;
-    
-    
+/* Liste en grille */
+.location-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes de largeur égale */
+  gap: 2%; /* Ajoute un espacement entre les éléments */
+  width: 95%; /* Ajuste la largeur totale */
+  margin: 0 auto; /* Centre la grille horizontalement */
+  padding-top: 1%; /* Ajoute un espacement en haut */
+  align-items: center;
 }
 
-/* Style de l'icône de base (cercle) */
+.location-list ul li {
+  display: flex; /* Maintient Flexbox pour le contenu individuel */
+  align-items: center; /* Centre les éléments verticalement */
+}
+
+/* Cacher l'input radio */
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Conteneur de l'icône de la case à cocher */
+.checkbox-icon {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  background-color: transparent;
+}
+
+/* Style de l'icône de base */
 .checkbox-icon::before {
-    content: ''; /* Crée un contenu vide */
-    display: inline-flex; /* Affiche le cercle */
-    width: 100%; /* Occupe toute la largeur définie dans .checkbox-icon */
-    height: 100%; /* Occupe toute la hauteur définie dans .checkbox-icon */
-    border-radius: 50%; /* Rend le cercle parfaitement rond */
-    border: 2px solid white; /* Applique une bordure verte au cercle */
-    background-color: transparent; /* Le fond du cercle reste transparent */
-    margin-right: 20%;/* Aucun espace interne */
-    width: 1rem;
-    
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
 /* Point central (caché par défaut) */
 .checkbox-icon::after {
-    content: ''; /* Crée un contenu vide */
-    display: none; /* Caché par défaut */
-    position: absolute; /* Positionnement absolu par rapport à .checkbox-icon */
-    top: 50%; /* Centre verticalement */
-    left: 50%; /* Centre horizontalement */
-    transform: translate(-69%, -50%); /* Corrige le positionnement pour un parfait centrage */
-    width: 0.6rem; /* Taille du point central */
-    height: 0.5rem; /* Hauteur du point central */
-    border: 2px solid white; /* Applique une bordure verte au cercle */
-    border-radius: 50%; /* Forme un petit cercle */
-    background-color: green; /* Couleur verte pour le point central */
-    margin-right: 30%;
-    
+  content: '';
+  display: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: green;
 }
 
 /* Afficher le point central lorsque l'input est sélectionné */
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after {
-    display: inline-flex; /* Affiche le point central lorsque la case est cochée */
+.checkbox-input:checked + .checkbox-icon::after {
+  display: block;
 }
+
 
 .consentement {
   display: flex; /* Active Flexbox pour organiser les éléments */
@@ -446,45 +463,10 @@ header img {
   width:100%;
   font-size: 0.8rem;
 }
-.checkbox-icon2{
-  display: inline-flex; /* Utilise Flexbox pour l'affichage en ligne */
-  position: relative; /* Nécessaire pour positionner les pseudo-éléments ::before et ::after */
-  width: 1.2rem; /* Définit la taille du cercle externe */
-  height: 0.7rem; /* Définit la hauteur du cercle */
-  margin-right: 1px; /* Ajoute un espace de 10px à droite */
-}
 
-/* Style de l'icône de base (cercle) */
-.checkbox-icon2::before {
-    content: ''; /* Crée un contenu vide */
-    display: inline-flex; /* Affiche le cercle */
-    width: 100%; /* Occupe toute la largeur définie dans .checkbox-icon */
-    height: 100%; /* Occupe toute la hauteur définie dans .checkbox-icon */
-    border: 2px solid green; /* Applique une bordure verte au cercle */
-    background-color: transparent; /* Le fond du cercle reste transparent */
-    margin-right: 20%;/* Aucun espace interne */
-    width:1rem;
-    height:0.7rem;
-    
-}
 
-/* Point central (caché par défaut) */
-.checkbox-icon2::after {
-    content: ''; /* Crée un contenu vide */
-    display: none; /* Caché par défaut */
-    position: absolute; /* Positionnement absolu par rapport à .checkbox-icon */
-    top: 50%; /* Centre verticalement */
-    left: 50%; /* Centre horizontalement */
-    transform: translate(-74%, -28%); /* Corrige le positionnement pour un parfait centrage */
-    width: 0.4rem; /* Taille du point central */
-    height: 0.4rem; /* Hauteur du point central */
-    background-color: green; /* Couleur verte pour le point central */
-    
-}
-*
-.checkbox-input2:checked + .checkbox-label2 .checkbox-icon2::after {
-    display: inline-flex; /* Affiche le point central lorsque la case est cochée */
-}
+
+
 /* Bouton de fermeture (croix) */
 .close {
     display: flex; /* Active Flexbox pour organiser les éléments */
@@ -530,7 +512,7 @@ header img {
 .text-control.error {
   border: 2px solid red; /* Bordure rouge pour indiquer une erreur */
   box-shadow: 0 0 1rem red; /* Ombre rouge pour indiquer une erreur */
-  animation: borderBlink 10s ease-in-out infinite; /* Animation de clignotement */
+  animation: borderBlink 5s ease-in-out 5s; /* Animation de clignotement */
 }
 
 /* Style de la modale d'erreur */
