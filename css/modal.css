@@ -372,7 +372,7 @@ header img {
     display: inline-flex; /* Utilise Flexbox pour l'affichage en ligne */
     position: relative; /* Nécessaire pour positionner les pseudo-éléments ::before et ::after */
     width: 1.2rem; /* Définit la taille du cercle externe */
-    height: 0.8rem;
+    height: 0.7rem;
     align-items: center;
     
     
@@ -398,9 +398,9 @@ header img {
     position: absolute; /* Positionnement absolu par rapport à .checkbox-icon */
     top: 50%; /* Centre verticalement */
     left: 50%; /* Centre horizontalement */
-    transform: translate(-70%, -50%); /* Corrige le positionnement pour un parfait centrage */
+    transform: translate(-69%, -52%); /* Corrige le positionnement pour un parfait centrage */
     width: 0.6rem; /* Taille du point central */
-    height: 0.6rem; /* Hauteur du point central */
+    height: 0.5rem; /* Hauteur du point central */
     border-radius: 50%; /* Forme un petit cercle */
     background-color: green; /* Couleur verte pour le point central */
     margin-right: 30%;
@@ -422,8 +422,8 @@ header img {
 .checkbox-icon2{
   display: inline-flex; /* Utilise Flexbox pour l'affichage en ligne */
   position: relative; /* Nécessaire pour positionner les pseudo-éléments ::before et ::after */
-  width: 1.2rem; /* Définit la taille du cercle externe */
-  height: 0.8rem; /* Définit la hauteur du cercle */
+  width: 1.5rem; /* Définit la taille du cercle externe */
+  height: 0.7rem; /* Définit la hauteur du cercle */
   margin-right: 1px; /* Ajoute un espace de 10px à droite */
 }
 
@@ -447,7 +447,7 @@ header img {
     top: 50%; /* Centre verticalement */
     left: 50%; /* Centre horizontalement */
     transform: translate(-70%, -50%); /* Corrige le positionnement pour un parfait centrage */
-    width: 0.6rem; /* Taille du point central */
+    width: 0.4rem; /* Taille du point central */
     height: 0.6rem; /* Hauteur du point central */
     background-color: green; /* Couleur verte pour le point central */
     margin-right: 30%;
