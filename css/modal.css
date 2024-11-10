@@ -394,11 +394,10 @@ header img {
 .location-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colonnes de largeur égale */
-  gap: 2%; /* Ajoute un espacement entre les éléments */
+   /* Ajoute un espacement entre les éléments */
   width: 95%; /* Ajuste la largeur totale */
   margin: 0 auto; /* Centre la grille horizontalement */
   padding-top: 1%; /* Ajoute un espacement en haut */
-  align-items: center;
 }
 
 .location-list ul li {
@@ -414,43 +413,39 @@ header img {
   height: 0;
 }
 
-/* Conteneur de l'icône de la case à cocher */
+/* Conteneur de l'icône (cercle avec bordure) */
 .checkbox-icon {
-  display: inline-flex;
-  width: 1rem;
+  display: inline-flex; /* Utilise Flexbox pour centrer le point */
+  width: 1rem; /* Ajuste la taille globale du cercle */
   height: 1rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  position: relative;
-  background-color: transparent;
+  align-items: center; /* Centre verticalement le contenu */
+  justify-content: center; /* Centre horizontalement le contenu */
+  border-radius: 50%; /* Cercle parfait */
+  border: 2px solid white; /* Bordure blanche par défaut */
+  background-color: transparent; /* Fond transparent */
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transition douce pour bordure et fond */
 }
 
-/* Style de l'icône de base */
-.checkbox-icon::before {
-  content: '';
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-/* Point central (caché par défaut) */
+/* Point central (vert) */
 .checkbox-icon::after {
-  content: '';
-  display: none;
-  width: 0.6rem;
+  content: ''; /* Crée un contenu vide pour le point central */
+  width: 0.6rem; /* Taille du point central */
   height: 0.6rem;
-  border-radius: 50%;
-  background-color: green;
+  border-radius: 50%; /* Cercle parfait */
+  background-color: green; /* Couleur verte du point */
+  opacity: 0; /* Caché par défaut */
+  transition: opacity 0.3s ease-in-out; /* Transition douce pour l'apparition du point */
 }
 
-/* Afficher le point central lorsque l'input est sélectionné */
-.checkbox-input:checked + .checkbox-icon::after {
-  display: block;
+/* Style lorsque l'input est sélectionné */
+.checkbox-input:checked + .checkbox-icon {
+  border-color: green; /* La bordure devient verte */
 }
+
+.checkbox-input:checked + .checkbox-icon::after {
+  opacity: 1; /* Le point vert devient visible */
+}
+
 
 
 .consentement {
