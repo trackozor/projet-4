@@ -344,7 +344,7 @@ header img {
 .form-list li {
   display: flex; /* Utilise Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
-  width: 100%; /* Chaque élément de la liste occupe 100% de la largeur */
+  width: 90vw; /* Chaque élément de la liste occupe 100% de la largeur */
   justify-content: center; /* Centre verticalement les éléments */
   padding: 0; /* Supprime les espacements internes */
   margin: 0 auto; /* Centre horizontalement chaque élément */
@@ -358,22 +358,21 @@ header img {
   border-radius: 0.5rem; /* Ajoute des coins arrondis de 0.5rem */
 }
 
-/* Localisation */
 .location-list {
-  display: flex; /* Active Flexbox pour organiser les éléments */
-  flex-direction: row; /* Organise les éléments horizontalement */
-  width: 94%; /* La liste occupe toute la largeur disponible */
-  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
-  gap: 4%; /* Ajoute un espacement de 5% entre les éléments */
-  padding-left: 12%; /* Ajoute un espacement de 10% à gauche */
-  align-items: center; /* Aligne les éléments verticalement au centre */
-  margin: 0 auto;
-  padding-top:1%;
+  display: grid; /* Utilise CSS Grid */
+  grid-template-columns: repeat(3, 1fr); /* Crée une grille avec 3 colonnes de largeur égale */
+  gap: 2%; /* Ajoute un espacement entre les éléments */
+  width: 95%; /* Ajuste la largeur totale */
+  margin: 0 auto; /* Centre la grille horizontalement */
+  padding-top: 1%; /* Ajoute un espacement en haut */
+
 }
+
 .location-list li {
-  display: flex; /* Active Flexbox pour organiser les éléments */
-  padding:1% 0; /* Supprime les espacements internes */
+  display: flex; /* Maintient Flexbox pour le contenu individuel */
+  align-items: center; /* Centre les éléments verticalement */
 }
+
 
 /* Input de type checkbox invisible */
 .checkbox-input, .checkbox-input2 {
@@ -433,11 +432,13 @@ header img {
 .consentement {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
-  width: 90%; /* La liste occupe toute la largeur disponible */
-  padding-left: 12%; /* Ajoute un espacement de 10% à gauche */
+  width: 95%; /* La liste occupe toute la largeur disponible */
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
 }
-
+.consentement li {
+  width:100%;
+  font-size: 0.8rem;
+}
 .checkbox-icon2{
   display: inline-flex; /* Utilise Flexbox pour l'affichage en ligne */
   position: relative; /* Nécessaire pour positionner les pseudo-éléments ::before et ::after */
