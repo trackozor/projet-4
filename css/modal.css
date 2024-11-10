@@ -197,10 +197,14 @@ header img {
 /* Style des listes dans .nav-links */
 .nav-links ul {
     width: 70%; /* Réduit la largeur de la liste à 70% de la fenêtre */
-    margin: 0 auto; /* Centre horizontalement la liste */
+    margin: 1% auto; /* Centre horizontalement la liste */
     justify-content: center; /* Centre les éléments de la liste en mode flex (si utilisé) */
     text-align: center; /* Centre le texte des éléments */
+    padding: 1% 0;
     
+}
+.nav-links li {
+  margin:0.5% 0;
 }
 
 /* Affichage de la liste au clic sur l'icône (mode responsive) */
@@ -211,7 +215,7 @@ header img {
     position: relative; /* Position relative pour ajustements internes */
     text-align: center; /* Centre le texte des éléments de la liste */
     justify-content: center; /* Centre verticalement les éléments de la liste */
-    padding-top: 15%; /* Ajoute un espacement au-dessus de la liste */
+    padding-top: 12%; /* Ajoute un espacement au-dessus de la liste */
     flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
     width: 90%; /* Réduit la largeur totale de la liste à 90% */
     z-index: 2; /* Place la liste au-dessus des autres éléments */
@@ -336,7 +340,7 @@ header img {
 }
 
 .formData .legend {
-  padding-left: 12%; /* Ajoute un espacement de 12% à gauche pour le texte */
+  padding-left: 10%; /* Ajoute un espacement de 12% à gauche pour le texte */
   font-size: var(--font-size-small); /* Utilise une taille de police définie par une variable CSS */
 }
 
@@ -345,7 +349,7 @@ header img {
   display: flex; /* Utilise Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
   width: 90vw; /* Chaque élément de la liste occupe 100% de la largeur */
-  justify-content: center; /* Centre verticalement les éléments */
+  justify-content: flex-start;
   padding: 0; /* Supprime les espacements internes */
   margin: 0 auto; /* Centre horizontalement chaque élément */
 }
@@ -360,16 +364,18 @@ header img {
 
 .location-list {
   display: grid; /* Utilise CSS Grid */
-  grid-template-columns: repeat(3, 1fr); /* Crée une grille avec 3 colonnes de largeur égale */
+  grid-template-columns: repeat(3, auto); /* Crée une grille avec 3 colonnes de largeur automatique */
   gap: 2%; /* Ajoute un espacement entre les éléments */
-  width: 95%; /* Ajuste la largeur totale */
+  width: 95vw; /* Ajuste la largeur totale */
   margin: 0 auto; /* Centre la grille horizontalement */
   padding-top: 1%; /* Ajoute un espacement en haut */
+  align-items: center;
 
 }
 
 .location-list li {
   display: flex; /* Maintient Flexbox pour le contenu individuel */
+
   align-items: center; /* Centre les éléments verticalement */
 }
 
@@ -401,7 +407,7 @@ header img {
     width: 100%; /* Occupe toute la largeur définie dans .checkbox-icon */
     height: 100%; /* Occupe toute la hauteur définie dans .checkbox-icon */
     border-radius: 50%; /* Rend le cercle parfaitement rond */
-    border: 2px solid green; /* Applique une bordure verte au cercle */
+    border: 2px solid white; /* Applique une bordure verte au cercle */
     background-color: transparent; /* Le fond du cercle reste transparent */
     margin-right: 20%;/* Aucun espace interne */
     width: 1rem;
@@ -418,6 +424,7 @@ header img {
     transform: translate(-69%, -50%); /* Corrige le positionnement pour un parfait centrage */
     width: 0.6rem; /* Taille du point central */
     height: 0.5rem; /* Hauteur du point central */
+    border: 2px solid white; /* Applique une bordure verte au cercle */
     border-radius: 50%; /* Forme un petit cercle */
     background-color: green; /* Couleur verte pour le point central */
     margin-right: 30%;
@@ -520,19 +527,20 @@ header img {
 }
 
 /* Bordure rouge pour les champs avec des erreurs */
-.error-input {
-    border: 12px solid red; /* Applique une bordure épaisse rouge pour indiquer une erreur */
+.text-control.error {
+  border: 2px solid red; /* Bordure rouge pour indiquer une erreur */
+  box-shadow: 0 0 1rem red; /* Ombre rouge pour indiquer une erreur */
+  animation: borderBlink 1s ease-in-out infinite; /* Animation de clignotement */
 }
 
 /* Style de la modale d'erreur */
 .error-modal {
-    background-color: #e3fc03; /* Fond jaune clair */
+    font-size: 0.8rem;
+    background-color:black; /* Fond jaune clair */
     color: red; /* Texte en rouge */
-    padding: 2%; /* Ajoute un espacement interne de 2% */
+    padding: 0; /* Ajoute un espacement interne de 2% */
     width: 100%; /* Occupe toute la largeur disponible */
-    border-radius: 0.5rem; /* Ajoute des coins arrondis */
-    text-align: center; /* Centre le texte */
-    border: 3px solid red; /* Bordure rouge pour indiquer l'erreur */
+    text-align: left; /* Centre le texte */
     margin-top: 5px; /* Ajoute un espace au-dessus */
     display: none; /* Cachée par défaut */
 }

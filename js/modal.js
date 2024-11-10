@@ -62,11 +62,18 @@ modalbg.addEventListener('click', (event) => {
 });
 
 
-// Fonction de validation de champ de formulaire
+// Écouteurs d'événements pour chaque champ d'entrée
+inputs.forEach((input) => {
+  input.addEventListener('input', validateField); // Valide en temps réel
+  input.addEventListener('blur', validateField); // Valide lorsque le champ perd le focus
+});
+
+// Fonction de validation des champs
 function validateField(event) {
   const field = event.target;
   let errorMessage = '';
 
+  // Validation en fonction de l'ID du champ
   switch (field.id) {
     case 'first':
       if (field.value.trim() === '') {
@@ -123,45 +130,36 @@ function validateField(event) {
       break;
   }
 
+  // Affiche ou supprime l'erreur
   if (errorMessage) {
     showError(errorMessage, field);
+    field.classList.add('error'); // Ajouter la bordure rouge
   } else {
     removeError(field);
+    field.classList.remove('error'); // Retirer la bordure rouge
   }
 }
 
-// Fonction pour afficher un message d'erreur et ajouter la bordure rouge
-function showError(message, inputElement) {
-  removeError(inputElement); // Supprime les erreurs précédentes, le cas échéant
+// Gestion de la soumission du formulaire
+document.querySelector('form').addEventListener('submit', function (event) {
+  let isValid = true;
 
-  // Création d'un élément pour afficher le message d'erreur
-  const errorTooltip = document.createElement('div');
-  errorTooltip.className = 'error-modal'; // Utilise la classe .error-modal définie dans ton CSS
-  errorTooltip.textContent = message;
+  // Valide tous les champs obligatoires
+  inputs.forEach((input) => {
+    validateField({ target: input });
+    if (input.classList.contains('error')) {
+      isValid = false; // Si une erreur est présente, le formulaire n'est pas valide
+    }
+  });
 
-  // Ajoute la classe 'error-input' pour afficher la bordure rouge
-  inputElement.classList.add('error-input');
-  
-  // Ajoute le tooltip d'erreur
-  inputElement.parentElement.appendChild(errorTooltip);
-
-  // Positionne le tooltip d'erreur en fonction de la position de l'input
-  const rect = inputElement.getBoundingClientRect();
-  errorTooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
-  errorTooltip.style.left = `${rect.left + window.scrollX}px`;
-}
-
-// Fonction pour supprimer un message d'erreur et la bordure rouge
-function removeError(inputElement) {
-  // Retire la bordure rouge
-  inputElement.classList.remove('error-input');
-  
-  // Supprime le tooltip d'erreur, s'il existe
-  const existingError = inputElement.parentElement.querySelector('.error-modal');
-  if (existingError) {
-    existingError.remove();
+  if (!isValid) {
+    event.preventDefault(); // Empêche la soumission du formulaire
+    alert('Veuillez corriger les erreurs avant de soumettre le formulaire.');
+  } else {
+    alert('Formulaire soumis avec succès !');
   }
-}
+});
+
 // Fonction pour afficher un message d'erreur et ajouter la bordure rouge
 function showError(message, inputElement) {
   removeError(inputElement); // Supprime les erreurs précédentes, le cas échéant
