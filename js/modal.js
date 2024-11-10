@@ -8,6 +8,8 @@ const closeBtn = document.querySelector(".close");
 const inputs = document.querySelectorAll('input');
 const isMobile = window.matchMedia("(max-width: 767px)").matches;
 const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+const confirmationModal = document.getElementById('confirmation-modal');
+const closeModalBtn = document.getElementById('close-modal-btn');
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale
 
 // Fonction pour activer/désactiver le menu responsive
@@ -142,7 +144,6 @@ function validateField(event) {
   }
 }
 
-// Gestion de la soumission du formulaire
 document.querySelector('form').addEventListener('submit', function (event) {
   let isValid = true;
 
@@ -158,8 +159,21 @@ document.querySelector('form').addEventListener('submit', function (event) {
     event.preventDefault(); // Empêche la soumission du formulaire
     alert('Veuillez corriger les erreurs avant de soumettre le formulaire.');
   } else {
-    alert('Formulaire soumis avec succès !');
+    event.preventDefault(); // Empêche la redirection par défaut (si elle est gérée différemment)
+    openConfirmationModal(); // Ouvre la modale de confirmation
   }
+});
+
+// Fonction pour ouvrir la modale de confirmation
+function openConfirmationModal() {
+  confirmationModal.style.display = 'flex'; // Affiche la modale en mode flex
+  document.body.style.overflow = 'hidden'; // Empêche le défilement de la page
+}
+
+// Fonction pour fermer la modale
+closeModalBtn.addEventListener('click', function () {
+  confirmationModal.style.display = 'none'; // Cache la modale
+  document.body.style.overflow = 'auto'; // Réactive le défilement de la page
 });
 
 // Fonction pour afficher un message d'erreur et ajouter la bordure rouge

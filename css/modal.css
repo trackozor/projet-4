@@ -362,24 +362,6 @@ header img {
   border-radius: 0.5rem; /* Ajoute des coins arrondis de 0.5rem */
 }
 
-.location-list {
-  display: grid; /* Utilise CSS Grid */
-  grid-template-columns: repeat(3, auto); /* Crée une grille avec 3 colonnes de largeur automatique */
-  gap: 2%; /* Ajoute un espacement entre les éléments */
-  width: 95vw; /* Ajuste la largeur totale */
-  margin: 0 auto; /* Centre la grille horizontalement */
-  padding-top: 1%; /* Ajoute un espacement en haut */
-  align-items: center;
-
-}
-
-.location-list li {
-  display: flex; /* Maintient Flexbox pour le contenu individuel */
-
-  align-items: center; /* Centre les éléments verticalement */
-}
-
-
 /* Input de type checkbox invisible */
 .checkbox-input {
   position: absolute; /* Positionne l'input en dehors du flux normal */
@@ -393,17 +375,20 @@ header img {
 /* Liste en grille */
 .location-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes de largeur égale */
-   /* Ajoute un espacement entre les éléments */
+  grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
+  grid-template-rows:repeat(2,auto) ;
   width: 95%; /* Ajuste la largeur totale */
   margin: 0 auto; /* Centre la grille horizontalement */
-  padding-top: 1%; /* Ajoute un espacement en haut */
+  align-items: center;
+  margin-top:1%;
 }
 
-.location-list ul li {
-  display: flex; /* Maintient Flexbox pour le contenu individuel */
+.location-list li p {
+  display:flex; /* Maintient Flexbox pour le contenu individuel */
   align-items: center; /* Centre les éléments verticalement */
+  padding:4% 0;
 }
+
 
 /* Cacher l'input radio */
 .checkbox-input {
@@ -418,19 +403,21 @@ header img {
   display: inline-flex; /* Utilise Flexbox pour centrer le point */
   width: 1rem; /* Ajuste la taille globale du cercle */
   height: 1rem;
+  margin:2%;
   align-items: center; /* Centre verticalement le contenu */
   justify-content: center; /* Centre horizontalement le contenu */
   border-radius: 50%; /* Cercle parfait */
   border: 2px solid white; /* Bordure blanche par défaut */
   background-color: transparent; /* Fond transparent */
   transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transition douce pour bordure et fond */
+  
 }
 
 /* Point central (vert) */
 .checkbox-icon::after {
   content: ''; /* Crée un contenu vide pour le point central */
-  width: 0.6rem; /* Taille du point central */
-  height: 0.6rem;
+  width: 0.8rem; /* Taille du point central */
+  height: 0.8rem;
   border-radius: 50%; /* Cercle parfait */
   background-color: green; /* Couleur verte du point */
   opacity: 0; /* Caché par défaut */
@@ -471,7 +458,7 @@ header img {
     background-color: transparent; /* Fond transparent */
     height:2%;
     margin: 0; /* Supprime les marges externes */
-    z-index: 5000;
+    z-index: 5001;
 }
 
 /* Création de la croix avec un symbole + pivoté */
@@ -495,14 +482,31 @@ header img {
 
 /* Modale de confirmation (cachée par défaut) */
 #confirmation-modal {
-    display: none; /* Masque la modale de confirmation */
+    display: none;
+    flex-direction: column;
+    position: fixed; /* Positionne la modale en fondé */
+    top: 2%; /* Positionne la modale au haut de la fenêtre */
+    left: 0; /* Positionne la modale à gauche de la fenêtre */
+    width: 100%; /* Occupe toute la largeur disponible */
+    height: 80%; /* Occupe toute la hauteur disponible */
+    background-color: rgba(0, 0, 0,1); /* Fond transparent avec une transparence de 50% */
+    z-index: 5000; /* Positionne la modale au dessus des autres éléments */
+    align-items: center; /* Centre le contenu verticalement */
+    justify-content: space-evenly;
 }
 
-/* Bouton de fermeture de la modale */
-#close-modal-btn {
-    display: none; /* Masque le bouton de fermeture par défaut */
+#confirmation-modal span {
+  font-size: 2rem;
+  width:80vw;
+  text-align: center;
 }
 
+#confirmation-modal button {
+  width: 25vw;
+  padding: 5%;
+  color: white;
+  border: none;
+}
 /* Bordure rouge pour les champs avec des erreurs */
 .text-control.error {
   border: 2px solid red; /* Bordure rouge pour indiquer une erreur */
