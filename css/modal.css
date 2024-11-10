@@ -118,7 +118,7 @@ fieldset {
 
 /* Conteneur */
 header {
-    width: 95vw; /* Le header occupe 95% de la largeur de la fenêtre */
+    width: 90vw; /* Le header occupe 95% de la largeur de la fenêtre */
     display: flex; /* Utilise Flexbox pour organiser les éléments enfants */
     position: relative; /* Définit une position relative pour un placement interne ou d'autres ajustements */
     align-items: center; /* Aligne verticalement les éléments enfants au centre */
@@ -135,7 +135,7 @@ header img {
     height: auto; /* Préserve les proportions de l'image */
     position: fixed; /* Fixe l'image à un emplacement spécifique par rapport à la fenêtre */
     object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en maintenant son ratio d'aspect */
-    left: 3.5%; /* Place l'image à 3.5% du bord gauche de la fenêtre */
+    left: 4.5%; /* Place l'image à 3.5% du bord gauche de la fenêtre */
     top: 1.2%; /* Place l'image à 1.2% du bord supérieur de la fenêtre */
     background-color: white; /* Ajoute un fond blanc derrière l'image */
 }
@@ -149,8 +149,10 @@ header img {
 .topnav {
   display: flex; /* Active Flexbox pour organiser les éléments enfants */
   flex-direction: column; /* Organise les éléments en colonne */
-  width: 95vw; /* Occupe 95% de la largeur de la fenêtre */
+  width: 90vw; /* Occupe 95% de la largeur de la fenêtre */
   flex-wrap: nowrap; /* Empêche les éléments enfants de passer à la ligne */
+  padding: 0.3rem;
+
   
 }
 
@@ -163,6 +165,8 @@ header img {
   font-weight: 500; /* Rend le texte légèrement plus épais */
   padding: 0.3rem; /* Ajoute un espacement interne de 0.3rem tout autour */
   text-decoration: underline; /* Souligne le texte au survol */
+  width:50%;
+  font-size: 0.9rem;
 }
 
 
@@ -196,7 +200,7 @@ header img {
 
 /* Style des listes dans .nav-links */
 .nav-links ul {
-    width: 70%; /* Réduit la largeur de la liste à 70% de la fenêtre */
+    width: 50%; /* Réduit la largeur de la liste à 70% de la fenêtre */
     margin: 1% auto; /* Centre horizontalement la liste */
     justify-content: center; /* Centre les éléments de la liste en mode flex (si utilisé) */
     text-align: center; /* Centre le texte des éléments */
@@ -204,7 +208,8 @@ header img {
     
 }
 .nav-links li {
-  margin:0.5% 0;
+  padding:0.5% 0;
+  font-weight:700;
 }
 
 /* Affichage de la liste au clic sur l'icône (mode responsive) */
@@ -215,7 +220,7 @@ header img {
     position: relative; /* Position relative pour ajustements internes */
     text-align: center; /* Centre le texte des éléments de la liste */
     justify-content: center; /* Centre verticalement les éléments de la liste */
-    padding-top: 12%; /* Ajoute un espacement au-dessus de la liste */
+    padding-top: 6vh; /* Ajoute un espacement au-dessus de la liste */
     flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
     width: 90%; /* Réduit la largeur totale de la liste à 90% */
     z-index: 2; /* Place la liste au-dessus des autres éléments */
@@ -251,7 +256,7 @@ header img {
 /* Image dans la section Hero */
 .hero-section img {
     width: 90vw; /* L'image occupe 90% de la largeur de la fenêtre */
-    border-radius: 5%; /* Ajoute un arrondi de 5% aux coins de l'image */
+    border-radius: 2%; /* Ajoute un arrondi de 5% aux coins de l'image */
     object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en conservant ses proportions */
     margin: 0 auto; /* Centre horizontalement l'image dans son conteneur */
     justify-content: center; /* Centre horizontalement si utilisé dans un contexte Flexbox */
@@ -264,7 +269,7 @@ header img {
     flex-direction: column; /* Organise les enfants en colonne (du haut vers le bas) */
     width: 90vw; /* Le conteneur occupe 90% de la largeur de la fenêtre */
     justify-content: center; /* Centre les éléments enfants verticalement */
-    margin: 1% auto; /* Centre le conteneur horizontalement */
+    margin: 0 auto; /* Centre le conteneur horizontalement */
     transition: top 0.3s ease-in-out; /* Transition douce pour le positionnement vertical */
     overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
 }
@@ -274,7 +279,7 @@ header img {
     color: black; /* Définit la couleur du texte du titre en noir */
     font-size: 2.2rem; /* Définit une taille de police importante pour le titre */
     padding-left: 0; /* Aucun espacement à gauche du titre */
-    padding-top: 2%;
+    padding-top: 1vh;
 
 }
 
@@ -319,13 +324,16 @@ header img {
   box-sizing: border-box; /* Inclut le padding dans les dimensions */
   transition: top 0.3s ease-in-out; /* Transition douce pour le positionnement vertical */
   overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
+  border-radius: 1%;
 }
 .bground .content {
   position: relative;
   top: 0; /* Positionne le contenu à l'origine verticalement */
+  border-radius: 2%;
 }
 .modal-body {
   background-color: #0b0c07;
+
 }
 
 /* Style global du formulaire */
@@ -335,7 +343,7 @@ header img {
   padding: 0; /* Supprime les espacements internes */
   width: 95vw; /* Le formulaire occupe 100% de la largeur disponible */
   position: relative; /* Position relative pour des ajustements internes */
-  left: -7%; /* Décale le formulaire de 7.5vw vers la gauche */
+  left: -6%; /* Décale le formulaire de 7.5vw vers la gauche */
   
 }
 
@@ -356,10 +364,11 @@ header img {
 
 /* Champs d'entrée des informations personnelles */
 .form-list input {
-  width: 100%; /* Les champs occupent toute la largeur disponible */
+  width: 90%; /* Les champs occupent toute la largeur disponible */
   padding: 4% 2%; /* Ajoute un espacement de 4% en haut/bas et 2% à gauche/droite */
   border: none; /* Supprime les bordures par défaut */
   border-radius: 0.5rem; /* Ajoute des coins arrondis de 0.5rem */
+  margin: 0 auto;
 }
 
 /* Input de type checkbox invisible */
@@ -488,7 +497,7 @@ header img {
     top: 2%; /* Positionne la modale au haut de la fenêtre */
     left: 0; /* Positionne la modale à gauche de la fenêtre */
     width: 100%; /* Occupe toute la largeur disponible */
-    height: 80%; /* Occupe toute la hauteur disponible */
+    height: 100%; /* Occupe toute la hauteur disponible */
     background-color: rgba(0, 0, 0,1); /* Fond transparent avec une transparence de 50% */
     z-index: 5000; /* Positionne la modale au dessus des autres éléments */
     align-items: center; /* Centre le contenu verticalement */
@@ -547,7 +556,7 @@ header img {
 @media screen and (min-width: 320px) and (max-width: 767px) and (max-height: 600px) and (orientation: landscape) {
 /* Logo */
   .logo {
-      width: 20vw; /* Ajuste la largeur du logo à 20% de la fenêtre */
+      width: 15vw; /* Ajuste la largeur du logo à 20% de la fenêtre */
       padding-top: 1%; /* Ajoute un léger espacement en haut */
   }
 
@@ -568,7 +577,7 @@ header img {
 /* Ajustement de l'icône de menu en mode paysage */
 .topnav i {
     display: flex; /* Affiche l'icône en mode Flexbox */
-    top: 2%; /* Positionne l'icône à 2% du bord supérieur */
+    top: 1%; /* Positionne l'icône à 2% du bord supérieur */
     right: 5%; /* Positionne l'icône à 5% du bord droit */
 }
 
@@ -576,6 +585,7 @@ header img {
 .topnav span:hover {
     padding: 0.2rem; /* Ajoute un léger espacement interne au survol */
     border-radius: 0.4rem; /* Ajoute des coins arrondis pour un effet visuel agréable */
+    width:100%;
 }
 
 
@@ -583,7 +593,6 @@ header img {
   .topnav.responsive .nav-links {
     display:flex;
     flex-direction: row; 
-    justify-content: center;/* Organise les liens horizontalement pour paysage */
     margin:0 auto; /* Centre les liens horizontalement */
     font-size: 0.9rem; /* Taille de police légèrement réduite */
     width: 90vw;
@@ -601,14 +610,15 @@ header img {
     background-color: #0b0c07;
     width: 90vw;
     padding:0;
-    margin: 6% 0 auto;
+    margin: 0 auto;
+    position:relative;
   }
 
   /* Ajustement de l'image */
   .hero-section img {
     width: 60vw; /* Prend la moitié de la largeur disponible */
     max-height: 70vh;
-    margin: 0;
+    margin:1% 0;
     padding:0;
     object-fit: cover;
     border-radius: 0;
@@ -617,6 +627,9 @@ header img {
   /* Ajustement de la zone de contenu de texte en paysage */
   .hero-content {
     width: 55%; /* Prend la moitié de la largeur */
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
   }
 
   /* Ajustement du titre */
@@ -625,19 +638,21 @@ header img {
     padding: 0;
     position: absolute;
     width:70vw;
-    top:15%;
-    left:10%;
+    left:5%;
+    top:-10%;
     color: white;
+    z-index: 2;
   }
 
   /* Ajustement du paragraphe */
   .hero-content p {
     position:absolute;
-    width: 40vw;
-    font-size: 1rem;
+    width: 30vw;
+    font-size: 0.9rem;
     color: white;
-    padding:5%;
-    margin-top: 5% ;
+    left:5%;
+    top:40%;
+    
   }
 
   /* Bouton d'inscription mobile en paysage */
@@ -648,43 +663,42 @@ header img {
     display: block;
     position: absolute;
     font-size:0.8rem;
-    width: 25vw;
+    width:15vw;
     border-radius: 5%;
     padding: 0.5rem ;
     margin: 5% auto;
-    bottom:10%;
-    left:10%;
+    bottom:2%;
+    left:5%;
     
   }
   .bground {
       display: none;
       position: fixed;
-      z-index: 1;
+      z-index: 3;
       right: 0%;
       height: 100%;
-      width: 100%;
-      top:6%;
+      width: 100vw;
       background-color: black;
       justify-content:center;
-      margin:6% auto;
+      margin:2% auto;
   }
   .content {
-    width:80%;
-    height:70vh;
+    width:90vw;
+    height:auto;
     background-color: #0b0c07;
     display: flex;
     justify-content: center;
+    margin:0 auto;
 
   }
   /*-- Style globale formulaire --*/ 
   .formData  {
-    display: block;
+    display: flex;
     margin: 0 auto;
     padding: 0;
-    width: 60vw;
+    width: 80vw;
     position: relative;
     justify-content: center;
-    bottom: 1%;
   }
 
   .formData .legend {
@@ -694,7 +708,6 @@ header img {
   .form-list li {
     display: flex;
     flex-direction: column;
-
     justify-content:center;
     padding:0; 
     margin: 0 auto;
@@ -703,72 +716,25 @@ header img {
 
   /* input infos personnels --*/
   .form-list input {
-    width: 100%;
-    padding: 4% 2%;
+    width: 90vw;
+    padding: 1% 0;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
 
   }
 
   /*localisation*/
-  .location-list  {
-    display: flex;
-    flex-direction:row;
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 5%;
-    padding-left: 10%;
-    align-items: center;
+  .location-list {
+  display: flex;
+  flex-direction: row;
+  width: 90vw; /* Ajuste la largeur totale */
+  margin: 0 auto; /* Centre la grille horizontalement */
+  align-items:center; /* Aligne les éléments horizontalement */
+  margin-top:1%;
+  padding-left:5%;
   }
 
-  .checkbox-input {
-    position:absolute ;
-    opacity:0;
-    width:0;
-    height:0;
-  }
-
-
-  /* Icône de base pour le bouton radio (cercle vide) */
-  .checkbox-icon {
-    display: inline-flex;
-    position: relative; /* Nécessaire pour positionner ::before et ::after */
-    width: 1.2rem; /* Taille du cercle externe */
-    height: 1rem;
-    margin-right: 10px;
-  }
-
-  /* Style de l'icône de base (cercle) */
-  .checkbox-icon::before {
-    content: '';
-    display: inline-flex;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; /* Cercle pour les boutons radio */
-    border: 2px solid green; /* Couleur de la bordure du cercle */
-    background-color: transparent; /* Fond transparent */
-    padding: 0;
-  }
-
-  /* Point central (caché par défaut) */
-  .checkbox-icon::after {
-    content: '';
-    display: none; /* Caché par défaut */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0.6rem; /* Taille du point central */
-    height: 0.6rem;
-    border-radius: 50%; /* Rond pour le point central */
-    background-color: green; /* Couleur du point central */
-  }
-
-  /* Afficher le point central lorsque l'input est sélectionné */
-  .checkbox-input:checked + .checkbox-label .checkbox-icon::after {
-    display: inline-flex; /* Affiche le point central lorsque coché */
-  }
-
+ 
   /*-- Bouton close en croix --*/
   .close {
     display:flex;

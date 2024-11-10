@@ -21,7 +21,7 @@ function editNav() {
     if (isLandscape) {
       // Mode responsive et mobile en paysage
       heroSection.style.top = "10%"; // Déplacement de la section hero
-      modalbg.style.top = "10%"; // Déplacement de la modale
+      modalbg.style.top = "20%"; // Déplacement de la modale
     } else {
       // Mode responsive et mobile en portrait
       heroSection.style.top = "12%"; // Déplacement de la section hero
@@ -29,8 +29,8 @@ function editNav() {
     }
   } else {
     // Si le menu est fermé ou que les conditions ne sont pas remplies
-    heroSection.style.top = "20%"; // Position initiale de la section hero
-    modalbg.style.top = "7%"; // Position initiale de la modale
+    heroSection.style.top = "6.5vh"; // Position initiale de la section hero
+    modalbg.style.top = "6.5vh"; // Position initiale de la modale
   }
 }
 
@@ -38,7 +38,7 @@ function editNav() {
 function launchModal() {
   resetForm();
   modalbg.style.display = 'block'; // Affiche la modale
-  modalbg.style.top = "7%"; // Position de départ de la modale
+  modalbg.style.top = "6%"; // Position de départ de la modale
   document.body.style.overflow = 'hidden'; // Empêche le défilement en arrière-plan
   modalOpen = true; // Mettre à jour l'état d'ouverture de la modale
 
