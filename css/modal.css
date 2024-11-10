@@ -364,11 +364,21 @@ header img {
 
 /* Champs d'entrée des informations personnelles */
 .form-list input {
-  width: 90%; /* Les champs occupent toute la largeur disponible */
-  padding: 4% 2%; /* Ajoute un espacement de 4% en haut/bas et 2% à gauche/droite */
+  width: 95%; /* Les champs occupent toute la largeur disponible */
+  padding: 3% 2%; /* Ajoute un espacement de 4% en haut/bas et 2% à gauche/droite */
   border: none; /* Supprime les bordures par défaut */
   border-radius: 0.5rem; /* Ajoute des coins arrondis de 0.5rem */
   margin: 0 auto;
+}
+/* Masque le placeholder par défaut */
+input[type="date"]::placeholder {
+  color: transparent; /* Invisible */
+  transition: color 0.3s ease; /* Animation douce pour le changement */
+}
+
+/* Rend le placeholder visible lorsque l'input est en focus */
+input[type="date"]:focus::placeholder {
+  color: #aaa; /* Couleur du placeholder lors de la sélection */
 }
 
 /* Input de type checkbox invisible */
@@ -386,10 +396,10 @@ header img {
   display: grid;
   grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
   grid-template-rows:repeat(2,auto) ;
-  width: 95%; /* Ajuste la largeur totale */
+  width: 95vw; /* Ajuste la largeur totale */
   margin: 0 auto; /* Centre la grille horizontalement */
   align-items: center;
-  margin-top:1%;
+  margin-top:3%;
 }
 
 .location-list li p {
@@ -410,8 +420,8 @@ header img {
 /* Conteneur de l'icône (cercle avec bordure) */
 .checkbox-icon {
   display: inline-flex; /* Utilise Flexbox pour centrer le point */
-  width: 1rem; /* Ajuste la taille globale du cercle */
-  height: 1rem;
+  width: 1.2rem; /* Ajuste la taille globale du cercle */
+  height: 1.2rem;
   margin:2%;
   align-items: center; /* Centre verticalement le contenu */
   justify-content: center; /* Centre horizontalement le contenu */
@@ -447,12 +457,58 @@ header img {
 .consentement {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
-  width: 95%; /* La liste occupe toute la largeur disponible */
+  width: 95vw; /* La liste occupe toute la largeur disponible */
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
+  align-items: center;
 }
 .consentement li {
-  width:100%;
-  font-size: 0.8rem;
+  width:95vw;
+  font-size: 0.6rem;
+}
+
+/* Cache l'input natif */
+.checkbox-input2 {
+  appearance: none; /* Supprime le style natif du navigateur */
+  position: absolute; /* Retire du flux visuel */
+  opacity: 0; /* Rend l'élément invisible */
+  width: 0;
+  height: 0;
+}
+
+/* Conteneur de la case à cocher */
+.checkbox-icon2 {
+  display: inline-flex; /* Utilise Flexbox pour centrer la coche */
+  width: 1.1rem; /* Taille de la case */
+  height: 1.1rem; /* Taille de la case */
+  background-color: #d3d3d3; /* Couleur grise par défaut */
+  border-radius: 0.3rem; /* Coins légèrement arrondis */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  border: 2px solid transparent; /* Bordure par défaut transparente */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transitions douces */
+  cursor: pointer; /* Curseur pointeur */
+  margin:0.3rem 0.5rem 0.3rem 0.5% /* Espace entre l'icône et le texte */
+}
+
+/* Coche blanche (invisible par défaut) */
+.checkbox-icon2::after {
+  content: '✓'; /* Symbole de coche */
+  font-size: 0.8rem; /* Taille de la coche */
+  color: white; /* Couleur de la coche */
+  opacity: 0; /* Cachée par défaut */
+  transform: rotate(20deg); /* Incline légèrement la coche vers la droite */
+  transition: opacity 0.3s ease; /* Transition fluide pour l'apparition */
+}
+
+/* Style de la case cochée */
+.checkbox-input2:checked + .checkbox-label2 .checkbox-icon2 {
+  background-color: #4CAF50; /* Fond vert */
+  border-color: #4CAF50; /* Bordure verte */
+}
+
+/* Coche visible lorsqu'elle est cochée */
+.checkbox-input2:checked + .checkbox-label2 .checkbox-icon2::after {
+  opacity: 1; /* Rend la coche visible */
 }
 
 
@@ -683,7 +739,8 @@ header img {
       margin:2% auto;
   }
   .content {
-    width:90vw;
+    display: flex;
+    width:100vw;
     height:auto;
     background-color: #0b0c07;
     display: flex;
@@ -696,13 +753,18 @@ header img {
     display: flex;
     margin: 0 auto;
     padding: 0;
-    width: 80vw;
+    width: 95vw;
     position: relative;
     justify-content: center;
+    left:-3vw;
   }
 
   .formData .legend {
     font-size: var(--font-size-small);
+    width: 90vw;
+    display:flex;
+    justify-content: left;
+    padding-left:5%;
   }
   /*-- LIste infos personnels --*/
   .form-list li {
@@ -720,26 +782,20 @@ header img {
     padding: 1% 0;
     border: none;
     border-radius: 0.3rem;
+    justify-content: center;
+    margin:0 auto
 
   }
 
-  /*localisation*/
-  .location-list {
-  display: flex;
-  flex-direction: row;
-  width: 90vw; /* Ajuste la largeur totale */
-  margin: 0 auto; /* Centre la grille horizontalement */
-  align-items:center; /* Aligne les éléments horizontalement */
-  margin-top:1%;
-  padding-left:5%;
+  .consentement {
+    display: flex;
+    padding-left: 5%;
   }
-
- 
   /*-- Bouton close en croix --*/
   .close {
     display:flex;
     width: 100%;
-    flex-direction: row-reverse;
+  
     background-color: transparent;
     height:1vh;
     padding:0 5%;
@@ -765,33 +821,7 @@ header img {
     justify-content: center;
     margin: 0 auto;
   }
-  #confirmation-modal {
-    display: none ;
-    
-  }
-  #close-modal-btn {
-    display: none;
-
-  }
-  /* Bordure rouge pour les champs en erreur */
-  .error-input {
-    border: 12px solid red;
-  }
-
-  /* Modale d'erreur */
-  .error-modal {
-    background-color: #e3fc03;
-    color:red;
-    padding: 2%;
-    width: 100%;
-    border-radius: 0.5rem;
-    text-align: center;
-    border: 3px solid red;
-    margin-top: 5px;
-    display: none; /* Caché par défaut */
-
-    }
-
+  
   .copyright {
   width: 50vw;
   justify-content: flex-start;

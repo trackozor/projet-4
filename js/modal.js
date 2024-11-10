@@ -33,6 +33,23 @@ function editNav() {
     modalbg.style.top = "6.5vh"; // Position initiale de la modale
   }
 }
+// Sélectionne le champ date
+const birthdateInput = document.getElementById('birthdate');
+// Placeholder par défaut
+birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
+
+// Ajoute un événement focus pour rendre le placeholder visible
+birthdateInput.addEventListener('focus', () => {
+  birthdateInput.placeholder = 'jj/mm/aaaa'; // Remet le placeholder lors du focus
+});
+
+// Ajoute un événement blur pour masquer le placeholder si l'input est vide
+birthdateInput.addEventListener('blur', () => {
+  if (!birthdateInput.value) {
+    birthdateInput.placeholder = ''; // Supprime le placeholder si aucun texte n'est saisi
+  }
+});
+
 
 // Fonction pour afficher la modale
 function launchModal() {
