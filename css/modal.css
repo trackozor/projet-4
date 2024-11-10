@@ -312,10 +312,13 @@ header img {
   height: 100%; /* Permet à la hauteur de s'adapter au contenu */
   background-color: rgba(0, 0, 0, 1); /* Couleur de fond noire avec transparence */
   color: white; /* Texte blanc */
-  padding: 20px; /* Espacement intérieur */
   box-sizing: border-box; /* Inclut le padding dans les dimensions */
   transition: top 0.3s ease-in-out; /* Transition douce pour le positionnement vertical */
   overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
+}
+.bground .content {
+  position: relative;
+  top: 0; /* Positionne le contenu à l'origine verticalement */
 }
 .modal-body {
   background-color: #0b0c07;
@@ -323,14 +326,13 @@ header img {
 
 /* Style global du formulaire */
 .formData {
-  display: block; /* Définit le formulaire comme un bloc */
+  display: flex; /* Définit le formulaire comme un bloc */
   margin: 0 auto; /* Centre le formulaire horizontalement */
   padding: 0; /* Supprime les espacements internes */
   width: 95vw; /* Le formulaire occupe 100% de la largeur disponible */
   position: relative; /* Position relative pour des ajustements internes */
-  left: -10%; /* Décale le formulaire de 7.5vw vers la gauche */
-  bottom: 0.5%; /* Décale légèrement le formulaire vers le bas */
-
+  left: -7%; /* Décale le formulaire de 7.5vw vers la gauche */
+  
 }
 
 .formData .legend {
@@ -478,12 +480,13 @@ header img {
 /* Bouton de fermeture (croix) */
 .close {
     display: flex; /* Active Flexbox pour organiser les éléments */
+    position: absolute;
     width: 100%; /* Prend toute la largeur disponible */
-    flex-direction: row-reverse; /* Aligne les éléments en commençant par la fin */
+    justify-content: flex-end;
     background-color: transparent; /* Fond transparent */
-    height:0;
-    padding: 0 5%; /* Ajoute un espacement horizontal de 5% */
+    height:2%;
     margin: 0; /* Supprime les marges externes */
+    z-index: 5000;
 }
 
 /* Création de la croix avec un symbole + pivoté */

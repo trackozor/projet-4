@@ -28,7 +28,7 @@ function editNav() {
   } else {
     // Si le menu est fermé ou que les conditions ne sont pas remplies
     heroSection.style.top = "20%"; // Position initiale de la section hero
-    modalbg.style.top = "6%"; // Position initiale de la modale
+    modalbg.style.top = "7%"; // Position initiale de la modale
   }
 }
 
@@ -42,7 +42,7 @@ function launchModal() {
 
   // Synchronisation de la section hero si le menu est responsive
   if (navElement.classList.contains("responsive")) {
-    heroSection.style.top = isMobile ? "12%" : "6%";
+    heroSection.style.top = isMobile ? "12%" : "7%";
   }
 }
 
