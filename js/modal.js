@@ -1,7 +1,7 @@
 // Déclaration des éléments du DOM et variables nécessaires en début de fichier
 const navElement = document.getElementById("Topnav");
 const modalbg = document.querySelector(".bground");
-const modalnav = document.querySelector("hero-section");
+const heroSection = document.querySelector(".hero-section"); // Correction du sélecteur
 const modalbtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
@@ -10,33 +10,40 @@ const isMobile = window.matchMedia("(max-width: 767px)").matches;
 const isLandscape = window.matchMedia("(orientation: landscape)").matches;
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale
 
-// Fonction pour activer/désactiver le menu en version responsive
+// Fonction pour activer/désactiver le menu responsive
 function editNav() {
   navElement.classList.toggle("responsive");
 
- // Gérer le déplacement de la modale en fonction des différentes conditions
-  if (navElement.classList.contains("responsive") && modalOpen && isMobile) {
+  // Gérer le déplacement de la modale et de la section hero en fonction des conditions
+  if (navElement.classList.contains("responsive") && isMobile) {
     if (isLandscape) {
       // Mode responsive et mobile en paysage
-      modalnav.style.top = "15%"; // Position spécifique pour le mode paysage
+      heroSection.style.top = "10%"; // Déplacement de la section hero
+      modalbg.style.top = "10%"; // Déplacement de la modale
     } else {
       // Mode responsive et mobile en portrait
-      modalnav.style.top = "10%"; // Position spécifique pour le mode portrait
+      heroSection.style.top = "12%"; // Déplacement de la section hero
+      modalbg.style.top = "20%"; // Déplacement de la modale
     }
   } else {
-    // Si le menu est fermé ou que les conditions ne sont pas remplies, remettre la modale à sa position d'origine
-    modalnav.style.top = "6%";
+    // Si le menu est fermé ou que les conditions ne sont pas remplies
+    heroSection.style.top = "20%"; // Position initiale de la section hero
+    modalbg.style.top = "6%"; // Position initiale de la modale
   }
-
 }
 
 // Fonction pour afficher la modale
 function launchModal() {
   resetForm();
-  modalbg.style.display = 'block';
+  modalbg.style.display = 'block'; // Affiche la modale
   modalbg.style.top = "7%"; // Position de départ de la modale
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; // Empêche le défilement en arrière-plan
   modalOpen = true; // Mettre à jour l'état d'ouverture de la modale
+
+  // Synchronisation de la section hero si le menu est responsive
+  if (navElement.classList.contains("responsive")) {
+    heroSection.style.top = isMobile ? "12%" : "6%";
+  }
 }
 
 // Fonction pour fermer la modale
@@ -45,6 +52,15 @@ function closeModal() {
   document.body.style.overflow = 'auto';
   modalOpen = false; // Mettre à jour l'état de fermeture de la modale
 }
+
+// Gestion des clics sur l'arrière-plan pour fermer la modale
+modalbg.addEventListener('click', (event) => {
+  // Vérifie si l'utilisateur a cliqué directement sur l'arrière-plan (et non sur le contenu)
+  if (event.target === modalbg) {
+    closeModal();
+  }
+});
+
 
 // Fonction de validation de champ de formulaire
 function validateField(event) {
