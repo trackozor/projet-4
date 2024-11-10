@@ -78,12 +78,13 @@ function validateField(event) {
     case 'first':
       if (field.value.trim() === '') {
         errorMessage = 'Le prénom est requis.';
-      } else if (field.value.length < 2) {
+      } else if (field.value.trim().length < 2) {
         errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
-      } else if (!/^[a-zA-Z]+$/.test(field.value)) {
-        errorMessage = 'Le prénom ne doit contenir que des lettres.';
+      } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ\- ]+$/.test(field.value.trim())) {
+        errorMessage = 'Le prénom ne doit contenir que des lettres, des espaces ou des traits d’union.';
       }
       break;
+
 
     case 'last':
       if (field.value.trim() === '') {
@@ -96,12 +97,13 @@ function validateField(event) {
       break;
 
     case 'email':
-      if (field.value.trim() === '') {
-        errorMessage = 'L\'e-mail est requis.';
-      } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(field.value)) {
-        errorMessage = 'Veuillez entrer une adresse e-mail valide.';
-      }
-      break;
+        if (field.value.trim() === '') {
+          errorMessage = 'L\'e-mail est requis.';
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) {
+          errorMessage = 'Veuillez entrer une adresse e-mail valide.';
+        }
+        break;
+
 
     case 'birthdate':
       if (field.value.trim() === '') {

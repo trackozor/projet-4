@@ -530,7 +530,7 @@ header img {
 .text-control.error {
   border: 2px solid red; /* Bordure rouge pour indiquer une erreur */
   box-shadow: 0 0 1rem red; /* Ombre rouge pour indiquer une erreur */
-  animation: borderBlink 1s ease-in-out infinite; /* Animation de clignotement */
+  animation: borderBlink 10s ease-in-out infinite; /* Animation de clignotement */
 }
 
 /* Style de la modale d'erreur */
