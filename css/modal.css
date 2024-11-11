@@ -843,7 +843,6 @@ input[type="date"]:focus::placeholder {
 @media screen and (min-width: 767px) and (max-width: 1024px)  and (max-height:600px) and (orientation: landscape) {
   .topnav {
     flex-direction: row; /* Organise les éléments horizontalement pour maximiser l'espace */
-    width: 100%;
     justify-content: space-between; /* Espace entre les éléments pour aérer */
   }
 
@@ -856,9 +855,12 @@ input[type="date"]:focus::placeholder {
     display: flex;
     position: absolute;
     flex-direction: row; /* Organise les liens verticalement pour plié */
-    font-size: 0.9rem; /* Taille de police légèrement réduite */
-    right:-2%;
+    font-size: 1.2rem; /* Taille de police légèrement réduite */
+    right:-5%;
     padding :0% 2%;
+  }
+  .nav-links li {
+    padding:0 10px;
   }
   /* Style au survol */
   .topnav span:hover {
@@ -940,11 +942,18 @@ input[type="date"]:focus::placeholder {
     
   }
   .bground{
-    margin-top: 2%;
+    margin-top: 3%;
   }
   
   .formData{
   left:-1%;
+  }
+  .form-list input {
+    padding:1% 0;
+    width:90vw
+  }
+  .formData .legend {
+    padding-left:7%;
   }
 }
 /*---------------------------------------------------------------------------------------------------------*/
