@@ -747,6 +747,7 @@ input[type="date"]:focus::placeholder {
     display: flex;
     justify-content: center;
     margin:0 auto;
+    padding-bottom: 5%;
 
   }
   /*-- Style globale formulaire --*/ 
@@ -797,6 +798,7 @@ input[type="date"]:focus::placeholder {
     width:90vw;
     margin:0 auto;
     padding-left: 8%;
+    
     
   }
   /*-- Bouton close en croix --*/
