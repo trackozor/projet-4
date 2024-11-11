@@ -48,7 +48,7 @@ html {
 body {
     min-width: 300px;/* Définit une largeur minimale pour garantir une mise en page adaptée aux très petits écrans */
     max-width: 1200px; /* Limite la largeur maximale du contenu à 1200px pour éviter une trop grande extension sur les grands écrans */
-    font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
+    font-family: var(--font-default)-font-default; /* Applique la police par défaut définie dans les variables CSS globales */
     background-color: white; /* Définit une couleur de fond blanche pour le corps du document */
     display: flex; /* Utilise Flexbox pour organiser les enfants du <body> */ 
     flex-direction: column;/* Aligne les éléments enfants verticalement dans une colonne */
@@ -812,14 +812,6 @@ input[type="date"]:focus::placeholder {
     margin: 0;
     
   }
-  #confirmation-modal{
-    height:100%;
-    width:100vw;
-    position: fixed;
-    z-index: 5000; /* S'assure que la modale est au-dessus des autres éléments */
-    overflow: hidden; /* Empêche le défilement à l'intérieur de la modale */
-    justify-content: center; /* Centre horizontalement */
-  }
   /* Creation de la croix avec un + retourné */
   .close  span {
   font-size:var(--font-size-xlarge);
@@ -865,7 +857,7 @@ input[type="date"]:focus::placeholder {
     position: absolute;
     flex-direction: row; /* Organise les liens verticalement pour plié */
     font-size: 0.9rem; /* Taille de police légèrement réduite */
-    right:5%;
+    right:-2%;
     padding :0% 2%;
   }
   /* Style au survol */
@@ -947,11 +939,17 @@ input[type="date"]:focus::placeholder {
     margin: 5%;
     
   }
+  .bground{
+    margin-top: 2%;
+  }
+  
+  .formData{
+  left:-1%;
+  }
 }
-
 /*---------------------------------------------------------------------------------------------------------*/
 /*------------------------------Style pour petites tablettes  et smartphone pliable déplie en portrait entre 600px et 767px--------------------------*/
-@media screen and (min-width: 600px) and (max-width: 767px) and (min-height:400px) {
+@media screen and (min-width: 600px) and (max-width: 767px) and (min-height:400px) and (orientation: portrait) {
     .topnav {
     flex-direction: row;
     justify-content:f;
