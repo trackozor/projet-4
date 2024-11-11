@@ -400,6 +400,7 @@ input[type="date"]:focus::placeholder {
   margin: 0 auto; /* Centre la grille horizontalement */
   align-items: center;
   margin-top:3%;
+
 }
 
 .location-list li p {
@@ -761,10 +762,10 @@ input[type="date"]:focus::placeholder {
 
   .formData .legend {
     font-size: var(--font-size-small);
-    width: 90vw;
+    width: 90%;
     display:flex;
     justify-content: left;
-    padding-left:5%;
+    padding-left:8%;
   }
   /*-- LIste infos personnels --*/
   .form-list li {
@@ -785,11 +786,18 @@ input[type="date"]:focus::placeholder {
     justify-content: center;
     margin:0 auto
 
+  
   }
-
+  .location-list{
+    padding-left: 5%;
+    padding-bottom: 2%;
+  }
   .consentement {
     display: flex;
-    padding-left: 5%;
+    width:90vw;
+    margin:0 auto;
+    padding-left: 8%;
+    
   }
   /*-- Bouton close en croix --*/
   .close {
@@ -802,7 +810,9 @@ input[type="date"]:focus::placeholder {
     margin: 0;
     
   }
-
+  #confirmation-modal{
+    height:100vh
+  }
   /* Creation de la croix avec un + retourné */
   .close  span {
   font-size:var(--font-size-xlarge);
