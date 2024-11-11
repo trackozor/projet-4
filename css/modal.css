@@ -1012,14 +1012,16 @@ input[type="date"]:focus::placeholder {
 
   .content {
     background-color: #0b0c07;
-    width: 50%;
+    width: 95%;
     display:block;
     margin: 0 auto;
     justify-content: center;
   }
   .modal-body {
-    width: 80%;
+    width: 95%;
     padding: 0;
+    padding-left: 5%;
+    padding-bottom:5%;
     margin: 0 auto;
     justify-content: center;
   }
@@ -1027,7 +1029,13 @@ input[type="date"]:focus::placeholder {
     width: 100%;
     justify-content: center;
   }
-  /* Styles pour petites tablettes */
+  .form-list input {
+    padding:1% 0;
+    width:90vw;
+  }
+  .btn-submit{
+    justify-content: center;
+  }
 }
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -1629,24 +1637,15 @@ input[type="date"]:focus::placeholder {
   }
   .bground {
     position: fixed;
-    width: 100%;
-    background-color:white;
+    max-width: 1440px;
+    background-color:black;
     justify-content: center;
-    padding-top: 2%;  
+      
   }
 
-  .content {
-    background-color: #0b0c07;
-    width: 50vw;
-    display:block;
-    margin: 0 auto;
-    justify-content: center;
-  }
+
   .modal-body {
-    position: relative;
-    width: 100%;
-    padding: 0;
-    left:10%;
+    width:80%;
     margin: 0 auto;
     justify-content: center;
   }
@@ -1662,8 +1661,9 @@ input[type="date"]:focus::placeholder {
     border-radius: 0.5rem; 
   }
   .formData {
-    width: 95%;
+    width: 80%;
     justify-content: center;
+    margin:0 auto;
   }
   .formData legend {
     position: relative;
