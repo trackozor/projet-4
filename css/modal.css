@@ -766,7 +766,7 @@ input[type="date"]:focus::placeholder {
     width: 90%;
     display:flex;
     justify-content: left;
-    padding-left:8%;
+    padding-left:6%;
   }
   /*-- LIste infos personnels --*/
   .form-list li {
@@ -813,7 +813,12 @@ input[type="date"]:focus::placeholder {
     
   }
   #confirmation-modal{
-    height:100vh
+    height:100%;
+    width:100vw;
+    position: fixed;
+    z-index: 5000; /* S'assure que la modale est au-dessus des autres éléments */
+    overflow: hidden; /* Empêche le défilement à l'intérieur de la modale */
+    justify-content: center; /* Centre horizontalement */
   }
   /* Creation de la croix avec un + retourné */
   .close  span {

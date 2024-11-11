@@ -191,6 +191,10 @@ function openConfirmationModal() {
 closeModalBtn.addEventListener('click', function () {
   confirmationModal.style.display = 'none'; // Cache la modale
   document.body.style.overflow = 'auto'; // Réactive le défilement de la page
+  if (isLandscape) {
+    // Force le défilement vers le haut en mode paysage
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 });
 
 // Fonction pour afficher un message d'erreur et ajouter la bordure rouge
