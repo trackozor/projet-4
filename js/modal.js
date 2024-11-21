@@ -14,55 +14,69 @@
 
 
 // ======= Éléments du DOM =======
-const navElement = document.getElementById("Topnav"); // Élément de navigation pour gérer le menu responsive
-const modalbg = document.querySelector(".bground"); // Élément contenant l'arrière-plan et le contenu de la modale
-const heroSection = document.querySelector(".hero-section"); // Section "hero" de la page
-const modalbtn = document.querySelectorAll(".modal-btn"); // Boutons pour ouvrir la modale
-const formData = document.querySelectorAll(".formData"); // Conteneurs de données du formulaire
+const navElement = document.getElementById("Topnav"); // Élément principal de la navigation (utilisé pour le menu responsive)
+const modalbg = document.querySelector(".bground"); // Conteneur de la modale, incluant l'arrière-plan et le contenu
+const heroSection = document.querySelector(".hero-section"); // Section principale "hero", souvent utilisée pour des ajustements de style
+const modalbtn = document.querySelectorAll(".modal-btn"); // Boutons permettant d'ouvrir la modale
+const formData = document.querySelectorAll(".formData"); // Conteneurs individuels des champs du formulaire
 const closeBtn = document.querySelector(".close"); // Bouton pour fermer la modale
-const inputs = document.querySelectorAll('input'); // Champs de saisie du formulaire
-const birthdateInput = document.getElementById('birthdate'); // Champ pour la date de naissance
-const confirmationModal = document.getElementById('confirmation-modal'); // Élément de la modale de confirmation
-const closeModalBtn = document.getElementById('close-modal-btn'); // Bouton pour fermer la modale de confirmation
+const inputs = document.querySelectorAll('input'); // Tous les champs de saisie du formulaire (prénom, e-mail, etc.)
+const birthdateInput = document.getElementById('birthdate'); // Champ spécifique pour saisir la date de naissance
+const confirmationModal = document.getElementById('confirmation-modal'); // Élément de la modale de confirmation (affiché après soumission)
+const closeModalBtn = document.getElementById('close-modal-btn'); // Bouton permettant de fermer la modale de confirmation
 
 // ======= Styles pour les logs =======
 const logStyles = {
-    info: getComputedStyle(document.documentElement).getPropertyValue('--log-info').trim(),
-    warn: getComputedStyle(document.documentElement).getPropertyValue('--log-warn').trim(),
-    error: getComputedStyle(document.documentElement).getPropertyValue('--log-error').trim(),
-    default: getComputedStyle(document.documentElement).getPropertyValue('--log-default').trim(),
+    info: getComputedStyle(document.documentElement).getPropertyValue('--log-info').trim(), // Style pour les logs d'information
+    warn: getComputedStyle(document.documentElement).getPropertyValue('--log-warn').trim(), // Style pour les avertissements
+    error: getComputedStyle(document.documentElement).getPropertyValue('--log-error').trim(), // Style pour les erreurs critiques
+    default: getComputedStyle(document.documentElement).getPropertyValue('--log-default').trim(), // Style par défaut pour les logs
 };
 
 // ======= Variables pour les médias =======
-const isMobile = window.matchMedia("(max-width: 767px)").matches; // Vérifie si l'écran est mobile
-const isLandscape = window.matchMedia("(orientation: landscape)").matches; // Vérifie si l'écran est en paysage
+const isMobile = window.matchMedia("(max-width: 767px)").matches; // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
+const isLandscape = window.matchMedia("(orientation: landscape)").matches; // Indique si l'écran est en mode paysage (orientation horizontale)
 
 // ======= État global =======
-let modalOpen = false; // Indique si la modale est ouverte
+let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale. "true" signifie que la modale est ouverte
+
 
 
 /*========================================= */
 /*=========== Fonctions ===================*/
 /*========================================= */
 
-// Fonction centralisation des logs
+/** 
+ * Fonction utilitaire pour loguer des événements avec des styles dans la console.
+ * @param {string} type - Type de log : 'info', 'warn', 'error', ou 'default'.
+ * @param {string} message - Message à afficher dans la console.
+ * @param {Object} [data={}] - Données supplémentaires (optionnelles) à afficher dans la console.
+ * @example
+ * logEvent('info', 'Opération réussie.');
+ * logEvent('warn', 'Attention, comportement inattendu détecté.', { code: 123 });
+ * logEvent('error', 'Erreur critique.', { details: 'Connection failed' });
+ * logEvent('unknown', 'Type de log non spécifié.'); // Utilisera le style par défaut
+ */
 function logEvent(type, message, data = {}) {
-    const style = logStyles[type] || logStyles.default; // Récupère le style associé ou applique le style par défaut
+    // Récupère le style correspondant au type de log ou applique le style par défaut
+    const style = logStyles[type] || logStyles.default;
 
+    // Utilise un switch pour différencier les types de logs et leur affichage
     switch (type) {
-        case 'info':
+        case 'info': // Log informatif
             console.log(`%c[INFO] ${message}`, style, data);
             break;
-        case 'warn':
+        case 'warn': // Log d'avertissement
             console.warn(`%c[WARN] ${message}`, style, data);
             break;
-        case 'error':
+        case 'error': // Log d'erreur critique
             console.error(`%c[ERROR] ${message}`, style, data);
             break;
-        default:
+        default: // Log générique ou inconnu
             console.log(`%c[LOG] ${message}`, style, data);
     }
 }
+
 
 
 // Fonction pour activer/désactiver le menu responsive
@@ -87,22 +101,6 @@ function editNav() {
   }
 }
 
-// Placeholder par défaut pour le champ date
-birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
-
-// Ajoute un événement focus pour rendre le placeholder visible
-birthdateInput.addEventListener('focus', () => {
-  birthdateInput.placeholder = 'jj/mm/aaaa'; // Remet le placeholder lors du focus
-});
-
-// Ajoute un événement blur pour masquer le placeholder si l'input est vide
-birthdateInput.addEventListener('blur', () => {
-  if (!birthdateInput.value) {
-    birthdateInput.placeholder = ''; // Supprime le placeholder si aucun texte n'est saisi
-  }
-});
-
-
 /*===== Fonction pour afficher la modale ======*/
 function launchModal() {
   resetForm();
@@ -124,138 +122,92 @@ function closeModal() {
   modalOpen = false; // Mettre à jour l'état de fermeture de la modale
 }
 
-/*===== Gestion des clics sur l'arrière-plan pour fermer la modale =====*/
-modalbg.addEventListener('click', (event) => {
-  // Vérifie si l'utilisateur a cliqué directement sur l'arrière-plan (et non sur le contenu)
-  if (event.target === modalbg) {
-    closeModal();
-  }
-});
-
-
-/*==== Écouteurs d'événements pour chaque champ d'entrée =====*/
-inputs.forEach((input) => {
-  input.addEventListener('input', validateField); // Valide en temps réel
-  input.addEventListener('blur', validateField); // Valide lorsque le champ perd le focus
-});
-
 /*==== Fonction de validation des champs ====*/
 function validateField(event) {
-  const field = event.target;
-  let errorMessage = '';
+    const field = event.target;
+    let errorMessage = '';
 
-  // Validation en fonction de l'ID du champ
-  switch (field.id) {
+    // Log de début de validation
+    logEvent('info', `Validation du champ : ${field.id}`, { value: field.value.trim() });
 
-    /*===Vérification pour le champ "prénom"===*/
-    case 'first': 
-        if (field.value.trim() === '') { 
-            // Vérifie si le champ est vide après suppression des espaces inutiles
-            errorMessage = 'Le prénom est requis.';
-        } else if (field.value.trim().length < 2) { 
-            // Vérifie si le prénom contient au moins 2 caractères
-            errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
-        } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())){ 
-            // Vérifie si le prénom contient uniquement des lettres (avec ou sans accents),
-            // des espaces, des traits d’union ou des apostrophes, 
-            // et s'assure qu'il n'y a pas de séparateurs consécutifs ou en début/fin
-            errorMessage = 'Le prénom ne doit contenir que des lettres, des espaces ou des traits d’union.';
+
+    // Vérifie si le champ est vide avant toute autre validation
+    if (field.value.trim() === '') {
+        switch (field.id) {
+            case 'first':
+                errorMessage = 'Le prénom est requis.';
+                break;
+            case 'last':
+                errorMessage = 'Le nom est requis.';
+                break;
+            case 'email':
+                errorMessage = 'L\'e-mail est requis.';
+                break;
+            case 'birthdate':
+                errorMessage = 'La date de naissance est requise.';
+                break;
+            case 'quantity':
+                errorMessage = 'Le nombre de participations est requis.';
+                break;
+            case 'checkbox1':
+                if (!field.checked) {
+                    errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
+                }
+                break;
         }
-        break; // Sort du cas 'first'
-
-
-    /*==== Vérification pour le champ "nom"=====*/
-    case 'last': // Vérification pour le champ "nom"
-      if (field.value.trim() === '') { 
-          // Vérifie si le champ est vide après suppression des espaces inutiles
-          errorMessage = 'Le nom est requis.';
-      } else if (field.value.trim().length < 2) { 
-          // Vérifie si le nom contient au moins 2 caractères
-          errorMessage = 'Le nom doit contenir au moins 2 caractères.';
-      } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())) { 
-          // Vérifie si le nom contient uniquement des lettres (avec ou sans accents),
-          // des espaces, des traits d’union ou des apostrophes, et s'assure qu'il
-          // n'y a pas de séparateurs consécutifs ou en début/fin
-          errorMessage = 'Le nom ne doit contenir que des lettres, des espaces, des apostrophes ou des traits d’union.';
-      }
-      break; // Sort du cas 'last'
-
-
-    /*===== Vérification pour le champ "e-mail"====*/
-    case 'email': 
-      if (field.value.trim() === '') { 
-          // Vérifie si le champ est vide après suppression des espaces inutiles
-          errorMessage = 'L\'e-mail est requis.';
-      } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) { 
-          // Vérifie si l'adresse e-mail respecte un format valide
-          errorMessage = 'Veuillez entrer une adresse e-mail valide.';
-      }
-      break; // Sort du cas 'email'
-
-
-    /*===== Vérification pour le champ "date de naissance"====*/
-    case 'birthdate': 
-    if (field.value.trim() === '') { 
-        // Vérifie si le champ est vide après suppression des espaces inutiles
-        errorMessage = 'La date de naissance est requise.';
     } else {
-        const birthDate = new Date(field.value); // Convertit la valeur saisie en objet Date
-        const today = new Date(); // Obtient la date actuelle
-        if (birthDate >= today) { 
-            // Vérifie si la date de naissance est dans le futur ou aujourd'hui
-            errorMessage = 'La date de naissance doit être dans le passé.';
+        // Effectue des validations supplémentaires si le champ n'est pas vide
+        switch (field.id) {
+            case 'first':
+                if (field.value.trim().length < 2) {
+                    errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
+                } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())) {
+                    errorMessage = 'Le prénom ne doit contenir que des lettres, des espaces ou des traits d’union.';
+                }
+                break;
+
+            case 'last':
+                if (field.value.trim().length < 2) {
+                    errorMessage = 'Le nom doit contenir au moins 2 caractères.';
+                } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())) {
+                    errorMessage = 'Le nom ne doit contenir que des lettres, des espaces, des apostrophes ou des traits d’union.';
+                }
+                break;
+
+            case 'email':
+                if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) {
+                    errorMessage = 'Veuillez entrer une adresse e-mail valide.';
+                }
+                break;
+
+            case 'birthdate':
+                const birthDate = new Date(field.value); // Convertit la valeur saisie en objet Date
+                const today = new Date(); // Obtient la date actuelle
+                if (birthDate >= today) {
+                    errorMessage = 'La date de naissance doit être dans le passé.';
+                }
+                break;
+
+            case 'quantity':
+                if (isNaN(field.value) || field.value < 0 || field.value > 99) {
+                    errorMessage = 'Le nombre de participations doit être entre 0 et 99.';
+                }
+                break;
         }
     }
-    break; // Sort du cas 'birthdate'
 
-/*=== Vérification pour le champ "nombre de participations"===*/
-    case 'quantity': 
-    if (field.value.trim() === '') { 
-        // Vérifie si le champ est vide après suppression des espaces inutiles
-        errorMessage = 'Le nombre de participations est requis.';
-    } else if (isNaN(field.value) || field.value < 0 || field.value > 99) { 
-        // Vérifie si la valeur saisie n'est pas un nombre ou si elle n'est pas comprise entre 0 et 99
-        errorMessage = 'Le nombre de participations doit être entre 0 et 99.';
+    // Affiche ou supprime l'erreur
+    if (errorMessage) {
+        showError(errorMessage, field);
+        field.classList.add('error'); // Ajouter la bordure rouge
+        logEvent('warn', `Erreur détectée dans le champ : ${field.id}`, { errorMessage });
+    } else {
+        removeError(field);
+        field.classList.remove('error'); // Retirer la bordure rouge
+        logEvent('info', `Validation réussie pour le champ : ${field.id}`);
     }
-    break; // Sort du cas 'quantity'
-
-    case 'checkbox1': // Vérification pour la case à cocher "conditions d'utilisation"
-    if (!field.checked) { 
-        // Vérifie si la case n'est pas cochée
-        errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
-    }
-    break; // Sort du cas 'checkbox1'
-  }
-
-  // Affiche ou supprime l'erreur
-  if (errorMessage) {
-    showError(errorMessage, field);
-    field.classList.add('error'); // Ajouter la bordure rouge
-  } else {
-    removeError(field);
-    field.classList.remove('error'); // Retirer la bordure rouge
-  }
 }
 
-document.querySelector('form').addEventListener('submit', function (event) {
-  let isValid = true;
-
-  // Valide tous les champs obligatoires
-  inputs.forEach((input) => {
-    validateField({ target: input });
-    if (input.classList.contains('error')) {
-      isValid = false; // Si une erreur est présente, le formulaire n'est pas valide
-    }
-  });
-
-  if (!isValid) {
-    event.preventDefault(); // Empêche la soumission du formulaire
-    alert('Veuillez corriger les erreurs avant de soumettre le formulaire.');
-  } else {
-    event.preventDefault(); // Empêche la redirection par défaut (si elle est gérée différemment)
-    openConfirmationModal(); // Ouvre la modale de confirmation
-  }
-});
 
 // Fonction pour ouvrir la modale de confirmation
 function openConfirmationModal() {
@@ -272,6 +224,7 @@ closeModalBtn.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 });
+
 
 // Fonction pour afficher un message d'erreur et ajouter la bordure rouge
 function showError(message, inputElement) {
@@ -307,6 +260,64 @@ function removeError(inputElement) {
   }
 }
 
+// Placeholder par défaut pour le champ date
+birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
+
+// Ajoute un événement focus pour rendre le placeholder visible
+birthdateInput.addEventListener('focus', () => {
+  birthdateInput.placeholder = 'jj/mm/aaaa'; // Remet le placeholder lors du focus
+});
+
+// Ajoute un événement blur pour masquer le placeholder si l'input est vide
+birthdateInput.addEventListener('blur', () => {
+  if (!birthdateInput.value) {
+    birthdateInput.placeholder = ''; // Supprime le placeholder si aucun texte n'est saisi
+  }
+});
+
+
+
+
+/*===== Gestion des clics sur l'arrière-plan pour fermer la modale =====*/
+modalbg.addEventListener('click', (event) => {
+  // Vérifie si l'utilisateur a cliqué directement sur l'arrière-plan (et non sur le contenu)
+  if (event.target === modalbg) {
+    closeModal();
+  }
+});
+
+
+/*==== Écouteurs d'événements pour chaque champ d'entrée =====*/
+inputs.forEach((input) => {
+  input.addEventListener('input', validateField); // Valide en temps réel
+  input.addEventListener('blur', validateField); // Valide lorsque le champ perd le focus
+});
+
+
+document.querySelector('form').addEventListener('submit', function (event) {
+  let isValid = true;
+
+  // Valide tous les champs obligatoires
+  inputs.forEach((input) => {
+    validateField({ target: input });
+    if (input.classList.contains('error')) {
+      isValid = false; // Si une erreur est présente, le formulaire n'est pas valide
+    }
+  });
+
+  if (!isValid) {
+    event.preventDefault(); // Empêche la soumission du formulaire
+    alert('Veuillez corriger les erreurs avant de soumettre le formulaire.');
+  } else {
+    event.preventDefault(); // Empêche la redirection par défaut (si elle est gérée différemment)
+    openConfirmationModal(); // Ouvre la modale de confirmation
+  }
+});
+
+
+
+
+
 // Initialisation des événements au chargement de la page
 document.addEventListener('DOMContentLoaded', function () {
   try {
@@ -333,15 +344,3 @@ document.addEventListener('DOMContentLoaded', function () {
     console.error('Erreur lors de l\'initialisation : ', error);
   }
   });
-// Fonction pour réinitialiser tous les champs et messages d'erreur
-function resetForm() {
-  inputs.forEach(input => {
-    input.value = ''; // Vide le champ
-    input.classList.remove('error-input'); // Retire la bordure rouge en cas d'erreur
-  });
-
-  // Supprime tous les messages d'erreur affichés
-  document.querySelectorAll('.error-modal').forEach(errorTooltip => {
-    errorTooltip.remove();
-  });
-}
