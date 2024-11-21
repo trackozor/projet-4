@@ -1,26 +1,29 @@
-/*
- * ==========================================================
+
+/* ==========================================================
  * Nom du fichier : modal.js
  * Description    : Script JavaScript pour la gestion de la modale,
  *                  validation des formulaires et comportement responsive.
  * Auteur         : Trackozor
  * Date           : 21/411/2024
- * ==========================================================
- */
+ * ==========================================================*/
 
-// ======= Déclaration des variables =======
+
+/*=========================================  */
+/*======= Déclaration des variables ======= */           
+/*========================================= */
+
 
 // Éléments du DOM
-const navElement = document.getElementById("Topnav");
-const modalbg = document.querySelector(".bground");
-const heroSection = document.querySelector(".hero-section"); // Correction du sélecteur
-const modalbtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector(".close");
-const inputs = document.querySelectorAll('input');
-const birthdateInput = document.getElementById('birthdate');
-const confirmationModal = document.getElementById('confirmation-modal');
-const closeModalBtn = document.getElementById('close-modal-btn');
+const navElement = document.getElementById("Topnav"); // Élément de navigation pour gérer le menu responsive
+const modalbg = document.querySelector(".bground"); // Élément contenant l'arrière-plan et le contenu de la modale
+const heroSection = document.querySelector(".hero-section"); // Section "hero" de la page, ajustée en fonction des interactions
+const modalbtn = document.querySelectorAll(".modal-btn"); // Boutons pour ouvrir la modale
+const formData = document.querySelectorAll(".formData"); // Ensemble des conteneurs de données du formulaire
+const closeBtn = document.querySelector(".close"); // Bouton pour fermer la modale
+const inputs = document.querySelectorAll('input'); // Tous les champs de saisie du formulaire
+const birthdateInput = document.getElementById('birthdate'); // Champ spécifique pour la date de naissance
+const confirmationModal = document.getElementById('confirmation-modal'); // Élément de la modale de confirmation
+const closeModalBtn = document.getElementById('close-modal-btn'); // Bouton pour fermer la modale de confirmation
 
 // Variables pour les médias
 const isMobile = window.matchMedia("(max-width: 767px)").matches;
@@ -29,7 +32,10 @@ const isLandscape = window.matchMedia("(orientation: landscape)").matches;
 // État d'ouverture de la modale
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale
 
-// ======= Fonctions =======
+
+/*========================================= */
+/* =========== Fonctions ===================*/
+/*========================================= */
 
 // Fonction pour activer/désactiver le menu responsive
 function editNav() {
@@ -112,61 +118,79 @@ function validateField(event) {
 
   // Validation en fonction de l'ID du champ
   switch (field.id) {
-    case 'first':
-      if (field.value.trim() === '') {
-        errorMessage = 'Le prénom est requis.';
-      } else if (field.value.trim().length < 2) {
-        errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
-      } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ\- ]+$/.test(field.value.trim())) {
-        errorMessage = 'Le prénom ne doit contenir que des lettres, des espaces ou des traits d’union.';
-      }
-      break;
+
+    /* ===Vérification pour le champ "prénom"===*/
+    case 'first': 
+        if (field.value.trim() === '') { 
+            // Vérifie si le champ est vide après suppression des espaces inutiles
+            errorMessage = 'Le prénom est requis.';
+        } else if (field.value.trim().length < 2) { 
+            // Vérifie si le prénom contient au moins 2 caractères
+            errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
+        } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ\- ]+$/.test(field.value.trim())) { 
+            // Vérifie si le prénom contient uniquement des lettres, espaces ou traits d’union
+            errorMessage = 'Le prénom ne doit contenir que des lettres, des espaces ou des traits d’union.';
+        }
+        break; // Sort du cas 'first'
 
 
-    case 'last':
-      if (field.value.trim() === '') {
+    /*==== Vérification pour le champ "nom"=====*/
+    case 'last': 
+    if (field.value.trim() === '') { 
+        // Vérifie si le champ est vide après suppression des espaces inutiles
         errorMessage = 'Le nom est requis.';
-      } else if (field.value.length < 2) {
+    } else if (field.value.length < 2) { 
+        // Vérifie si le nom contient au moins 2 caractères
         errorMessage = 'Le nom doit contenir au moins 2 caractères.';
-      } else if (!/^[a-zA-Z]+$/.test(field.value)) {
+    } else if (!/^[a-zA-Z]+$/.test(field.value)) { 
+        // Vérifie si le nom contient uniquement des lettres (sans espaces ni caractères spéciaux)
         errorMessage = 'Le nom ne doit contenir que des lettres.';
-      }
-      break;
+    }
+    break; // Sort du cas 'last'
 
-    case 'email':
-        if (field.value.trim() === '') {
-          errorMessage = 'L\'e-mail est requis.';
-        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) {
-          errorMessage = 'Veuillez entrer une adresse e-mail valide.';
-        }
-        break;
+    /*===== Vérification pour le champ "e-mail"====*/
+    case 'email': 
+    if (field.value.trim() === '') { 
+        // Vérifie si le champ est vide après suppression des espaces inutiles
+        errorMessage = 'L\'e-mail est requis.';
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) { 
+        // Vérifie si l'adresse e-mail respecte un format valide
+        errorMessage = 'Veuillez entrer une adresse e-mail valide.';
+    }
+    break; // Sort du cas 'email'
 
-
-    case 'birthdate':
-      if (field.value.trim() === '') {
+    /*===== Vérification pour le champ "date de naissance"====*/
+    case 'birthdate': 
+    if (field.value.trim() === '') { 
+        // Vérifie si le champ est vide après suppression des espaces inutiles
         errorMessage = 'La date de naissance est requise.';
-      } else {
-        const birthDate = new Date(field.value);
-        const today = new Date();
-        if (birthDate >= today) {
-          errorMessage = 'La date de naissance doit être dans le passé.';
+    } else {
+        const birthDate = new Date(field.value); // Convertit la valeur saisie en objet Date
+        const today = new Date(); // Obtient la date actuelle
+        if (birthDate >= today) { 
+            // Vérifie si la date de naissance est dans le futur ou aujourd'hui
+            errorMessage = 'La date de naissance doit être dans le passé.';
         }
-      }
-      break;
+    }
+    break; // Sort du cas 'birthdate'
 
-    case 'quantity':
-      if (field.value.trim() === '') {
+
+    case 'quantity': // Vérification pour le champ "nombre de participations"
+    if (field.value.trim() === '') { 
+        // Vérifie si le champ est vide après suppression des espaces inutiles
         errorMessage = 'Le nombre de participations est requis.';
-      } else if (isNaN(field.value) || field.value < 0 || field.value > 99) {
+    } else if (isNaN(field.value) || field.value < 0 || field.value > 99) { 
+        // Vérifie si la valeur saisie n'est pas un nombre ou si elle n'est pas comprise entre 0 et 99
         errorMessage = 'Le nombre de participations doit être entre 0 et 99.';
-      }
-      break;
+    }
+    break; // Sort du cas 'quantity'
 
-    case 'checkbox1':
-      if (!field.checked) {
+    case 'checkbox1': // Vérification pour la case à cocher "conditions d'utilisation"
+    if (!field.checked) { 
+        // Vérifie si la case n'est pas cochée
         errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
-      }
-      break;
+    }
+    break; // Sort du cas 'checkbox1'
   }
 
   // Affiche ou supprime l'erreur
