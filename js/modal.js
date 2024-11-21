@@ -353,6 +353,7 @@ closeModalBtn.addEventListener('click', function () {
 
 
 /*================ Fonction pour afficher un message d'erreur et ajouter la bordure rouge =======*/
+
 /**
  * Affiche un message d'erreur sous un champ d'entrée et ajoute une bordure rouge.
  * @param {string} message - Message d'erreur à afficher.
@@ -396,6 +397,8 @@ function showError(message, inputElement) {
 
 
 /*======== Fonction pour supprimer un message d'erreur et la bordure rouge ==========*/
+
+
 /**
  * Supprime un message d'erreur et retire la bordure rouge d'un champ d'entrée.
  * @param {HTMLElement} inputElement - Champ d'entrée cible.
