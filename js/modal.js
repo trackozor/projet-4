@@ -136,10 +136,10 @@ function editNav() {
 
 
 
-/**
- *=========== Fonction pour afficher la modale et empêcher le défilement en arrière-plan. ===========
 
+/*=========== Fonction pour afficher la modale et empêcher le défilement en arrière-plan. ===========*/
 
+/** 
  * @returns {void}
  */
 function launchModal() {
@@ -169,6 +169,7 @@ function launchModal() {
 
 
 /*===== Fonction pour fermer la modale =====*/
+
 /**
  * Fonction pour fermer la modale et rétablir l'état de la page.
  * @returns {void}
@@ -320,6 +321,7 @@ function openConfirmationModal() {
 
 
 /*========== Fonction pour fermer la modale ===========*/
+
 /**
  * Gestion de la fermeture de la modale de confirmation.
  * @returns {void}
@@ -417,120 +419,89 @@ function removeError(inputElement) {
   }
 }
 
+
+/**
+ * Point d'entrée principal du script.
+ * Configure les placeholders, les écouteurs d'événements, et initialise les modales.
+ */
+function main() {
+    logEvent('info', 'Début de l\'initialisation principale.');
+
+    // Initialisations (placeholders, écouteurs, etc.)
+    birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
+
+    birthdateInput.addEventListener('focus', () => {
+        logEvent('info', 'Focus sur le champ de date : affichage du placeholder.');
+        birthdateInput.placeholder = 'jj/mm/aaaa'; // Remet le placeholder lors du focus
+    });
+
+    birthdateInput.addEventListener('blur', () => {
+        if (!birthdateInput.value) {
+            logEvent('info', 'Champ de date vide après perte du focus : suppression du placeholder.');
+            birthdateInput.placeholder = ''; // Supprime le placeholder si aucun texte n'est saisi
+        }
+    });
+
+    modalbg.addEventListener('click', (event) => {
+        if (event.target === modalbg) {
+            logEvent('info', 'Clic détecté sur l\'arrière-plan : fermeture de la modale.');
+            closeModal();
+        }
+    });
+
+    inputs.forEach((input) => {
+        input.addEventListener('input', (event) => {
+            logEvent('info', `Modification détectée sur le champ : ${event.target.id}`);
+            validateField(event); // Valide en temps réel
+        });
+        input.addEventListener('blur', (event) => {
+            logEvent('info', `Perte de focus sur le champ : ${event.target.id}`);
+            validateField(event); // Valide lors de la perte de focus
+        });
+    });
+
+    document.querySelector('form').addEventListener('submit', function (event) {
+        let isValid = true;
+        logEvent('info', 'Tentative de soumission du formulaire.');
+
+        // Valide tous les champs obligatoires
+        inputs.forEach((input) => {
+            validateField({ target: input });
+            if (input.classList.contains('error')) {
+                isValid = false; // Si une erreur est présente, le formulaire n'est pas valide
+            }
+        });
+
+        if (!isValid) {
+            event.preventDefault(); // Empêche la soumission du formulaire
+            logEvent('warn', 'Échec de la soumission : des erreurs sont présentes dans le formulaire.');
+            alert('Veuillez corriger les erreurs avant de soumettre le formulaire.');
+        } else {
+            event.preventDefault(); // Empêche la redirection par défaut (si elle est gérée différemment)
+            logEvent('info', 'Formulaire valide : ouverture de la modale de confirmation.');
+            openConfirmationModal(); // Ouvre la modale de confirmation
+        }
+    });
+
+    modalbtn.forEach(btn => btn.addEventListener('click', () => {
+        logEvent('info', 'Clic sur un bouton d\'ouverture de modale.');
+        launchModal();
+    }));
+
+    closeBtn.addEventListener('click', () => {
+        logEvent('info', 'Clic sur le bouton de fermeture de modale.');
+        closeModal();
+    });
+
+    logEvent('info', 'Initialisation principale terminée.');
+}
+
 /*                            =========================================                */
 /*                            ===========Déroulement du script ========                */
 /*                            =========================================               */
 
 
-// ====== Placeholder dynamique pour le champ date ======
-/**
- * Placeholder par défaut pour le champ de date (vide au chargement).
- */
-birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
-
-/**
- * Ajoute un placeholder lors du focus.
- */
-birthdateInput.addEventListener('focus', () => {
-    logEvent('info', 'Focus sur le champ de date : affichage du placeholder.');
-    birthdateInput.placeholder = 'jj/mm/aaaa'; // Remet le placeholder lors du focus
-});
-
-/**
- * Supprime le placeholder lorsque le champ perd le focus et est vide.
- */
-birthdateInput.addEventListener('blur', () => {
-    if (!birthdateInput.value) {
-        logEvent('info', 'Champ de date vide après perte du focus : suppression du placeholder.');
-        birthdateInput.placeholder = ''; // Supprime le placeholder si aucun texte n'est saisi
-    }
-});
-
-// ====== Gestion des clics sur l'arrière-plan pour fermer la modale ======
-/**
- * Ferme la modale si l'utilisateur clique directement sur l'arrière-plan.
- */
-modalbg.addEventListener('click', (event) => {
-    if (event.target === modalbg) {
-        logEvent('info', 'Clic détecté sur l\'arrière-plan : fermeture de la modale.');
-        closeModal();
-    }
-});
-
-// ====== Écouteurs d'événements pour les champs ======
-/**
- * Valide les champs en temps réel et lors de la perte de focus.
- */
-inputs.forEach((input) => {
-    input.addEventListener('input', (event) => {
-        logEvent('info', `Modification détectée sur le champ : ${event.target.id}`);
-        validateField(event); // Valide en temps réel
-    });
-    input.addEventListener('blur', (event) => {
-        logEvent('info', `Perte de focus sur le champ : ${event.target.id}`);
-        validateField(event); // Valide lors de la perte de focus
-    });
-});
-
-// ====== Gestion de la soumission du formulaire ======
-document.querySelector('form').addEventListener('submit', function (event) {
-    let isValid = true;
-    logEvent('info', 'Tentative de soumission du formulaire.');
-
-    // Valide tous les champs obligatoires
-    inputs.forEach((input) => {
-        validateField({ target: input });
-        if (input.classList.contains('error')) {
-            isValid = false; // Si une erreur est présente, le formulaire n'est pas valide
-        }
-    });
-
-    if (!isValid) {
-        event.preventDefault(); // Empêche la soumission du formulaire
-        logEvent('warn', 'Échec de la soumission : des erreurs sont présentes dans le formulaire.');
-        alert('Veuillez corriger les erreurs avant de soumettre le formulaire.');
-    } else {
-        event.preventDefault(); // Empêche la redirection par défaut (si elle est gérée différemment)
-        logEvent('info', 'Formulaire valide : ouverture de la modale de confirmation.');
-        openConfirmationModal(); // Ouvre la modale de confirmation
-    }
-});
-
-// ====== Initialisation des événements au chargement de la page ======
-document.addEventListener('DOMContentLoaded', function () {
-    try {
-        logEvent('info', 'Initialisation des événements au chargement de la page.');
-
-        // Ajout des écouteurs pour chaque champ
-        inputs.forEach(input => {
-            input.addEventListener('input', validateField);
-            input.addEventListener('blur', validateField);
-        });
-
-        // Ajout des écouteurs pour les boutons de la modale
-        modalbtn.forEach(btn => btn.addEventListener('click', () => {
-            logEvent('info', 'Clic sur un bouton d\'ouverture de modale.');
-            launchModal();
-        }));
-
-        closeBtn.addEventListener('click', () => {
-            logEvent('info', 'Clic sur le bouton de fermeture de modale.');
-            closeModal();
-        });
-
-        // Gestion de la soumission du formulaire
-        document.querySelector('form').addEventListener('submit', function (event) {
-            if (!validate()) {
-                logEvent('warn', 'Validation échouée lors de la soumission du formulaire.');
-                event.preventDefault();
-            } else {
-                logEvent('info', 'Soumission réussie.');
-                alert("Votre inscription a été prise en compte !");
-            }
-        });
-
-    } catch (error) {
-        logEvent('error', 'Erreur lors de l\'initialisation des événements.', { error });
-        console.error('Erreur lors de l\'initialisation :', error);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    logEvent('info', 'DOM entièrement chargé. Début de l\'exécution du script principal.');
+    main();
 });
