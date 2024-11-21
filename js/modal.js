@@ -13,29 +13,57 @@
 /*========================================= */
 
 
-// Éléments du DOM
+// ======= Éléments du DOM =======
 const navElement = document.getElementById("Topnav"); // Élément de navigation pour gérer le menu responsive
 const modalbg = document.querySelector(".bground"); // Élément contenant l'arrière-plan et le contenu de la modale
-const heroSection = document.querySelector(".hero-section"); // Section "hero" de la page, ajustée en fonction des interactions
+const heroSection = document.querySelector(".hero-section"); // Section "hero" de la page
 const modalbtn = document.querySelectorAll(".modal-btn"); // Boutons pour ouvrir la modale
-const formData = document.querySelectorAll(".formData"); // Ensemble des conteneurs de données du formulaire
+const formData = document.querySelectorAll(".formData"); // Conteneurs de données du formulaire
 const closeBtn = document.querySelector(".close"); // Bouton pour fermer la modale
-const inputs = document.querySelectorAll('input'); // Tous les champs de saisie du formulaire
-const birthdateInput = document.getElementById('birthdate'); // Champ spécifique pour la date de naissance
+const inputs = document.querySelectorAll('input'); // Champs de saisie du formulaire
+const birthdateInput = document.getElementById('birthdate'); // Champ pour la date de naissance
 const confirmationModal = document.getElementById('confirmation-modal'); // Élément de la modale de confirmation
 const closeModalBtn = document.getElementById('close-modal-btn'); // Bouton pour fermer la modale de confirmation
 
-// Variables pour les médias
-const isMobile = window.matchMedia("(max-width: 767px)").matches;
-const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+// ======= Styles pour les logs =======
+const logStyles = {
+    info: getComputedStyle(document.documentElement).getPropertyValue('--log-info').trim(),
+    warn: getComputedStyle(document.documentElement).getPropertyValue('--log-warn').trim(),
+    error: getComputedStyle(document.documentElement).getPropertyValue('--log-error').trim(),
+    default: getComputedStyle(document.documentElement).getPropertyValue('--log-default').trim(),
+};
 
-// État d'ouverture de la modale
-let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale
+// ======= Variables pour les médias =======
+const isMobile = window.matchMedia("(max-width: 767px)").matches; // Vérifie si l'écran est mobile
+const isLandscape = window.matchMedia("(orientation: landscape)").matches; // Vérifie si l'écran est en paysage
+
+// ======= État global =======
+let modalOpen = false; // Indique si la modale est ouverte
 
 
 /*========================================= */
-/* =========== Fonctions ===================*/
+/*=========== Fonctions ===================*/
 /*========================================= */
+
+// Fonction centralisation des logs
+function logEvent(type, message, data = {}) {
+    const style = logStyles[type] || logStyles.default; // Récupère le style associé ou applique le style par défaut
+
+    switch (type) {
+        case 'info':
+            console.log(`%c[INFO] ${message}`, style, data);
+            break;
+        case 'warn':
+            console.warn(`%c[WARN] ${message}`, style, data);
+            break;
+        case 'error':
+            console.error(`%c[ERROR] ${message}`, style, data);
+            break;
+        default:
+            console.log(`%c[LOG] ${message}`, style, data);
+    }
+}
+
 
 // Fonction pour activer/désactiver le menu responsive
 function editNav() {
@@ -75,7 +103,7 @@ birthdateInput.addEventListener('blur', () => {
 });
 
 
-// Fonction pour afficher la modale
+/*===== Fonction pour afficher la modale ======*/
 function launchModal() {
   resetForm();
   modalbg.style.display = 'block'; // Affiche la modale
@@ -89,14 +117,14 @@ function launchModal() {
   }
 }
 
-// Fonction pour fermer la modale
+/*===== Fonction pour fermer la modale =====*/
 function closeModal() {
   modalbg.style.display = 'none';
   document.body.style.overflow = 'auto';
   modalOpen = false; // Mettre à jour l'état de fermeture de la modale
 }
 
-// Gestion des clics sur l'arrière-plan pour fermer la modale
+/*===== Gestion des clics sur l'arrière-plan pour fermer la modale =====*/
 modalbg.addEventListener('click', (event) => {
   // Vérifie si l'utilisateur a cliqué directement sur l'arrière-plan (et non sur le contenu)
   if (event.target === modalbg) {
@@ -105,13 +133,13 @@ modalbg.addEventListener('click', (event) => {
 });
 
 
-// Écouteurs d'événements pour chaque champ d'entrée
+/*==== Écouteurs d'événements pour chaque champ d'entrée =====*/
 inputs.forEach((input) => {
   input.addEventListener('input', validateField); // Valide en temps réel
   input.addEventListener('blur', validateField); // Valide lorsque le champ perd le focus
 });
 
-// Fonction de validation des champs
+/*==== Fonction de validation des champs ====*/
 function validateField(event) {
   const field = event.target;
   let errorMessage = '';
@@ -119,7 +147,7 @@ function validateField(event) {
   // Validation en fonction de l'ID du champ
   switch (field.id) {
 
-    /* ===Vérification pour le champ "prénom"===*/
+    /*===Vérification pour le champ "prénom"===*/
     case 'first': 
         if (field.value.trim() === '') { 
             // Vérifie si le champ est vide après suppression des espaces inutiles
@@ -127,37 +155,43 @@ function validateField(event) {
         } else if (field.value.trim().length < 2) { 
             // Vérifie si le prénom contient au moins 2 caractères
             errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
-        } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ\- ]+$/.test(field.value.trim())) { 
-            // Vérifie si le prénom contient uniquement des lettres, espaces ou traits d’union
+        } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())){ 
+            // Vérifie si le prénom contient uniquement des lettres (avec ou sans accents),
+            // des espaces, des traits d’union ou des apostrophes, 
+            // et s'assure qu'il n'y a pas de séparateurs consécutifs ou en début/fin
             errorMessage = 'Le prénom ne doit contenir que des lettres, des espaces ou des traits d’union.';
         }
         break; // Sort du cas 'first'
 
 
     /*==== Vérification pour le champ "nom"=====*/
-    case 'last': 
-    if (field.value.trim() === '') { 
-        // Vérifie si le champ est vide après suppression des espaces inutiles
-        errorMessage = 'Le nom est requis.';
-    } else if (field.value.length < 2) { 
-        // Vérifie si le nom contient au moins 2 caractères
-        errorMessage = 'Le nom doit contenir au moins 2 caractères.';
-    } else if (!/^[a-zA-Z]+$/.test(field.value)) { 
-        // Vérifie si le nom contient uniquement des lettres (sans espaces ni caractères spéciaux)
-        errorMessage = 'Le nom ne doit contenir que des lettres.';
-    }
-    break; // Sort du cas 'last'
+    case 'last': // Vérification pour le champ "nom"
+      if (field.value.trim() === '') { 
+          // Vérifie si le champ est vide après suppression des espaces inutiles
+          errorMessage = 'Le nom est requis.';
+      } else if (field.value.trim().length < 2) { 
+          // Vérifie si le nom contient au moins 2 caractères
+          errorMessage = 'Le nom doit contenir au moins 2 caractères.';
+      } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())) { 
+          // Vérifie si le nom contient uniquement des lettres (avec ou sans accents),
+          // des espaces, des traits d’union ou des apostrophes, et s'assure qu'il
+          // n'y a pas de séparateurs consécutifs ou en début/fin
+          errorMessage = 'Le nom ne doit contenir que des lettres, des espaces, des apostrophes ou des traits d’union.';
+      }
+      break; // Sort du cas 'last'
+
 
     /*===== Vérification pour le champ "e-mail"====*/
     case 'email': 
-    if (field.value.trim() === '') { 
-        // Vérifie si le champ est vide après suppression des espaces inutiles
-        errorMessage = 'L\'e-mail est requis.';
-    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) { 
-        // Vérifie si l'adresse e-mail respecte un format valide
-        errorMessage = 'Veuillez entrer une adresse e-mail valide.';
-    }
-    break; // Sort du cas 'email'
+      if (field.value.trim() === '') { 
+          // Vérifie si le champ est vide après suppression des espaces inutiles
+          errorMessage = 'L\'e-mail est requis.';
+      } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) { 
+          // Vérifie si l'adresse e-mail respecte un format valide
+          errorMessage = 'Veuillez entrer une adresse e-mail valide.';
+      }
+      break; // Sort du cas 'email'
+
 
     /*===== Vérification pour le champ "date de naissance"====*/
     case 'birthdate': 
@@ -174,8 +208,8 @@ function validateField(event) {
     }
     break; // Sort du cas 'birthdate'
 
-
-    case 'quantity': // Vérification pour le champ "nombre de participations"
+/*=== Vérification pour le champ "nombre de participations"===*/
+    case 'quantity': 
     if (field.value.trim() === '') { 
         // Vérifie si le champ est vide après suppression des espaces inutiles
         errorMessage = 'Le nombre de participations est requis.';
