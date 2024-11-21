@@ -1,4 +1,16 @@
-// Déclaration des éléments du DOM et variables nécessaires en début de fichier
+/*
+ * ==========================================================
+ * Nom du fichier : modal.js
+ * Description    : Script JavaScript pour la gestion de la modale,
+ *                  validation des formulaires et comportement responsive.
+ * Auteur         : Trackozor
+ * Date           : 21/411/2024
+ * ==========================================================
+ */
+
+// ======= Déclaration des variables =======
+
+// Éléments du DOM
 const navElement = document.getElementById("Topnav");
 const modalbg = document.querySelector(".bground");
 const heroSection = document.querySelector(".hero-section"); // Correction du sélecteur
@@ -6,11 +18,18 @@ const modalbtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const inputs = document.querySelectorAll('input');
-const isMobile = window.matchMedia("(max-width: 767px)").matches;
-const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+const birthdateInput = document.getElementById('birthdate');
 const confirmationModal = document.getElementById('confirmation-modal');
 const closeModalBtn = document.getElementById('close-modal-btn');
+
+// Variables pour les médias
+const isMobile = window.matchMedia("(max-width: 767px)").matches;
+const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+// État d'ouverture de la modale
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale
+
+// ======= Fonctions =======
 
 // Fonction pour activer/désactiver le menu responsive
 function editNav() {
@@ -33,9 +52,8 @@ function editNav() {
     modalbg.style.top = "6.5vh"; // Position initiale de la modale
   }
 }
-// Sélectionne le champ date
-const birthdateInput = document.getElementById('birthdate');
-// Placeholder par défaut
+
+// Placeholder par défaut pour le champ date
 birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
 
 // Ajoute un événement focus pour rendre le placeholder visible

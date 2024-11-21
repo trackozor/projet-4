@@ -1020,8 +1020,7 @@ input[type="date"]:focus::placeholder {
   .modal-body {
     width: 95%;
     padding: 0;
-    padding-left: 5%;
-    padding-bottom:5%;
+    padding-left: 7%;
     margin: 0 auto;
     justify-content: center;
   }
@@ -1029,12 +1028,8 @@ input[type="date"]:focus::placeholder {
     width: 100%;
     justify-content: center;
   }
-  .form-list input {
-    padding:1% 0;
-    width:90vw;
-  }
   .btn-submit{
-    justify-content: center;
+    margin-bottom: 5%;
   }
 }
 
