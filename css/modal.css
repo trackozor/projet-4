@@ -31,13 +31,7 @@
     --font-size-base: 1rem; /* Taille de base, par défaut pour la plupart des textes */
     --font-size-large: 1.4rem; /* Grande taille de texte, idéale pour les titres */
     --font-size-xlarge: 2rem; /* Très grande taille, pour les titres principaux ou des éléments importants */
-
-    /* Styles pour les logs dans la console - définis comme chaînes */
-    --log-info: "color: blue; font-weight: bold;";
-    --log-warn: "color: orange; font-weight: bold;";
-    --log-error: "color: red; font-weight: bold;";
-    --log-default: "color: black;";
-
+ 
 }
 
 /* ------------------------------------------------------------------ */
@@ -316,6 +310,16 @@ header img {
 /*------------------------------------------------------------------------------------*/
 /*------------------ Fenêtre modale --------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
+.active {
+  display: block;
+  top: 6%;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+
 
 /* Conteneur principal pour le repli de la fenêtre modale */
 .bground {
@@ -332,6 +336,10 @@ header img {
   transition: top 0.3s ease-in-out; /* Transition douce pour le positionnement vertical */
   overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
   border-radius: 1%;
+}
+
+.bground.active {
+  display: block; /* Affiche la modale lorsqu'elle est active */
 }
 .bground .content {
   position: relative;

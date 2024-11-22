@@ -49,9 +49,9 @@ let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale.
 
 
 
-/*                                   =========================================             */
-/*                                   =========== Fonctions ===================            */
-/*                                   =========================================            */
+/*========================================================================================*/
+/*                                 =========== Fonctions ===================              */
+/*========================================================================================*/
 
 
 
@@ -69,23 +69,45 @@ let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale.
  * logEvent('error', 'Erreur critique.', { details: 'Connection failed' });
  * logEvent('unknown', 'Type de log non spécifié.'); // Utilisera le style par défaut
  */
-function logEvent(type, message, data = {}) {
-    // Récupère le style correspondant au type de log ou applique le style par défaut
-    const style = logStyles[type] || logStyles.default;
 
-    // Utilise un switch pour différencier les types de logs et leur affichage
-    switch (type) {
-        case 'info': // Log informatif
-            console.log(`%c[INFO] ${message}`, style, data);
+
+/**
+ * Log les événements dans la console avec horodatage, préfixes et styles.
+ * 
+ * @param {string} type - Type de log : 'info', 'warn', 'error'.
+ * @param {string} message - Message descriptif de l'événement.
+ * @param {Object} [data={}] - Données supplémentaires à afficher (facultatif).
+ */
+function logEvent(type, message, data = {}) {
+    // Horodatage dynamique
+    const timestamp = new Date().toLocaleTimeString();
+    const prefix = `[GameOn][${timestamp}]`; // Préfixe commun pour tous les logs
+
+    // Détermine le style en fonction du type de log
+    const style = logStyles[type] || logStyles.default || 'color: black;';
+    
+    // Vérifie si le message est fourni
+    if (!message) {
+        console.warn('%c[AVERTISSEMENT] Message manquant dans logEvent', style);
+        return;
+    }
+
+    // Génère le message complet
+    const fullMessage = `${prefix} ${type.toUpperCase()}: ${message}`;
+
+    // Affiche les logs en fonction du type
+    switch (type.toLowerCase()) {
+        case 'info':
+            console.log(`%c${fullMessage}`, style, data);
             break;
-        case 'warn': // Log d'avertissement
-            console.warn(`%c[WARN] ${message}`, style, data);
+        case 'warn':
+            console.warn(`%c${fullMessage}`, style, data);
             break;
-        case 'error': // Log d'erreur critique
-            console.error(`%c[ERROR] ${message}`, style, data);
+        case 'error':
+            console.error(`%c${fullMessage}`, style, data);
             break;
-        default: // Log générique ou inconnu
-            console.log(`%c[LOG] ${message}`, style, data);
+        default:
+            console.log(`%c${prefix} [INCONNU]: ${message}`, style, data);
     }
 }
 
@@ -135,6 +157,28 @@ function editNav() {
 }
 
 
+function resetForm() {
+    try {
+        // Sélectionne le formulaire dans la modale
+        const form = document.querySelector('form');
+        if (form) {
+            form.reset(); // Réinitialise tous les champs
+            console.log('Formulaire réinitialisé.');
+            
+            // Supprime les éventuels messages d'erreur
+            const errorMessages = form.querySelectorAll('.error-modal');
+            errorMessages.forEach((error) => error.remove());
+
+            // Supprime les classes d'erreur des champs
+            const errorInputs = form.querySelectorAll('.error-input');
+            errorInputs.forEach((input) => input.classList.remove('error-input'));
+        } else {
+            console.warn('Aucun formulaire trouvé à réinitialiser.');
+        }
+    } catch (error) {
+        console.error('Erreur lors de la réinitialisation du formulaire :', error);
+    }
+}
 
 
 /*=========== Fonction pour afficher la modale et empêcher le défilement en arrière-plan. ===========*/
@@ -143,29 +187,50 @@ function editNav() {
  * @returns {void}
  */
 function launchModal() {
-  logEvent('info', 'Tentative d\'affichage de la modale.');
+    logEvent('info', 'Début de la fonction launchModal.');
 
-  // Réinitialise le formulaire (si applicable)
-  resetForm();
-  logEvent('info', 'Formulaire réinitialisé.');
+    // Vérifie que modalbg est bien défini
+    if (!modalbg) {
+        logEvent('error', 'modalbg est introuvable.');
+        return;
+    }
 
-  // Affiche la modale
-  modalbg.style.display = 'block'; 
-  modalbg.style.top = "6%"; 
-  logEvent('info', 'Modale affichée.', { display: 'block', top: '6%' });
+    // Empêche d’afficher plusieurs fois la modale si elle est déjà ouverte
+    if (modalbg.classList.contains('active')) {
+        logEvent('warn', 'La modale est déjà affichée.');
+        return;
+    }
 
-  // Empêche le défilement en arrière-plan
-  document.body.style.overflow = 'hidden'; 
-  modalOpen = true; 
-  logEvent('info', 'Défilement de l\'arrière-plan désactivé.', { modalOpen });
+    // Réinitialise le formulaire
+    try {
+        resetForm();
+        logEvent('info', 'Formulaire réinitialisé.');
+    } catch (error) {
+        logEvent('error', 'Erreur lors de la réinitialisation du formulaire.', error);
+    }
 
-  // Synchronisation de la section hero si le menu est responsive
-  if (navElement.classList.contains("responsive")) {
-      const heroTop = isMobile ? "12%" : "7%";
-      heroSection.style.top = heroTop;
-      logEvent('info', 'Hero section synchronisée avec le menu responsive.', { heroTop });
-  }
+    // Affiche la modale
+    try {
+        modalbg.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        modalOpen = true;
+        logEvent('info', 'Modale affichée.');
+    } catch (error) {
+        logEvent('error', 'Erreur lors de l\'affichage de la modale.', error);
+    }
+
+    // Gestion du responsive
+    if (navElement?.classList.contains("responsive")) {
+        if (heroSection) {
+            const heroTop = isMobile ? "12%" : "7%";
+            heroSection.style.top = heroTop;
+            logEvent('info', 'Hero section synchronisée.', { heroTop });
+        } else {
+            logEvent('warn', 'heroSection introuvable, aucune synchronisation effectuée.');
+        }
+    }
 }
+
 
 
 /*===== Fonction pour fermer la modale =====*/
@@ -178,11 +243,11 @@ function closeModal() {
     try {
         logEvent('info', 'Tentative de fermeture de la modale.');
 
-        // Masquer la modale
-        modalbg.style.display = 'none';
+        // Supprime la classe active pour masquer la modale
+        modalbg.classList.remove('active');
         logEvent('info', 'Modale masquée.');
 
-        // Réactiver le défilement de la page
+        // Réactive le défilement de la page
         document.body.style.overflow = 'auto';
         logEvent('info', 'Défilement de l\'arrière-plan réactivé.');
 
@@ -195,6 +260,7 @@ function closeModal() {
         console.error('Erreur lors de la fermeture de la modale :', error);
     }
 }
+
 
 
 /*==== Fonction de validation des champs ====*/
@@ -302,21 +368,21 @@ function validateField(event) {
  * @returns {void}
  */
 function openConfirmationModal() {
-  try {
-      logEvent('info', 'Tentative d\'ouverture de la modale de confirmation.');
+    try {
+        logEvent('info', 'Tentative d\'ouverture de la modale de confirmation.');
 
-      // Affiche la modale de confirmation
-      confirmationModal.style.display = 'flex';
-      logEvent('info', 'Modale de confirmation affichée.', { display: 'flex' });
+        // Affiche la modale de confirmation
+        confirmationModal.style.display = 'flex';
+        logEvent('info', 'Modale de confirmation affichée.', { display: 'flex' });
 
-      // Empêche le défilement en arrière-plan
-      document.body.style.overflow = 'hidden';
-      logEvent('info', 'Défilement de l\'arrière-plan désactivé.');
-  } catch (error) {
-      // Log de gestion des erreurs
-      logEvent('error', 'Erreur lors de l\'ouverture de la modale de confirmation.', { error });
-      console.error('Erreur lors de l\'ouverture de la modale de confirmation :', error);
-  }
+        // Empêche le défilement en arrière-plan
+        document.body.style.overflow = 'hidden';
+        logEvent('info', 'Défilement de l\'arrière-plan désactivé.');
+    } catch (error) {
+        // Log de gestion des erreurs
+        logEvent('error', 'Erreur lors de l\'ouverture de la modale de confirmation.', { error });
+        console.error('Erreur lors de l\'ouverture de la modale de confirmation :', error);
+    }
 }
 
 
@@ -327,28 +393,28 @@ function openConfirmationModal() {
  * @returns {void}
  */
 closeModalBtn.addEventListener('click', function () {
-  try {
-      logEvent('info', 'Tentative de fermeture de la modale de confirmation.');
+    try {
+        logEvent('info', 'Tentative de fermeture de la modale de confirmation.');
 
-      // Masque la modale de confirmation
-      confirmationModal.style.display = 'none';
-      logEvent('info', 'Modale de confirmation masquée.');
+        // Masque la modale de confirmation
+        confirmationModal.style.display = 'none';
+        logEvent('info', 'Modale de confirmation masquée.');
 
-      // Réactive le défilement de la page
-      document.body.style.overflow = 'auto';
-      logEvent('info', 'Défilement de l\'arrière-plan réactivé.');
+        // Réactive le défilement de la page
+        document.body.style.overflow = 'auto';
+        logEvent('info', 'Défilement de l\'arrière-plan réactivé.');
 
-      // Scrolling spécifique en mode paysage
-      if (isLandscape) {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          logEvent('info', 'Défilement forcé vers le haut (mode paysage).');
-      }
-  } catch (error) {
-      // Log de gestion des erreurs
-      logEvent('error', 'Erreur lors de la fermeture de la modale de confirmation.', { error });
-      console.error('Erreur lors de la fermeture de la modale de confirmation :', error);
-  }
-});
+        // Scrolling spécifique en mode paysage
+        if (isLandscape) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            logEvent('info', 'Défilement forcé vers le haut (mode paysage).');
+        }
+    } catch (error) {
+        // Log de gestion des erreurs
+        logEvent('error', 'Erreur lors de la fermeture de la modale de confirmation.', { error });
+        console.error('Erreur lors de la fermeture de la modale de confirmation :', error);
+    }
+    });
 
 
 
@@ -361,38 +427,38 @@ closeModalBtn.addEventListener('click', function () {
  * @returns {void}
  */
 function showError(message, inputElement) {
-  try {
-      // Supprime les erreurs précédentes, le cas échéant
-      removeError(inputElement);
-      logEvent('info', `Suppression des anciennes erreurs pour le champ : ${inputElement.id}`);
+    try {
+        // Supprime les erreurs précédentes, le cas échéant
+        removeError(inputElement);
+        logEvent('info', `Suppression des anciennes erreurs pour le champ : ${inputElement.id}`);
 
-      // Création d'un élément pour afficher le message d'erreur
-      const errorTooltip = document.createElement('div');
-      errorTooltip.className = 'error-modal'; // Utilise la classe .error-modal définie dans le CSS
-      errorTooltip.textContent = message;
-      errorTooltip.style.display = 'block'; // Rend le message d'erreur visible
-      logEvent('info', `Création d'un tooltip d'erreur pour le champ : ${inputElement.id}`, { message });
+        // Création d'un élément pour afficher le message d'erreur
+        const errorTooltip = document.createElement('div');
+        errorTooltip.className = 'error-modal'; // Utilise la classe .error-modal définie dans le CSS
+        errorTooltip.textContent = message;
+        errorTooltip.style.display = 'block'; // Rend le message d'erreur visible
+        logEvent('info', `Création d'un tooltip d'erreur pour le champ : ${inputElement.id}`, { message });
 
-      // Ajoute la classe 'error-input' pour afficher la bordure rouge
-      inputElement.classList.add('error-input');
+        // Ajoute la classe 'error-input' pour afficher la bordure rouge
+        inputElement.classList.add('error-input');
 
-      // Positionne et ajoute le tooltip d'erreur sous l'input
-      inputElement.parentElement.appendChild(errorTooltip);
-      logEvent('info', `Tooltip d'erreur ajouté au DOM pour le champ : ${inputElement.id}`);
+        // Positionne et ajoute le tooltip d'erreur sous l'input
+        inputElement.parentElement.appendChild(errorTooltip);
+        logEvent('info', `Tooltip d'erreur ajouté au DOM pour le champ : ${inputElement.id}`);
 
-      // Position du message d'erreur sous le champ de saisie
-      const rect = inputElement.getBoundingClientRect();
-      errorTooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
-      errorTooltip.style.left = `${rect.left + window.scrollX}px`;
-      logEvent('info', `Tooltip positionné pour le champ : ${inputElement.id}`, {
-          top: errorTooltip.style.top,
-          left: errorTooltip.style.left,
-      });
-  } catch (error) {
-      logEvent('error', `Erreur lors de l'affichage du message d'erreur pour le champ : ${inputElement.id}`, { error });
-      console.error('Erreur dans showError :', error);
-  }
-}
+        // Position du message d'erreur sous le champ de saisie
+        const rect = inputElement.getBoundingClientRect();
+        errorTooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+        errorTooltip.style.left = `${rect.left + window.scrollX}px`;
+        logEvent('info', `Tooltip positionné pour le champ : ${inputElement.id}`, {
+            top: errorTooltip.style.top,
+            left: errorTooltip.style.left,
+        });
+    } catch (error) {
+        logEvent('error', `Erreur lors de l'affichage du message d'erreur pour le champ : ${inputElement.id}`, { error });
+        console.error('Erreur dans showError :', error);
+    }
+    }
 
 
 
@@ -405,21 +471,21 @@ function showError(message, inputElement) {
  * @returns {void}
  */
 function removeError(inputElement) {
-  try {
-      // Retire la bordure rouge
-      inputElement.classList.remove('error-input');
-      logEvent('info', `Suppression de la bordure rouge pour le champ : ${inputElement.id}`);
+    try {
+        // Retire la bordure rouge
+        inputElement.classList.remove('error-input');
+        logEvent('info', `Suppression de la bordure rouge pour le champ : ${inputElement.id}`);
 
-      // Supprime le tooltip d'erreur, s'il existe
-      const existingError = inputElement.parentElement.querySelector('.error-modal');
-      if (existingError) {
-          existingError.remove();
-          logEvent('info', `Suppression du tooltip d'erreur pour le champ : ${inputElement.id}`);
-      }
-  } catch (error) {
-      logEvent('error', `Erreur lors de la suppression du message d'erreur pour le champ : ${inputElement.id}`, { error });
-      console.error('Erreur dans removeError :', error);
-  }
+        // Supprime le tooltip d'erreur, s'il existe
+        const existingError = inputElement.parentElement.querySelector('.error-modal');
+        if (existingError) {
+            existingError.remove();
+            logEvent('info', `Suppression du tooltip d'erreur pour le champ : ${inputElement.id}`);
+        }
+    } catch (error) {
+        logEvent('error', `Erreur lors de la suppression du message d'erreur pour le champ : ${inputElement.id}`, { error });
+        console.error('Erreur dans removeError :', error);
+    }
 }
 
 

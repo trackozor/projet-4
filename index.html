@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"> <!-- Définition de l'encodage des caractères en UTF-8 -->
     <meta name="description" content="Réservez votre place pour le marathon national de jeux vidéos. Événement gaming ouvert à tous, places limitées. Inscrivez-vous dès maintenant !"> <!-- Meta description de la page -->
-    <title> GameOn réservation marathon du jeu</title> <!-- Titre de la page -->
+    <title>Réservation pour le Marathon Gaming National - GameOn </title> <!-- Titre de la page -->
     <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Meta tag pour rendre la page responsive -->
     <link rel="stylesheet" href="./css/modal.css"> <!-- Inclusion de la feuille de style principale -->
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"> <!-- Inclusion de la police Google Font "DM Sans" -->
@@ -19,19 +19,20 @@
         <h1 class="sr-only">Bienvenue sur le site de GameON</h1> <!-- H1 caché pour l'accessibilité -->
       </div>
         <!-- NAV BAR  -->
-        <nav class="topnav" id="Topnav"> <!-- Liens de la barre de navigation -->
-          <a href="javascript:void(0);" onclick="editNav()" aria-label="Ouvrir le menu de navigation"><i class="fa fa-bars"></i></a> <!-- Icône de menu pour les petits écrans -->
-          <ul class="nav-links">
-            <li><a href="#"><span>Détails de l'évènement</span></a></li> <!-- Lien Détails de l'évènement -->
-            <li><a href="#"><span>À Propos</span></a></li> <!-- Lien À propos -->
-            <li><a href="#"><span>Contact</span></a></li> <!-- Lien Contact -->
-            <li><a href="#"><span>Évènements passés</span></a></li> <!-- Lien Évènements passés -->
-          </ul>
-        </nav>
+      <nav class="topnav" id="Topnav"> <!-- Liens de la barre de navigation -->
+        <a href="javascript:void(0);" onclick="editNav()" aria-label="Ouvrir le menu de navigation"><i class="fa fa-bars"></i></a> <!-- Icône de menu pour les petits écrans -->
+        <ul class="nav-links">
+          <li><a href="#"><span>Détails de l'évènement</span></a></li> <!-- Lien Détails de l'évènement -->
+          <li><a href="#"><span>À Propos</span></a></li> <!-- Lien À propos -->
+          <li><a href="#"><span>Contact</span></a></li> <!-- Lien Contact -->
+          <li><a href="#"><span>Évènements passés</span></a></li> <!-- Lien Évènements passés -->
+        </ul>
+      </nav>
     </header>
     
     <!-- SECTION PRINCIPALE  -->
     <main>
+
       <section class="hero-section"> <!-- Section principale (hero) -->
         <div class="hero-content"> <!-- Contenu texte du "hero" -->
           <h2>Marathon national de jeux vidéos</h2> <!-- Titre principal -->
@@ -45,7 +46,7 @@
 
       <!--Fenêtre Modale  -->
 
-      <div class="bground "> <!-- Corps de la modale pour le repli -->
+      <div class="bground "  role="dialog" aria-labelledby="modal-title" aria-hidden="true"> <!-- Corps de la modale pour le repli -->
         <div class="content"> <!-- Contenu de la fenêtre modale -->
 
           <!-- Bouton de fermeture de la fenêtre modale -->
