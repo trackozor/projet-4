@@ -42,6 +42,7 @@ html {
     box-sizing: border-box;/* Définit le modèle de box-sizing pour inclure les bordures et les marges dans les dimensions des éléments */
     margin: 0;/* Supprime les marges par défaut de l'élément <html> */
     padding: 0;/* Supprime les espacements internes par défaut de l'élément <html> */
+    scroll-behavior: smooth;
 }
 
 /*=============== Style du corps de la page =============*/
@@ -355,13 +356,20 @@ header img {
   padding: 0; /* Supprime les espacements internes */
   width: 90%; /* Le formulaire occupe 100% de la largeur disponible */
   position: relative; /* Position relative pour des ajustements internes */
-  left: -6%; /* Décale le formulaire de 7.5vw vers la gauche */
+  left: -6.5%; /* Décale le formulaire de 7.5vw vers la gauche */
   
 }
 
+.formData label {
+  font-size:0.7rem;
+  width:95vw;
+}
+
 .formData .legend {
-  padding-left: 10%; /* Ajoute un espacement de 12% à gauche pour le texte */
-  font-size: var(--font-size-small); /* Utilise une taille de police définie par une variable CSS */
+  padding-left: 12%; /* Ajoute un espacement de 12% à gauche pour le texte */
+  font-size: 0.7rem; /* Utilise une taille de police définie par une variable CSS */
+  width:90vw
+
 }
 
 /* Liste des informations personnelles */
@@ -408,17 +416,19 @@ input[type="date"]:focus::placeholder {
   display: grid;
   grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
   grid-template-rows:repeat(2,auto) ;
-  width: 95vw; /* Ajuste la largeur totale */
+  width: 90vw; /* Ajuste la largeur totale */
   margin: 0 auto; /* Centre la grille horizontalement */
   align-items: center;
   margin-top:3%;
 
+
 }
 
 .location-list li p {
-  display:flex; /* Maintient Flexbox pour le contenu individuel */
-  align-items: center; /* Centre les éléments verticalement */
+  display:flex; 
+  align-items: center; 
   padding:4% 0;
+  margin:0 auto;
 }
 
 

@@ -10,9 +10,9 @@
 
 
 
-/*                                 =========================================                     */
+/*===============================================================================================*/
 /*                                 ======= Déclaration des variables =======                     */           
-/*                                 =========================================                    */
+/*===============================================================================================*/
 
 
 
@@ -38,8 +38,17 @@ const logStyles = {
 };
 
 
+
+// ======= Noms des classes CSS =======
+const CSS_CLASSES = {
+    ERROR_INPUT: 'error-input',
+    ERROR_MODAL: 'error-modal',
+    MODAL_ACTIVE: 'active',
+    BODY_NO_SCROLL: 'no-scroll',
+};
+
 // ======= Variables pour les médias =======
-const isMobile = window.matchMedia("(max-width: 767px)").matches; // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
+const isMobile = window.matchMedia("(max-width: 1024px)").matches; // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
 
 
 // ======= État global =======
@@ -47,27 +56,11 @@ let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale.
 
 
 /*========================================================================================*/
-/*                                 =========== Fonctions ===================              */
+/*                       =========== Fonctions ===================                        */
 /*========================================================================================*/
 
 
-
-
-/** 
- * =====Fonction utilitaire pour loguer des événements avec des styles dans la console.=====
- * 
- * 
- * @param {string} type - Type de log : 'info', 'warn', 'error', ou 'default'.
- * @param {string} message - Message à afficher dans la console.
- * @param {Object} [data={}] - Données supplémentaires (optionnelles) à afficher dans la console.
- * @example
- * logEvent('info', 'Opération réussie.');
- * logEvent('warn', 'Attention, comportement inattendu détecté.', { code: 123 });
- * logEvent('error', 'Erreur critique.', { details: 'Connection failed' });
- * logEvent('unknown', 'Type de log non spécifié.'); // Utilisera le style par défaut
- */
-
-
+/*======================Fonction log console==============================================*/
 /**
  * Log les événements dans la console avec horodatage, préfixes et styles.
  * 
@@ -110,159 +103,181 @@ function logEvent(type, message, data = {}) {
 
 
 
-/**
- * ============ Fonction pour activer/désactiver le menu responsive.====
+/** 
+ * ============ Fonction pour activer/désactiver le menu responsive. ============
  * 
+ * - Ajoute ou retire la classe "responsive" de l'élément de navigation.
+ * - Ajuste la position de la section hero et de la modale en fonction de l'état responsive.
+ * - Log les actions effectuées pour un suivi précis dans la console.
  * 
  * @returns {void}
  */
 function editNav() {
     // Bascule la classe "responsive" sur l'élément de navigation
     navElement.classList.toggle("responsive");
-    logEvent('info', `Menu responsive ${navElement.classList.contains("responsive") ? "activé" : "désactivé"}`);
+    logEvent(
+        'info', 
+        `Menu responsive ${navElement.classList.contains("responsive") ? "activé" : "désactivé"}`
+    );
 
-    // Gérer le déplacement de la modale et de la section hero en fonction de l'état responsive
+    // Gère la position de la section hero et de la modale pour le mode responsive
     if (navElement.classList.contains("responsive") && isMobile) {
-        // Mode responsive détecté sur mobile (uniquement)
-        heroSection.style.top = "10%";
-        modalbg.style.top = "25%";
+        // Si le mode responsive est activé sur un appareil mobile
+        heroSection.style.top = "10%"; // Positionne la section hero plus bas
+        modalbg.style.top = "25%"; // Décale la modale vers le bas
         logEvent('info', 'Mode responsive détecté sur un appareil mobile. Hero et modale repositionnés.', {
             heroTop: "12%",
-            modalTop: "25%",
+            modalbg: "25%",
         });
     } else {
-        // Si le menu est fermé ou que les conditions ne sont pas remplies
-        heroSection.style.top = "6.5vh";
-        modalbg.style.top = "6.5vh";
+        // Si le menu n'est pas en mode responsive ou sur un écran non mobile
+        heroSection.style.top = "6.5vh"; // Réinitialise la position de la section hero
+        modalbg.style.top = "6.5vh"; // Réinitialise la position de la modale
         logEvent('info', 'Menu responsive désactivé. Hero et modale remis à leur position initiale.', {
             heroTop: "6.5vh",
-            modalTop: "6.5vh",
+            modalbg: "6.5vh",
         });
     }
 }
 
 
 
+
+/**
+ * ============ Fonction pour réinitialiser le formulaire de la modale. ============
+ * 
+ * - Efface tous les champs du formulaire en les réinitialisant à leurs valeurs par défaut.
+ * - Supprime les messages d'erreur affichés sous les champs.
+ * - Retire les classes d'erreur (bordures rouges) des champs invalides.
+ * - Gère les exceptions si le formulaire n'est pas trouvé ou si une erreur survient.
+ * 
+ * @returns {void}
+ */
 function resetForm() {
     try {
         // Sélectionne le formulaire dans la modale
         const form = document.querySelector('form');
         if (form) {
-            form.reset(); // Réinitialise tous les champs
-            console.log('Formulaire réinitialisé.');
-            
-            // Supprime les éventuels messages d'erreur
-            const errorMessages = form.querySelectorAll('.error-modal');
+            form.reset(); // Réinitialise tous les champs du formulaire
+            console.log('Formulaire réinitialisé.'); // Log : confirmation que le formulaire a été réinitialisé
+
+            // Supprime tous les messages d'erreur affichés
+            const errorMessages = form.querySelectorAll(`.${CSS_CLASSES.ERROR_MODAL}`);
             errorMessages.forEach((error) => error.remove());
 
-            // Supprime les classes d'erreur des champs
-            const errorInputs = form.querySelectorAll('.error-input');
-            errorInputs.forEach((input) => input.classList.remove('error-input'));
+            // Retire la classe d'erreur des champs concernés (bordure rouge)
+            const errorInputs = form.querySelectorAll(`.${CSS_CLASSES.ERROR_INPUT}`);
+            errorInputs.forEach((input) => input.classList.remove(CSS_CLASSES.ERROR_INPUT));
         } else {
+            // Si aucun formulaire n'est trouvé
             console.warn('Aucun formulaire trouvé à réinitialiser.');
         }
     } catch (error) {
+        // Gestion des erreurs imprévues
         console.error('Erreur lors de la réinitialisation du formulaire :', error);
     }
 }
 
 
-/*=========== Fonction pour afficher la modale et empêcher le défilement en arrière-plan. ===========*/
-
-/** 
+/**
+ * ============ Fonction pour afficher la modale et empêcher le défilement en arrière-plan. ============
+ * 
+ * - Vérifie si la modale est déjà affichée pour éviter les duplications.
+ * - Réinitialise le formulaire avant d'afficher la modale.
+ * - Affiche la modale et désactive le défilement de la page principale.
+ * - Journalise chaque étape pour faciliter le suivi.
+ * 
  * @returns {void}
  */
 function launchModal() {
-    logEvent('info', 'Début de la fonction launchModal.');
+    logEvent('info', 'Début de la fonction launchModal.'); // Log initial pour indiquer le début de la fonction
 
     // Vérifie que modalbg est bien défini
     if (!modalbg) {
-        logEvent('error', 'modalbg est introuvable.');
-        return;
+        logEvent('error', 'modalbg est introuvable.'); // Log d'erreur si l'élément de la modale n'existe pas
+        return; // Interrompt l'exécution si modalbg est introuvable
     }
 
-    // Empêche d’afficher plusieurs fois la modale si elle est déjà ouverte
-    if (modalbg.classList.contains('active')) {
-        logEvent('warn', 'La modale est déjà affichée.');
-        return;
+    // Empêche d’afficher plusieurs fois la modale si elle est déjà active
+    if (modalbg.classList.contains(CSS_CLASSES.MODAL_ACTIVE)) {
+        logEvent('warn', 'La modale est déjà affichée.'); // Log d'avertissement si la modale est déjà active
+        return; // Interrompt l'exécution si la modale est déjà affichée
     }
 
-    // Réinitialise le formulaire
+    // Réinitialise le formulaire avant d'afficher la modale
     try {
-        resetForm();
-        logEvent('info', 'Formulaire réinitialisé.');
+        resetForm(); // Appelle la fonction pour réinitialiser les champs du formulaire
+        logEvent('info', 'Formulaire réinitialisé.'); // Log confirmant que le formulaire a été réinitialisé
     } catch (error) {
-        logEvent('error', 'Erreur lors de la réinitialisation du formulaire.', error);
+        logEvent('error', 'Erreur lors de la réinitialisation du formulaire.', error); // Log d'erreur en cas de problème avec la réinitialisation
     }
 
-    // Affiche la modale
+    // Affiche la modale et désactive le défilement de la page principale
     try {
-        modalbg.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        modalOpen = true;
-        logEvent('info', 'Modale affichée.');
+        modalbg.classList.add(CSS_CLASSES.MODAL_ACTIVE); // Ajoute la classe CSS pour activer la modale
+        document.body.classList.add(CSS_CLASSES.BODY_NO_SCROLL); // Ajoute une classe CSS pour désactiver le défilement de l'arrière-plan
+        modalOpen = true; // Met à jour l'état global indiquant que la modale est ouverte
+        logEvent('info', 'Modale affichée.'); // Log confirmant que la modale est affichée
     } catch (error) {
-        logEvent('error', 'Erreur lors de l\'affichage de la modale.', error);
-    }
-
-    // Gestion du responsive
-    if (navElement?.classList.contains("responsive")) {
-        if (heroSection) {
-            const heroTop = isMobile ? "12%" : "7%";
-            heroSection.style.top = heroTop;
-            logEvent('info', 'Hero section synchronisée.', { heroTop });
-        } else {
-            logEvent('warn', 'heroSection introuvable, aucune synchronisation effectuée.');
-        }
+        logEvent('error', 'Erreur lors de l\'affichage de la modale.', error); // Log d'erreur en cas de problème d'affichage
     }
 }
 
 
 
-/*===== Fonction pour fermer la modale =====*/
-
 /**
- * Fonction pour fermer la modale et rétablir l'état de la page.
+ * ============ Fonction pour fermer la modale ============ 
+ * 
+ * - Supprime la classe CSS utilisée pour afficher la modale.
+ * - Réactive le défilement de la page principale en supprimant la classe dédiée.
+ * - Met à jour l'état global `modalOpen` pour refléter la fermeture de la modale.
+ * - Journalise chaque étape importante et gère les erreurs éventuelles.
+ * 
  * @returns {void}
  */
 function closeModal() {
     try {
-        logEvent('info', 'Tentative de fermeture de la modale.');
+        logEvent('info', 'Tentative de fermeture de la modale.'); // Log initial pour signaler l'opération
 
-        // Supprime la classe active pour masquer la modale
-        modalbg.classList.remove('active');
-        logEvent('info', 'Modale masquée.');
+        // Supprime la classe CSS active pour masquer la modale
+        modalbg.classList.remove(CSS_CLASSES.MODAL_ACTIVE);
+        logEvent('info', 'Modale masquée.'); // Log confirmant la fermeture visuelle
 
-        // Réactive le défilement de la page
-        document.body.style.overflow = 'auto';
-        logEvent('info', 'Défilement de l\'arrière-plan réactivé.');
+        // Supprime la classe CSS qui désactive le défilement de la page
+        document.body.classList.remove(CSS_CLASSES.BODY_NO_SCROLL);
+        logEvent('info', 'Défilement de l\'arrière-plan réactivé.'); // Log confirmant la réactivation du défilement
 
-        // Mettre à jour l'état global
+        // Mettre à jour l'état global indiquant que la modale est fermée
         modalOpen = false;
-        logEvent('info', 'État de la modale mis à jour : Fermée.', { modalOpen });
+        logEvent('info', 'État de la modale mis à jour : Fermée.', { modalOpen }); // Log confirmant la mise à jour de l'état
     } catch (error) {
         // Gestion des erreurs potentielles
-        logEvent('error', 'Erreur lors de la fermeture de la modale.', { error });
-        console.error('Erreur lors de la fermeture de la modale :', error);
+        logEvent('error', 'Erreur lors de la fermeture de la modale.', { error }); // Log en cas d'erreur
+        console.error('Erreur lors de la fermeture de la modale :', error); // Affiche l'erreur dans la console pour débogage
     }
 }
 
 
 
-/*==== Fonction de validation des champs ====*/
+
 /**
- * Valide un champ de formulaire et affiche un message d'erreur si nécessaire.
+ * ============ Fonction de validation des champs ============
+ * 
+ * - Vérifie si un champ de formulaire contient des erreurs.
+ * - Affiche un message d'erreur spécifique si la validation échoue.
+ * - Retire les erreurs et les styles d'erreur si la validation est réussie.
+ * - Log les étapes pour un suivi détaillé des actions.
+ * 
  * @param {Event} event - L'événement déclenché lors de la validation.
  * @returns {void}
  */
 function validateField(event) {
-    const field = event.target;
-    let errorMessage = '';
+    const field = event.target; // Champ ciblé par l'événement
+    let errorMessage = ''; // Initialisation du message d'erreur
 
-    // Log de début de validation
-    logEvent('info', `Début de validation du champ : ${field.id}`, { value: field.value.trim() });
+    logEvent('info', `Début de validation du champ : ${field.id}`, { value: field.value.trim() }); // Log initial
 
-    // Vérifie si le champ est vide avant toute autre validation
+    // Vérifie si le champ est vide
     if (field.value.trim() === '') {
         switch (field.id) {
             case 'first':
@@ -287,9 +302,9 @@ function validateField(event) {
                 break;
         }
 
-        logEvent('warn', `Champ vide détecté : ${field.id}`, { errorMessage });
+        logEvent('warn', `Champ vide détecté : ${field.id}`, { errorMessage }); // Log en cas de champ vide
     } else {
-        // Effectue des validations supplémentaires si le champ n'est pas vide
+        // Si le champ n'est pas vide, effectue une validation spécifique selon le champ
         switch (field.id) {
             case 'first':
                 if (field.value.trim().length < 2) {
@@ -314,8 +329,8 @@ function validateField(event) {
                 break;
 
             case 'birthdate':
-                const birthDate = new Date(field.value); // Convertit la valeur saisie en objet Date
-                const today = new Date(); // Obtient la date actuelle
+                const birthDate = new Date(field.value); // Convertit la date saisie en objet Date
+                const today = new Date(); // Date actuelle
                 if (birthDate >= today) {
                     errorMessage = 'La date de naissance doit être dans le passé.';
                 }
@@ -328,236 +343,267 @@ function validateField(event) {
                 break;
         }
 
+        // Log une erreur de validation si une condition échoue
         if (errorMessage) {
             logEvent('warn', `Erreur de validation dans le champ : ${field.id}`, { errorMessage, value: field.value.trim() });
         }
     }
 
-    // Affiche ou supprime l'erreur
+    // Affiche ou supprime le message d'erreur selon la validation
     if (errorMessage) {
-        showError(errorMessage, field);
-        field.classList.add('error'); // Ajouter la bordure rouge
+        showError(errorMessage, field); // Affiche le message d'erreur
+        field.classList.add('error'); // Ajoute la classe d'erreur pour la bordure rouge
     } else {
-        removeError(field);
-        field.classList.remove('error'); // Retirer la bordure rouge
-        logEvent('info', `Validation réussie pour le champ : ${field.id}`, { value: field.value.trim() });
+        removeError(field); // Supprime le message d'erreur
+        field.classList.remove('error'); // Retire la classe d'erreur
+        logEvent('info', `Validation réussie pour le champ : ${field.id}`, { value: field.value.trim() }); // Log succès
     }
 
-    // Log de fin de validation
-    logEvent('info', `Fin de validation du champ : ${field.id}`);
+    logEvent('info', `Fin de validation du champ : ${field.id}`); // Log final de la validation
 }
 
 
 
-/*=========== Fonction pour ouvrir la modale de confirmation ==========*/
 /**
- * Fonction pour ouvrir la modale de confirmation et empêcher le défilement de la page.
+ * ============ Fonction pour ouvrir la modale de confirmation ============ 
+ * 
+ * - Ajoute la classe CSS pour afficher la modale de confirmation.
+ * - Désactive le défilement en arrière-plan en appliquant une classe dédiée.
+ * - Journalise les étapes importantes et gère les éventuelles erreurs.
+ * 
  * @returns {void}
  */
 function openConfirmationModal() {
     try {
-        logEvent('info', 'Tentative d\'ouverture de la modale de confirmation.');
+        logEvent('info', 'Tentative d\'ouverture de la modale de confirmation.'); // Log initial indiquant le début de la fonction
 
-        // Affiche la modale de confirmation
-        confirmationModal.style.display = 'flex';
-        logEvent('info', 'Modale de confirmation affichée.', { display: 'flex' });
+        // Affiche la modale de confirmation en ajoutant une classe CSS dédiée
+        confirmationModal.classList.add(CSS_CLASSES.MODAL_ACTIVE);
+        logEvent('info', 'Modale de confirmation affichée.'); // Log confirmant l'affichage de la modale
 
-        // Empêche le défilement en arrière-plan
-        document.body.style.overflow = 'hidden';
-        logEvent('info', 'Défilement de l\'arrière-plan désactivé.');
+        // Désactive le défilement de l'arrière-plan en ajoutant une classe CSS
+        document.body.classList.add(CSS_CLASSES.BODY_NO_SCROLL);
+        logEvent('info', 'Défilement de l\'arrière-plan désactivé.'); // Log confirmant la désactivation du défilement
     } catch (error) {
-        // Log de gestion des erreurs
-        logEvent('error', 'Erreur lors de l\'ouverture de la modale de confirmation.', { error });
-        console.error('Erreur lors de l\'ouverture de la modale de confirmation :', error);
+        // Gestion des erreurs
+        logEvent('error', 'Erreur lors de l\'ouverture de la modale de confirmation.', { error }); // Log en cas d'erreur
+        console.error('Erreur lors de l\'ouverture de la modale de confirmation :', error); // Affiche l'erreur dans la console pour le débogage
     }
 }
 
 
-/*========== Fonction pour fermer la modale ===========*/
 
 /**
- * Gestion de la fermeture de la modale de confirmation.
+ * ============ Fonction pour fermer la modale de confirmation ============ 
+ * 
+ * - Supprime la classe CSS utilisée pour afficher la modale de confirmation.
+ * - Réactive le défilement de la page principale en supprimant une classe dédiée.
+ * - Ajoute un défilement fluide vers le haut en mode paysage, si applicable.
+ * - Journalise chaque étape importante et gère les éventuelles erreurs.
+ * 
  * @returns {void}
  */
 closeModalBtn.addEventListener('click', function () {
     try {
-        logEvent('info', 'Tentative de fermeture de la modale de confirmation.');
+        logEvent('info', 'Tentative de fermeture de la modale de confirmation.'); // Log initial pour signaler le début de la fermeture
 
-        // Masque la modale de confirmation
-        confirmationModal.style.display = 'none';
-        logEvent('info', 'Modale de confirmation masquée.');
+        // Supprime la classe CSS active pour masquer la modale
+        confirmationModal.classList.remove(CSS_CLASSES.MODAL_ACTIVE);
+        logEvent('info', 'Modale de confirmation masquée.'); // Log confirmant la fermeture visuelle
 
-        // Réactive le défilement de la page
-        document.body.style.overflow = 'auto';
-        logEvent('info', 'Défilement de l\'arrière-plan réactivé.');
+        // Supprime la classe CSS qui désactive le défilement de la page
+        document.body.classList.remove(CSS_CLASSES.BODY_NO_SCROLL);
+        logEvent('info', 'Défilement de l\'arrière-plan réactivé.'); // Log confirmant la réactivation du défilement
 
-        // Scrolling spécifique en mode paysage
-        if (isLandscape) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            logEvent('info', 'Défilement forcé vers le haut (mode paysage).');
+        // Gestion spécifique pour le mode paysage
+        if (isLandscape) { 
+            window.scrollTo(0,0); // Fait défiler vers le haut de la page de manière fluide
+            logEvent('info', 'Défilement forcé vers le haut (mode paysage).'); // Log pour indiquer le scrolling en mode paysage
         }
     } catch (error) {
-        // Log de gestion des erreurs
-        logEvent('error', 'Erreur lors de la fermeture de la modale de confirmation.', { error });
-        console.error('Erreur lors de la fermeture de la modale de confirmation :', error);
+        // Gestion des erreurs
+        logEvent('error', 'Erreur lors de la fermeture de la modale de confirmation.', { error }); // Log en cas d'erreur
+        console.error('Erreur lors de la fermeture de la modale de confirmation :', error); // Affiche l'erreur dans la console pour débogage
     }
-    });
+});
 
 
-
-/*================ Fonction pour afficher un message d'erreur et ajouter la bordure rouge =======*/
 
 /**
- * Affiche un message d'erreur sous un champ d'entrée et ajoute une bordure rouge.
+ * ============ Fonction pour afficher un message d'erreur et ajouter une bordure rouge ============ 
+ * 
+ * - Supprime les erreurs précédentes avant d'afficher un nouveau message d'erreur.
+ * - Ajoute une bordure rouge autour du champ cible pour indiquer l'erreur.
+ * - Crée et affiche un message d'erreur sous le champ concerné.
+ * - Utilise uniquement les classes CSS définies pour le style.
+ * - Journalise chaque étape et gère les erreurs éventuelles.
+ * 
  * @param {string} message - Message d'erreur à afficher.
  * @param {HTMLElement} inputElement - Champ d'entrée cible.
  * @returns {void}
  */
 function showError(message, inputElement) {
     try {
-        // Supprime les erreurs précédentes, le cas échéant
+        // Supprime les erreurs précédentes pour éviter les doublons
         removeError(inputElement);
-        logEvent('info', `Suppression des anciennes erreurs pour le champ : ${inputElement.id}`);
+        logEvent('info', `Suppression des anciennes erreurs pour le champ : ${inputElement.id}`); // Log de suppression des erreurs existantes
 
-        // Création d'un élément pour afficher le message d'erreur
+        // Création d'un nouvel élément pour afficher le message d'erreur
         const errorTooltip = document.createElement('div');
-        errorTooltip.className = 'error-modal'; // Utilise la classe .error-modal définie dans le CSS
-        errorTooltip.textContent = message;
-        errorTooltip.style.display = 'block'; // Rend le message d'erreur visible
-        logEvent('info', `Création d'un tooltip d'erreur pour le champ : ${inputElement.id}`, { message });
+        errorTooltip.classList.add(CSS_CLASSES.ERROR_MODAL); // Applique la classe CSS pour le style du message d'erreur
+        errorTooltip.textContent = message; // Ajoute le message d'erreur fourni
+        logEvent('info', `Création d'un tooltip d'erreur pour le champ : ${inputElement.id}`, { message }); // Log de création du tooltip
 
-        // Ajoute la classe 'error-input' pour afficher la bordure rouge
-        inputElement.classList.add('error-input');
+        // Ajoute une bordure rouge au champ concerné
+        inputElement.classList.add(CSS_CLASSES.ERROR_INPUT);
 
-        // Positionne et ajoute le tooltip d'erreur sous l'input
+        // Ajoute le message d'erreur comme enfant de l'élément parent du champ
         inputElement.parentElement.appendChild(errorTooltip);
-        logEvent('info', `Tooltip d'erreur ajouté au DOM pour le champ : ${inputElement.id}`);
-
-        // Position du message d'erreur sous le champ de saisie
-        const rect = inputElement.getBoundingClientRect();
-        errorTooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
-        errorTooltip.style.left = `${rect.left + window.scrollX}px`;
-        logEvent('info', `Tooltip positionné pour le champ : ${inputElement.id}`, {
-            top: errorTooltip.style.top,
-            left: errorTooltip.style.left,
-        });
+        logEvent('info', `Tooltip d'erreur ajouté au DOM pour le champ : ${inputElement.id}`); // Log d'ajout du tooltip dans le DOM
     } catch (error) {
-        logEvent('error', `Erreur lors de l'affichage du message d'erreur pour le champ : ${inputElement.id}`, { error });
-        console.error('Erreur dans showError :', error);
+        // Gestion des erreurs
+        logEvent('error', `Erreur lors de l'affichage du message d'erreur pour le champ : ${inputElement.id}`, { error }); // Log en cas d'erreur
+        console.error('Erreur dans showError :', error); // Affiche l'erreur dans la console pour le débogage
     }
-    }
+}
 
 
 
-/*======== Fonction pour supprimer un message d'erreur et la bordure rouge ==========*/
 
 
 /**
- * Supprime un message d'erreur et retire la bordure rouge d'un champ d'entrée.
+ * ============ Fonction pour supprimer un message d'erreur et retirer la bordure rouge ============
+ * 
+ * - Retire la classe CSS d'erreur (`error-input`) appliquée au champ d'entrée ciblé.
+ * - Supprime le message d'erreur (tooltip) affiché sous le champ, si présent.
+ * - Log chaque étape importante et gère les éventuelles erreurs.
+ * 
  * @param {HTMLElement} inputElement - Champ d'entrée cible.
  * @returns {void}
  */
 function removeError(inputElement) {
     try {
-        // Retire la bordure rouge
-        inputElement.classList.remove('error-input');
-        logEvent('info', `Suppression de la bordure rouge pour le champ : ${inputElement.id}`);
+        // Retire la classe CSS qui applique une bordure rouge au champ
+        inputElement.classList.remove('error-input'); 
+        logEvent('info', `Suppression de la bordure rouge pour le champ : ${inputElement.id}`); // Log pour confirmer la suppression de la bordure
 
-        // Supprime le tooltip d'erreur, s'il existe
-        const existingError = inputElement.parentElement.querySelector('.error-modal');
+        // Recherche d'un tooltip d'erreur existant dans l'élément parent du champ
+        const existingError = inputElement.parentElement.querySelector('.error-modal'); 
         if (existingError) {
-            existingError.remove();
-            logEvent('info', `Suppression du tooltip d'erreur pour le champ : ${inputElement.id}`);
+            existingError.remove(); // Supprime le tooltip d'erreur du DOM
+            logEvent('info', `Suppression du tooltip d'erreur pour le champ : ${inputElement.id}`); // Log pour confirmer la suppression du message d'erreur
         }
     } catch (error) {
-        logEvent('error', `Erreur lors de la suppression du message d'erreur pour le champ : ${inputElement.id}`, { error });
-        console.error('Erreur dans removeError :', error);
+        // Gestion des erreurs
+        logEvent('error', `Erreur lors de la suppression du message d'erreur pour le champ : ${inputElement.id}`, { error }); // Log en cas d'erreur
+        console.error('Erreur dans removeError :', error); // Affiche l'erreur dans la console pour le débogage
     }
 }
 
 
+
 /**
- * Point d'entrée principal du script.
- * Configure les placeholders, les écouteurs d'événements, et initialise les modales.
+ * ============ Point d'entrée principal du script ============
+ * 
+ * - Configure les éléments interactifs de la page (placeholders, écouteurs d'événements, etc.).
+ * - Initialise les modales et gère leurs interactions.
+ * - Valide le formulaire en temps réel et lors de sa soumission.
+ * - Journalise chaque étape importante pour un suivi précis.
+ * 
+ * @returns {void}
  */
 function main() {
-    logEvent('info', 'Début de l\'initialisation principale.');
+    logEvent('info', 'Début de l\'initialisation principale.'); // Log initial signalant le début du script
 
-    // Initialisations (placeholders, écouteurs, etc.)
+    // === Configuration des placeholders pour le champ de date ===
     birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
-
     birthdateInput.addEventListener('focus', () => {
-        logEvent('info', 'Focus sur le champ de date : affichage du placeholder.');
-        birthdateInput.placeholder = 'jj/mm/aaaa'; // Remet le placeholder lors du focus
+        logEvent('info', 'Focus sur le champ de date : affichage du placeholder.'); // Log lors du focus sur le champ
+        birthdateInput.placeholder = 'jj/mm/aaaa'; // Ajoute un placeholder lors du focus
     });
-
     birthdateInput.addEventListener('blur', () => {
         if (!birthdateInput.value) {
-            logEvent('info', 'Champ de date vide après perte du focus : suppression du placeholder.');
-            birthdateInput.placeholder = ''; // Supprime le placeholder si aucun texte n'est saisi
+            logEvent('info', 'Champ de date vide après perte du focus : suppression du placeholder.'); // Log après perte de focus
+            birthdateInput.placeholder = ''; // Supprime le placeholder si le champ est vide
         }
     });
 
+    // === Gestion des clics sur l'arrière-plan de la modale pour la fermer ===
     modalbg.addEventListener('click', (event) => {
-        if (event.target === modalbg) {
-            logEvent('info', 'Clic détecté sur l\'arrière-plan : fermeture de la modale.');
-            closeModal();
+        if (event.target === modalbg) { // Vérifie que l'utilisateur a cliqué sur l'arrière-plan et non sur le contenu
+            logEvent('info', 'Clic détecté sur l\'arrière-plan : fermeture de la modale.'); // Log du clic sur l'arrière-plan
+            closeModal(); // Ferme la modale
         }
     });
 
+    // === Validation en temps réel des champs du formulaire ===
     inputs.forEach((input) => {
         input.addEventListener('input', (event) => {
-            logEvent('info', `Modification détectée sur le champ : ${event.target.id}`);
-            validateField(event); // Valide en temps réel
+            logEvent('info', `Modification détectée sur le champ : ${event.target.id}`); // Log des modifications
+            validateField(event); // Valide le champ en temps réel
         });
         input.addEventListener('blur', (event) => {
-            logEvent('info', `Perte de focus sur le champ : ${event.target.id}`);
-            validateField(event); // Valide lors de la perte de focus
+            logEvent('info', `Perte de focus sur le champ : ${event.target.id}`); // Log de la perte de focus
+            validateField(event); // Valide le champ lors de la perte de focus
         });
     });
 
+    // === Gestion de la soumission du formulaire ===
     document.querySelector('form').addEventListener('submit', function (event) {
-        let isValid = true;
-        logEvent('info', 'Tentative de soumission du formulaire.');
+        let isValid = true; // Initialise la validité globale du formulaire
+        logEvent('info', 'Tentative de soumission du formulaire.'); // Log du début de la soumission
 
         // Valide tous les champs obligatoires
         inputs.forEach((input) => {
-            validateField({ target: input });
+            validateField({ target: input }); // Valide chaque champ
             if (input.classList.contains('error')) {
-                isValid = false; // Si une erreur est présente, le formulaire n'est pas valide
+                isValid = false; // Si un champ a une erreur, le formulaire est invalide
             }
         });
 
+        // Empêche la soumission si des erreurs sont présentes
         if (!isValid) {
-            event.preventDefault(); // Empêche la soumission du formulaire
-            logEvent('warn', 'Échec de la soumission : des erreurs sont présentes dans le formulaire.');
-            alert('Veuillez corriger les erreurs avant de soumettre le formulaire.');
+            event.preventDefault(); // Annule l'action par défaut (soumission)
+            logEvent('warn', 'Échec de la soumission : des erreurs sont présentes dans le formulaire.'); // Log d'avertissement
+            alert('Veuillez corriger les erreurs avant de soumettre le formulaire.'); // Alerte pour l'utilisateur
         } else {
-            event.preventDefault(); // Empêche la redirection par défaut (si elle est gérée différemment)
-            logEvent('info', 'Formulaire valide : ouverture de la modale de confirmation.');
+            event.preventDefault(); // Empêche la redirection pour gérer la soumission autrement
+            logEvent('info', 'Formulaire valide : ouverture de la modale de confirmation.'); // Log de succès
             openConfirmationModal(); // Ouvre la modale de confirmation
         }
     });
 
+    // === Gestion des clics sur les boutons pour ouvrir la modale ===
     modalbtn.forEach(btn => btn.addEventListener('click', () => {
-        logEvent('info', 'Clic sur un bouton d\'ouverture de modale.');
-        launchModal();
+        logEvent('info', 'Clic sur un bouton d\'ouverture de modale.'); // Log du clic sur le bouton
+        launchModal(); // Ouvre la modale
     }));
 
+    // === Gestion des clics sur le bouton pour fermer la modale ===
     closeBtn.addEventListener('click', () => {
-        logEvent('info', 'Clic sur le bouton de fermeture de modale.');
-        closeModal();
+        logEvent('info', 'Clic sur le bouton de fermeture de modale.'); // Log du clic sur le bouton de fermeture
+        closeModal(); // Ferme la modale
     });
 
-    logEvent('info', 'Initialisation principale terminée.');
+    logEvent('info', 'Initialisation principale terminée.'); // Log final confirmant la fin de l'initialisation
 }
 
-/*                            =========================================                */
-/*                            ===========Déroulement du script ========                */
-/*                            =========================================               */
 
+/*======================================================================================*/
+/*                  ===========Déroulement du script =============                      */
+/*======================================================================================*/
 
+/**
+
+ * 
+ * - Attache un écouteur d'événement à l'événement `DOMContentLoaded` pour garantir que le DOM est entièrement chargé.
+ * - Une fois le DOM prêt, exécute la fonction `main` pour initialiser le script principal.
+ * - Journalise le début de l'exécution pour le suivi.
+ * 
+ * @returns {void}
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    logEvent('info', 'DOM entièrement chargé. Début de l\'exécution du script principal.');
-    main();
+    logEvent('info', 'DOM entièrement chargé. Début de l\'exécution du script principal.'); // Log confirmant le chargement complet du DOM
+    main(); // Appelle la fonction principale pour initialiser toutes les fonctionnalités
 });
+
