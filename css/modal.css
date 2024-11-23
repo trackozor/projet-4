@@ -451,14 +451,14 @@ input[type="date"]:focus::placeholder {
   width: 0.8rem; /* Taille du point central */
   height: 0.8rem;
   border-radius: 50%; /* Cercle parfait */
-  background-color: green; /* Couleur verte du point */
+  background-color: #4CAF50; /* Couleur verte du point */
   opacity: 0; /* Caché par défaut */
   transition: opacity 0.3s ease-in-out; /* Transition douce pour l'apparition du point */
 }
 
 /* Style lorsque l'input est sélectionné */
 .checkbox-input:checked + .checkbox-icon {
-  border-color: green; /* La bordure devient verte */
+  border-color: #4CAF50; /* La bordure devient verte */
 }
 
 .checkbox-input:checked + .checkbox-icon::after {

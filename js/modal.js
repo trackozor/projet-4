@@ -40,13 +40,10 @@ const logStyles = {
 
 // ======= Variables pour les médias =======
 const isMobile = window.matchMedia("(max-width: 767px)").matches; // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
-const isLandscape = window.matchMedia("(orientation: landscape)").matches; // Indique si l'écran est en mode paysage (orientation horizontale)
+
 
 // ======= État global =======
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale. "true" signifie que la modale est ouverte
-
-
-
 
 
 /*========================================================================================*/
@@ -124,27 +121,15 @@ function editNav() {
     navElement.classList.toggle("responsive");
     logEvent('info', `Menu responsive ${navElement.classList.contains("responsive") ? "activé" : "désactivé"}`);
 
-    // Gérer le déplacement de la modale et de la section hero en fonction des conditions
+    // Gérer le déplacement de la modale et de la section hero en fonction de l'état responsive
     if (navElement.classList.contains("responsive") && isMobile) {
-        logEvent('info', 'Mode responsive détecté sur un appareil mobile.');
-
-        if (isLandscape) {
-            // Mode responsive et mobile en paysage
-            heroSection.style.top = "10%";
-            modalbg.style.top = "20%";
-            logEvent('info', 'Mode paysage détecté. Hero et modale repositionnés.', {
-                heroTop: "10%",
-                modalTop: "20%",
-            });
-        } else {
-            // Mode responsive et mobile en portrait
-            heroSection.style.top = "12%";
-            modalbg.style.top = "20%";
-            logEvent('info', 'Mode portrait détecté. Hero et modale repositionnés.', {
-                heroTop: "12%",
-                modalTop: "20%",
-            });
-        }
+        // Mode responsive détecté sur mobile (uniquement)
+        heroSection.style.top = "10%";
+        modalbg.style.top = "25%";
+        logEvent('info', 'Mode responsive détecté sur un appareil mobile. Hero et modale repositionnés.', {
+            heroTop: "12%",
+            modalTop: "25%",
+        });
     } else {
         // Si le menu est fermé ou que les conditions ne sont pas remplies
         heroSection.style.top = "6.5vh";
@@ -155,6 +140,7 @@ function editNav() {
         });
     }
 }
+
 
 
 function resetForm() {
