@@ -429,6 +429,8 @@ closeModalBtn.addEventListener('click', function () {
 
 
 
+
+/**
 /**
  * ============ Fonction pour afficher un message d'erreur et ajouter une bordure rouge ============ 
  * 
@@ -467,12 +469,8 @@ function showError(message, inputElement) {
     }
 }
 
-
-
-
-
 /**
- * ============ Fonction pour supprimer un message d'erreur et retirer la bordure rouge ============
+ * ============ Fonction pour supprimer un message d'erreur et retirer la bordure rouge ============ 
  * 
  * - Retire la classe CSS d'erreur (`error-input`) appliquée au champ d'entrée ciblé.
  * - Supprime le message d'erreur (tooltip) affiché sous le champ, si présent.
@@ -484,11 +482,11 @@ function showError(message, inputElement) {
 function removeError(inputElement) {
     try {
         // Retire la classe CSS qui applique une bordure rouge au champ
-        inputElement.classList.remove('error-input'); 
+        inputElement.classList.remove(CSS_CLASSES.ERROR_INPUT); 
         logEvent('info', `Suppression de la bordure rouge pour le champ : ${inputElement.id}`); // Log pour confirmer la suppression de la bordure
 
         // Recherche d'un tooltip d'erreur existant dans l'élément parent du champ
-        const existingError = inputElement.parentElement.querySelector('.error-modal'); 
+        const existingError = inputElement.parentElement.querySelector(`.${CSS_CLASSES.ERROR_MODAL}`); 
         if (existingError) {
             existingError.remove(); // Supprime le tooltip d'erreur du DOM
             logEvent('info', `Suppression du tooltip d'erreur pour le champ : ${inputElement.id}`); // Log pour confirmer la suppression du message d'erreur

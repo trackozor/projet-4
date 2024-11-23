@@ -539,26 +539,26 @@ input[type="date"]:focus::placeholder {
 
 /* Bouton de fermeture (croix) */
 .close {
-    display: flex; /* Active Flexbox pour organiser les éléments */
-    position: absolute;
-    width: 100%; /* Prend toute la largeur disponible */
-    justify-content: flex-end;
-    background-color: transparent; /* Fond transparent */
-    height:2%;
-    margin: 0; /* Supprime les marges externes */
-    z-index: 5001;
+  display: flex; /* Active Flexbox pour organiser les éléments */
+  position: absolute;
+  width: 100%; /* Prend toute la largeur disponible */
+  justify-content: flex-end;
+  background-color: transparent; /* Fond transparent */
+  height:2%;
+  margin: 0; /* Supprime les marges externes */
+  z-index: 5001;
 }
 
 /* Création de la croix avec un symbole + pivoté */
 .close span {
-    font-size: var(--font-size-xlarge); /* Utilise une taille de police définie dans les variables CSS */
-    font-weight: 500; /* Applique un poids de police moyen */
-    background-color: transparent; /* Fond transparent */
-    display: inline-block; /* Permet un alignement en ligne tout en respectant les dimensions */
-    transform: rotate(45deg); /* Pivote le symbole pour former une croix */
-    font-size: 2rem; /* Taille de police pour la croix */
-    padding-bottom: 0; /* Aucun espacement en bas */
-    margin-bottom: 0; /* Aucune marge en bas */
+  font-size: var(--font-size-xlarge); /* Utilise une taille de police définie dans les variables CSS */
+  font-weight: 500; /* Applique un poids de police moyen */
+  background-color: transparent; /* Fond transparent */
+  display: inline-block; /* Permet un alignement en ligne tout en respectant les dimensions */
+  transform: rotate(45deg); /* Pivote le symbole pour former une croix */
+  font-size: 2rem; /* Taille de police pour la croix */
+  padding-bottom: 0; /* Aucun espacement en bas */
+  margin-bottom: 0; /* Aucune marge en bas */
 }
 
 /* Bouton de soumission */
@@ -570,17 +570,17 @@ input[type="date"]:focus::placeholder {
 
 /* Modale de confirmation (cachée par défaut) */
 #confirmation-modal {
-    display: none;
-    flex-direction: column;
-    position: fixed; /* Positionne la modale en fondé */
-    top: 2%; /* Positionne la modale au haut de la fenêtre */
-    left: 0; /* Positionne la modale à gauche de la fenêtre */
-    width: 100%; /* Occupe toute la largeur disponible */
-    height: 100%; /* Occupe toute la hauteur disponible */
-    background-color: rgba(0, 0, 0,1); /* Fond transparent avec une transparence de 50% */
-    z-index: 5000; /* Positionne la modale au dessus des autres éléments */
-    align-items: center; /* Centre le contenu verticalement */
-    justify-content: space-evenly;
+  display: none;
+  flex-direction: column;
+  position: fixed; /* Positionne la modale en fondé */
+  top: 2%; /* Positionne la modale au haut de la fenêtre */
+  left: 0; /* Positionne la modale à gauche de la fenêtre */
+  width: 100%; /* Occupe toute la largeur disponible */
+  height: 100%; /* Occupe toute la hauteur disponible */
+  background-color: rgba(0, 0, 0,1); /* Fond transparent avec une transparence de 50% */
+  z-index: 5000; /* Positionne la modale au dessus des autres éléments */
+  align-items: center; /* Centre le contenu verticalement */
+  justify-content: space-evenly;
 }
 
 #confirmation-modal span {
@@ -595,25 +595,32 @@ input[type="date"]:focus::placeholder {
   color: white;
   border: none;
 }
-/* Bordure rouge pour les champs avec des erreurs */
-.text-control.error {
+
+
+/* Classe pour les bordures rouges des champs avec des erreurs */
+.text-control.error-input {
   border: 2px solid red; /* Bordure rouge pour indiquer une erreur */
-  box-shadow: 0 0 1rem red; /* Ombre rouge pour indiquer une erreur */
-  animation: borderBlink 5s ease-in-out 5s; /* Animation de clignotement */
+  box-shadow: 0 0 1rem red; /* Ombre rouge pour mettre en évidence l'erreur */
+  animation: borderBlink 5s ease-in-out 3; /* Animation pour un effet de clignotement */
 }
 
-/* Style de la modale d'erreur */
+/* Classe pour le message d'erreur */
 .error-modal {
-    font-size: 0.8rem;
-    background-color:black; /* Fond jaune clair */
-    color: red; /* Texte en rouge */
-    padding: 0; /* Ajoute un espacement interne de 2% */
-    width: 100%; /* Occupe toute la largeur disponible */
-    text-align: left; /* Centre le texte */
-    margin-top: 5px; /* Ajoute un espace au-dessus */
-    display: none; /* Cachée par défaut */
+  display: block; /* Rend l'erreur visible */
+  font-size: 0.8rem; /* Taille de police légèrement réduite */
+  background-color: black; /* Fond noir pour contraster avec le texte */
+  color: red; /* Texte rouge pour indiquer une erreur */
+  padding: 1% 0; /* Ajoute un espacement interne pour rendre le texte plus lisible */
+  width: 90%; /* Largeur ajustée pour s'insérer correctement sous le champ */
+  text-align: left; /* Texte aligné à gauche */
+  margin-top: 2%; /* Espace au-dessus pour ne pas chevaucher le champ */
+  position: relative; /* Position relative pour s'adapter dynamiquement à son parent */
+  border-radius: 4px; /* Coins arrondis pour un design moderne */
 }
-/*---------------------------------------------------------------------------*/
+
+
+
+-------------------------------------------------------------------------*/
 /*------------------------ FOOTER -------------------------------------------*/
 /*---------------------------------------------------------------------------*/
 
