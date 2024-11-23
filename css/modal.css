@@ -31,7 +31,7 @@
     --font-size-base: 1rem; /* Taille de base, par défaut pour la plupart des textes */
     --font-size-large: 1.4rem; /* Grande taille de texte, idéale pour les titres */
     --font-size-xlarge: 2rem; /* Très grande taille, pour les titres principaux ou des éléments importants */
- 
+
 }
 
 /* ------------------------------------------------------------------ */
@@ -354,9 +354,10 @@ header img {
 /* Style global du formulaire */
 .formData {
   display: flex; /* Définit le formulaire comme un bloc */
+  justify-content: center;
   margin: 0 auto; /* Centre le formulaire horizontalement */
   padding: 0; /* Supprime les espacements internes */
-  width: 95vw; /* Le formulaire occupe 100% de la largeur disponible */
+  width: 90%; /* Le formulaire occupe 100% de la largeur disponible */
   position: relative; /* Position relative pour des ajustements internes */
   left: -6%; /* Décale le formulaire de 7.5vw vers la gauche */
   
@@ -620,560 +621,13 @@ input[type="date"]:focus::placeholder {
 }
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------- MEDIA QUERIES ------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
-/*---------------------------------------------- MEDIA QUERIES -------------------------------------------------------------*/
-/*-----------------------------------------------------------------------------------------------------------------------------*/
-/*----------------------------------Style pour téléphone en mode paysage---------------------------------*/
-@media screen and (min-width: 320px) and (max-width: 767px) and (max-height: 600px) and (orientation: landscape) {
-/* Logo */
-  .logo {
-      width: 15vw; /* Ajuste la largeur du logo à 20% de la fenêtre */
-      padding-top: 1%; /* Ajoute un léger espacement en haut */
-  }
 
-  /* Navigation */
-  .nav {
-      margin-bottom: 2%; /* Ajoute un espace de 2% en dessous de la navigation */
-  }
-
-  /* Conteneur principal de la navigation */
-  .topnav {
-      flex-direction: row; /* Aligne les éléments horizontalement pour une disposition efficace */
-      width: 100vw; /* Occupe toute la largeur de la fenêtre */
-      justify-content: center; /* Centre les éléments horizontalement */
-      margin: 0 auto; /* Centre le conteneur horizontalement */
-  }
-
-
-/* Ajustement de l'icône de menu en mode paysage */
-.topnav i {
-    display: flex; /* Affiche l'icône en mode Flexbox */
-    top: 1%; /* Positionne l'icône à 2% du bord supérieur */
-    right: 5%; /* Positionne l'icône à 5% du bord droit */
-}
-
-/* Style au survol des liens */
-.topnav span:hover {
-    padding: 0.2rem; /* Ajoute un léger espacement interne au survol */
-    border-radius: 0.4rem; /* Ajoute des coins arrondis pour un effet visuel agréable */
-    width:100%;
-}
-
-
-  /* Ajustement des liens de la liste */
-  .topnav.responsive .nav-links {
-    display:flex;
-    flex-direction: row; 
-    margin:0 auto; /* Centre les liens horizontalement */
-    font-size: 0.9rem; /* Taille de police légèrement réduite */
-    width: 90vw;
-  }
-
-  /* Style des liens dans la nav en paysage */
-  .topnav.responsive .nav-links a {
-    padding: 0.3rem;
-    margin: 0 0.5rem; /* Espacement entre les liens */
-  }
-
-  /* Section principale en mode paysage */
-  .hero-section {
-    flex-direction: row; /* Organise la section en lignes horizontales */
-    background-color: #0b0c07;
-    width: 90vw;
-    padding:0;
-    margin: 0 auto;
-    position:relative;
-  }
-
-  /* Ajustement de l'image */
-  .hero-section img {
-    width: 60vw; /* Prend la moitié de la largeur disponible */
-    max-height: 70vh;
-    margin:1% 0;
-    padding:0;
-    object-fit: cover;
-    border-radius: 0;
-  }
-
-  /* Ajustement de la zone de contenu de texte en paysage */
-  .hero-content {
-    width: 55%; /* Prend la moitié de la largeur */
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-  }
-
-  /* Ajustement du titre */
-  .hero-content h2 {
-    font-size: 2.5rem;
-    padding: 0;
-    position: absolute;
-    width:70vw;
-    left:5%;
-    top:-10%;
-    color: white;
-    z-index: 2;
-  }
-
-  /* Ajustement du paragraphe */
-  .hero-content p {
-    position:absolute;
-    width: 30vw;
-    font-size: 0.9rem;
-    color: white;
-    left:5%;
-    top:40%;
-    
-  }
-
-  /* Bouton d'inscription mobile en paysage */
-  .mobile-signup {
-    display: none;
-  }
-  .desktop-signup {
-    display: block;
-    position: absolute;
-    font-size:0.8rem;
-    width:15vw;
-    border-radius: 5%;
-    padding: 0.5rem ;
-    margin: 5% auto;
-    bottom:2%;
-    left:5%;
-    
-  }
-  .bground {
-      display: none;
-      position: fixed;
-      z-index: 3;
-      right: 0%;
-      height: 100%;
-      width: 100vw;
-      background-color: black;
-      justify-content:center;
-      margin:2% auto;
-  }
-  .content {
-    display: flex;
-    width:100vw;
-    height:auto;
-    background-color: #0b0c07;
-    display: flex;
-    justify-content: center;
-    margin:0 auto;
-    padding-bottom: 5%;
-
-  }
-  /*-- Style globale formulaire --*/ 
-  .formData  {
-    display: flex;
-    margin: 0 auto;
-    padding: 0;
-    width: 95vw;
-    position: relative;
-    justify-content: center;
-    left:-3vw;
-  }
-
-  .formData .legend {
-    font-size: var(--font-size-small);
-    width: 90%;
-    display:flex;
-    justify-content: left;
-    padding-left:6%;
-  }
-  /*-- LIste infos personnels --*/
-  .form-list li {
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    padding:0; 
-    margin: 0 auto;
-    
-  }
-
-  /* input infos personnels --*/
-  .form-list input {
-    width: 90vw;
-    padding: 1% 0;
-    border: none;
-    border-radius: 0.3rem;
-    justify-content: center;
-    margin:0 auto
-
+/*------------------------------- Styles pour tablettes entre 768 px et 1023 px ----------------------------------*/ 
+@media screen and (min-width: 768px) and (max-width: 1023px)  {
   
-  }
-  .location-list{
-    padding-left: 5%;
-    padding-bottom: 2%;
-  }
-  .consentement {
-    display: flex;
-    width:90vw;
-    margin:0 auto;
-    padding-left: 8%;
-    
-    
-  }
-  /*-- Bouton close en croix --*/
-  .close {
-    display:flex;
-    width: 100%;
-  
-    background-color: transparent;
-    height:1vh;
-    padding:0 5%;
-    margin: 0;
-    
-  }
-  /* Creation de la croix avec un + retourné */
-  .close  span {
-  font-size:var(--font-size-xlarge);
-  font-weight:500;
-  background-color: transparent;
-  display: inline-block;
-  transform: rotate(45deg) ;
-  font-size: 2rem;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  }
-
-  .btn-submit{
-    
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-  }
-  
-  .copyright {
-  width: 50vw;
-  justify-content: flex-start;
-  font-size: 0.8rem;
-  }
-}
-
-/*-------------------------------------------------------------------------------------------------------------*/
-/*----------------------------------Style pour téléphones recent  ---------------------------------*/
-@media screen and (min-width: 767px) and (max-width: 1024px)  and (max-height:600px) and (orientation: landscape) {
-  .topnav {
-    flex-direction: row; /* Organise les éléments horizontalement pour maximiser l'espace */
-    justify-content: space-between; /* Espace entre les éléments pour aérer */
-  }
-
-  /* Ajustement de l'icône de menu en paysage */
-  .topnav i {
-    display: none;
-  }
-
-  .nav-links {
-    display: flex;
-    position: absolute;
-    flex-direction: row; /* Organise les liens verticalement pour plié */
-    font-size: 1.2rem; /* Taille de police légèrement réduite */
-    right:-5%;
-    padding :0% 2%;
-  }
-  .nav-links li {
-    padding:0 10px;
-  }
-  /* Style au survol */
-  .topnav span:hover {
-    padding: 0.2rem;
-    border-radius: 0.4rem;
-  }
-
-  /* Ajustement des liens de la liste */
-  .topnav.responsive .nav-links {
-    flex-direction: row; /* Organise les liens horizontalement pour paysage */
-    font-size: 0.9rem; /* Taille de police légèrement réduite */
-    padding-top: 5%; /* Supprime le padding top pour un alignement plus serré */
-    width: 90%;
-  }
-
-  /* Style des liens dans la nav en paysage */
-  .topnav.responsive .nav-links a {
-    padding: 0.3rem;
-    margin: 0 0.5rem; /* Espacement entre les liens */
-  }
-
-  /* Section principale en mode paysage */
-  .hero-section {
-    flex-direction: row; /* Organise la section en lignes horizontales */
-    align-items: center; /* Centre verticalement les éléments */
-    background-color: #0b0c07;
-    width: 90vw;
-    height:70vh;
-    justify-content: center;
-    padding: 0;
-    margin: 2% auto;
-  }
-
-  /* Ajustement de l'image */
-  .hero-section img {
-    width: 65vw; /* Prend la moitié de la largeur disponible */
-    max-height: 70vh;
-    margin: 0;
-    padding:0;
-    object-fit: cover;
-    border-radius: 0;
-  }
-
-  /* Ajustement de la zone de contenu de texte en paysage */
-  .hero-content {
-    width: 55%; /* Prend la moitié de la largeur */
-  }
-
-  /* Ajustement du titre */
-  .hero-content h2 {
-    font-size: 2.2rem;
-    padding: 0;
-    position: absolute;
-    width:70vw;
-    top:15%;
-    left:7%;
-    color: white;
-  }
-
-  /* Ajustement du paragraphe */
-  .hero-content p {
-    font-size: 1.2rem;
-    padding-top: 25%;
-    padding-left: 5%;
-    color: white;
-  }
-
-  /* Bouton d'inscription mobile en paysage */
-  .mobile-signup {
-    display: none;
-  }
-  .desktop-signup {
-    display: block;
-    font-size:1rem;
-    width: 15vw;
-    border-radius: 5%;
-    padding: 0.5rem ;
-    margin: 5%;
-    
-  }
-  .bground{
-    margin-top: 3%;
-  }
-  
-  .formData{
-  left:-1%;
-  }
-  .form-list li {
-    margin:0 ;
-    padding:0;
-  }
-  .form-list input {
-    padding:1% 0;
-    width:90vw
-  }
-  .location-list,.consentement,.formData .legend  {
-    padding-left: 5%;
-    
-  }
-  .copyright{
-    font-size: 1rem;
-    
-  }
-}
-/*---------------------------------------------------------------------------------------------------------*/
-/*------------------------------Style pour petites tablettes  et smartphone pliable déplie en portrait entre 600px et 767px--------------------------*/
-@media screen and (min-width: 600px) and (max-width: 900px) and (min-height:600px) and (max-height:900px) and (orientation: portrait) {
-    .topnav {
-    flex-direction: row;
-    justify-content:f;
-    align-items: center;
-    padding: 0;
-  }
-
-  .topnav i {
-    display: none;
-  }
-
-  .nav-links {
-    width: 100%;
-    margin-top: 10%;
-    display: flex;
-    flex-wrap: nowrap;
-    font-weight: 900;
-    width: 100%;
-    justify-content:flex-start;
-  }
-
-
-  .desktop-signup {
-    display: flex;
-    font-size: 1.2rem;
-    width:25vw;
-    padding:3%;
-    justify-content: center;
-  }
-
-  .mobile-signup{
-    display: none;
-  }
-  .bground {
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-    background-color:white;
-    justify-content: center;
-    top: 20%;  
-  }
-
-  .content {
-    background-color: #0b0c07;
-    width: 95%;
-    display:block;
-    margin: 0 auto;
-    justify-content: center;
-  }
-  .modal-body {
-    width: 95%;
-    padding: 0;
-    padding-left: 7%;
-    margin: 0 auto;
-    justify-content: center;
-  }
-  .formData {
-    width: 100%;
-    justify-content: center;
-  }
-  .btn-submit{
-    margin-bottom: 5%;
-  }
-}
-
-/*-------------------------------------------------------------------------------------------------------------------------*/
-/*-------------------------Smartphone pliable déplié en mode landscape  -----------------------------------------------------*/
-@media screen and (min-width: 767px) and (max-width: 1024px)  and (min-height:767px) and (max-height:1024px) and (orientation: landscape) {
-      .topnav {
-    flex-direction: row;
-    justify-content:f;
-    align-items: center;
-    padding: 0;
-  }
-
-  .topnav i {
-    display: none;
-  }
-
-  .nav-links {
-    width: 100%;
-    margin-top: 10%;
-    display: flex;
-    flex-wrap: nowrap;
-    font-weight: 900;
-    width: 100%;
-    justify-content:flex-start;
-  }
-
-  .hero-section {
-    z-index: 1;
-    width: 90vw;
-    height: 60vh;
-    display: flex;
-    flex-direction: row;
-    background-color: #0b0c07;    margin: 0 auto;
-    justify-content: center;
-    max-width: 1240px;
-  }
-
-  .hero-content {
-    width: 60vw;
-    justify-content:flex-end;
-    padding: 4%;
-    margin-bottom: 5%;
-  }
-
-  .hero-section h2{
-    color: #ffffff;
-    position: absolute;
-    z-index: 3;
-    font-size: 3rem;
-    width: 65vw;
-    top: 8%;
-    font-weight: 500;
-  }
-
-  .hero-section p{
-    width: 35vw;
-    position:absolute;
-    z-index: 3;
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 500;
-    line-height: 1.5rem;
-    padding-bottom: 10%;
-  }
-
-  .hero-section img {
-    position: relative;
-    z-index: 2;
-    width: 60vw;
-    max-height: 60vh;
-    margin: 0;
-    padding: 0;
-    object-fit: cover;
-    border-radius: 0;
-  }
-
-  .desktop-signup {
-    display: flex;
-    font-size: 1.2rem;
-    width:25vw;
-    padding:3%;
-    justify-content: center;
-  }
-
-  .mobile-signup{
-    display: none;
-  }
-  .bground {
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-    background-color:white;
-    justify-content: center;
-    top: 20%;  
-  }
-
-  .content {
-    background-color: #0b0c07;
-    width: 50%;
-    display:block;
-    margin: 0 auto;
-    justify-content: center;
-  }
-  .modal-body {
-    width: 80%;
-    padding: 0;
-    margin: 0 auto;
-    justify-content: center;
-  }
-  .formData {
-    width: 100%;
-    justify-content: center;
-  }
-  /* Styles pour petites tablettes */
-
-}
-/*------------------------------- Styles pour appareils tablettes entre 768 px et 1023 px ----------------------------------*/ 
-@media screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 767px) and (max-height:1023px) and (orientation: portrait) {
-  header {
-    width: 95vw; /* Le header prend 100% de la largeur de la page */
-    display: flex; /* Utilise le flexbox pour disposer les éléments à l'intérieur */
-    position:relative; /**/
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 5%;
-    background-color:white; /* Couleur de fond du header */
-  }   
-
 /* Image */
   header img {
     width:20%;
@@ -1192,11 +646,10 @@ input[type="date"]:focus::placeholder {
 
 /* conteneur */
   .topnav {
-  display: block;
-  flex-direction: column;
-  width: 95vw;
-  flex-wrap: nowrap;
-  
+    flex-direction: row; /* Place les éléments en ligne pour un affichage tablette */
+    justify-content: flex-end; /* Aligne les liens à droite */
+    width: 70%; /* Réduit la largeur */
+    padding: 0.5rem; /* Ajoute un léger padding */
   }
 
 /* style au survol */
@@ -1324,62 +777,6 @@ input[type="date"]:focus::placeholder {
       font-size: 1.2rem;
       width:25vw;
   }
-
-/*------------------------------------------------------------------------------------*/
-/*------------------ Fenêtre modale --------------------------------------------------*/
-/*------------------------------------------------------------------------------------*/
-
-/* Conteneur principal pour le repli de la fenêtre modale */                    
-  .bground {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      right: 0%;
-      top: 8%;
-      height: 100%;
-      width: 100%;
-      background-color: black;
-      color: white;
-      justify-content:center;
-      margin:0 auto;
-      padding-bottom: 2%;
-  }
-
-  /*-- Style globale formulaire --*/ 
-  .formData  {
-    display: block;
-    margin: 0 auto;
-    padding: 0;
-    width: 100%;
-    position: relative;
-    left:-7.5vw;
-    bottom: 1%;
-  }
-
-  .formData .legend {
-    padding-left:12%;
-    font-size: var(--font-size-small);
-  }
-  /*-- LIste infos personnels --*/
-  .form-list li {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content:center;
-    padding:0; 
-    margin: 0 auto;
-    
-  }
-
-
-  .copyright {
-    width: 60vw;
-    justify-content: center;
-    margin:0 auto;
-    font-size: 0.8rem;
-    text-align: center;
-    color:red
-  }
 }
 
 /*------------------------------------------------------------------------------------------------------------*/
@@ -1413,7 +810,9 @@ input[type="date"]:focus::placeholder {
   .topnav i {
     display: none;
   }
+
   .topnav li span {
+    display: flex;
     font-size: 1rem;
     font-weight: 700;    
   }
@@ -1423,6 +822,7 @@ input[type="date"]:focus::placeholder {
   .nav-links  {
     gap: 3%;
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
     flex-wrap: nowrap;
     font-weight: 900;
@@ -1499,7 +899,7 @@ input[type="date"]:focus::placeholder {
 
   .content {
     background-color: #0b0c07;
-    width: 50vw;
+    width: 50%;
     display:block;
     margin: 0 auto;
     justify-content: center;
@@ -1548,7 +948,7 @@ input[type="date"]:focus::placeholder {
 /* ------------------------------------------------------------------------------------------------------------------------*/
 /* ------------------------------------------------------------------------------------------------------------------------*/
 /* -----------------------------------------Écrans larges supérieur à 1440 px --------------------------------------------*/
-@media screen and (min-width: 1440px) and (min-height: 800px) and (max-height: 1200px) and (orientation: landscape) {  
+@media screen and (min-width: 1440px)  {  
 /*------------header------------- */
   /* Conteneur */
   header {
@@ -1665,9 +1065,9 @@ input[type="date"]:focus::placeholder {
     margin: 0 ;
   }
   .modal-body .form-list input.text-control {
-    height: 1.5rem; /* Ajustez la hauteur selon vos besoins */
-    padding: 0.5rem 1rem; /* Ajustez le padding pour équilibrer la taille du texte et l'espacement */
-    font-size: 1rem; /* Taille de police pour rendre le texte plus lisible */
+    height: 1.5rem; 
+    padding: 0.5rem 1rem; 
+    font-size: 1rem; 
     border-radius: 0.5rem; 
   }
   .formData {

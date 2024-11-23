@@ -362,6 +362,7 @@ function validateField(event) {
 }
 
 
+
 /*=========== Fonction pour ouvrir la modale de confirmation ==========*/
 /**
  * Fonction pour ouvrir la modale de confirmation et empêcher le défilement de la page.
