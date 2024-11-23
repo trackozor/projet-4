@@ -510,7 +510,8 @@ input[type="date"]:focus::placeholder {
   border: 2px solid transparent; /* Bordure par défaut transparente */
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Transitions douces */
   cursor: pointer; /* Curseur pointeur */
-  margin:0.3rem 0.5rem 0.3rem 0.5% /* Espace entre l'icône et le texte */
+  margin: 1%  1.5% 1% 0 ; /* Espace harmonisé en pourcentage */
+
 }
 
 /* Coche blanche (invisible par défaut) */
