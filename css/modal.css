@@ -31,7 +31,6 @@
     --font-size-base: 1rem; /* Taille de base, par défaut pour la plupart des textes */
     --font-size-large: 1.4rem; /* Grande taille de texte, idéale pour les titres */
     --font-size-xlarge: 2rem; /* Très grande taille, pour les titres principaux ou des éléments importants */
-
 }
 
 /* ------------------------------------------------------------------ */
@@ -49,7 +48,7 @@ html {
 body {
     min-width: 300px;/* Définit une largeur minimale pour garantir une mise en page adaptée aux très petits écrans */
     max-width: 1200px; /* Limite la largeur maximale du contenu à 1200px pour éviter une trop grande extension sur les grands écrans */
-    font-family: var(--font-default)-font-default; /* Applique la police par défaut définie dans les variables CSS globales */
+    font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
     background-color: white; /* Définit une couleur de fond blanche pour le corps du document */
     display: flex; /* Utilise Flexbox pour organiser les enfants du <body> */ 
     flex-direction: column;/* Aligne les éléments enfants verticalement dans une colonne */
@@ -153,8 +152,6 @@ header img {
   width: 90vw; /* Occupe 95% de la largeur de la fenêtre */
   flex-wrap: nowrap; /* Empêche les éléments enfants de passer à la ligne */
   padding: 0.3rem;
-
-  
 }
 
 
@@ -165,9 +162,8 @@ header img {
   border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
   font-weight: 500; /* Rend le texte légèrement plus épais */
   padding: 0.3rem; /* Ajoute un espacement interne de 0.3rem tout autour */
-  text-decoration: underline; /* Souligne le texte au survol */
-  width:50%;
-  font-size: 0.9rem;
+  width:70%;
+  text-decoration: underline; 
 }
 
 
@@ -190,7 +186,7 @@ header img {
     color: #ffffff; /* Change la couleur de l'icône en blanc au survol */
     border-radius: 0.5rem; /* Arrondit les coins de l'icône */
     font-weight: 500; /* Rend le texte ou l'icône légèrement plus épais */
-    padding: 0.4rem; /* Maintient un espacement interne de 0.4rem */
+    
 }
 
 /* Affichage conditionnel de la liste (par défaut) */
@@ -201,9 +197,10 @@ header img {
 
 /* Style des listes dans .nav-links */
 .nav-links ul {
+    display: flex;
     width: 50%; /* Réduit la largeur de la liste à 70% de la fenêtre */
     margin: 1% auto; /* Centre horizontalement la liste */
-    justify-content: center; /* Centre les éléments de la liste en mode flex (si utilisé) */
+    justify-content: center; /* Centre les éléments de la liste en mode flex  */
     text-align: center; /* Centre le texte des éléments */
     padding: 1% 0;
     
@@ -221,13 +218,12 @@ header img {
     position: relative; /* Position relative pour ajustements internes */
     text-align: center; /* Centre le texte des éléments de la liste */
     justify-content: center; /* Centre verticalement les éléments de la liste */
-    padding-top: 6vh; /* Ajoute un espacement au-dessus de la liste */
+    padding-top: 7vh; /* Ajoute un espacement au-dessus de la liste */
     flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
     width: 90%; /* Réduit la largeur totale de la liste à 90% */
     z-index: 2; /* Place la liste au-dessus des autres éléments */
-    margin: 0 auto; /* Centre horizontalement la liste */
+    margin: 1% auto; /* Centre horizontalement la liste */
     right: 10%; /* Décale la liste de 10% vers la droite */
-
 }
 
 /* Style des liens de la liste */
@@ -235,7 +231,7 @@ header img {
     display: flex; /* Affiche chaque lien comme un élément flex */
     flex-wrap: nowrap; /* Empêche le contenu du lien de se diviser sur plusieurs lignes */
     justify-content: center; /* Centre le contenu horizontalement */
-
+    margin: 1% 0;;
 }
 
 /*----------------------------------------------------------------------------------------------*/
@@ -278,7 +274,7 @@ header img {
 /* Style du titre */
 .hero-content h2 {
     color: black; /* Définit la couleur du texte du titre en noir */
-    font-size: 2.2rem; /* Définit une taille de police importante pour le titre */
+    font-size: 2rem; /* Définit une taille de police importante pour le titre */
     padding-left: 0; /* Aucun espacement à gauche du titre */
     padding-top: 1vh;
 
