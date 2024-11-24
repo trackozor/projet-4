@@ -113,33 +113,37 @@ function logEvent(type, message, data = {}) {
  * @returns {void}
  */
 function editNav() {
-    // Bascule la classe "responsive" sur l'élément de navigation
-    navElement.classList.toggle("responsive");
-    logEvent(
-        'info', 
-        `Menu responsive ${navElement.classList.contains("responsive") ? "activé" : "désactivé"}`
-    );
+    // Vérifiez si les éléments existent
+    if (!navElement || !heroSection || !modalbg) {
+        logEvent('error', 'Un des éléments nécessaires est manquant.');
+        return;
+    }
 
-    // Gère la position de la section hero et de la modale pour le mode responsive
-    if (navElement.classList.contains("responsive") && isMobile) {
-        // Si le mode responsive est activé sur un appareil mobile
-        heroSection.style.top = "10%"; // Positionne la section hero plus bas
-        modalbg.style.top = "25%"; // Décale la modale vers le bas
-        logEvent('info', 'Mode responsive détecté sur un appareil mobile. Hero et modale repositionnés.', {
-            heroTop: "12%",
-            modalbg: "25%",
+    // Basculer la classe "responsive"
+    const isResponsive = navElement.classList.toggle("responsive");
+    logEvent('info', `Menu responsive ${isResponsive ? "activé" : "désactivé"}`);
+
+    // Vérifiez si l'appareil est mobile
+    const isMobile = window.innerWidth <= 768;
+
+    // Appliquer les styles en fonction de l'état responsive et de l'appareil
+    if (isResponsive && isMobile) {
+        heroSection.style.top = "10%"; // Positionner hero plus bas
+        modalbg.style.top = "25%"; // Positionner la modale plus bas
+        logEvent('info', 'Mode responsive détecté sur mobile.', {
+            heroTop: heroSection.style.top,
+            modalTop: modalbg.style.top,
         });
     } else {
-        // Si le menu n'est pas en mode responsive ou sur un écran non mobile
-        heroSection.style.top = "6.5vh"; // Réinitialise la position de la section hero
-        modalbg.style.top = "6.5vh"; // Réinitialise la position de la modale
-        logEvent('info', 'Menu responsive désactivé. Hero et modale remis à leur position initiale.', {
-            heroTop: "6.5vh",
-            modalbg: "6.5vh",
+        // Réinitialiser les styles
+        heroSection.style.top = "6.5vh";
+        modalbg.style.top = "6.5vh";
+        logEvent('info', 'Menu responsive désactivé. Styles réinitialisés.', {
+            heroTop: heroSection.style.top,
+            modalTop: modalbg.style.top,
         });
     }
 }
-
 
 
 
