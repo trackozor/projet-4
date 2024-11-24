@@ -23,7 +23,6 @@ const modalbtn = document.querySelectorAll(".modal-btn"); // Boutons permettant 
 const formData = document.querySelectorAll(".formData"); // Conteneurs individuels des champs du formulaire
 const closeBtn = document.querySelector(".close"); // Bouton pour fermer la modale
 const inputs = document.querySelectorAll("input"); // Tous les champs de saisie du formulaire (prénom, e-mail, etc.)
-const birthdateInput = document.getElementById("birthdate"); // Champ spécifique pour saisir la date de naissance
 const confirmationModal = document.getElementById("confirmation-modal"); // Élément de la modale de confirmation (affiché après soumission)
 const closeModalBtn = document.getElementById("close-modal-btn"); // Bouton permettant de fermer la modale de confirmation
 
@@ -53,7 +52,11 @@ const istablet = window.matchMedia("(min-width: 768px) and (max-width: 1024px)")
 /* ====================== État global ====================== */
 
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale. "true" signifie que la modale est ouverte
+let isResponsive = false; // Indique si le menu est en mode responsive
 
+/* ====================== Variables spécifiques (à regrouper) ====================== */
+
+let errorMessage = ""; // Message d'erreur temporaire pour les champs de formulaire
 
 /*========================================================================================*/
 /*                       =========== Fonctions ===================                        */
@@ -123,17 +126,32 @@ function editNav() {
     const isResponsive = navElement.classList.toggle("responsive");
     logEvent('info', `Menu responsive ${isResponsive ? "activé" : "désactivé"}`);
 
-
     // Appliquer les styles en fonction de l'état responsive et de l'appareil
-    if (isResponsive && isMobile) {
-        heroSection.style.top = "10%"; // Positionner hero plus bas
-        modalbg.style.top = "25%"; // Positionner la modale plus bas
-        logEvent('info', 'Mode responsive détecté sur mobile.', {
-            heroTop: heroSection.style.top,
-            modalTop: modalbg.style.top,
-        });
+    if (isResponsive) {
+        if (isMobile.matches) {
+            heroSection.style.top = "10%"; // Positionner hero plus bas pour mobile
+            modalbg.style.top = "25%"; // Positionner la modale plus bas pour mobile
+            logEvent('info', 'Mode responsive détecté sur mobile.', {
+                heroTop: heroSection.style.top,
+                modalTop: modalbg.style.top,
+            });
+        } else if (istablet.matches) {
+            heroSection.style.top = "8%"; // Positionner hero légèrement plus bas pour tablette
+            modalbg.style.top = "20%"; // Positionner la modale légèrement plus bas pour tablette
+            logEvent('info', 'Mode responsive détecté sur tablette.', {
+                heroTop: heroSection.style.top,
+                modalTop: modalbg.style.top,
+            });
+        } else {
+            heroSection.style.top = "6.5vh"; // Réinitialisation par défaut pour desktop
+            modalbg.style.top = "6.5vh";
+            logEvent('info', 'Mode responsive activé sur desktop.', {
+                heroTop: heroSection.style.top,
+                modalTop: modalbg.style.top,
+            });
+        }
     } else {
-        // Réinitialiser les styles
+        // Réinitialiser les styles si le mode responsive est désactivé
         heroSection.style.top = "6.5vh";
         modalbg.style.top = "6.5vh";
         logEvent('info', 'Menu responsive désactivé. Styles réinitialisés.', {
