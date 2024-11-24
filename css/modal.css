@@ -98,6 +98,7 @@ a {
 fieldset {
     border: none; /* Supprime la bordure par défaut autour du champ groupé */
 }
+
 .sr-only {
   position: absolute; /* Positionné en dehors du flux de la page */
   width: 1px; /* Très petit mais toujours existant */
@@ -110,7 +111,7 @@ fieldset {
   border: 0; /* Pas de bordures */
 }
 
-/* ANIMATIONS */
+/*-------------------- ANIMATIONS ----------------------------------------*/
 
 /* Animation pour faire clignoter la bordure rouge */
 @keyframes borderBlink {

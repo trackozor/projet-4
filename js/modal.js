@@ -14,49 +14,46 @@
 /*                                 ======= Déclaration des variables =======                     */           
 /*===============================================================================================*/
 
-/* ====================== Variables liées au DOM ====================== */
 
+
+// ======= Éléments du DOM =======
 const navElement = document.getElementById("Topnav"); // Élément principal de la navigation (utilisé pour le menu responsive)
 const modalbg = document.querySelector(".bground"); // Conteneur de la modale, incluant l'arrière-plan et le contenu
 const heroSection = document.querySelector(".hero-section"); // Section principale "hero", souvent utilisée pour des ajustements de style
 const modalbtn = document.querySelectorAll(".modal-btn"); // Boutons permettant d'ouvrir la modale
 const formData = document.querySelectorAll(".formData"); // Conteneurs individuels des champs du formulaire
 const closeBtn = document.querySelector(".close"); // Bouton pour fermer la modale
-const inputs = document.querySelectorAll("input"); // Tous les champs de saisie du formulaire (prénom, e-mail, etc.)
-const confirmationModal = document.getElementById("confirmation-modal"); // Élément de la modale de confirmation (affiché après soumission)
-const closeModalBtn = document.getElementById("close-modal-btn"); // Bouton permettant de fermer la modale de confirmation
+const inputs = document.querySelectorAll('input'); // Tous les champs de saisie du formulaire (prénom, e-mail, etc.)
+const birthdateInput = document.getElementById('birthdate'); // Champ spécifique pour saisir la date de naissance
+const confirmationModal = document.getElementById('confirmation-modal'); // Élément de la modale de confirmation (affiché après soumission)
+const closeModalBtn = document.getElementById('close-modal-btn'); // Bouton permettant de fermer la modale de confirmation
 
-/* ====================== Variables pour la gestion des logs ====================== */
 
+// ======= Styles pour les logs =======
 const logStyles = {
-    info: getComputedStyle(document.documentElement).getPropertyValue("--log-info").trim(), // Style pour les logs d'information
-    warn: getComputedStyle(document.documentElement).getPropertyValue("--log-warn").trim(), // Style pour les avertissements
-    error: getComputedStyle(document.documentElement).getPropertyValue("--log-error").trim(), // Style pour les erreurs critiques
-    default: getComputedStyle(document.documentElement).getPropertyValue("--log-default").trim(), // Style par défaut pour les logs
+    info: getComputedStyle(document.documentElement).getPropertyValue('--log-info').trim(), // Style pour les logs d'information
+    warn: getComputedStyle(document.documentElement).getPropertyValue('--log-warn').trim(), // Style pour les avertissements
+    error: getComputedStyle(document.documentElement).getPropertyValue('--log-error').trim(), // Style pour les erreurs critiques
+    default: getComputedStyle(document.documentElement).getPropertyValue('--log-default').trim(), // Style par défaut pour les logs
 };
 
-/* ====================== Classes CSS ====================== */
 
+
+// ======= Noms des classes CSS =======
 const CSS_CLASSES = {
-    ERROR_INPUT: "error-input", // Classe pour les bordures rouges des champs invalides
-    ERROR_MODAL: "error-modal", // Classe pour les messages d'erreur
-    MODAL_ACTIVE: "active", // Classe indiquant que la modale est active
-    BODY_NO_SCROLL: "no-scroll", // Classe désactivant le défilement de la page
+    ERROR_INPUT: 'error-input',
+    ERROR_MODAL: 'error-modal',
+    MODAL_ACTIVE: 'active',
+    BODY_NO_SCROLL: 'no-scroll',
 };
 
-/* ====================== Variables pour les médias ====================== */
+// ======= Variables pour les médias =======
+const isMobile = window.matchMedia("(max-width: 1024px)").matches; // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
 
-const isMobile = window.matchMedia("(max-width: 767px)"); // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
-const istablet = window.matchMedia("(min-width: 768px) and (max-width: 1024px)"); // Indique si l'utilisateur utilise une tablette
 
-/* ====================== État global ====================== */
-
+// ======= État global =======
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale. "true" signifie que la modale est ouverte
-let isResponsive = false; // Indique si le menu est en mode responsive
 
-/* ====================== Variables spécifiques (à regrouper) ====================== */
-
-let errorMessage = ""; // Message d'erreur temporaire pour les champs de formulaire
 
 /*========================================================================================*/
 /*                       =========== Fonctions ===================                        */
@@ -116,50 +113,33 @@ function logEvent(type, message, data = {}) {
  * @returns {void}
  */
 function editNav() {
-    // Vérifiez si les éléments existent
-    if (!navElement || !heroSection || !modalbg) {
-        logEvent('error', 'Un des éléments nécessaires est manquant.');
-        return;
-    }
+    // Bascule la classe "responsive" sur l'élément de navigation
+    navElement.classList.toggle("responsive");
+    logEvent(
+        'info', 
+        `Menu responsive ${navElement.classList.contains("responsive") ? "activé" : "désactivé"}`
+    );
 
-    // Basculer la classe "responsive"
-    const isResponsive = navElement.classList.toggle("responsive");
-    logEvent('info', `Menu responsive ${isResponsive ? "activé" : "désactivé"}`);
-
-    // Appliquer les styles en fonction de l'état responsive et de l'appareil
-    if (isResponsive) {
-        if (isMobile.matches) {
-            heroSection.style.top = "10%"; // Positionner hero plus bas pour mobile
-            modalbg.style.top = "25%"; // Positionner la modale plus bas pour mobile
-            logEvent('info', 'Mode responsive détecté sur mobile.', {
-                heroTop: heroSection.style.top,
-                modalTop: modalbg.style.top,
-            });
-        } else if (istablet.matches) {
-            heroSection.style.top = "8%"; // Positionner hero légèrement plus bas pour tablette
-            modalbg.style.top = "20%"; // Positionner la modale légèrement plus bas pour tablette
-            logEvent('info', 'Mode responsive détecté sur tablette.', {
-                heroTop: heroSection.style.top,
-                modalTop: modalbg.style.top,
-            });
-        } else {
-            heroSection.style.top = "6.5vh"; // Réinitialisation par défaut pour desktop
-            modalbg.style.top = "6.5vh";
-            logEvent('info', 'Mode responsive activé sur desktop.', {
-                heroTop: heroSection.style.top,
-                modalTop: modalbg.style.top,
-            });
-        }
+    // Gère la position de la section hero et de la modale pour le mode responsive
+    if (navElement.classList.contains("responsive") && isMobile) {
+        // Si le mode responsive est activé sur un appareil mobile
+        heroSection.style.top = "10%"; // Positionne la section hero plus bas
+        modalbg.style.top = "25%"; // Décale la modale vers le bas
+        logEvent('info', 'Mode responsive détecté sur un appareil mobile. Hero et modale repositionnés.', {
+            heroTop: "12%",
+            modalbg: "25%",
+        });
     } else {
-        // Réinitialiser les styles si le mode responsive est désactivé
-        heroSection.style.top = "6.5vh";
-        modalbg.style.top = "6.5vh";
-        logEvent('info', 'Menu responsive désactivé. Styles réinitialisés.', {
-            heroTop: heroSection.style.top,
-            modalTop: modalbg.style.top,
+        // Si le menu n'est pas en mode responsive ou sur un écran non mobile
+        heroSection.style.top = "6.5vh"; // Réinitialise la position de la section hero
+        modalbg.style.top = "6.5vh"; // Réinitialise la position de la modale
+        logEvent('info', 'Menu responsive désactivé. Hero et modale remis à leur position initiale.', {
+            heroTop: "6.5vh",
+            modalbg: "6.5vh",
         });
     }
 }
+
 
 
 
@@ -624,4 +604,3 @@ document.addEventListener('DOMContentLoaded', () => {
     logEvent('info', 'DOM entièrement chargé. Début de l\'exécution du script principal.'); // Log confirmant le chargement complet du DOM
     main(); // Appelle la fonction principale pour initialiser toutes les fonctionnalités
 });
-
