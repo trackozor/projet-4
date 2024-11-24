@@ -98,6 +98,17 @@ a {
 fieldset {
     border: none; /* Supprime la bordure par défaut autour du champ groupé */
 }
+.sr-only {
+  position: absolute; /* Positionné en dehors du flux de la page */
+  width: 1px; /* Très petit mais toujours existant */
+  height: 1px; 
+  padding: 0; 
+  margin: -1px; /* Empêche les marges d'affecter le layout */
+  overflow: hidden; /* Contenu masqué */
+  clip: rect(0, 0, 0, 0); /* Masqué visuellement */
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  border: 0; /* Pas de bordures */
+}
 
 /* ANIMATIONS */
 
