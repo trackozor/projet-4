@@ -14,44 +14,44 @@
 /*                                 ======= Déclaration des variables =======                     */           
 /*===============================================================================================*/
 
+/* ====================== Variables liées au DOM ====================== */
 
-
-// ======= Éléments du DOM =======
 const navElement = document.getElementById("Topnav"); // Élément principal de la navigation (utilisé pour le menu responsive)
 const modalbg = document.querySelector(".bground"); // Conteneur de la modale, incluant l'arrière-plan et le contenu
 const heroSection = document.querySelector(".hero-section"); // Section principale "hero", souvent utilisée pour des ajustements de style
 const modalbtn = document.querySelectorAll(".modal-btn"); // Boutons permettant d'ouvrir la modale
 const formData = document.querySelectorAll(".formData"); // Conteneurs individuels des champs du formulaire
 const closeBtn = document.querySelector(".close"); // Bouton pour fermer la modale
-const inputs = document.querySelectorAll('input'); // Tous les champs de saisie du formulaire (prénom, e-mail, etc.)
-const birthdateInput = document.getElementById('birthdate'); // Champ spécifique pour saisir la date de naissance
-const confirmationModal = document.getElementById('confirmation-modal'); // Élément de la modale de confirmation (affiché après soumission)
-const closeModalBtn = document.getElementById('close-modal-btn'); // Bouton permettant de fermer la modale de confirmation
+const inputs = document.querySelectorAll("input"); // Tous les champs de saisie du formulaire (prénom, e-mail, etc.)
+const birthdateInput = document.getElementById("birthdate"); // Champ spécifique pour saisir la date de naissance
+const confirmationModal = document.getElementById("confirmation-modal"); // Élément de la modale de confirmation (affiché après soumission)
+const closeModalBtn = document.getElementById("close-modal-btn"); // Bouton permettant de fermer la modale de confirmation
 
+/* ====================== Variables pour la gestion des logs ====================== */
 
-// ======= Styles pour les logs =======
 const logStyles = {
-    info: getComputedStyle(document.documentElement).getPropertyValue('--log-info').trim(), // Style pour les logs d'information
-    warn: getComputedStyle(document.documentElement).getPropertyValue('--log-warn').trim(), // Style pour les avertissements
-    error: getComputedStyle(document.documentElement).getPropertyValue('--log-error').trim(), // Style pour les erreurs critiques
-    default: getComputedStyle(document.documentElement).getPropertyValue('--log-default').trim(), // Style par défaut pour les logs
+    info: getComputedStyle(document.documentElement).getPropertyValue("--log-info").trim(), // Style pour les logs d'information
+    warn: getComputedStyle(document.documentElement).getPropertyValue("--log-warn").trim(), // Style pour les avertissements
+    error: getComputedStyle(document.documentElement).getPropertyValue("--log-error").trim(), // Style pour les erreurs critiques
+    default: getComputedStyle(document.documentElement).getPropertyValue("--log-default").trim(), // Style par défaut pour les logs
 };
 
+/* ====================== Classes CSS ====================== */
 
-
-// ======= Noms des classes CSS =======
 const CSS_CLASSES = {
-    ERROR_INPUT: 'error-input',
-    ERROR_MODAL: 'error-modal',
-    MODAL_ACTIVE: 'active',
-    BODY_NO_SCROLL: 'no-scroll',
+    ERROR_INPUT: "error-input", // Classe pour les bordures rouges des champs invalides
+    ERROR_MODAL: "error-modal", // Classe pour les messages d'erreur
+    MODAL_ACTIVE: "active", // Classe indiquant que la modale est active
+    BODY_NO_SCROLL: "no-scroll", // Classe désactivant le défilement de la page
 };
 
-// ======= Variables pour les médias =======
-const isMobile = window.matchMedia("(max-width: 1024px)").matches; // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
+/* ====================== Variables pour les médias ====================== */
 
+const isMobile = window.matchMedia("(max-width: 767px)"); // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
+const istablet = window.matchMedia("(min-width: 768px) and (max-width: 1024px)"); // Indique si l'utilisateur utilise une tablette
 
-// ======= État global =======
+/* ====================== État global ====================== */
+
 let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale. "true" signifie que la modale est ouverte
 
 
@@ -123,8 +123,6 @@ function editNav() {
     const isResponsive = navElement.classList.toggle("responsive");
     logEvent('info', `Menu responsive ${isResponsive ? "activé" : "désactivé"}`);
 
-    // Vérifiez si l'appareil est mobile
-    const isMobile = window.innerWidth <= 768;
 
     // Appliquer les styles en fonction de l'état responsive et de l'appareil
     if (isResponsive && isMobile) {
