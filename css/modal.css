@@ -778,34 +778,55 @@ input[type="date"]:focus::placeholder {
   .mobile-signup{
     display: none;
   }
+
   .bground {
     width: 95vw;
     max-width: 1024px;
     background-color: white;
   }
+
   .modal-body {
     width: 50vw;
     justify-content: center;
-    margin:0 auto;
+    margin:2% auto;
     border-radius: 2%;
+    padding-bottom: 2%;
   }
+
   .formData {
     width: 50vw;
     margin: 0 auto;
     justify-content: center;
   }
+
   .formData label {
     font-size: 1rem;
   }
+
   .formData .legend {
     font-size: 1rem;
     padding-left: 5%;
   }
+
   .formData li {
     width: 45vw;
-
   }
-  
+
+  .location-list { 
+    grid-template-columns: repeat(3, 18vw); /* 3 colonnes de largeur égale */
+  }
+
+  .consentement {
+    width: 45vw;
+    margin: 2% auto;
+    padding-left: 10%;
+  }
+  .submit {
+    margin-bottom: 50%;
+  }
+  .btn-submit {
+    font-size: 1.2rem;
+  }
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------*/
