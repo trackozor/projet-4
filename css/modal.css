@@ -175,7 +175,6 @@ header img {
   border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
   font-weight: 500; /* Rend le texte légèrement plus épais */
   padding: 0.3rem; /* Ajoute un espacement interne de 0.3rem tout autour */
-  width:70%;
   text-decoration: underline; 
 }
 
@@ -280,7 +279,7 @@ header img {
     width: 90vw; /* Le conteneur occupe 90% de la largeur de la fenêtre */
     justify-content: center; /* Centre les éléments enfants verticalement */
     margin: 0 auto; /* Centre le conteneur horizontalement */
-    transition: top 0.3s ease-in-out; /* Transition douce pour le positionnement vertical */
+    transition: top 1s ease-in-out; /* Transition douce pour le positionnement vertical */
     overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
 }
 
@@ -547,9 +546,6 @@ input[type="date"]:focus::placeholder {
   opacity: 1; /* Rend la coche visible */
 }
 
-
-
-
 /* Bouton de fermeture (croix) */
 .close {
   display: flex; /* Active Flexbox pour organiser les éléments */
@@ -633,15 +629,14 @@ input[type="date"]:focus::placeholder {
 
 
 
--------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------*/
 /*------------------------ FOOTER -------------------------------------------*/
 /*---------------------------------------------------------------------------*/
 
 .copyright {
-    width: 60vw; /* La largeur de l'élément est fixée à 60% de la largeur de la fenêtre */
     justify-content: center; /* Centre le contenu horizontalement (nécessite Flexbox pour fonctionner pleinement) */
     margin: 0 auto; /* Centre horizontalement l'élément dans son conteneur */
-    font-size: 0.6rem; /* Définit une petite taille de police pour le texte */
+    font-size: 0.8rem; /* Définit une petite taille de police pour le texte */
     text-align: center; /* Centre le texte à l'intérieur de l'élément */
     color: red; /* Définit la couleur du texte en rouge */
 }
@@ -650,161 +645,18 @@ input[type="date"]:focus::placeholder {
 /*---------------------------------------------- MEDIA QUERIES ------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
-
-/*------------------------------- Styles pour tablettes entre 768 px et 1023 px ----------------------------------*/ 
-@media screen and (min-width: 768px) and (max-width: 1023px)  {
-  
-/* Image */
-  header img {
-    width:20%;
-    max-width: 150px;
-    height:auto; /* L'image occupe 50% de la largeur du conteneur parent */
-    position: fixed;
-    object-fit: cover;
-    left:3.5%;
-    top:1.2%;
-    background-color: white;
+@media screen and (min-width: 768px) and (max-width:1023px) {
+  .nav-links a {
+    font-size: 1.2rem;
+    width:auto
   }
-
-/*--------------------------------------------------------------------------------------*/
-/*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
-/*--------------------------------------------------------------------------------------*/
-
-/* conteneur */
-  .topnav {
-    flex-direction: row; /* Place les éléments en ligne pour un affichage tablette */
-    justify-content: flex-end; /* Aligne les liens à droite */
-    width: 70%; /* Réduit la largeur */
-    padding: 0.5rem; /* Ajoute un léger padding */
+  .hero-section h2 {
+    font-size: 2.5rem;
   }
-
-/* style au survol */
-  .topnav span:hover {
-      background-color: #ff0000;
-      color: #ffffff;
-      border-radius: 0.5rem;
-      font-weight: 500;
-      padding: 0.3rem ;
-      text-decoration: underline;
-  }
-
-/* Style Icône Liste */
-  .topnav i {
-      display: block;
-      color:red;
-      cursor : pointer;
-      position: fixed;
-      right: 3.4%;
-      top:0.5%;
-      padding: 0.4rem;
-      font-size: 1.4rem;
-  }
-
-  /* Style  survol icône liste */
-  .topnav i:hover {
-      background-color: #ff0000;
-      color: #ffffff;
-      border-radius: 0.5rem;
-      font-weight: 500;
-      padding: 0.4rem;
-  }
-
-  /* Affichage conditionnel liste */
-  .nav-links {
-      display: none;
-      margin-bottom:2%;
-  }
-  .nav-links ul {
-    width:70%;
-    margin:0 auto;
-    justify-content: center;
-    text-align: center;
-  }
-
-/* affichage liste au clic sur l' icône */
-  .topnav.responsive .nav-links {
-      display: flex;
-      flex-direction:column;
-      font-size: 1rem;
-      position: relative;
-      text-align: center;
-      justify-content: center;
-      padding-top: 15%;
-      flex-wrap: nowrap;
-      width: 90%;
-      z-index: 2; 
-      margin:0 auto; 
-      right:10%;
-  }
-
-  /* Style liens de la liste  */
-  .topnav.responsive .nav-links a {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-  }
-
-/*----------------------------------------------------------------------------------------------*/
-/*--------------------- SECTION PRINCIPALE------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------*/
-
-/* Conteneur principale */*
-  .hero-section {
-      display: flex; /* Active la mise en page flexbox pour disposer les éléments en colonne */
-      flex-direction: column; /* Les éléments à l'intérieur sont organisés en colonne (du haut vers le bas) */
-      background-color: white; /* Définit un fond blanc pour la section */
-      width: 90vw; /* La section occupe 95% de la largeur de son conteneur parent */
-      margin: 0 auto; /* Centrage horizontal de la section (marges égales de chaque côté) */
-      box-shadow: none; /* Désactive les ombres autour de la section */
-      justify-content: center;
-  }
-
-  /*  Image */
-  .hero-section img {
-      width: 90vw; /* L'image à l'intérieur de la section occupe toute la largeur disponible */
-      border-radius:5%;
-      object-fit: cover;
-      margin: 0 auto;
-      justify-content: center;
-      align-items: center;
-  }
-  /* Conteneur Parent Textes et titre */
-  .hero-content {
-      display: flex; /* Active la mise en page flexbox pour disposer les éléments en ligne */
-      flex-direction: column; /* Les éléments à l'intérieur sont organisés en ligne (du gauche à droite) */
-      width: 90vw;
-      justify-content: center;
-      margin:0 auto
-  }
-
-  /* Style Titre */
-  .hero-content h2 {
-      color: black; /* Le texte du titre h2 est en noir */
-      font-size: 3.9rem;
-      padding-left: 0;
-      padding-top:0;
-  }
-/*  Style Texte */
-  .hero-content p {
-    
+  .hero-section p {
     font-size: 1.5rem;
-    font-weight: 700;
-    padding: 0%;
-  }
-
-  /* Affichage conditionnel bouton je m'inscris */
-  .desktop-signup {
-      display: none;/* Bouton mode desktop masqué par défaut */
-  }
-  .mobile-signup {
-      display: block;
-      justify-content: center;
-      margin: 2% auto;
-      font-size: 1.2rem;
-      width:25vw;
   }
 }
-
 /*------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
 
