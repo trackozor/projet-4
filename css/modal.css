@@ -42,7 +42,6 @@ html {
     box-sizing: border-box;/* Définit le modèle de box-sizing pour inclure les bordures et les marges dans les dimensions des éléments */
     margin: 0;/* Supprime les marges par défaut de l'élément <html> */
     padding: 0;/* Supprime les espacements internes par défaut de l'élément <html> */
-    scroll-behavior: smooth;
 }
 
 /*=============== Style du corps de la page =============*/
@@ -634,6 +633,7 @@ input[type="date"]:focus::placeholder {
 /*---------------------------------------------------------------------------*/
 
 .copyright {
+    display: flex;
     justify-content: center; /* Centre le contenu horizontalement (nécessite Flexbox pour fonctionner pleinement) */
     margin: 0 auto; /* Centre horizontalement l'élément dans son conteneur */
     font-size: 0.8rem; /* Définit une petite taille de police pour le texte */
@@ -691,10 +691,7 @@ input[type="date"]:focus::placeholder {
 /* -----------------Ordinateurs portable entre 1024 px et 1440px ------------------------------------------*/
 
 @media screen and (min-width: 1024px) and (max-width:1439px) {
-  /*------------header------------- */
 
-
-  /*----------Barre de navigation-----*/
   /* icône */
   .topnav i {
     display: none;
@@ -705,7 +702,9 @@ input[type="date"]:focus::placeholder {
     font-size: 1rem;
     font-weight: 700;    
   }
-  
+  .logo {
+    padding-top:1%;
+  }
 
   /* menu textuelle */
   .nav-links  {
@@ -716,10 +715,10 @@ input[type="date"]:focus::placeholder {
     flex-wrap: nowrap;
     font-weight: 900;
     width: 100%;
+    padding-top:1.5%;
   }
   .nav {
     width: 60vw;
-    padding-top: 1%;
   }
   /*------------section principale ------------- */
   /* Conteneur */
@@ -730,8 +729,6 @@ input[type="date"]:focus::placeholder {
     flex-direction: row;
     background-color: #0b0c07;
     margin: 0 auto;
-  
-
   }
 
   .hero-content {
@@ -784,7 +781,9 @@ input[type="date"]:focus::placeholder {
     max-width: 1024px;
     background-color: white;
   }
-
+  .bground.active {
+    width:95vw
+  }
   .modal-body {
     width: 50vw;
     justify-content: center;
@@ -792,7 +791,12 @@ input[type="date"]:focus::placeholder {
     border-radius: 2%;
     padding-bottom: 2%;
   }
-
+  .content{
+    display:fixed;
+    width: 50vw;
+    margin: 0 auto;
+    justify-content: center;
+  }
   .formData {
     width: 50vw;
     margin: 0 auto;
@@ -801,31 +805,45 @@ input[type="date"]:focus::placeholder {
 
   .formData label {
     font-size: 1rem;
+    padding-left: 2%;
   }
 
   .formData .legend {
     font-size: 1rem;
     padding-left: 5%;
   }
-
+  .text-control {
+    font-size: 1rem;
+  }
   .formData li {
     width: 45vw;
   }
 
   .location-list { 
     grid-template-columns: repeat(3, 18vw); /* 3 colonnes de largeur égale */
+    padding-left: 3%;
   }
 
   .consentement {
     width: 45vw;
     margin: 2% auto;
-    padding-left: 10%;
+    padding-left: 5%;
+    padding-bottom: 5%;
   }
-  .submit {
-    margin-bottom: 50%;
-  }
+  
   .btn-submit {
     font-size: 1.2rem;
+  }
+
+  
+  .copyright {
+    position: absolute;
+    font-size: 1rem;
+    font-weight: 700;
+    padding-top: 5%;
+    margin: 0;
+    left:5%
+
   }
 }
 
@@ -844,6 +862,8 @@ input[type="date"]:focus::placeholder {
   header img {
     display: flex;
     margin-top:3%;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
 
@@ -874,16 +894,16 @@ input[type="date"]:focus::placeholder {
   /*------------section principale ------------- */
   /* Conteneur */
   .hero-section {
-    max-width: 1440px;
-    position:relative;
+    max-width: 1240px;;
     width: 80vw;
     display: flex;
     flex-direction: row;
     background-color: #0b0c07;
+    border-radius: 1rem;
   }
 
   .hero-content {
-    width: 50vw;
+    width: 30vw;
     justify-content:flex-end;
     padding:0 4%;
   }
@@ -892,29 +912,30 @@ input[type="date"]:focus::placeholder {
     color: #ffffff;
     position: absolute;
     z-index: 1;
-    font-size: 5.5rem;
+    font-size:6rem;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 50vw;
-    top:-5%;
+    width: 45vw;
+    top: 15%;
     font-weight: 500;
   }
 
   .hero-section p{
-    color: #ffffff;
-    font-size: 1.6rem;
-    font-weight: 500;
+    color: lightgray;
+    font-size: 1.3rem;
+    font-weight: 300;
     line-height: 2rem;
-    margin-bottom: 20%;
+    padding-bottom: 25%;
+
   }
 
   .hero-section img {
-    width: 90%;
-    max-height:65vh;
+    width: 100%;
+    max-height:70vh;
     margin: 0;
     padding: 0;
-    object-fit: cover;
-    border-radius: 0;
+    object-fit: contain;
+    border-radius: 0 1rem 1rem 0;
   }
 
   .desktop-signup {
@@ -923,56 +944,80 @@ input[type="date"]:focus::placeholder {
     width:12vw;
     padding:2% 5%;
     justify-content: center;
-    margin-bottom:5%
+    margin-bottom:25%
   }
 
   .mobile-signup{
     display: none;
   }
   .bground {
-    position: fixed;
-    max-width: 1440px;
-    background-color:black;
-    justify-content: center;
-      
+    width: 100vw;
+    background-color: white;
   }
-
-
+  .bground.active {
+    width:95vw
+  }
   .modal-body {
-    width:80%;
+    width: 50vw;
+    justify-content: center;
+    margin:2% auto;
+    border-radius: 2%;
+    padding-bottom: 2%;
+  }
+  .content{
+    display:fixed;
+    width: 50vw;
     margin: 0 auto;
     justify-content: center;
   }
-  .text-control {
-    font-size: 0.8rem;
-    padding: 1% 0;
-    margin: 0 ;
-  }
-  .modal-body .form-list input.text-control {
-    height: 1.5rem; 
-    padding: 0.5rem 1rem; 
-    font-size: 1rem; 
-    border-radius: 0.5rem; 
-  }
   .formData {
-    width: 80%;
+    width: 50vw;
+    margin: 0 auto;
     justify-content: center;
-    margin:0 auto;
   }
-  .formData legend {
-    position: relative;
-    font-size: 1.5rem;
-    padding: 1% 0;
-    left:-3%;
-    
+
+  .formData label {
+    font-size: 1rem;
+    padding-left: 2%;
   }
-  .location-list {
-    position: relative;
-    left: 8%;
-    padding:0;
-    margin: 1% 0;
+
+  .formData .legend {
+    font-size: 1rem;
+    padding-left: 5%;
   }
+  .text-control {
+    font-size: 1rem;
+  }
+  .formData li {
+    width: 45vw;
+  }
+
+  .location-list { 
+    grid-template-columns: repeat(3, 18vw); /* 3 colonnes de largeur égale */
+    padding-left: 3%;
+  }
+
   .consentement {
-    margin:0;
+    width: 45vw;
+    margin: 2% auto;
+    padding-left: 5%;
+    padding-bottom: 5%;
   }
+  
+  .btn-submit {
+    font-size: 1.2rem;
+  }
+
+  
+  .copyright {
+    position: absolute;
+    font-size: 1rem;
+    font-weight: 700;
+    padding-top: 5%;
+    margin: 0;
+    left:5%
+
+  }
+}
+
 }

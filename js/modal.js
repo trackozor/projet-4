@@ -123,19 +123,19 @@ function editNav() {
     // Gère la position de la section hero et de la modale pour le mode responsive
     if (navElement.classList.contains("responsive") && isMobile) {
         // Si le mode responsive est activé sur un appareil mobile
-        heroSection.style.top = "10%"; // Positionne la section hero plus bas
-        modalbg.style.top = "25%"; // Décale la modale vers le bas
+        heroSection.style.top = "10vh"; // Positionne la section hero plus bas
+        modalbg.style.top = "20vh"; // Décale la modale vers le bas
         logEvent('info', 'Mode responsive détecté sur un appareil mobile. Hero et modale repositionnés.', {
-            heroTop: "12%",
-            modalbg: "25%",
+            heroTop: "12vh",
+            modalbg: "20vh",
         });
     } else {
         // Si le menu n'est pas en mode responsive ou sur un écran non mobile
-        heroSection.style.top = "6.5vh"; // Réinitialise la position de la section hero
-        modalbg.style.top = "6.5vh"; // Réinitialise la position de la modale
+        heroSection.style.top = "6%"; // Réinitialise la position de la section hero
+        modalbg.style.top = "6%"; // Réinitialise la position de la modale
         logEvent('info', 'Menu responsive désactivé. Hero et modale remis à leur position initiale.', {
-            heroTop: "6.5vh",
-            modalbg: "6.5vh",
+            heroTop: "6%",
+            modalbg: "6%",
         });
     }
 }
