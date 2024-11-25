@@ -655,6 +655,34 @@ input[type="date"]:focus::placeholder {
   }
   .hero-section p {
     font-size: 1.5rem;
+    padding-bottom: 1%;;
+  }
+  .mobile-signup {
+    font-size: 1rem;
+  }
+  .formData {
+    left:-3%;
+  }
+  .formData label {
+    font-size: 1rem;
+  }
+  .formData .legend {
+    font-size: 1rem;
+    padding-left: 5%;
+  }
+  .consentement li{
+  padding-left: 5%;
+  }
+  .close span {
+    font-size: 2.5rem;
+    padding-top: 1%;
+  }
+  .text-control{
+    font-size: 1rem;
+  }
+  .error-modal {
+    font-size: 1.2rem;
+    padding-bottom:0;
   }
 }
 /*------------------------------------------------------------------------------------------------------------*/
