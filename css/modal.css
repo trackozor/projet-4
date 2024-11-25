@@ -692,24 +692,7 @@ input[type="date"]:focus::placeholder {
 
 @media screen and (min-width: 1024px) and (max-width:1439px) {
   /*------------header------------- */
-  /* Conteneur */
-  header {
-    width: 95vw;
-    padding:0 3%;
-    display: flex;
-    font-weight: 900;
-    align-items: center;
-  }
-  header img {
-    display: flex;
-    margin-top:1%;
-  }
 
-  /* Logo */
-  .logo {
-    display: flex;
-    padding-top: 3%;
-  }
 
   /*----------Barre de navigation-----*/
   /* icône */
@@ -802,52 +785,24 @@ input[type="date"]:focus::placeholder {
     justify-content: center;
     padding-top: 2%;  
   }
-
-  .content {
-    background-color: #0b0c07;
-    width: 50%;
-    display:block;
-    margin: 0 auto;
-    justify-content: center;
-  }
   .modal-body {
-    position: relative;
-    width: 100%;
-    padding: 0;
-    left:10%;
-    margin: 0 auto;
+    width: 50%;
     justify-content: center;
-  }
-  .text-control {
-    font-size: 0.8rem;
-    padding: 1% 0;
-    margin: 0 ;
-  }
-  .modal-body .form-list input.text-control {
-    height: 1.5rem; /* Ajustez la hauteur selon vos besoins */
-    padding: 0.5rem 1rem; /* Ajustez le padding pour équilibrer la taille du texte et l'espacement */
-    font-size: 1rem; /* Taille de police pour rendre le texte plus lisible */
-    border-radius: 0.5rem; 
+    margin:0 auto;
+    border-radius: 2%;
   }
   .formData {
-    width: 95%;
-    justify-content: center;
+    width: 50vw;
   }
-  .formData legend {
-    position: relative;
-    font-size: 1.5rem;
-    padding: 1% 0;
-    left:-3%;
-    
+  .formData label {
+    font-size: 1rem;
   }
-  .location-list {
-    position: relative;
-    left: 8%;
-    padding:0;
-    margin: 1% 0;
+  .formData .legend {
+    font-size: 1rem;
+    padding-left: 5%;
   }
-  .consentement {
-    margin:0;
+  .formData li {
+    width: 45vw;
   }
 }
 
