@@ -27,7 +27,7 @@ const inputs = document.querySelectorAll('input'); // Tous les champs de saisie 
 const birthdateInput = document.getElementById('birthdate'); // Champ spécifique pour saisir la date de naissance
 const confirmationModal = document.getElementById('confirmation-modal'); // Élément de la modale de confirmation (affiché après soumission)
 const closeModalBtn = document.getElementById('close-modal-btn'); // Bouton permettant de fermer la modale de confirmation
-
+const navLinks = document.querySelector('.nav-links');
 
 // ======= Styles pour les logs =======
 const logStyles = {
@@ -45,6 +45,11 @@ const CSS_CLASSES = {
     ERROR_MODAL: 'error-modal',
     MODAL_ACTIVE: 'active',
     BODY_NO_SCROLL: 'no-scroll',
+    NAV_RESPONSIVE: 'responsive',
+    HERO_DEFAULT: 'hero-default',
+    HERO_RESPONSIVE: 'hero-responsive',
+    MODAL_DEFAULT: 'modal-default',
+    MODAL_RESPONSIVE: 'modal-responsive',
 };
 
 // ======= Variables pour les médias =======
@@ -112,33 +117,36 @@ function logEvent(type, message, data = {}) {
  * 
  * @returns {void}
  */
-function editNav() {
-    // Bascule la classe "responsive" sur l'élément de navigation
-    navElement.classList.toggle("responsive");
-    logEvent(
-        'info', 
-        `Menu responsive ${navElement.classList.contains("responsive") ? "activé" : "désactivé"}`
-    );
 
-    // Gère la position de la section hero et de la modale pour le mode responsive
-    if (navElement.classList.contains("responsive") && isMobile) {
-        // Si le mode responsive est activé sur un appareil mobile
-        heroSection.style.top = "10vh"; // Positionne la section hero plus bas
-        modalbg.style.top = "20vh"; // Décale la modale vers le bas
-        logEvent('info', 'Mode responsive détecté sur un appareil mobile. Hero et modale repositionnés.', {
-            heroTop: "12vh",
-            modalbg: "20vh",
-        });
-    } else {
-        // Si le menu n'est pas en mode responsive ou sur un écran non mobile
-        heroSection.style.top = "6%"; // Réinitialise la position de la section hero
-        modalbg.style.top = "6%"; // Réinitialise la position de la modale
-        logEvent('info', 'Menu responsive désactivé. Hero et modale remis à leur position initiale.', {
-            heroTop: "6%",
-            modalbg: "6%",
-        });
+function editNav() {
+    try {
+        navElement.classList.toggle(CSS_CLASSES.NAV_RESPONSIVE);
+
+        if (navElement.classList.contains(CSS_CLASSES.NAV_RESPONSIVE)) {
+            logEvent('info', 'Menu responsive activé.', { navState: 'opened' });
+            
+            // Ajouter les classes pour le menu activé
+            heroSection.classList.remove(CSS_CLASSES.HERO_DEFAULT);
+            heroSection.classList.add(CSS_CLASSES.HERO_RESPONSIVE);
+
+            modalbg.classList.remove(CSS_CLASSES.MODAL_DEFAULT);
+            modalbg.classList.add(CSS_CLASSES.MODAL_RESPONSIVE);
+        } else {
+            logEvent('info', 'Menu responsive désactivé.', { navState: 'closed' });
+            
+            // Ajouter les classes pour le menu désactivé
+            heroSection.classList.remove(CSS_CLASSES.HERO_RESPONSIVE);
+            heroSection.classList.add(CSS_CLASSES.HERO_DEFAULT);
+
+            modalbg.classList.remove(CSS_CLASSES.MODAL_RESPONSIVE);
+            modalbg.classList.add(CSS_CLASSES.MODAL_DEFAULT);
+        }
+    } catch (error) {
+        logEvent('error', 'Erreur lors de la gestion du menu responsive.', { error });
     }
 }
+
+
 
 
 
@@ -512,7 +520,8 @@ function removeError(inputElement) {
  */
 function main() {
     logEvent('info', 'Début de l\'initialisation principale.'); // Log initial signalant le début du script
-
+    // === Gestion du clic sur le bouton de menu pour le responsive ===
+    document.getElementById('menu-toggle').addEventListener('click', editNav);
     // === Configuration des placeholders pour le champ de date ===
     birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
     birthdateInput.addEventListener('focus', () => {

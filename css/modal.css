@@ -203,14 +203,15 @@ header img {
 /* Affichage conditionnel de la liste (par défaut) */
 .nav-links {
   display: none;
+  opacity:0;
+  transition: all 0.3s ease; /* Transition douce pour toutes les propriétés */
     
 }
 
 /* Style des listes dans .nav-links */
 .nav-links ul {
     display: flex;
-    width: 50%; /* Réduit la largeur de la liste à 70% de la fenêtre */
-    margin: 1% auto; /* Centre horizontalement la liste */
+    margin: 5% auto; /* Centre horizontalement la liste */
     justify-content: center; /* Centre les éléments de la liste en mode flex  */
     text-align: center; /* Centre le texte des éléments */
     padding: 1% 0;
@@ -223,18 +224,19 @@ header img {
 
 /* Affichage de la liste au clic sur l'icône (mode responsive) */
 .topnav.responsive .nav-links {
-    display: flex; /* Active Flexbox pour organiser les éléments */
-    flex-direction: column; /* Dispose les éléments verticalement */
-    font-size: 1rem; /* Définit une taille de police de 1rem */
-    position: relative; /* Position relative pour ajustements internes */
-    text-align: center; /* Centre le texte des éléments de la liste */
-    justify-content: center; /* Centre verticalement les éléments de la liste */
-    padding-top: 7vh; /* Ajoute un espacement au-dessus de la liste */
-    flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
-    width: 90%; /* Réduit la largeur totale de la liste à 90% */
-    z-index: 2; /* Place la liste au-dessus des autres éléments */
-    margin: 1% auto; /* Centre horizontalement la liste */
+  display: flex; /* Affiche les liens */
+  flex-direction: column; /* Organisation verticale */
+  justify-content: center;
+  text-align: center;
+  width: 100%; /* Assurez-vous que le menu occupe tout l'espace souhaité */
+  position: relative; /* Évite les chevauchements non désirés */
+  margin: 0% auto; /* Centre le menu horizontalement */
+  padding: 1rem 0; /* Ajoute un espacement pour rendre le menu plus lisible */
+  margin-top: 10%;
+  opacity:1;
 }
+
+
 
 /* Style des liens de la liste */
 .topnav.responsive .nav-links a {
@@ -288,8 +290,7 @@ header img {
     color: black; /* Définit la couleur du texte du titre en noir */
     font-size: 2rem; /* Définit une taille de police importante pour le titre */
     padding-left: 0; /* Aucun espacement à gauche du titre */
-    padding-top: 1vh;
-    
+    padding-top: 1vh;   
 
 }
 
@@ -315,7 +316,17 @@ header img {
     margin: 5% auto; /* Ajoute un espace de 5% autour et centre le bouton horizontalement */
 }
 
+/* Position par défaut (menu désactivé) */
+.hero-default {
+    top: 6%;
+    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+}
 
+/* Position lorsque le menu est activé */
+.hero-responsive {
+    top: 5vh;
+    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+}
 /*------------------------------------------------------------------------------------*/
 /*------------------ Fenêtre modale --------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -336,10 +347,15 @@ header img {
   overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
   border-radius: 1%;
 }
+.modal-default {
+    top: 6%;
+    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+}
 
-
-
-
+.modal-responsive {
+    top: 25vh;
+    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+}
 .bground.active {
   display: block; /* Affiche la modale lorsqu'elle est active */
 }
@@ -468,8 +484,6 @@ header img {
 .checkbox-input:checked + .checkbox-icon::after {
   opacity: 1; /* Le point vert devient visible */
 }
-
-
 
 .consentement {
   display: flex; /* Active Flexbox pour organiser les éléments */
