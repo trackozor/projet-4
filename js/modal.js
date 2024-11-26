@@ -124,7 +124,7 @@ function editNav() {
     if (navElement.classList.contains("responsive") && isMobile) {
         // Si le mode responsive est activé sur un appareil mobile
         heroSection.style.top = "10vh"; // Positionne la section hero plus bas
-        modalbg.style.top = "25vh"; // Décale la modale vers le bas
+        modalbg.style.top = "20vh"; // Décale la modale vers le bas
         logEvent('info', 'Mode responsive détecté sur un appareil mobile. Hero et modale repositionnés.', {
             heroTop: "12vh",
             modalbg: "20vh",

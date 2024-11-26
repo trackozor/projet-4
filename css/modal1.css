@@ -1,4 +1,5 @@
-/********************************************************************************************************/
+
+********************************************************************************************************/
 /*   Nom du fichier : modal.css                                                                         */
 /*   Auteur : Trackozor                                                                                 */
 /*   Date de création : 13/10/2024                                                                      */
@@ -1017,3 +1018,24 @@ header img {
 }
 
 
+/* Classe pour activer le mode responsive sur le menu */
+.responsive-active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Exemple de style */
+    z-index: 10;
+}
+
+/* Classe pour ajuster la position de la section hero */
+.hero-responsive {
+    margin-top: 10vh;
+}
+
+/* Classe pour ajuster la position de la modale */
+.modal-responsive {
+    top: 20vh;
+}
