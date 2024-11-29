@@ -199,134 +199,129 @@ header img {
     font-weight: 500; /* Rend le texte ou l'icône légèrement plus épais */
     
 }
-
 /* Affichage conditionnel de la liste (par défaut) */
 .nav-links {
-  display: none;
-  position: relative;
-  opacity:0;
+  display: none; /* Masque les liens par défaut */
+  position: relative; /* Position relative pour les ajustements internes */
+  opacity: 0; /* Rends les liens invisibles initialement */
   transition: all 0.3s ease; /* Transition douce pour toutes les propriétés */
-    
 }
 
 /* Style des listes dans .nav-links */
 .nav-links ul {
-    display: flex;
-    margin: 5% auto; /* Centre horizontalement la liste */
-    justify-content: center; /* Centre les éléments de la liste en mode flex  */
-    text-align: center; /* Centre le texte des éléments */
-    padding: 1% 0;
-    
+  display: flex; /* Active Flexbox pour organiser les éléments */
+  margin: 5% auto; /* Centre la liste horizontalement */
+  justify-content: center; /* Centre les éléments de la liste */
+  text-align: center; /* Centre le texte */
+  padding: 1% 0; /* Ajoute un espace en haut et en bas */
 }
+
 .nav-links li {
-  padding:0.5% 0;
-  font-weight:700;
+  padding: 0.5% 0; /* Espacement vertical pour chaque élément */
+  font-weight: 700; /* Texte en gras */
 }
 
 /* Affichage de la liste au clic sur l'icône (mode responsive) */
 .topnav.responsive .nav-links {
   display: flex; /* Affiche les liens */
   flex-direction: column; /* Organisation verticale */
-  justify-content: center;
-  text-align: center;
-  width: 100%; /* Assurez-vous que le menu occupe tout l'espace souhaité */
-  position: relative; /* Évite les chevauchements non désirés */
-  margin: 0% auto; /* Centre le menu horizontalement */
-  padding: 1rem 0; /* Ajoute un espacement pour rendre le menu plus lisible */
-  margin-top: 10%;
-  opacity:1;
+  justify-content: center; /* Centre les éléments verticalement */
+  text-align: center; /* Centre le texte */
+  width: 100%; /* Occupe toute la largeur disponible */
+  position: relative; /* Évite les chevauchements */
+  margin: 0% auto; /* Centre horizontalement */
+  padding: 1rem 0; /* Ajoute un espacement interne pour la lisibilité */
+  margin-top: 10%; /* Décale les éléments vers le bas */
+  opacity: 1; /* Rends les liens visibles */
 }
-
-
 
 /* Style des liens de la liste */
 .topnav.responsive .nav-links a {
-    display: flex; /* Affiche chaque lien comme un élément flex */
-    flex-wrap: nowrap; /* Empêche le contenu du lien de se diviser sur plusieurs lignes */
-    justify-content: center; /* Centre le contenu horizontalement */
-    margin: 1% 0;
-    
+  display: flex; /* Affiche chaque lien comme un élément flex */
+  flex-wrap: nowrap; /* Empêche le contenu de se diviser sur plusieurs lignes */
+  justify-content: center; /* Centre le contenu horizontalement */
+  margin: 1% 0; /* Ajoute un espacement vertical entre les liens */
 }
 
-/*----------------------------------------------------------------------------------------------*/
-/*--------------------- SECTION PRINCIPALE------------------------------------------------------*/
-/*----------------------------------------------------------------------------------------------*/
+/* SECTION PRINCIPALE */
 
-/* Conteneur principale */*
+/* Conteneur principal */
 .hero-section {
-    display: flex; /* Active la mise en page flexbox pour disposer les éléments en colonne */
-    flex-direction: column; /* Les éléments à l'intérieur sont organisés en colonne (du haut vers le bas) */
-    background-color:transparent; /* Définit un fond blanc pour la section */
-    width: 90vw; /* La section occupe 95% de la largeur de son conteneur parent */
-    margin: 0 auto; /* Centrage horizontal de la section (marges égales de chaque côté) */
-    box-shadow: none; /* Désactive les ombres autour de la section */
-    justify-content: center;
-    transition: top 1s ease-in-out; /* Transition douce pour le positionnement vertical */
-    overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
-    box-sizing: border-box; /* Inclut le padding dans les dimensions */
+  display: flex; /* Active Flexbox pour organiser les éléments */
+  flex-direction: column; /* Organise les enfants en colonne */
+  background-color: transparent; /* Fond transparent */
+  width: 90vw; /* Occupe 90% de la largeur disponible */
+  margin: 0 auto; /* Centre horizontalement */
+  box-shadow: none; /* Désactive les ombres */
+  justify-content: center; /* Centre verticalement */
+  transition: top 1s ease-in-out; /* Transition douce pour le positionnement vertical */
+  overflow-y: auto; /* Permet le défilement si nécessaire */
+  box-sizing: border-box; /* Inclut le padding dans les dimensions */
 }
 
 /* Image dans la section Hero */
 .hero-section img {
-    width: 90vw; /* L'image occupe 90% de la largeur de la fenêtre */
-    border-radius: 2%; /* Ajoute un arrondi de 5% aux coins de l'image */
-    object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en conservant ses proportions */
-    margin: 0 auto; /* Centre horizontalement l'image dans son conteneur */
-    justify-content: center; /* Centre horizontalement si utilisé dans un contexte Flexbox */
-    align-items: center; /* Centre verticalement si utilisé dans un contexte Flexbox */
-    transition: top 1s ease-in-out; /* Transition douce pour le positionnement vertical */ 
+  width: 90vw; /* L'image occupe 90% de la largeur */
+  border-radius: 2%; /* Arrondi des coins de l'image */
+  object-fit: cover; /* Redimensionne l'image en couvrant son conteneur */
+  margin: 0 auto; /* Centre horizontalement l'image */
+  justify-content: center; /* Centre horizontalement avec Flexbox */
+  align-items: center; /* Centre verticalement avec Flexbox */
+  transition: top 1s ease-in-out; /* Transition douce pour les changements de position */
 }
 
-/* Conteneur parent pour les textes et le titre */
+/* Conteneur parent pour les textes */
 .hero-content {
-    display: flex; /* Active la mise en page Flexbox pour organiser les enfants */
-    flex-direction: column; /* Organise les enfants en colonne (du haut vers le bas) */
-    width: 90vw; /* Le conteneur occupe 90% de la largeur de la fenêtre */
-    justify-content: center; /* Centre les éléments enfants verticalement */
-    margin: 0 auto; /* Centre le conteneur horizontalement */
+  display: flex; /* Active Flexbox pour organiser les enfants */
+  flex-direction: column; /* Organise les enfants en colonne */
+  width: 90vw; /* Occupe 90% de la largeur disponible */
+  justify-content: center; /* Centre verticalement */
+  margin: 0 auto; /* Centre horizontalement */
 }
 
 /* Style du titre */
 .hero-content h2 {
-    color: black; /* Définit la couleur du texte du titre en noir */
-    font-size: 2rem; /* Définit une taille de police importante pour le titre */
-    padding-left: 0; /* Aucun espacement à gauche du titre */
-    padding-top: 1vh;   
-
+  color: black; /* Couleur noire pour le titre */
+  font-size: 2rem; /* Taille du texte pour le titre */
+  padding-left: 0; /* Aucun espacement à gauche */
+  padding-top: 1vh; /* Espacement vertical en haut */
 }
 
 /* Style du texte */
 .hero-content p {
-    font-size: 0.8rem; /* Définit une petite taille de texte pour les paragraphes */
-    font-weight: 700; /* Applique un poids de police gras au texte */
-    padding-bottom: 5%; /* Ajoute un espacement de 5% en bas du paragraphe */
+  font-size: 0.8rem; /* Taille réduite pour les paragraphes */
+  font-weight: 700; /* Texte en gras */
+  padding-bottom: 5%; /* Espacement sous le paragraphe */
 }
 
+/* Boutons "Je m'inscris" */
 
-/* Affichage conditionnel bouton je m'inscris */
 /* Style pour le bouton d'inscription en mode desktop */
 .desktop-signup {
-    display: none; /* Masque le bouton destiné au mode desktop par défaut */
+  display: none; /* Masque le bouton en mode desktop */
 }
 
 /* Style pour le bouton d'inscription en mode mobile */
 .mobile-signup {
-    display: block; /* Rend le bouton visible en mode mobile */
-    justify-content: center; /* Centre le contenu horizontalement (nécessite Flexbox pour fonctionner pleinement) */
-    margin: 5% auto; /* Ajoute un espace de 5% autour et centre le bouton horizontalement */
+  display: block; /* Affiche le bouton en mode mobile */
+  justify-content: center; /* Centre le contenu horizontalement */
+  margin: 5% auto; /* Centre le bouton et ajoute un espacement */
 }
+
+/* Positions pour la section Hero */
 
 /* Position par défaut (menu désactivé) */
 .hero-default {
-    top: 60%;
-    transition: top 1s ease-in-out; /* Transition douce pour les changements */
+  top: 60%; /* Positionne la section Hero à 60% */
+  transition: top 1s ease-in-out; /* Transition douce pour les changements */
 }
 
 /* Position lorsque le menu est activé */
 .hero-responsive {
-    top: 10vh;
-    transition: top 1s ease-in-out; /* Transition douce pour les changements */
+  top: 10vh; /* Positionne la section Hero plus haut */
+  transition: top 1s ease-in-out; /* Transition douce pour les changements */
 }
+
 /*------------------------------------------------------------------------------------*/
 /*------------------ Fenêtre modale --------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
