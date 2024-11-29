@@ -203,6 +203,7 @@ header img {
 /* Affichage conditionnel de la liste (par défaut) */
 .nav-links {
   display: none;
+  position: relative;
   opacity:0;
   transition: all 0.3s ease; /* Transition douce pour toutes les propriétés */
     
@@ -299,7 +300,6 @@ header img {
     font-size: 0.8rem; /* Définit une petite taille de texte pour les paragraphes */
     font-weight: 700; /* Applique un poids de police gras au texte */
     padding-bottom: 5%; /* Ajoute un espacement de 5% en bas du paragraphe */
-    transition: top 1s ease-in-out; /* Transition douce pour le positionnement vertical */
 }
 
 
@@ -318,14 +318,14 @@ header img {
 
 /* Position par défaut (menu désactivé) */
 .hero-default {
-    top: 6%;
-    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+    top: 60%;
+    transition: top 1s ease-in-out; /* Transition douce pour les changements */
 }
 
 /* Position lorsque le menu est activé */
 .hero-responsive {
-    top: 5vh;
-    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+    top: 10vh;
+    transition: top 1s ease-in-out; /* Transition douce pour les changements */
 }
 /*------------------------------------------------------------------------------------*/
 /*------------------ Fenêtre modale --------------------------------------------------*/
@@ -343,17 +343,16 @@ header img {
   background-color: rgba(0, 0, 0, 1); /* Couleur de fond noire avec transparence */
   color: white; /* Texte blanc */
   box-sizing: border-box; /* Inclut le padding dans les dimensions */
-  transition: top 0.3s ease-in-out; /* Transition douce pour le positionnement vertical */
   overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
   border-radius: 1%;
 }
 .modal-default {
-    top: 6%;
-    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+    top: 6.5%;
+    transition: top 1s ease-in-out; /* Transition douce pour les changements */
 }
 
 .modal-responsive {
-    top: 25vh;
+    top: 24%;
     transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 .bground.active {
@@ -375,18 +374,18 @@ header img {
   padding: 0; /* Supprime les espacements internes */
   width: 90%; /* Le formulaire occupe 100% de la largeur disponible */
   position: relative; /* Position relative pour des ajustements internes */
-  left: -6.5%; /* Décale le formulaire de 7.5vw vers la gauche */
+  left: -5.5%; /* Décale le formulaire de 7.5vw vers la gauche */
   
 }
 
 .formData label {
-  font-size:0.7rem;
+  font-size:0.8rem;
   width:95vw;
 }
 
 .formData .legend {
   padding-left: 12%; /* Ajoute un espacement de 12% à gauche pour le texte */
-  font-size: 0.7rem; /* Utilise une taille de police définie par une variable CSS */
+  font-size: 0.8rem; /* Utilise une taille de police définie par une variable CSS */
   width:90vw
 
 }
@@ -715,6 +714,7 @@ header img {
     font-weight: 900;
     width: 100%;
     padding-top:1.5%;
+    opacity: 1;
   }
   .nav {
     width: 60vw;
@@ -890,6 +890,7 @@ header img {
     font-weight: 900;
     width: 100%;
     justify-content: flex-end;
+    opacity: 1;
   }
   .nav {
     width: 60vw;
@@ -914,7 +915,7 @@ header img {
     color: #ffffff;
     position: absolute;
     z-index: 1;
-    font-size:6.5rem;
+    font-size:5.5rem;
     flex-direction: row;
     flex-wrap: nowrap;
     width: 50vw;
@@ -938,6 +939,10 @@ header img {
     padding: 0;
     object-fit: contain;
     border-radius: 0 1rem 1rem 0;
+  }
+  .modal-default {
+    top: 10.5%;
+    transition: top 1s ease-in-out; /* Transition douce pour les changements */
   }
 
   .desktop-signup {
@@ -968,6 +973,7 @@ header img {
   .content{
     display:fixed;
     width: 40vw;
+    height:auto;
     margin: 0 auto;
     justify-content: center;
   }
@@ -1000,7 +1006,7 @@ header img {
   }
 
   .location-list { 
-    grid-template-columns: repeat(3, 14vw); /* 3 colonnes de largeur égale */
+    grid-template-columns: repeat(3, 14vw); 
     grid-template-rows: repeat(2,2vw);
     padding-left: 4%;
     padding-top: 1%;

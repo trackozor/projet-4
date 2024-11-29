@@ -699,7 +699,8 @@ header img {
     justify-content: flex-end;
     flex-wrap: nowrap;
     font-weight: 900;
-    width: 100%;
+    width:60%;
+    opacity: 1;
     padding-top:1.5%;
   }
   .nav {

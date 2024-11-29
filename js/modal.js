@@ -19,7 +19,7 @@
 // ======= Éléments du DOM =======
 const navElement = document.getElementById("Topnav"); // Élément principal de la navigation (utilisé pour le menu responsive)
 const modalbg = document.querySelector(".bground"); // Conteneur de la modale, incluant l'arrière-plan et le contenu
-const heroSection = document.querySelector(".hero-section"); // Section principale "hero", souvent utilisée pour des ajustements de style
+const heroSection = document.querySelector(".hero-content"); // Section principale "hero", souvent utilisée pour des ajustements de style
 const modalbtn = document.querySelectorAll(".modal-btn"); // Boutons permettant d'ouvrir la modale
 const formData = document.querySelectorAll(".formData"); // Conteneurs individuels des champs du formulaire
 const closeBtn = document.querySelector(".close"); // Bouton pour fermer la modale
