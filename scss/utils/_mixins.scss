@@ -1,29 +1,13 @@
-// ----------------------------------------
-// MIXINS POUR MEDIA QUERIES
-// ----------------------------------------
+/********************************************************************************************************/
+/*   Nom du fichier : _mixins.scss                                                                        */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : mixins pour media queries                                                         */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
 
-/**
- * Mixin générique pour media queries
- * Gère une plage de taille minimale et/ou maximale.
- *
- * @param {string | null} $min - Taille minimale (ex: "320px")
- * @param {string | null} $max - Taille maximale (ex: "768px")
- */
- @mixin respond($min: null, $max: null) {
-    @if $min != null and $max != null {
-        @media (min-width: $min) and (max-width: $max) {
-            @content;
-        }
-    } @else if $min != null {
-        @media (min-width: $min) {
-            @content;
-        }
-    } @else if $max != null {
-        @media (max-width: $max) {
-            @content;
-        }
-    }
-}
 
 // ----------------------------------------
 // MIXINS POUR APPAREILS CLASSIQUES
@@ -31,26 +15,26 @@
 
 // Montres connectées
 @mixin watch {
-    @include respond(null, $breakpoint-watch) {
+    @media (max-width: $breakpoint-watch) {
         @content;
     }
 }
 
 // Smartphones
 @mixin small-phone {
-    @include respond(null, $breakpoint-small-phone) {
+    @media (min-width: $breakpoint-watch) and (max-width: $breakpoint-small-phone) {
         @content;
     }
 }
 
 @mixin phone {
-    @include respond($breakpoint-small-phone, $breakpoint-phone) {
+    @media (min-width: $breakpoint-small-phone) and (max-width: $breakpoint-phone) {
         @content;
     }
 }
 
 @mixin large-phone {
-    @include respond($breakpoint-phone, $breakpoint-large-phone) {
+    @media (min-width: $breakpoint-phone) and (max-width: $breakpoint-large-phone) {
         @content;
     }
 }
@@ -74,26 +58,26 @@
 
 // Ordinateurs portables
 @mixin laptop {
-    @include respond($breakpoint-tablet-landscape, $breakpoint-laptop) {
+    @media (min-width: $breakpoint-tablet-landscape) and (max-width: $breakpoint-laptop) {
         @content;
     }
 }
 
 @mixin large-laptop {
-    @include respond($breakpoint-laptop, $breakpoint-large-laptop) {
+    @media (min-width: $breakpoint-laptop) and (max-width: $breakpoint-large-laptop) {
         @content;
     }
 }
 
 // Ordinateurs de bureau
 @mixin desktop {
-    @include respond($breakpoint-large-laptop, $breakpoint-desktop) {
+    @media (min-width: $breakpoint-large-laptop) and (max-width: $breakpoint-desktop) {
         @content;
     }
 }
 
 @mixin large-desktop {
-    @include respond($breakpoint-desktop, $breakpoint-large-desktop) {
+    @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large-desktop) {
         @content;
     }
 }
@@ -104,14 +88,15 @@
 
 // Vidéoprojecteurs
 @mixin projector {
-    @include respond($breakpoint-large-desktop, $breakpoint-projector) {
+    @media (min-width: $breakpoint-large-desktop) and (max-width: $breakpoint-projector) {
         @content;
     }
 }
 
 // Écrans géants
 @mixin giant-screen {
-    @include respond($breakpoint-projector, $breakpoint-giant-screen) {
+    @media (min-width: $breakpoint-projector) {
         @content;
     }
 }
+

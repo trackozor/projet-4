@@ -253,34 +253,34 @@ $box-shadow-small: 0 1px 3px rgba(0, 0, 0, 0.1);
 $box-shadow-medium: 0 3px 6px rgba(0, 0, 0, 0.15);
 $box-shadow-large: 0 5px 15px rgba(0, 0, 0, 0.2);
 
-
 // ----------------------------------------
-// BREAKPOINTS
+// BREAKPOINTS POUR MEDIA QUERIES
 // ----------------------------------------
 
 // Montres et petits appareils
-$breakpoint-watch: 200px;          // Montres connectées, petits écrans
+$breakpoint-watch: 200px;           // Montres connectées ou très petits écrans
 
 // Smartphones
-$breakpoint-small-phone: 320px;    // Petits smartphones
-$breakpoint-phone: 480px;          // Smartphones standards
-$breakpoint-large-phone: 768px;    // Grands smartphones et tablettes
+$breakpoint-small-phone: 320px;     // Petits smartphones
+$breakpoint-phone: 480px;           // Smartphones standards
+$breakpoint-large-phone: 768px;     // Grands smartphones et petites tablettes
 
 // Tablettes
-$breakpoint-tablet-portrait: 1024px;   // Tablettes en mode portrait
-$breakpoint-tablet-landscape: 1366px;  // Tablettes en mode paysage
+$breakpoint-tablet-portrait: 1024px;    // Tablettes en mode portrait
+$breakpoint-tablet-landscape: 1366px;   // Tablettes en mode paysage ou très grands smartphones
 
 // Ordinateurs portables
-$breakpoint-laptop: 1440px;        // Écrans d’ordinateurs portables standards
-$breakpoint-large-laptop: 1600px;  // Ordinateurs portables grands écrans
+$breakpoint-laptop: 1440px;         // Écrans d’ordinateurs portables standards
+$breakpoint-large-laptop: 1600px;   // Grands ordinateurs portables
 
 // Ordinateurs de bureau
-$breakpoint-desktop: 1920px;       // Ordinateurs de bureau
-$breakpoint-large-desktop: 2560px; // Écrans ultra larges
+$breakpoint-desktop: 1920px;        // Écrans d'ordinateurs de bureau standards (Full HD)
+$breakpoint-large-desktop: 2560px;  // Écrans ultra larges 
+
 
 // Écrans spécifiques
-$breakpoint-projector: 3840px;     // Vidéoprojecteurs
-$breakpoint-giant-screen: 5120px;  // Écrans géants ou murs vidéo
+$breakpoint-projector: 3840px;      // Vidéoprojecteurs ou écrans 4K
+$breakpoint-giant-screen: 5120px;   // Écrans géants ou murs vidéo (5K et plus)
 
 
 // ----------------------------------------
