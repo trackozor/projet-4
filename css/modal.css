@@ -319,7 +319,7 @@ header img {
 /* Position lorsque le menu est activé */
 .hero-responsive {
   top: 10vh; /* Positionne la section Hero plus haut */
-  transition: top 1s ease-in-out; /* Transition douce pour les changements */
+  transition: top 2s ease-in-out; /* Transition douce pour les changements */
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -343,7 +343,7 @@ header img {
 }
 .modal-default {
     top: 6.5%;
-    transition: top 1s ease-in-out; /* Transition douce pour les changements */
+    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
 .modal-responsive {
@@ -384,7 +384,9 @@ header img {
   width:90vw
 
 }
-
+#birthdate::placeholder {
+  color: transparent; /* Cache le placeholder */
+}
 /* Liste des informations personnelles */
 .form-list li {
   display: flex; /* Utilise Flexbox pour organiser les éléments */
@@ -453,7 +455,7 @@ header img {
   align-items: center; /* Centre verticalement le contenu */
   justify-content: center; /* Centre horizontalement le contenu */
   border-radius: 50%; /* Cercle parfait */
-  border: 2px solid white; /* Bordure blanche par défaut */
+  border: 2px solid #c4c4c4; /* Bordure blanche par défaut */
   background-color: transparent; /* Fond transparent */
   transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transition douce pour bordure et fond */
   
@@ -505,7 +507,7 @@ header img {
   display: inline-flex; /* Utilise Flexbox pour centrer la coche */
   width: 1.1rem; /* Taille de la case */
   height: 1.1rem; /* Taille de la case */
-  background-color: #d3d3d3; /* Couleur grise par défaut */
+  background-color: #c4c4c4; /* Couleur grise par défaut */
   border-radius: 0.3rem; /* Coins légèrement arrondis */
   justify-content: center; /* Centre horizontalement */
   align-items: center; /* Centre verticalement */
@@ -609,7 +611,7 @@ header img {
 .error-modal {
   display: block; /* Rend l'erreur visible */
   font-size: 0.8rem; /* Taille de police légèrement réduite */
-  background-color: black; /* Fond noir pour contraster avec le texte */
+  background-color:#232323; /* Fond noir pour contraster avec le texte */
   color: red; /* Texte rouge pour indiquer une erreur */
   padding: 1% 0; /* Ajoute un espacement interne pour rendre le texte plus lisible */
   width: 90%; /* Largeur ajustée pour s'insérer correctement sous le champ */
@@ -784,6 +786,8 @@ header img {
     margin:2% auto;
     border-radius: 2%;
     padding-bottom: 2%;
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+
   }
   .content{
     display:fixed;
@@ -964,6 +968,8 @@ header img {
     justify-content: center;
     margin:2% auto;
     padding-bottom: 2%;
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+
   }
   .content{
     display:fixed;

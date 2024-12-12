@@ -524,7 +524,6 @@ function main() {
     // === Gestion du clic sur le bouton de menu pour le responsive ===
     document.getElementById('menu-toggle').addEventListener('click', editNav);
     // === Configuration des placeholders pour le champ de date ===
-    birthdateInput.placeholder = ''; // Supprime le placeholder par défaut
     birthdateInput.addEventListener('focus', () => {
         logEvent('info', 'Focus sur le champ de date : affichage du placeholder.'); // Log lors du focus sur le champ
         birthdateInput.placeholder = 'jj/mm/aaaa'; // Ajoute un placeholder lors du focus
@@ -593,7 +592,13 @@ function main() {
         closeModal(); // Ferme la modale
     });
 
+    document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modalOpen) {
+        closeModal();
+    }
+});
     logEvent('info', 'Initialisation principale terminée.'); // Log final confirmant la fin de l'initialisation
+
 }
 
 
