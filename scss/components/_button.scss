@@ -7,3 +7,19 @@
 /*   ---------------------------------------------------------------------------------------------------*/
 /*                                                                                                      */
 /********************************************************************************************************/
+button {
+    width: 10rem;
+    background: #fe142f;
+    padding: 2% 5%;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    position: relative;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken(#fe142f, 10%);
+    }
+}

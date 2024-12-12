@@ -7,3 +7,24 @@
 /*   ---------------------------------------------------------------------------------------------------*/
 /*                                                                                                      */
 /********************************************************************************************************/
+header {
+    width: 90vw;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5%;
+    background-color: white;
+}
+
+/* Image */
+header img {
+    width: 50vw; /* L'image occupe 50% de la largeur de la fenêtre */
+    max-width: 150px; /* Limite la largeur maximale de l'image à 150px */
+    height: auto; /* Préserve les proportions de l'image */
+    position: fixed; /* Fixe l'image à un emplacement spécifique par rapport à la fenêtre */
+    object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en maintenant son ratio d'aspect */
+    left: 4.5%; /* Place l'image à 3.5% du bord gauche de la fenêtre */
+    top: 1.2%; /* Place l'image à 1.2% du bord supérieur de la fenêtre */
+    background-color: white; /* Ajoute un fond blanc derrière l'image */
+}
