@@ -2,8 +2,37 @@
 /*   Nom du fichier : _footer.scss                                                                      */
 /*   Auteur : Trackozor                                                                                 */
 /*   Date de création : 13/10/2024                                                                      */
-/*   Description : style pour le footer                                                                 */
+/*   Description : Style pour le footer                                                                 */
 /*   Version : 1.0                                                                                      */
 /*   ---------------------------------------------------------------------------------------------------*/
 /*                                                                                                      */
 /********************************************************************************************************/
+
+.copyright {
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+    margin: 0 auto; /* Centre horizontalement dans son conteneur */
+    font-size: 0.8rem; /* Petite taille de police pour le texte */
+    text-align: center; /* Centre le texte à l'intérieur */
+    color: red; /* Texte rouge */
+
+    // Styles pour les ordinateurs portables
+    @include laptop {
+        position: absolute;
+        font-size: 1rem; /* Taille de police légèrement plus grande */
+        font-weight: 700; /* Texte en gras */
+        padding-top: 5%; /* Espace au-dessus */
+        margin: 0; /* Supprime les marges */
+        left: 5%; /* Positionné à 5% du bord gauche */
+    }
+
+    // Styles pour les grands écrans
+    @include large-desktop {
+        position: absolute;
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0; /* Supprime les marges */
+        padding-top: 2%; /* Réduit l'espace au-dessus */
+        left: 9%; /* Positionné à 9% du bord gauche */
+    }
+}
