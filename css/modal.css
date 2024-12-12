@@ -465,14 +465,14 @@ header img {
   width: 0.8rem; /* Taille du point central */
   height: 0.8rem;
   border-radius: 50%; /* Cercle parfait */
-  background-color: #4CAF50; /* Couleur verte du point */
+  background-color: #279E7A; /* Couleur verte du point */
   opacity: 0; /* Caché par défaut */
   transition: opacity 0.3s ease-in-out; /* Transition douce pour l'apparition du point */
 }
 
 /* Style lorsque l'input est sélectionné */
 .checkbox-input:checked + .checkbox-icon {
-  border-color: #4CAF50; /* La bordure devient verte */
+  border-color: #279E7A; /* La bordure devient verte */
 }
 
 .checkbox-input:checked + .checkbox-icon::after {
@@ -528,8 +528,8 @@ header img {
 
 /* Style de la case cochée */
 .checkbox-input2:checked + .checkbox-label2 .checkbox-icon2 {
-  background-color: #4CAF50; /* Fond vert */
-  border-color: #4CAF50; /* Bordure verte */
+  background-color: #279E7A; /* Fond vert */
+  border-color: #279E7A; /* Bordure verte */
 }
 
 /* Coche visible lorsqu'elle est cochée */

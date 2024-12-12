@@ -118,6 +118,8 @@ function logEvent(type, message, data = {}) {
  * @returns {void}
  */
 
+
+
 function editNav() {
     try {
         navElement.classList.toggle(CSS_CLASSES.NAV_RESPONSIVE);
@@ -148,10 +150,7 @@ function editNav() {
 
 
 
-
-
-
-/**
+/*------------------------------------------------------------------------------------
  * ============ Fonction pour réinitialiser le formulaire de la modale. ============
  * 
  * - Efface tous les champs du formulaire en les réinitialisant à leurs valeurs par défaut.
@@ -160,7 +159,9 @@ function editNav() {
  * - Gère les exceptions si le formulaire n'est pas trouvé ou si une erreur survient.
  * 
  * @returns {void}
- */
+------------------------------------------------------------------------------------------*/
+
+
 function resetForm() {
     try {
         // Sélectionne le formulaire dans la modale
