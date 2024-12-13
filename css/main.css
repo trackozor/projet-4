@@ -1,0 +1,666 @@
+@charset "UTF-8";
+/********************************************************************************************************/
+/*   Nom du fichier : _main.scss                                                                        */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : imports des fichiers scss pour compilation                                           */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+/********************************************************************************************************/
+/*   Nom du fichier : _mixins.scss                                                                      */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : mixins pour media queries                                                            */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+/********************************************************************************************************/
+/*   Nom du fichier : _reset.scss                                                                       */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/11/2024                                                                      */
+/*   Description : style pour réinitialiser les styles des navigateurs                                  */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/********************************************************************************************************/
+/*   Nom du fichier : _global.scss                                                                      */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style globaux                                                                        */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+/*============= Réinitialisation globale des marges et des espacements ============ */
+html {
+  box-sizing: border-box; /* Définit le modèle de box-sizing pour inclure les bordures et les marges dans les dimensions des éléments */
+  margin: 0; /* Supprime les marges par défaut de l'élément <html> */
+  padding: 0; /* Supprime les espacements internes par défaut de l'élément <html> */
+}
+
+/*=============== Style du corps de la page =============*/
+body {
+  min-width: 300px; /* Définit une largeur minimale pour garantir une mise en page adaptée aux très petits écrans */
+  max-width: 1200px; /* Limite la largeur maximale du contenu à 1200px pour éviter une trop grande extension sur les grands écrans */
+  font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
+  background-color: white; /* Définit une couleur de fond blanche pour le corps du document */
+  display: flex; /* Utilise Flexbox pour organiser les enfants du <body> */
+  flex-direction: column; /* Aligne les éléments enfants verticalement dans une colonne */
+  justify-content: center; /* Centre les éléments enfants sur l'axe vertical */
+  align-items: center; /* Centre les éléments enfants sur l'axe horizontal */
+  width: 85vw; /* Définit une largeur relative à 85 % de la largeur de la fenêtre */
+  margin: 0 auto; /* Centrage horizontal du contenu dans la fenêtre en ajoutant des marges automatiques */
+}
+
+/*=================== Styles des boutons ================*/
+button {
+  width: 10rem; /* Définit une largeur fixe de 10rem pour le bouton */
+  background: #fe142f; /* Applique une couleur de fond rouge vif (#fe142f) */
+  padding: 2% 5%; /* Ajoute un espacement interne : 2% en haut/bas et 5% à gauche/droite */
+  color: #fff; /* Définit la couleur du texte en blanc */
+  border: none; /* Supprime les bordures par défaut du bouton */
+  border-radius: 0.5rem; /* Arrondit les coins du bouton avec un rayon de 0.5rem */
+  cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
+  font-size: var(--font-size-small); /* Utilise la taille de police définie dans les variables CSS globales */
+  position: relative; /* Définit une position relative pour permettre des ajustements de placement internes */
+  transition: background-color 0.3s ease; /* Ajoute une transition douce pour les changements de couleur de fond */
+}
+
+/* ================ Styles pour les listes ==================*/
+ul {
+  list-style-type: none; /* Supprime les puces ou numéros par défaut des éléments de liste */
+}
+
+/*================= Styles des étiquettes =====================*/
+label {
+  font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
+  font-size: var(--font-size-small); /* Définit la taille de police à une valeur petite pour les étiquettes */
+  padding: 3% 0; /* Ajoute un espacement interne vertical de 3% et aucun espacement horizontal */
+  flex-wrap: nowrap; /* Empêche le contenu de se répartir sur plusieurs lignes dans un contexte flex */
+}
+
+/*================= Style global pour les liens =================*/
+a {
+  color: inherit; /* Hérite de la couleur du texte parent (cela enlève le bleu par défaut) */
+  text-decoration: none; /* Enlève le soulignement */
+}
+
+fieldset {
+  border: none; /* Supprime la bordure par défaut autour du champ groupé */
+}
+
+.sr-only {
+  position: absolute; /* Positionné en dehors du flux de la page */
+  width: 1px; /* Très petit mais toujours existant */
+  height: 1px;
+  padding: 0;
+  margin: -1px; /* Empêche les marges d'affecter le layout */
+  overflow: hidden; /* Contenu masqué */
+  clip: rect(0, 0, 0, 0); /* Masqué visuellement */
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  border: 0; /* Pas de bordures */
+}
+
+/********************************************************************************************************/
+/*   Nom du fichier : _header.scss                                                                      */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style pour le header                                                                 */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+header {
+  width: 90vw;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5%;
+  background-color: white;
+}
+
+/* Image */
+header img {
+  width: 50vw; /* L'image occupe 50% de la largeur de la fenêtre */
+  max-width: 150px; /* Limite la largeur maximale de l'image à 150px */
+  height: auto; /* Préserve les proportions de l'image */
+  position: fixed; /* Fixe l'image à un emplacement spécifique par rapport à la fenêtre */
+  object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en maintenant son ratio d'aspect */
+  left: 4.5%; /* Place l'image à 3.5% du bord gauche de la fenêtre */
+  top: 1.2%; /* Place l'image à 1.2% du bord supérieur de la fenêtre */
+  background-color: white; /* Ajoute un fond blanc derrière l'image */
+}
+
+/*--------------------------------------------------------------------------------------*/
+/*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
+/*--------------------------------------------------------------------------------------*/
+/* Conteneur */
+.topnav {
+  display: flex; /* Active Flexbox pour organiser les éléments enfants */
+  flex-direction: column; /* Organise les éléments en colonne */
+  width: 90vw; /* Occupe 95% de la largeur de la fenêtre */
+  flex-wrap: nowrap; /* Empêche les éléments enfants de passer à la ligne */
+  padding: 0.3rem;
+}
+
+/* Style au survol */
+.topnav span:hover {
+  background-color: #ff0000; /* Change la couleur de fond en rouge vif (#ff0000) au survol */
+  color: #ffffff; /* Change la couleur du texte en blanc au survol */
+  border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
+  font-weight: 500; /* Rend le texte légèrement plus épais */
+  padding: 0.3rem; /* Ajoute un espacement interne de 0.3rem tout autour */
+  text-decoration: underline;
+}
+
+/* Style Icône Liste */
+.topnav i {
+  display: block; /* Définit l'icône comme un bloc pour occuper toute la largeur disponible */
+  color: red; /* Définit la couleur de l'icône en rouge */
+  cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
+  position: fixed; /* Place l'icône à une position fixe par rapport à la fenêtre */
+  right: 3.4%; /* Positionne l'icône à 3.4% du bord droit de la fenêtre */
+  top: 1%; /* Positionne l'icône à 0.5% du bord supérieur de la fenêtre */
+  padding: 0.4rem; /* Ajoute un espacement interne de 0.4rem tout autour de l'icône */
+  font-size: 1.4rem; /* Définit une taille de police de 1.4rem pour l'icône */
+}
+
+/* Style au survol de l'icône liste */
+.topnav i:hover {
+  background-color: #ff0000; /* Change la couleur de fond en rouge vif au survol */
+  color: #ffffff; /* Change la couleur de l'icône en blanc au survol */
+  border-radius: 0.5rem; /* Arrondit les coins de l'icône */
+  font-weight: 500; /* Rend le texte ou l'icône légèrement plus épais */
+}
+
+/* Affichage conditionnel de la liste (par défaut) */
+.nav-links {
+  display: none; /* Masque les liens par défaut */
+  position: relative; /* Position relative pour les ajustements internes */
+  opacity: 0; /* Rends les liens invisibles initialement */
+  transition: all 0.3s ease; /* Transition douce pour toutes les propriétés */
+}
+
+/* Style des listes dans .nav-links */
+.nav-links ul {
+  display: flex; /* Active Flexbox pour organiser les éléments */
+  margin: 5% auto; /* Centre la liste horizontalement */
+  justify-content: center; /* Centre les éléments de la liste */
+  text-align: center; /* Centre le texte */
+  padding: 1% 0; /* Ajoute un espace en haut et en bas */
+}
+
+.nav-links li {
+  padding: 0.5% 0; /* Espacement vertical pour chaque élément */
+  font-weight: 700; /* Texte en gras */
+}
+
+/* Affichage de la liste au clic sur l'icône (mode responsive) */
+.topnav.responsive .nav-links {
+  display: flex; /* Affiche les liens */
+  flex-direction: column; /* Organisation verticale */
+  justify-content: center; /* Centre les éléments verticalement */
+  text-align: center; /* Centre le texte */
+  width: 100%; /* Occupe toute la largeur disponible */
+  position: relative; /* Évite les chevauchements */
+  margin: 0% auto; /* Centre horizontalement */
+  padding: 1rem 0; /* Ajoute un espacement interne pour la lisibilité */
+  margin-top: 10%; /* Décale les éléments vers le bas */
+  opacity: 1; /* Rends les liens visibles */
+}
+
+/* Style des liens de la liste */
+.topnav.responsive .nav-links a {
+  display: flex; /* Affiche chaque lien comme un élément flex */
+  flex-wrap: nowrap; /* Empêche le contenu de se diviser sur plusieurs lignes */
+  justify-content: center; /* Centre le contenu horizontalement */
+  margin: 1% 0; /* Ajoute un espacement vertical entre les liens */
+}
+
+/********************************************************************************************************/
+/*   Nom du fichier : _footer.scss                                                                      */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : Style pour le footer                                                                 */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+.copyright {
+  display: flex;
+  justify-content: center; /* Centre le contenu horizontalement */
+  margin: 0 auto; /* Centre horizontalement dans son conteneur */
+  font-size: 0.8rem; /* Petite taille de police pour le texte */
+  text-align: center; /* Centre le texte à l'intérieur */
+  color: red; /* Texte rouge */
+}
+@media (min-width: 1366px) and (max-width: 1440px) {
+  .copyright {
+    position: absolute;
+    font-size: 1rem; /* Taille de police légèrement plus grande */
+    font-weight: 700; /* Texte en gras */
+    padding-top: 5%; /* Espace au-dessus */
+    margin: 0; /* Supprime les marges */
+    left: 5%; /* Positionné à 5% du bord gauche */
+  }
+}
+@media (min-width: 1920px) and (max-width: 2560px) {
+  .copyright {
+    position: absolute;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0; /* Supprime les marges */
+    padding-top: 2%; /* Réduit l'espace au-dessus */
+    left: 9%; /* Positionné à 9% du bord gauche */
+  }
+}
+
+/********************************************************************************************************/
+/*   Nom du fichier : _grid.scss                                                                        */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style pour la mise en page                                                           */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+/********************************************************************************************************/
+/*   Nom du fichier : _button.scss                                                                       */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style des boutons                                                                    */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+button {
+  width: 10rem;
+  background: #fe142f;
+  padding: 2% 5%;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: var(--font-size-small);
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: rgb(222.0550847458, 0.9449152542, 26.4576271186);
+}
+
+/* -------------------- BOUTON DE FERMETURE -------------------- */
+.close {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: flex-end;
+  background-color: transparent;
+  height: 2%;
+  margin: 0;
+  z-index: 5001;
+}
+
+.close span {
+  font-size: var(--font-size-xlarge);
+  font-weight: 500;
+  background-color: transparent;
+  display: inline-block;
+  transform: rotate(45deg);
+  font-size: 2rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/********************************************************************************************************/
+/*   Nom du fichier : _form.scss                                                                        */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style pour les formulaires                                                           */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+.formData {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+  position: relative;
+  left: -5.5%;
+}
+
+.formData label {
+  font-size: 0.8rem;
+  width: 95vw;
+}
+
+.formData .legend {
+  padding-left: 12%;
+  font-size: 0.8rem;
+  width: 90vw;
+}
+
+/* Champs du formulaire */
+.form-list li {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.form-list input {
+  width: 95%;
+  padding: 3% 2%;
+  border: none;
+  border-radius: 0.5rem;
+  margin: 0 auto;
+}
+
+/* -------------------- CASES À COCHER -------------------- */
+/* Icônes de case à cocher */
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-icon {
+  display: inline-flex;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 2%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #c4c4c4;
+  background-color: transparent;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.checkbox-icon::after {
+  content: "";
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: #279E7A;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.checkbox-input:checked + .checkbox-icon {
+  border-color: #279E7A;
+}
+
+.checkbox-input:checked + .checkbox-icon::after {
+  opacity: 1;
+}
+
+/********************************************************************************************************/
+/*   Nom du fichier : _hero.scss                                                                        */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style pour la section hero                                                           */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+.hero-section {
+  display: flex; /* Active Flexbox pour organiser les éléments */
+  flex-direction: column; /* Organise les enfants en colonne */
+  background-color: transparent; /* Fond transparent */
+  width: 90vw; /* Occupe 90% de la largeur disponible */
+  margin: 0 auto; /* Centre horizontalement */
+  box-shadow: none; /* Désactive les ombres */
+  justify-content: center; /* Centre verticalement */
+  transition: top 1s ease-in-out; /* Transition douce pour le positionnement vertical */
+  overflow-y: auto; /* Permet le défilement si nécessaire */
+  box-sizing: border-box; /* Inclut le padding dans les dimensions */
+}
+
+/* Image dans la section Hero */
+.hero-section img {
+  width: 90vw; /* L'image occupe 90% de la largeur */
+  border-radius: 2%; /* Arrondi des coins de l'image */
+  object-fit: cover; /* Redimensionne l'image en couvrant son conteneur */
+  margin: 0 auto; /* Centre horizontalement l'image */
+  justify-content: center; /* Centre horizontalement avec Flexbox */
+  align-items: center; /* Centre verticalement avec Flexbox */
+  transition: top 1s ease-in-out; /* Transition douce pour les changements de position */
+}
+
+/* Conteneur parent pour les textes */
+.hero-content {
+  display: flex; /* Active Flexbox pour organiser les enfants */
+  flex-direction: column; /* Organise les enfants en colonne */
+  width: 90vw; /* Occupe 90% de la largeur disponible */
+  justify-content: center; /* Centre verticalement */
+  margin: 0 auto; /* Centre horizontalement */
+}
+
+/* Style du titre */
+.hero-content h2 {
+  color: black; /* Couleur noire pour le titre */
+  font-size: 2rem; /* Taille du texte pour le titre */
+  padding-left: 0; /* Aucun espacement à gauche */
+  padding-top: 1vh; /* Espacement vertical en haut */
+}
+
+/* Style du texte */
+.hero-content p {
+  font-size: 0.8rem; /* Taille réduite pour les paragraphes */
+  font-weight: 700; /* Texte en gras */
+  padding-bottom: 5%; /* Espacement sous le paragraphe */
+}
+
+/* Boutons "Je m'inscris" */
+/* Style pour le bouton d'inscription en mode desktop */
+.desktop-signup {
+  display: none; /* Masque le bouton en mode desktop */
+}
+
+/* Style pour le bouton d'inscription en mode mobile */
+.mobile-signup {
+  display: block; /* Affiche le bouton en mode mobile */
+  justify-content: center; /* Centre le contenu horizontalement */
+  margin: 5% auto; /* Centre le bouton et ajoute un espacement */
+}
+
+/* Positions pour la section Hero */
+/* Position par défaut (menu désactivé) */
+.hero-default {
+  top: 60%; /* Positionne la section Hero à 60% */
+  transition: top 1s ease-in-out; /* Transition douce pour les changements */
+}
+
+/* Position lorsque le menu est activé */
+.hero-responsive {
+  top: 10vh; /* Positionne la section Hero plus haut */
+  transition: top 2s ease-in-out; /* Transition douce pour les changements */
+}
+
+/********************************************************************************************************/
+/*   Nom du fichier : _modale.scss                                                                      */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style pour la fenêtre modale                                                         */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+/* Conteneur principal pour le repli de la fenêtre modale */
+/* -------------------- MODALE -------------------- */
+/* Conteneur principal pour la fenêtre modale */
+.bground {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-radius: 1%;
+}
+
+.modal-default {
+  top: 6.5%;
+  transition: top 0.3s ease-in-out;
+}
+
+.modal-responsive {
+  top: 24%;
+  transition: top 0.3s ease-in-out;
+}
+
+.bground.active {
+  display: block;
+}
+
+.bground .content {
+  border-radius: 2%;
+}
+
+.modal-body {
+  background-color: #0b0c07;
+}
+
+/* -------------------- MODALE DE CONFIRMATION -------------------- */
+#confirmation-modal {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 2%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  z-index: 5000;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#confirmation-modal span {
+  font-size: 2rem;
+  width: 80vw;
+  text-align: center;
+}
+
+#confirmation-modal button {
+  width: 25vw;
+  padding: 5%;
+  color: white;
+  border: none;
+}
+
+/********************************************************************************************************/
+/*   Nom du fichier : _animations.scss                                                                  */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style pour les animations                                                            */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+/* Animation pour faire clignoter la bordure rouge */
+@keyframes borderBlink {
+  0% {
+    border-color: red; /* Début de l'animation : la bordure est rouge */
+  }
+  50% {
+    border-color: transparent; /* Milieu de l'animation : la bordure devient transparente */
+  }
+  100% {
+    border-color: red; /* Fin de l'animation : la bordure redevient rouge */
+  }
+}
+/********************************************************************************************************/
+/*   Nom du fichier : _error.scss                                                                       */
+/*   Auteur : Trackozor                                                                                 */
+/*   Date de création : 13/10/2024                                                                      */
+/*   Description : style pour la gestion des erreurs                                                    */
+/*   Version : 1.0                                                                                      */
+/*   ---------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/********************************************************************************************************/
+/* -------------------- ERREURS -------------------- */
+.text-control.error-input {
+  border: 2px solid red;
+  box-shadow: 0 0 1rem red;
+  animation: borderBlink 5s ease-in-out 3;
+}
+
+.error-modal {
+  display: block;
+  font-size: 0.8rem;
+  background-color: #232323;
+  color: red;
+  padding: 1% 0;
+  width: 90%;
+  text-align: left;
+  margin-top: 2%;
+  position: relative;
+  border-radius: 4px;
+}
+
+/*# sourceMappingURL=main.css.map */
