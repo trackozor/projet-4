@@ -164,24 +164,23 @@ fieldset {
 /********************************************************************************************************/
 header {
   width: 90vw;
-  display: flex;
+  display: block;
   position: relative;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5%;
+  margin: 5% auto;
   background-color: white;
 }
 
 /* Image */
 header img {
-  width: 50vw; /* L'image occupe 50% de la largeur de la fenêtre */
+  width: 90%; /* L'image occupe 50% de la largeur de la fenêtre */
   max-width: 150px; /* Limite la largeur maximale de l'image à 150px */
   height: auto; /* Préserve les proportions de l'image */
-  position: fixed; /* Fixe l'image à un emplacement spécifique par rapport à la fenêtre */
+  position: relative; /* Fixe l'image à un emplacement spécifique par rapport à la fenêtre */
   object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en maintenant son ratio d'aspect */
-  left: 4.5%; /* Place l'image à 3.5% du bord gauche de la fenêtre */
-  top: 1.2%; /* Place l'image à 1.2% du bord supérieur de la fenêtre */
-  background-color: white; /* Ajoute un fond blanc derrière l'image */
+  margin: 2%;
+  background-color: transparent; /* Ajoute un fond blanc derrière l'image */
 }
 
 /*--------------------------------------------------------------------------------------*/
@@ -191,9 +190,9 @@ header img {
 .topnav {
   display: flex; /* Active Flexbox pour organiser les éléments enfants */
   flex-direction: column; /* Organise les éléments en colonne */
-  width: 90vw; /* Occupe 95% de la largeur de la fenêtre */
+  width: 80%; /* Occupe 95% de la largeur de la fenêtre */
   flex-wrap: nowrap; /* Empêche les éléments enfants de passer à la ligne */
-  padding: 0.3rem;
+  padding: 5%;
 }
 
 /* Style au survol */
@@ -211,10 +210,10 @@ header img {
   display: block; /* Définit l'icône comme un bloc pour occuper toute la largeur disponible */
   color: red; /* Définit la couleur de l'icône en rouge */
   cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
-  position: fixed; /* Place l'icône à une position fixe par rapport à la fenêtre */
+  position: absolute; /* Place l'icône à une position fixe par rapport à la fenêtre */
   right: 3.4%; /* Positionne l'icône à 3.4% du bord droit de la fenêtre */
-  top: 1%; /* Positionne l'icône à 0.5% du bord supérieur de la fenêtre */
-  padding: 0.4rem; /* Ajoute un espacement interne de 0.4rem tout autour de l'icône */
+  top: 2.5%; /* Positionne l'icône à 0.5% du bord supérieur de la fenêtre */
+  padding: 1.5%; /* Ajoute un espacement interne de 0.4rem tout autour de l'icône */
   font-size: 1.4rem; /* Définit une taille de police de 1.4rem pour l'icône */
 }
 
@@ -237,10 +236,10 @@ header img {
 /* Style des listes dans .nav-links */
 .nav-links ul {
   display: flex; /* Active Flexbox pour organiser les éléments */
-  margin: 5% auto; /* Centre la liste horizontalement */
+  margin: 2% auto; /* Centre la liste horizontalement */
   justify-content: center; /* Centre les éléments de la liste */
   text-align: center; /* Centre le texte */
-  padding: 1% 0; /* Ajoute un espace en haut et en bas */
+  position: relative;
 }
 
 .nav-links li {
@@ -466,8 +465,8 @@ button:hover {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les enfants en colonne */
   background-color: transparent; /* Fond transparent */
-  width: 90vw; /* Occupe 90% de la largeur disponible */
-  margin: 0 auto; /* Centre horizontalement */
+  width: 95%; /* Occupe 90% de la largeur disponible */
+  margin: 5% auto; /* Centre horizontalement */
   box-shadow: none; /* Désactive les ombres */
   justify-content: center; /* Centre verticalement */
   transition: top 1s ease-in-out; /* Transition douce pour le positionnement vertical */
@@ -490,7 +489,7 @@ button:hover {
 .hero-content {
   display: flex; /* Active Flexbox pour organiser les enfants */
   flex-direction: column; /* Organise les enfants en colonne */
-  width: 90vw; /* Occupe 90% de la largeur disponible */
+  width: 95%; /* Occupe 90% de la largeur disponible */
   justify-content: center; /* Centre verticalement */
   margin: 0 auto; /* Centre horizontalement */
 }
@@ -501,6 +500,7 @@ button:hover {
   font-size: 2rem; /* Taille du texte pour le titre */
   padding-left: 0; /* Aucun espacement à gauche */
   padding-top: 1vh; /* Espacement vertical en haut */
+  font-size: 700;
 }
 
 /* Style du texte */
@@ -565,6 +565,7 @@ button:hover {
 
 .modal-default {
   top: 6.5%;
+  margin: 0 auto;
   transition: top 0.3s ease-in-out;
 }
 
