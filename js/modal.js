@@ -46,7 +46,7 @@ const CSS_CLASSES = {
     MODAL_ACTIVE: 'active',
     BODY_NO_SCROLL: 'no-scroll',
     NAV_RESPONSIVE: 'responsive',
-    HERO_DEFAULT: 'hero-default',
+    HERO_DEFAULT: 'hero-section',
     HERO_RESPONSIVE: 'hero-responsive',
     MODAL_DEFAULT: 'modal-default',
     MODAL_RESPONSIVE: 'modal-responsive',
@@ -74,7 +74,6 @@ let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale.
  * @param {Object} [data={}] - Données supplémentaires à afficher (facultatif).
  */
 function logEvent(type, message, data = {}) {
-    // Horodatage dynamique
     const timestamp = new Date().toLocaleTimeString();
     const prefix = `[GameOn][${timestamp}]`; // Préfixe commun pour tous les logs
 
@@ -104,7 +103,17 @@ function logEvent(type, message, data = {}) {
         default:
             console.log(`%c${prefix} [INCONNU]: ${message}`, style, data);
     }
+
+    // Vérifie la validité du message
+    if (!message) {
+        console.warn('[LOG][AVERTISSEMENT] Aucun message fourni.');
+        return;
 }
+
+    // Affiche le message avec son style
+    console.log(`%c${prefix} ${type.toUpperCase()}: ${message}`, style, data);
+}
+
 
 
 
