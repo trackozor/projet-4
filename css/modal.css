@@ -18,84 +18,85 @@
 /* ------------------------------------------------------------------ */
 /*                          VARIABLES                                 */
 /* ------------------------------------------------------------------ */
+/* Utilisées pour gérer les polices, animations, et tailles globales du site */
 :root {
-    /* Définit la police par défaut utilisée dans l'application */
-    --font-default: Arial, Helvetica, sans-serif;
+  /* Définit la police par défaut utilisée dans l'application */
+  --font-default: Arial, Helvetica, sans-serif;
 
-    /* Durée des animations pour les modales */
-    --modal-duration: 0.8s;
+  /* Durée des animations pour les modales */
+  --modal-duration: 0.8s;
 
-    /* Tailles de police standardisées pour une meilleure gestion typographique */
-    --font-size-small: 0.8rem; /* Petite taille de texte, idéale pour des notes ou des sous-titres */
-    --font-size-middle: 1.1rem; /* Taille intermédiaire, souvent utilisée pour le texte principal */
-    --font-size-base: 1rem; /* Taille de base, par défaut pour la plupart des textes */
-    --font-size-large: 1.4rem; /* Grande taille de texte, idéale pour les titres */
-    --font-size-xlarge: 2rem; /* Très grande taille, pour les titres principaux ou des éléments importants */
+  /* Tailles de police standardisées pour une meilleure gestion typographique */
+  --font-size-small: 0.8rem; /* Petite taille de texte, idéale pour des notes ou des sous-titres */
+  --font-size-middle: 1.1rem; /* Taille intermédiaire, souvent utilisée pour le texte principal */
+  --font-size-base: 1rem; /* Taille de base, par défaut pour la plupart des textes */
+  --font-size-large: 1.4rem; /* Grande taille de texte, idéale pour les titres */
+  --font-size-xlarge: 2rem; /* Très grande taille, pour les titres principaux ou des éléments importants */
 }
 
-/* ------------------------------------------------------------------ */
-/*                          STYLES GLOBAUX                            */
-/* ------------------------------------------------------------------ */
+/*------------------------------------------------------------------------------------*/
+/*------------------   STYLES GLOBAUX   ----------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 
 /*============= Réinitialisation globale des marges et des espacements ============ */
 html { 
-    box-sizing: border-box;/* Définit le modèle de box-sizing pour inclure les bordures et les marges dans les dimensions des éléments */
-    margin: 0;/* Supprime les marges par défaut de l'élément <html> */
-    padding: 0;/* Supprime les espacements internes par défaut de l'élément <html> */
+  box-sizing: border-box;/* Définit le modèle de box-sizing pour inclure les bordures et les marges dans les dimensions des éléments */
+  margin: 0;/* Supprime les marges par défaut de l'élément <html> */
+  padding: 0;/* Supprime les espacements internes par défaut de l'élément <html> */
 }
 
 /*=============== Style du corps de la page =============*/
 body {
-    min-width: 300px;/* Définit une largeur minimale pour garantir une mise en page adaptée aux très petits écrans */
-    max-width: 1200px; /* Limite la largeur maximale du contenu à 1200px pour éviter une trop grande extension sur les grands écrans */
-    font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
-    background-color: white; /* Définit une couleur de fond blanche pour le corps du document */
-    display: flex; /* Utilise Flexbox pour organiser les enfants du <body> */ 
-    flex-direction: column;/* Aligne les éléments enfants verticalement dans une colonne */
-    justify-content: center; /* Centre les éléments enfants sur l'axe vertical */
-    align-items: center; /* Centre les éléments enfants sur l'axe horizontal */
-    width: 85vw; /* Définit une largeur relative à 85 % de la largeur de la fenêtre */
-    margin: 0 auto;/* Centrage horizontal du contenu dans la fenêtre en ajoutant des marges automatiques */
+  min-width: 300px;/* Définit une largeur minimale pour garantir une mise en page adaptée aux très petits écrans */
+  max-width: 1200px; /* Limite la largeur maximale du contenu à 1200px pour éviter une trop grande extension sur les grands écrans */
+  font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
+  background-color: white; /* Définit une couleur de fond blanche pour le corps du document */
+  display: flex; /* Utilise Flexbox pour organiser les enfants du <body> */ 
+  flex-direction: column;/* Aligne les éléments enfants verticalement dans une colonne */
+  justify-content: center; /* Centre les éléments enfants sur l'axe vertical */
+  align-items: center; /* Centre les éléments enfants sur l'axe horizontal */
+  width: 80vw; /* Définit une largeur relative à 85 % de la largeur de la fenêtre */
+  margin: 0 auto;/* Centrage horizontal du contenu dans la fenêtre en ajoutant des marges automatiques */
 }
 
 
 /*=================== Styles des boutons ================*/
 button {
-    width: 10rem; /* Définit une largeur fixe de 10rem pour le bouton */
-    background: #fe142f; /* Applique une couleur de fond rouge vif (#fe142f) */
-    padding: 2% 5%; /* Ajoute un espacement interne : 2% en haut/bas et 5% à gauche/droite */
-    color: #fff; /* Définit la couleur du texte en blanc */
-    border: none; /* Supprime les bordures par défaut du bouton */
-    border-radius: 0.5rem; /* Arrondit les coins du bouton avec un rayon de 0.5rem */
-    cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
-    font-size: var(--font-size-small); /* Utilise la taille de police définie dans les variables CSS globales */
-    position: relative; /* Définit une position relative pour permettre des ajustements de placement internes */
-    transition: background-color 0.3s ease; /* Ajoute une transition douce pour les changements de couleur de fond */
+  width: 10rem; /* Définit une largeur fixe de 10rem pour le bouton */
+  background: #fe142f; /* Applique une couleur de fond rouge vif (#fe142f) */
+  padding: 2% 5%; /* Ajoute un espacement interne : 2% en haut/bas et 5% à gauche/droite */
+  color: #fff; /* Définit la couleur du texte en blanc */
+  border: none; /* Supprime les bordures par défaut du bouton */
+  border-radius: 0.5rem; /* Arrondit les coins du bouton avec un rayon de 0.5rem */
+  cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
+  font-size: var(--font-size-small); /* Utilise la taille de police définie dans les variables CSS globales */
+  position: relative; /* Définit une position relative pour permettre des ajustements de placement internes */
+  transition: background-color 0.3s ease; /* Ajoute une transition douce pour les changements de couleur de fond */
 }
 
 /* ================ Styles pour les listes ==================*/
 ul {
-    list-style-type: none; /* Supprime les puces ou numéros par défaut des éléments de liste */
+  list-style-type: none; /* Supprime les puces ou numéros par défaut des éléments de liste */
 }
 
 
 /*================= Styles des étiquettes =====================*/
 label {
-    font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
-    font-size: var(--font-size-small); /* Définit la taille de police à une valeur petite pour les étiquettes */
-    padding: 3% 0; /* Ajoute un espacement interne vertical de 3% et aucun espacement horizontal */
-    flex-wrap: nowrap; /* Empêche le contenu de se répartir sur plusieurs lignes dans un contexte flex */
+  font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
+  font-size: var(--font-size-small); /* Définit la taille de police à une valeur petite pour les étiquettes */
+  padding: 3% 0; /* Ajoute un espacement interne vertical de 3% et aucun espacement horizontal */
+  flex-wrap: nowrap; /* Empêche le contenu de se répartir sur plusieurs lignes dans un contexte flex */
 }
 
 
 /*================= Style global pour les liens =================*/
 a {
-    color: inherit; /* Hérite de la couleur du texte parent (cela enlève le bleu par défaut) */
-    text-decoration: none; /* Enlève le soulignement */
+  color: inherit; /* Hérite de la couleur du texte parent (cela enlève le bleu par défaut) */
+  text-decoration: none; /* Enlève le soulignement */
 }
 
 fieldset {
-    border: none; /* Supprime la bordure par défaut autour du champ groupé */
+  border: none; /* Supprime la bordure par défaut autour du champ groupé */
 }
 
 .sr-only {
@@ -114,42 +115,47 @@ fieldset {
 
 /* Animation pour faire clignoter la bordure rouge */
 @keyframes borderBlink {
-    0% {
-        border-color: red; /* Début de l'animation : la bordure est rouge */
-    }
-    50% {
-        border-color: transparent; /* Milieu de l'animation : la bordure devient transparente */
-    }
-    100% {
-        border-color: red; /* Fin de l'animation : la bordure redevient rouge */
-    }
+  0% {
+    border-color: red; /* Début de l'animation : la bordure est rouge */
+  }
+  50% {
+    border-color: transparent; /* Milieu de l'animation : la bordure devient transparente */
+  }
+  100% {
+    border-color: red; /* Fin de l'animation : la bordure redevient rouge */
+  }
 }
-/*-----------------------------------------------------------------------------*/
-/*--------------------  HEADER  --------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------------------*/
+/*--------------------  HEADER  ---------------------------------------------------*/
 /*---------------------------------------------------------------------------------*/
 
 /* Conteneur */
 header {
-    width: 90vw; /* Le header occupe 95% de la largeur de la fenêtre */
-    display: flex; /* Utilise Flexbox pour organiser les éléments enfants */
-    position: relative; /* Définit une position relative pour un placement interne ou d'autres ajustements */
-    align-items: center; /* Aligne verticalement les éléments enfants au centre */
-    justify-content: center; /* Centre les éléments enfants horizontalement */
-    margin-bottom: 5%; /* Ajoute un espace de 5% de hauteur sous le header */
-    background-color: white; /* Définit une couleur de fond blanche pour le header */
+  width: 90vw; /* Le header occupe 95% de la largeur de la fenêtre */
+  display: flex; /* Utilise Flexbox pour organiser les éléments enfants */
+  position: relative; /* Définit une position relative pour un placement interne ou d'autres ajustements */
+  align-items: center; /* Aligne verticalement les éléments enfants au centre */
+  justify-content: center; /* Centre les éléments enfants horizontalement */
+  margin: 2% 0; /* Ajoute un espace de 5% de hauteur sous le header */
+  background-color: white; /* Définit une couleur de fond blanche pour le header */
+  padding-top: 2%;
 }
 
 
+/*----------------------------------------------------------------*/
 /* Image */
 header img {
-    width: 50vw; /* L'image occupe 50% de la largeur de la fenêtre */
-    max-width: 150px; /* Limite la largeur maximale de l'image à 150px */
-    height: auto; /* Préserve les proportions de l'image */
-    position: fixed; /* Fixe l'image à un emplacement spécifique par rapport à la fenêtre */
-    object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en maintenant son ratio d'aspect */
-    left: 4.5%; /* Place l'image à 3.5% du bord gauche de la fenêtre */
-    top: 1.2%; /* Place l'image à 1.2% du bord supérieur de la fenêtre */
-    background-color: white; /* Ajoute un fond blanc derrière l'image */
+  display: block;
+  width: 50vw; /* L'image occupe 50% de la largeur de la fenêtre */
+  max-width: 120px; /* Limite la largeur maximale de l'image à 150px */
+  height: auto; /* Préserve les proportions de l'image */
+  position: absolute; /* Fixe l'image à un emplacement spécifique par rapport à la fenêtre */
+  object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en maintenant son ratio d'aspect */
+  top: 4.6%; /* Place l'image à 1.2% du bord supérieur de la fenêtre */ 
+  background-color: white; /* Ajoute un fond blanc derrière l'image */
+  padding:2% 0;
 }
 
 
@@ -162,11 +168,12 @@ header img {
   display: flex; /* Active Flexbox pour organiser les éléments enfants */
   flex-direction: column; /* Organise les éléments en colonne */
   width: 90vw; /* Occupe 95% de la largeur de la fenêtre */
+  height: auto;
   flex-wrap: nowrap; /* Empêche les éléments enfants de passer à la ligne */
-  padding: 0.3rem;
+  transition:  top 2s ease-in-out;
 }
 
-
+/*----------------------------------------------------------------*/
 /* Style au survol */
 .topnav span:hover {
   background-color: #ff0000; /* Change la couleur de fond en rouge vif (#ff0000) au survol */
@@ -177,50 +184,56 @@ header img {
   text-decoration: underline; 
 }
 
-
+/*---------------------------------------------------------------*/
 /* Style Icône Liste */
 .topnav i {
-    display: block; /* Définit l'icône comme un bloc pour occuper toute la largeur disponible */
-    color: red; /* Définit la couleur de l'icône en rouge */
-    cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
-    position: fixed; /* Place l'icône à une position fixe par rapport à la fenêtre */
-    right: 3.4%; /* Positionne l'icône à 3.4% du bord droit de la fenêtre */
-    top: 1%; /* Positionne l'icône à 0.5% du bord supérieur de la fenêtre */
-    padding: 0.4rem; /* Ajoute un espacement interne de 0.4rem tout autour de l'icône */
-    font-size: 1.4rem; /* Définit une taille de police de 1.4rem pour l'icône */
+  color: red; /* Définit la couleur de l'icône en rouge */
+  cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
+  position: absolute; /* Place l'icône à une position fixe par rapport à la fenêtre */
+  right:4%; /* Positionne l'icône à 3.4% du bord droit de la fenêtre */
+  top: 1%; /* Positionne l'icône à 0.5% du bord supérieur de la fenêtre */
+  padding: 0.4rem; /* Ajoute un espacement interne de 0.4rem tout autour de l'icône */
+  font-size: 1.2rem; /* Définit une taille de police de 1.4rem pour l'icône */
 
 }
 
+/*----------------------------------------------------------------*/
 /* Style au survol de l'icône liste */
 .topnav i:hover {
-    background-color: #ff0000; /* Change la couleur de fond en rouge vif au survol */
-    color: #ffffff; /* Change la couleur de l'icône en blanc au survol */
-    border-radius: 0.5rem; /* Arrondit les coins de l'icône */
-    font-weight: 500; /* Rend le texte ou l'icône légèrement plus épais */
-    
+  background-color: #ff0000; /* Change la couleur de fond en rouge vif au survol */
+  color: #ffffff; /* Change la couleur de l'icône en blanc au survol */
+  border-radius: 0.5rem; /* Arrondit les coins de l'icône */
+  font-weight: 500; /* Rend le texte ou l'icône légèrement plus épais */    
 }
+
+/*-----------------------------------------------------------------*/
 /* Affichage conditionnel de la liste (par défaut) */
 .nav-links {
   display: none; /* Masque les liens par défaut */
+  height: auto;
   position: relative; /* Position relative pour les ajustements internes */
   opacity: 0; /* Rends les liens invisibles initialement */
-  transition: all 0.3s ease; /* Transition douce pour toutes les propriétés */
+  transition: top 1s ease-in-out; /* Transition douce pour toutes les propriétés */
 }
 
-/* Style des listes dans .nav-links */
+/*---------------------------------------------------------------------*/
+/* Style de la liste dans .nav-links */
 .nav-links ul {
   display: flex; /* Active Flexbox pour organiser les éléments */
-  margin: 2% auto; /* Centre la liste horizontalement */
+  margin: 1% auto; /* Centre la liste horizontalement */
   justify-content: center; /* Centre les éléments de la liste */
   text-align: center; /* Centre le texte */
   padding: 1% 0; /* Ajoute un espace en haut et en bas */
 }
 
+/*---------------------------------------------------------------------*/
+/* Style des lignes la liste dans .nav-links*/
 .nav-links li {
   padding: 0.5% 0; /* Espacement vertical pour chaque élément */
   font-weight: 700; /* Texte en gras */
 }
 
+/*--------------------------------------------------------------------*/
 /* Affichage de la liste au clic sur l'icône (mode responsive) */
 .topnav.responsive .nav-links {
   display: flex; /* Affiche les liens */
@@ -228,29 +241,38 @@ header img {
   justify-content: center; /* Centre les éléments verticalement */
   text-align: center; /* Centre le texte */
   width: 100%; /* Occupe toute la largeur disponible */
+  height: auto;
   position: relative; /* Évite les chevauchements */
   margin: 0% auto; /* Centre horizontalement */
   padding: 1rem 0; /* Ajoute un espacement interne pour la lisibilité */
   margin-top: 10%; /* Décale les éléments vers le bas */
   opacity: 1; /* Rends les liens visibles */
+  transition:  top 2  ease-in-out;
 }
 
-/* Style des liens de la liste */
+/*--------------------------------------------------------------------*/
+/* Style des liens de la liste (mode responsive) */
 .topnav.responsive .nav-links a {
   display: flex; /* Affiche chaque lien comme un élément flex */
   flex-wrap: nowrap; /* Empêche le contenu de se diviser sur plusieurs lignes */
   justify-content: center; /* Centre le contenu horizontalement */
   margin: 1% 0; /* Ajoute un espacement vertical entre les liens */
+  transition:  top 2  ease-in-out;
 }
 
-/* SECTION PRINCIPALE */
+
+
+
+/*------------------------------------------------------------------------------------*/
+/*------------------ SECTION PRINCIPALE ----------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 
 /* Conteneur principal */
 .hero-section {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les enfants en colonne */
   background-color: transparent; /* Fond transparent */
-  width: 90vw; /* Occupe 90% de la largeur disponible */
+  width: 85vw; /* Occupe 90% de la largeur disponible */
   margin: 0 auto; /* Centre horizontalement */
   box-shadow: none; /* Désactive les ombres */
   justify-content: center; /* Centre verticalement */
@@ -259,17 +281,20 @@ header img {
   box-sizing: border-box; /* Inclut le padding dans les dimensions */
 }
 
+/*----------------------------------------------------------------*/
 /* Image dans la section Hero */
 .hero-section img {
-  width: 90vw; /* L'image occupe 90% de la largeur */
+  display: flex;
+  width: 85vw; /* L'image occupe 90% de la largeur */
   border-radius: 2%; /* Arrondi des coins de l'image */
   object-fit: cover; /* Redimensionne l'image en couvrant son conteneur */
   margin: 0 auto; /* Centre horizontalement l'image */
   justify-content: center; /* Centre horizontalement avec Flexbox */
   align-items: center; /* Centre verticalement avec Flexbox */
-  transition: top 1s ease-in-out; /* Transition douce pour les changements de position */
+
 }
 
+/*----------------------------------------------------------------*/
 /* Conteneur parent pour les textes */
 .hero-content {
   display: flex; /* Active Flexbox pour organiser les enfants */
@@ -277,16 +302,19 @@ header img {
   width: 90vw; /* Occupe 90% de la largeur disponible */
   justify-content: center; /* Centre verticalement */
   margin: 0 auto; /* Centre horizontalement */
+  transition: top 2s ease-in-out; /* Transition douce pour le positionnement vertical */
 }
 
+/*----------------------------------------------------------------*/
 /* Style du titre */
 .hero-content h2 {
   color: black; /* Couleur noire pour le titre */
   font-size: 2rem; /* Taille du texte pour le titre */
   padding-left: 0; /* Aucun espacement à gauche */
-  padding-top: 1vh; /* Espacement vertical en haut */
+  padding-top:2vh; /* Espacement vertical en haut */
 }
 
+/*----------------------------------------------------------------*/
 /* Style du texte */
 .hero-content p {
   font-size: 0.8rem; /* Taille réduite pour les paragraphes */
@@ -294,12 +322,15 @@ header img {
   padding-bottom: 5%; /* Espacement sous le paragraphe */
 }
 
-/* Boutons "Je m'inscris" */
+/*------------------------------------------------------------------------------------*/
+/*------------------ BOUTON " JE m'inscris" ------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 
 /* Style pour le bouton d'inscription en mode desktop */
 .desktop-signup {
   display: none; /* Masque le bouton en mode desktop */
 }
+
 
 /* Style pour le bouton d'inscription en mode mobile */
 .mobile-signup {
@@ -308,6 +339,7 @@ header img {
   margin: 5% auto; /* Centre le bouton et ajoute un espacement */
 }
 
+/*----------------------------------------------------------------*/
 /* Positions pour la section Hero */
 
 .hero-section {
@@ -340,15 +372,20 @@ header img {
   overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
   border-radius: 1%;
 }
+
+/*----------------------------------------------------------------*/
 .modal-default {
-    top: 6.5%;
-    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+  top: 6.5%;
+  transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
+/*----------------------------------------------------------------*/
 .modal-responsive {
-    top: 24%;
-    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+  top: 24%;
+  transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
+
+/*--------------------------------------------------------------------------*/
 .bground.active {
   display: block; /* Affiche la modale lorsqu'elle est active */
 }
@@ -366,31 +403,30 @@ header img {
   justify-content: center;
   margin: 0 auto; /* Centre le formulaire horizontalement */
   padding: 0; /* Supprime les espacements internes */
-  width: 90%; /* Le formulaire occupe 100% de la largeur disponible */
+  width: 85vw; /* Le formulaire occupe 100% de la largeur disponible */
   position: relative; /* Position relative pour des ajustements internes */
   left: -5.5%; /* Décale le formulaire de 7.5vw vers la gauche */
   
 }
 
 .formData label {
-  font-size:0.8rem;
-  width:95vw;
+  width:90vw;
 }
 
 .formData .legend {
-  padding-left: 12%; /* Ajoute un espacement de 12% à gauche pour le texte */
-  font-size: 0.8rem; /* Utilise une taille de police définie par une variable CSS */
+  padding-left: 12vw; /* Ajoute un espacement de 12% à gauche pour le texte */
+  font-size: 0.8rem;
   width:90vw
 
 }
 #birthdate::placeholder {
-  color: transparent; /* Cache le placeholder */
+  color: white; /* Cache le placeholder */
 }
 /* Liste des informations personnelles */
 .form-list li {
   display: flex; /* Utilise Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
-  width: 90vw; /* Chaque élément de la liste occupe 100% de la largeur */
+  width: 87vw; /* Chaque élément de la liste occupe 100% de la largeur */
   justify-content: flex-start;
   padding: 0; /* Supprime les espacements internes */
   margin: 0 auto; /* Centre horizontalement chaque élément */
@@ -421,13 +457,12 @@ header img {
   display: grid;
   grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
   grid-template-rows:repeat(2,auto) ;
-  width: 90vw; /* Ajuste la largeur totale */
+  width: 100%; /* Ajuste la largeur totale */
   margin: 0 auto; /* Centre la grille horizontalement */
   align-items: center;
   margin-top:3%;
-
-
 }
+
 
 .location-list li p {
   display:flex; 
@@ -448,8 +483,8 @@ header img {
 /* Conteneur de l'icône (cercle avec bordure) */
 .checkbox-icon {
   display: inline-flex; /* Utilise Flexbox pour centrer le point */
-  width: 1.2rem; /* Ajuste la taille globale du cercle */
-  height: 1.2rem;
+  width: 0.8rem; /* Ajuste la taille globale du cercle */
+  height: 0.8rem;
   margin:2%;
   align-items: center; /* Centre verticalement le contenu */
   justify-content: center; /* Centre horizontalement le contenu */
@@ -463,8 +498,8 @@ header img {
 /* Point central (vert) */
 .checkbox-icon::after {
   content: ''; /* Crée un contenu vide pour le point central */
-  width: 0.8rem; /* Taille du point central */
-  height: 0.8rem;
+  width: 0.6rem; /* Taille du point central */
+  height: 0.6rem;
   border-radius: 50%; /* Cercle parfait */
   background-color: #279E7A; /* Couleur verte du point */
   opacity: 0; /* Caché par défaut */
@@ -483,12 +518,12 @@ header img {
 .consentement {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
-  width: 95vw; /* La liste occupe toute la largeur disponible */
+  width: 87vw; /* La liste occupe toute la largeur disponible */
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
   align-items: center;
 }
 .consentement li {
-  width:95vw;
+  width:100%;
   font-size: 0.6rem;
 }
 
@@ -504,8 +539,8 @@ header img {
 /* Conteneur de la case à cocher */
 .checkbox-icon2 {
   display: inline-flex; /* Utilise Flexbox pour centrer la coche */
-  width: 1.1rem; /* Taille de la case */
-  height: 1.1rem; /* Taille de la case */
+  width: 1rem; /* Taille de la case */
+  height: 1rem; /* Taille de la case */
   background-color: #c4c4c4; /* Couleur grise par défaut */
   border-radius: 0.3rem; /* Coins légèrement arrondis */
   justify-content: center; /* Centre horizontalement */
@@ -568,6 +603,7 @@ header img {
     display: flex; /* Active Flexbox pour centrer les éléments */
     justify-content: center; /* Centre horizontalement le contenu */
     margin: 0 auto; /* Centre le bouton horizontalement */
+    width:35%;
 }
 
 /* Modale de confirmation (cachée par défaut) */
@@ -611,7 +647,7 @@ header img {
   display: block; /* Rend l'erreur visible */
   font-size: 0.8rem; /* Taille de police légèrement réduite */
   background-color:#232323; /* Fond noir pour contraster avec le texte */
-  color: red; /* Texte rouge pour indiquer une erreur */
+  color: #fe142f; /* Texte rouge pour indiquer une erreur */
   padding: 1% 0; /* Ajoute un espacement interne pour rendre le texte plus lisible */
   width: 90%; /* Largeur ajustée pour s'insérer correctement sous le champ */
   text-align: left; /* Texte aligné à gauche */
@@ -627,12 +663,12 @@ header img {
 /*---------------------------------------------------------------------------*/
 
 .copyright {
-    display: flex;
-    justify-content: center; /* Centre le contenu horizontalement (nécessite Flexbox pour fonctionner pleinement) */
-    margin: 0 auto; /* Centre horizontalement l'élément dans son conteneur */
-    font-size: 0.8rem; /* Définit une petite taille de police pour le texte */
-    text-align: center; /* Centre le texte à l'intérieur de l'élément */
-    color: red; /* Définit la couleur du texte en rouge */
+  display: flex;
+  justify-content: center; /* Centre le contenu horizontalement (nécessite Flexbox pour fonctionner pleinement) */
+  margin: 0 auto; /* Centre horizontalement l'élément dans son conteneur */
+  font-size: 0.8rem; /* Définit une petite taille de police pour le texte */
+  text-align: center; /* Centre le texte à l'intérieur de l'élément */
+  color:#fe142f; /* Définit la couleur du texte en rouge */
 }
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -640,45 +676,108 @@ header img {
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 @media screen and (min-width: 768px) and (max-width:1023px) {
+  
+
+
+  header {
+    width:100%
+  }
+  /*-----------------------------------------------------------------------------------*/
+  header img {
+    max-width: 160px;
+    height:auto;
+  }
+
+  .topnav {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    justify-content: center;
+
+  }
+  .topnav i {
+    font-size:1.6rem;
+    margin:0.5% 1%;
+  }
+
   .nav-links a {
     font-size: 1.2rem;
     width:auto
   }
+
+  .hero-section  {
+    width:100%;
+  }
+  /*-------------------------------------------------------------------------------------*/
   .hero-section h2 {
     font-size: 2.5rem;
   }
+
+  /*--------------------------------------------------------*/
   .hero-section p {
     font-size: 1.5rem;
     padding-bottom: 1%;;
   }
+
+  .hero-section img {
+    width: 100%;
+    height: 55vh;
+    object-fit: cover;
+  }
+  /*---------------------------------------------------------*/
   .mobile-signup {
     font-size: 1rem;
   }
+  .modal-body {
+    width:70vw;
+    margin: 0 auto;
+  }
+  /*---------------------------------------------------------*/
   .formData {
-    left:-3%;
+    width:70vw;
   }
+
+  /*----------------------------------------------------------*/
   .formData label {
-    font-size: 1rem;
+    width:70vw;
+    margin: 0 auto;
   }
+
+  /*----------------------------------------------------------*/
   .formData .legend {
     font-size: 1rem;
     padding-left: 5%;
   }
+
+  .form-list li {
+    width:95%;
+  }
+  /*------------------------------------------------------------*/
   .consentement li{
   padding-left: 5%;
   }
+
+  /*-------------------------------------------------------------*/
   .close span {
     font-size: 2.5rem;
     padding-top: 1%;
   }
+
+  /*-----------------------------------------------------------------*/
   .text-control{
     font-size: 1rem;
   }
+
+  /*-------------------------------------------------------------------*/
   .error-modal {
     font-size: 1.2rem;
     padding-bottom:0;
   }
 }
+
 /*------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
 
