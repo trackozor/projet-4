@@ -407,6 +407,9 @@ header img {
 
 .formData .legend { /* Ajoute un espacement de 12% à gauche pour le texte */
   font-size: 0.8rem;
+  padding-top:5%;
+  width:85vw;
+  margin:0 auto; 
 
 }
 
@@ -451,15 +454,15 @@ header img {
 .location-list {
   display: grid;
   grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
-  grid-template-rows:repeat(2, auto) ; /* Ajuste la largeur totale */
+  grid-template-rows:repeat(3, auto) ; /* Ajuste la largeur totale */
   margin: 0 auto;
-  gap:0.5%;
-  width: 100%;
+  width: 85vw;
+  margin: 5% auto;
   
 }
 
 
-.location-list li p {
+.location-list li span {
   display:flex; 
   align-items: center; 
   justify-content: center;
@@ -482,9 +485,11 @@ header img {
 }
 
 .checkbox-icon::after {
+  display: block; /* Affiche le point vert */
+  position: relative;
   content: '';
-  width: 90%;
-  height: 90%;
+  width: 0.7em;
+  height: 0.7em;
   border-radius: 50%;
   background-color: #279E7A;
   opacity: 0;
