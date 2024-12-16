@@ -241,7 +241,7 @@ header img {
   justify-content: center; /* Centre les éléments verticalement */
   text-align: center; /* Centre le texte */
   width: 100%; /* Occupe toute la largeur disponible */
-  height: auto;
+  height: 10%;
   position: relative; /* Évite les chevauchements */
   margin: 0% auto; /* Centre horizontalement */
   padding: 1rem 0; /* Ajoute un espacement interne pour la lisibilité */
@@ -271,7 +271,6 @@ header img {
 .hero-section {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les enfants en colonne */
-  background-color: transparent; /* Fond transparent */
   width: 85vw; /* Occupe 90% de la largeur disponible */
   margin: 0 auto; /* Centre horizontalement */
   box-shadow: none; /* Désactive les ombres */
@@ -301,7 +300,7 @@ header img {
   flex-direction: column; /* Organise les enfants en colonne */
   width: 90vw; /* Occupe 90% de la largeur disponible */
   justify-content: center; /* Centre verticalement */
-  margin: 0 auto; /* Centre horizontalement */
+  margin: 5% auto; /* Centre horizontalement */
   transition: top 2s ease-in-out; /* Transition douce pour le positionnement vertical */
 }
 
@@ -310,8 +309,7 @@ header img {
 .hero-content h2 {
   color: black; /* Couleur noire pour le titre */
   font-size: 2rem; /* Taille du texte pour le titre */
-  padding-left: 0; /* Aucun espacement à gauche */
-  padding-top:2vh; /* Espacement vertical en haut */
+  margin:10% auto; /* Espacement vertical en haut */
 }
 
 /*----------------------------------------------------------------*/
@@ -348,7 +346,7 @@ header img {
 }
 
 .hero-responsive {
-  transform: translateY(12%);
+  transform: translateY(2%);
   transition: transform 0.5s ease-in-out;
 }
 
@@ -366,22 +364,21 @@ header img {
   transform: translateX(-50%); /* Corrige le centrage horizontal */
   width: 100%; /* Occupe toute la largeur pour un effet plein écran */
   height: 100%; /* Permet à la hauteur de s'adapter au contenu */
-  background-color: rgba(0, 0, 0, 1); /* Couleur de fond noire avec transparence */
+  background-color: #232323;
   color: white; /* Texte blanc */
-  box-sizing: border-box; /* Inclut le padding dans les dimensions */
   overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
   border-radius: 1%;
 }
 
 /*----------------------------------------------------------------*/
 .modal-default {
-  top: 6.5%;
+  top: 7%;
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
 /*----------------------------------------------------------------*/
 .modal-responsive {
-  top: 24%;
+  top: 25%;
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
@@ -393,7 +390,7 @@ header img {
   border-radius: 2%;
 }
 .modal-body {
-  background-color: #0b0c07;
+  background-color: #232323;
 
 }
 
@@ -403,25 +400,16 @@ header img {
   justify-content: center;
   margin: 0 auto; /* Centre le formulaire horizontalement */
   padding: 0; /* Supprime les espacements internes */
-  width: 85vw; /* Le formulaire occupe 100% de la largeur disponible */
-  position: relative; /* Position relative pour des ajustements internes */
-  left: -5.5%; /* Décale le formulaire de 7.5vw vers la gauche */
+  width: 80vw; /* Le formulaire occupe 100% de la largeur disponible */
   
 }
 
-.formData label {
-  width:90vw;
-}
 
-.formData .legend {
-  padding-left: 12vw; /* Ajoute un espacement de 12% à gauche pour le texte */
+.formData .legend { /* Ajoute un espacement de 12% à gauche pour le texte */
   font-size: 0.8rem;
-  width:90vw
 
 }
-#birthdate::placeholder {
-  color: white; /* Cache le placeholder */
-}
+
 /* Liste des informations personnelles */
 .form-list li {
   display: flex; /* Utilise Flexbox pour organiser les éléments */
@@ -435,16 +423,23 @@ header img {
 /* Champs d'entrée des informations personnelles */
 .form-list input {
   width: 95%; /* Les champs occupent toute la largeur disponible */
-  padding: 3% 2%; /* Ajoute un espacement de 4% en haut/bas et 2% à gauche/droite */
+  padding: 4% 2%; /* Ajoute un espacement de 4% en haut/bas et 2% à gauche/droite */
   border: none; /* Supprime les bordures par défaut */
   border-radius: 0.5rem; /* Ajoute des coins arrondis de 0.5rem */
   margin: 0 auto;
+  background-color: #ffffff;
 }
 
+.checkbox-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Aligne verticalement les éléments */
+  gap: 1%; /* Espacement entre l'icône et le texte */
+}
 
 /* Input de type checkbox invisible */
 .checkbox-input {
-  position: absolute; /* Positionne l'input en dehors du flux normal */
+  position: absolute ; /* Positionne l'input en dehors du flux normal */
   opacity: 0; /* Rends l'élément invisible */
   width: 0; /* Définit une largeur de 0 */
   height: 0; /* Définit une hauteur de 0 */
@@ -456,54 +451,44 @@ header img {
 .location-list {
   display: grid;
   grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
-  grid-template-rows:repeat(2,auto) ;
-  width: 100%; /* Ajuste la largeur totale */
-  margin: 0 auto; /* Centre la grille horizontalement */
-  align-items: center;
-  margin-top:3%;
+  grid-template-rows:repeat(2, auto) ; /* Ajuste la largeur totale */
+  margin: 0 auto;
+  gap:0.5%;
+  width: 100%;
+  
 }
 
 
 .location-list li p {
   display:flex; 
   align-items: center; 
-  padding:4% 0;
-  margin:0 auto;
+  justify-content: center;
+  margin:0 2%;
 }
 
 
-/* Cacher l'input radio */
-.checkbox-input {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
 
 /* Conteneur de l'icône (cercle avec bordure) */
 .checkbox-icon {
-  display: inline-flex; /* Utilise Flexbox pour centrer le point */
-  width: 0.8rem; /* Ajuste la taille globale du cercle */
+  display: flex; /* Remplace inline-flex si vous utilisez des pseudo-éléments */
+  justify-content: center;
+  align-items: center;
+  width: 0.8rem;
   height: 0.8rem;
-  margin:2%;
-  align-items: center; /* Centre verticalement le contenu */
-  justify-content: center; /* Centre horizontalement le contenu */
-  border-radius: 50%; /* Cercle parfait */
-  border: 2px solid #c4c4c4; /* Bordure blanche par défaut */
-  background-color: transparent; /* Fond transparent */
-  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transition douce pour bordure et fond */
-  
+  border-radius: 50%;
+  border: 2px solid #c4c4c4;
+  background-color: transparent;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* Point central (vert) */
 .checkbox-icon::after {
-  content: ''; /* Crée un contenu vide pour le point central */
-  width: 0.6rem; /* Taille du point central */
-  height: 0.6rem;
-  border-radius: 50%; /* Cercle parfait */
-  background-color: #279E7A; /* Couleur verte du point */
-  opacity: 0; /* Caché par défaut */
-  transition: opacity 0.3s ease-in-out; /* Transition douce pour l'apparition du point */
+  content: '';
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background-color: #279E7A;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* Style lorsque l'input est sélectionné */
@@ -513,6 +498,7 @@ header img {
 
 .checkbox-input:checked + .checkbox-icon::after {
   opacity: 1; /* Le point vert devient visible */
+  
 }
 
 .consentement {
@@ -562,7 +548,6 @@ header img {
   transition: opacity 0.3s ease; /* Transition fluide pour l'apparition */
 }
 
-/* Style de la case cochée */
 .checkbox-input2:checked + .checkbox-label2 .checkbox-icon2 {
   background-color: #279E7A; /* Fond vert */
   border-color: #279E7A; /* Bordure verte */
@@ -577,25 +562,21 @@ header img {
 /* Bouton de fermeture (croix) */
 .close {
   display: flex; /* Active Flexbox pour organiser les éléments */
-  position: absolute;
   width: 100%; /* Prend toute la largeur disponible */
   justify-content: flex-end;
   background-color: transparent; /* Fond transparent */
-  height:2%;
-  margin: 0; /* Supprime les marges externes */
-  z-index: 5001;
+  margin: 0; /* Supprime les marges externes */ 
 }
 
 /* Création de la croix avec un symbole + pivoté */
 .close span {
   font-size: var(--font-size-xlarge); /* Utilise une taille de police définie dans les variables CSS */
-  font-weight: 500; /* Applique un poids de police moyen */
+  font-weight: 100; /* Applique un poids de police moyen */
   background-color: transparent; /* Fond transparent */
-  display: inline-block; /* Permet un alignement en ligne tout en respectant les dimensions */
   transform: rotate(45deg); /* Pivote le symbole pour former une croix */
   font-size: 2rem; /* Taille de police pour la croix */
-  padding-bottom: 0; /* Aucun espacement en bas */
-  margin-bottom: 0; /* Aucune marge en bas */
+  padding: 0; /* Aucun espacement en bas */
+  margin: 0; /* Aucune marge en bas */
 }
 
 /* Bouton de soumission */

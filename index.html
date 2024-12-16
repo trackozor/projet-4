@@ -8,6 +8,7 @@
         <meta name="keywords" content="Gaming, Marathon, Jeux vidéo, Réservation, Événement"> <!-- Pour le SEO -->
         <title>Marathon Gaming National - Réservation</title>
         <link rel="icon" href="./images/favicon.ico" type="image/x-icon"> <!-- Favicon -->
+        <link rel="stylesheet" href="./css/reset.css"> <!-- Inclusion de la feuille de styles -->  
         <link rel="stylesheet" href="./css/modal.css"> <!-- Inclusion de la feuille de styles -->
         <link rel="preload" href="https://fonts.googleapis.com/css?family=DM+Sans" as="style" onload="this.rel='stylesheet'">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Icônes -->
@@ -16,12 +17,14 @@
     <body>  
         <!-- HEADER -->
         <header>
+            
             <div class="nav">
                 <!-- Barre de navigation en haut de la page -->
                 <img class="logo" src="./images/Logo.png" alt="logo GameON"> 
                 <h1 class="sr-only">Bienvenue sur le site de GameON</h1> <!-- H1 caché pour l'accessibilité -->
             </div>
-                <!-- NAV BAR  -->
+
+            <!-- NAV BAR  -->
             <nav class="topnav" id="Topnav"> <!-- Liens de la barre de navigation -->
                 <a id="menu-toggle" role="button" aria-label="Ouvrir le menu de navigation"><i class="fa fa-bars"></i></a> <!-- Icône de menu pour les petits écrans -->
                 <ul class="nav-links">
@@ -31,6 +34,7 @@
                     <li><a href="#"><span>Évènements passés</span></a></li> <!-- Lien Évènements passés -->
                 </ul>
             </nav>
+
         </header>
         
         <!-- SECTION PRINCIPALE  -->
@@ -42,8 +46,8 @@
                     <p>Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p> <!-- Description de l'évènement -->
                     <button type="button" class="modal-btn desktop-signup">Je M'inscris</button> <!-- Bouton d'inscription dans la section hero (desktop) -->
                 </div>
-                <img src="./images/bg_img.jpg" alt="gameuse victorieuse ">
-                <button type="button" class="modal-btn mobile-signup">Je M'inscris</button> <!-- Bouton d'inscription dans la section hero (Mobile) -->
+                <img src="./images/bg_img.jpg" alt="gameuse victorieuse" loading="lazy">
+                <button type="button" class="modal-btn mobile-signup">Je M'inscris</button> <!-- Bouton d'inscription dans la section hero -->
             </section>
 
 
@@ -51,6 +55,7 @@
 
             <div class="bground modal-default"> <!-- Corps de la modale pour le repli -->
                 <div class="content"> <!-- Contenu de la fenêtre modale -->
+
                     <!-- Bouton de fermeture de la fenêtre modale -->
                     <button type="button" class="close" aria-label="Fermer la fenêtre"> 
                         <span>+</span>
@@ -91,48 +96,54 @@
                             <fieldset class="formData"> <!-- Sélection localisation tournoi -->
                                 <legend class="legend">À quel tournoi souhaitez-vous participer cette année ?</legend> <!-- Légende pour le groupe de choix -->
                                 <ul class="location-list">
+                                    
                                     <li>
                                         <label class="checkbox-label">
                                             <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
                                             <span class="checkbox-icon"></span>
-                                            New York
+                                            <span>New York</span>
                                         </label>
                                     </li>
+
                                     <li>
                                         <label class="checkbox-label">
                                             <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco">
                                             <span class="checkbox-icon"></span>
-                                            San Francisco
+                                            <span>San Francisco</span>
                                         </label>
                                     </li>
+
                                     <li>
                                         <label class="checkbox-label">
                                             <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle">
                                             <span class="checkbox-icon"></span>
-                                            Seattle
+                                            <span>Seattle</span>
                                         </label>
                                     </li>
                                     <li>
                                         <label class="checkbox-label">
                                             <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago">
                                             <span class="checkbox-icon"></span>
-                                            Chicago
+                                            <span>Chicago</span>
                                         </label>
                                     </li>
+                                    
                                     <li>
                                         <label class="checkbox-label">
                                             <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston">
                                             <span class="checkbox-icon"></span>
-                                            Boston
+                                            <span>Boston</span>
                                         </label>
                                     </li>
+                                    
                                     <li>
                                         <label class="checkbox-label">
                                             <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland">
                                             <span class="checkbox-icon"></span>
-                                            Portland
+                                            <span>Portland</span>
                                         </label>
                                     </li>
+
                                 </ul>
                             </fieldset>
 
