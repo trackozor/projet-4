@@ -133,14 +133,14 @@ fieldset {
 
 /* Conteneur */
 header {
-  width: 90vw; /* Le header occupe 95% de la largeur de la fenêtre */
+  width: 85vw; /* Le header occupe 95% de la largeur de la fenêtre */
   display: flex; /* Utilise Flexbox pour organiser les éléments enfants */
   position: relative; /* Définit une position relative pour un placement interne ou d'autres ajustements */
   align-items: center; /* Aligne verticalement les éléments enfants au centre */
   justify-content: center; /* Centre les éléments enfants horizontalement */
   margin: 2% 0; /* Ajoute un espace de 5% de hauteur sous le header */
   background-color: white; /* Définit une couleur de fond blanche pour le header */
-  padding-top: 2%;
+  padding-top: 5%;
 }
 
 
@@ -155,7 +155,7 @@ header img {
   object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en maintenant son ratio d'aspect */
   top: 4.6%; /* Place l'image à 1.2% du bord supérieur de la fenêtre */ 
   background-color: white; /* Ajoute un fond blanc derrière l'image */
-  padding:2% 0;
+  padding:5% 0;
 }
 
 
@@ -167,7 +167,7 @@ header img {
 .topnav {
   display: flex; /* Active Flexbox pour organiser les éléments enfants */
   flex-direction: column; /* Organise les éléments en colonne */
-  width: 90vw; /* Occupe 95% de la largeur de la fenêtre */
+  width: 85vw; /* Occupe 95% de la largeur de la fenêtre */
   height: auto;
   flex-wrap: nowrap; /* Empêche les éléments enfants de passer à la ligne */
   transition:  top 2s ease-in-out;
@@ -180,7 +180,7 @@ header img {
   color: #ffffff; /* Change la couleur du texte en blanc au survol */
   border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
   font-weight: 500; /* Rend le texte légèrement plus épais */
-  padding: 0.3rem; /* Ajoute un espacement interne de 0.3rem tout autour */
+  padding: 0.4rem; /* Ajoute un espacement interne de 0.3rem tout autour */
   text-decoration: underline; 
 }
 
@@ -191,7 +191,6 @@ header img {
   cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
   position: absolute; /* Place l'icône à une position fixe par rapport à la fenêtre */
   right:4%; /* Positionne l'icône à 3.4% du bord droit de la fenêtre */
-  top: 1%; /* Positionne l'icône à 0.5% du bord supérieur de la fenêtre */
   padding: 0.4rem; /* Ajoute un espacement interne de 0.4rem tout autour de l'icône */
   font-size: 1.2rem; /* Définit une taille de police de 1.4rem pour l'icône */
 
@@ -277,7 +276,6 @@ header img {
   justify-content: center; /* Centre verticalement */
   transition: top 2s ease-in-out; /* Transition douce pour le positionnement vertical */
   overflow-y: auto; /* Permet le défilement si nécessaire */
-  box-sizing: border-box; /* Inclut le padding dans les dimensions */
 }
 
 /*----------------------------------------------------------------*/
@@ -298,7 +296,7 @@ header img {
 .hero-content {
   display: flex; /* Active Flexbox pour organiser les enfants */
   flex-direction: column; /* Organise les enfants en colonne */
-  width: 90vw; /* Occupe 90% de la largeur disponible */
+  width: 85vw; /* Occupe 90% de la largeur disponible */
   justify-content: center; /* Centre verticalement */
   margin: 5% auto; /* Centre horizontalement */
   transition: top 2s ease-in-out; /* Transition douce pour le positionnement vertical */
@@ -338,17 +336,6 @@ header img {
 }
 
 /*----------------------------------------------------------------*/
-/* Positions pour la section Hero */
-
-.hero-section {
-  transform: translateY(0%);
-  transition: transform 0.6s ease-in-out;
-}
-
-.hero-responsive {
-  transform: translateY(2%);
-  transition: transform 0.5s ease-in-out;
-}
 
 
 /*------------------------------------------------------------------------------------*/
@@ -372,7 +359,7 @@ header img {
 
 /*----------------------------------------------------------------*/
 .modal-default {
-  top: 7%;
+  top: 6%;
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
@@ -386,11 +373,10 @@ header img {
 .bground.active {
   display: block; /* Affiche la modale lorsqu'elle est active */
 }
-.bground .content {
-  border-radius: 2%;
-}
+
 .modal-body {
   background-color: #232323;
+  border-radius: 2rem;
 
 }
 
@@ -455,9 +441,8 @@ header img {
   display: grid;
   grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
   grid-template-rows:repeat(3, auto) ; /* Ajuste la largeur totale */
-  margin: 0 auto;
   width: 85vw;
-  margin: 5% auto;
+  margin: 3% auto;
   
 }
 
@@ -509,13 +494,14 @@ header img {
 .consentement {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
-  width: 87vw; /* La liste occupe toute la largeur disponible */
+  width: 90vw; /* La liste occupe toute la largeur disponible */
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
   align-items: center;
 }
 .consentement li {
-  width:100%;
-  font-size: 0.6rem;
+  width:85vw;
+  font-size: 0.5rem;
+  
 }
 
 /* Cache l'input natif */
@@ -530,8 +516,8 @@ header img {
 /* Conteneur de la case à cocher */
 .checkbox-icon2 {
   display: inline-flex; /* Utilise Flexbox pour centrer la coche */
-  width: 1rem; /* Taille de la case */
-  height: 1rem; /* Taille de la case */
+  width: 0.7rem; /* Taille de la case */
+  height: 0.7rem; /* Taille de la case */
   background-color: #c4c4c4; /* Couleur grise par défaut */
   border-radius: 0.3rem; /* Coins légèrement arrondis */
   justify-content: center; /* Centre horizontalement */
@@ -539,14 +525,14 @@ header img {
   border: 2px solid transparent; /* Bordure par défaut transparente */
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Transitions douces */
   cursor: pointer; /* Curseur pointeur */
-  margin: 1%  1.5% 1% 0 ; /* Espace harmonisé en pourcentage */
+  margin:1% ; /* Espace harmonisé en pourcentage */
 
 }
 
 /* Coche blanche (invisible par défaut) */
 .checkbox-icon2::after {
   content: '✓'; /* Symbole de coche */
-  font-size: 0.8rem; /* Taille de la coche */
+  font-size: 0.5rem; /* Taille de la coche */
   color: white; /* Couleur de la coche */
   opacity: 0; /* Cachée par défaut */
   transform: rotate(20deg); /* Incline légèrement la coche vers la droite */
@@ -567,6 +553,7 @@ header img {
 /* Bouton de fermeture (croix) */
 .close {
   display: flex; /* Active Flexbox pour organiser les éléments */
+  max-height:25px ;
   width: 100%; /* Prend toute la largeur disponible */
   justify-content: flex-end;
   background-color: transparent; /* Fond transparent */
@@ -575,7 +562,6 @@ header img {
 
 /* Création de la croix avec un symbole + pivoté */
 .close span {
-  font-size: var(--font-size-xlarge); /* Utilise une taille de police définie dans les variables CSS */
   font-weight: 100; /* Applique un poids de police moyen */
   background-color: transparent; /* Fond transparent */
   transform: rotate(45deg); /* Pivote le symbole pour former une croix */
@@ -588,7 +574,7 @@ header img {
 .btn-submit {
     display: flex; /* Active Flexbox pour centrer les éléments */
     justify-content: center; /* Centre horizontalement le contenu */
-    margin: 0 auto; /* Centre le bouton horizontalement */
+    margin: 2% auto; /* Centre le bouton horizontalement */
     width:35%;
 }
 

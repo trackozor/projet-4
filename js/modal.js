@@ -53,7 +53,7 @@ const CSS_CLASSES = {
 };
 
 // ======= Variables pour les médias =======
-const isMobile = window.matchMedia("(max-width: 1024px)").matches; // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
+const isMobile = window.matchMedia("(max-width: 768px)").matches; // Indique si l'utilisateur utilise un appareil avec un petit écran (mobile)
 
 
 // ======= État global =======
