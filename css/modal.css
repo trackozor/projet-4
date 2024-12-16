@@ -719,7 +719,7 @@ header img {
   /* Conteneur */
   .hero-section {
     position:relative;
-    width: 90vw;
+    width: 90%;
     display: flex;
     flex-direction: row;
     background-color: #0b0c07;
@@ -727,7 +727,7 @@ header img {
   }
 
   .hero-content {
-    width: 50vw;
+    width: 50%;
     justify-content:flex-end;
     padding: 4%;
     margin-bottom: 5%;
@@ -737,20 +737,22 @@ header img {
     color: #ffffff;
     position: absolute;
     z-index: 3;
-    font-size: 4.5rem;
+    font-size: 4rem;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 65vw;
-    top:-12%;
+    width: 70%;
+    top:-5.5%;
+    left:4%;
     font-weight: 500;
   }
 
   .hero-section p{
     color: #ffffff;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     padding-bottom: 8%;
     line-height: 1.5rem;
+    padding-left: 2%;
   }
 
   .hero-section img {
@@ -847,26 +849,27 @@ header img {
 /* ------------------------------------------------------------------------------------------------------------------------*/
 /* ------------------------------------------------------------------------------------------------------------------------*/
 /* -----------------------------------------Écrans larges supérieur à 1440 px --------------------------------------------*/
+
 @media screen and (min-width: 1440px)  {  
-/*------------header------------- */
+/*------------ GLOBAL ------------- */
   body {
     max-width: 1240px;
   }
+
+
   /* Conteneur */
   header {
-    width: 80vw;
+    width: 70vw;
     display: flex;
     font-weight: 900;
   }
 
   header img {
-
-    width: 70vw;
+    width: 90%;
     margin-top:3%;
     padding-left: 8%;
     padding-right: 5%;
   }
-
 
   /*----------Barre de navigation-----*/
   /* icône */
@@ -896,11 +899,11 @@ header img {
   /*------------section principale ------------- */
   /* Conteneur */
   .hero-section {
-    width: 75vw;
+    width: 70vw;
     display: flex;
     flex-direction: row;
     background-color: #0b0c07;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
   }
 
   .hero-content {
@@ -913,17 +916,17 @@ header img {
     color: #ffffff;
     position: absolute;
     z-index: 1;
-    font-size:5.5rem;
+    font-size:5rem;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 50vw;
-    top: 15%;
+    width: 65%;
+    top: 0%;
     font-weight: 500;
   }
 
   .hero-section p{
     color: lightgray;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 300;
     line-height: 2rem;
     padding-bottom: 10%;
