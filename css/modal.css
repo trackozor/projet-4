@@ -32,6 +32,13 @@
   --font-size-base: 1rem; /* Taille de base, par défaut pour la plupart des textes */
   --font-size-large: 1.4rem; /* Grande taille de texte, idéale pour les titres */
   --font-size-xlarge: 2rem; /* Très grande taille, pour les titres principaux ou des éléments importants */
+  --log-info: color: blue; font-weight: bold;/* Logs d'informations */
+  --log-warn: color: orange; font-weight: bold;/* Logs d'avertissement */
+  --log-error: color: red; font-weight: bold;/* Logs d'erreurs */
+  --log-success: color: teal; font-weight: bold;/* Logs de validation */
+  --log-test-start: color: green; font-weight: bold;/* Début des tests */
+  --log-test-end: color: purple; font-weight: bold;/* Fin des tests */
+  --log-default: color: black; /* Logs par défaut */
 }
 
 /*------------------------------------------------------------------------------------*/

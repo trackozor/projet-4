@@ -17,6 +17,7 @@
 
 
 // ======= Éléments du DOM =======
+const rootStyles = getComputedStyle(document.documentElement);
 const navElement = document.getElementById("Topnav"); // Élément principal de la navigation (utilisé pour le menu responsive)
 const modalbg = document.querySelector(".bground"); // Conteneur de la modale, incluant l'arrière-plan et le contenu
 const heroSection = document.querySelector(".hero-content"); // Section principale "hero", souvent utilisée pour des ajustements de style
@@ -31,12 +32,14 @@ const navLinks = document.querySelector('.nav-links');
 
 // ======= Styles pour les logs =======
 const logStyles = {
-    info: getComputedStyle(document.documentElement).getPropertyValue('--log-info').trim(), // Style pour les logs d'information
-    warn: getComputedStyle(document.documentElement).getPropertyValue('--log-warn').trim(), // Style pour les avertissements
-    error: getComputedStyle(document.documentElement).getPropertyValue('--log-error').trim(), // Style pour les erreurs critiques
-    default: getComputedStyle(document.documentElement).getPropertyValue('--log-default').trim(), // Style par défaut pour les logs
+    info: rootStyles.getPropertyValue('--log-info').trim() || "color: blue; font-weight: bold;",
+    warn: rootStyles.getPropertyValue('--log-warn').trim() || "color: orange; font-weight: bold;",
+    error: rootStyles.getPropertyValue('--log-error').trim() || "color: red; font-weight: bold;",
+    success: rootStyles.getPropertyValue('--log-success').trim() || "color: teal; font-weight: bold;",
+    testStart: rootStyles.getPropertyValue('--log-test-start').trim() || "color: green; font-weight: bold;",
+    testEnd: rootStyles.getPropertyValue('--log-test-end').trim() || "color: purple; font-weight: bold;",
+    default: rootStyles.getPropertyValue('--log-default').trim() || "color: black;",
 };
-
 
 
 // ======= Noms des classes CSS =======
@@ -73,48 +76,32 @@ let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale.
  * @param {string} message - Message descriptif de l'événement.
  * @param {Object} [data={}] - Données supplémentaires à afficher (facultatif).
  */
+const ENABLE_LOGS = true; // Option pour désactiver les logs globalement
+
 function logEvent(type, message, data = {}) {
-    const timestamp = new Date().toLocaleTimeString();
-    const prefix = `[GameOn][${timestamp}]`; // Préfixe commun pour tous les logs
+    if (!ENABLE_LOGS) {
+        return; // Si les logs sont désactivés, sortir de la fonction immédiatement.
+    }
 
-    // Détermine le style en fonction du type de log
-    const style = logStyles[type] || logStyles.default || 'color: black;';
+    const timestamp = new Date().toLocaleTimeString(); // Récupère l'heure actuelle au format HH:MM:SS.
+    const prefix = `[GameOn][${timestamp}]`; // Préfixe standard pour identifier les logs et horodatage.
     
-    // Vérifie si le message est fourni
+    // Récupère le style approprié depuis `logStyles` en fonction du type (info, warn, error).
+    const style = logStyles[type] || logStyles.default || 'color: black;';
+    const fullMessage = `${prefix} ${type.toUpperCase()}: ${message}`; // Message complet à afficher.
+
+    // Vérification : Si le message est vide, afficher un avertissement.
     if (!message) {
-        console.warn('%c[AVERTISSEMENT] Message manquant dans logEvent', style);
+        console.warn('%c[AVERTISSEMENT] Aucun message fourni dans logEvent', style);
         return;
     }
 
-    // Génère le message complet
-    const fullMessage = `${prefix} ${type.toUpperCase()}: ${message}`;
-
-    // Affiche les logs en fonction du type
-    switch (type.toLowerCase()) {
-        case 'info':
-            console.log(`%c${fullMessage}`, style, data);
-            break;
-        case 'warn':
-            console.warn(`%c${fullMessage}`, style, data);
-            break;
-        case 'error':
-            console.error(`%c${fullMessage}`, style, data);
-            break;
-        default:
-            console.log(`%c${prefix} [INCONNU]: ${message}`, style, data);
-    }
-
-    // Vérifie la validité du message
-    if (!message) {
-        console.warn('[LOG][AVERTISSEMENT] Aucun message fourni.');
-        return;
+    // Affiche le message dans la console en utilisant le style associé.
+    // `console[type]` permet d'utiliser `console.log`, `console.warn` ou `console.error` dynamiquement.
+    console[type] 
+        ? console[type](`%c${fullMessage}`, style, data) 
+        : console.log(`%c${fullMessage}`, style, data); // Fallback vers `console.log` si le type est inconnu.
 }
-
-    // Affiche le message avec son style
-    console.log(`%c${prefix} ${type.toUpperCase()}: ${message}`, style, data);
-}
-
-
 
 
 /** 
@@ -126,37 +113,51 @@ function logEvent(type, message, data = {}) {
  * 
  * @returns {void}
  */
-
-
-
 function editNav() {
     try {
-        navElement.classList.toggle(CSS_CLASSES.NAV_RESPONSIVE);
+        logEvent('testStart', 'Début de la fonction editNav.'); // Début des tests
 
+        // Étape 1 : Toggle de la classe responsive
+        navElement.classList.toggle(CSS_CLASSES.NAV_RESPONSIVE);
+        logEvent('info', 'Toggle de la classe NAV_RESPONSIVE effectué.', {
+            currentClasses: navElement.classList.value
+        });
+
+        // Étape 2 : Vérification si la classe NAV_RESPONSIVE est activée
         if (navElement.classList.contains(CSS_CLASSES.NAV_RESPONSIVE)) {
             logEvent('info', 'Menu responsive activé.', { navState: 'opened' });
-            
-            // Ajouter les classes pour le menu activé
-            heroSection.classList.remove(CSS_CLASSES.HERO_DEFAULT);
-            heroSection.classList.add(CSS_CLASSES.HERO_RESPONSIVE);
 
-            modalbg.classList.remove(CSS_CLASSES.MODAL_DEFAULT);
-            modalbg.classList.add(CSS_CLASSES.MODAL_RESPONSIVE);
+            // Modifier les classes Hero
+            logEvent('info', 'Modification des classes Hero pour état responsive.', { heroBefore: heroSection.classList.value });
+            heroSection.classList.replace(CSS_CLASSES.HERO_DEFAULT, CSS_CLASSES.HERO_RESPONSIVE);
+            logEvent('success', 'Classes Hero modifiées avec succès.', { heroAfter: heroSection.classList.value });
+
+            // Modifier les classes Modal
+            logEvent('info', 'Modification des classes Modal pour état responsive.', { modalBefore: modalbg.classList.value });
+            modalbg.classList.replace(CSS_CLASSES.MODAL_DEFAULT, CSS_CLASSES.MODAL_RESPONSIVE);
+            logEvent('success', 'Classes Modal modifiées avec succès.', { modalAfter: modalbg.classList.value });
         } else {
             logEvent('info', 'Menu responsive désactivé.', { navState: 'closed' });
-            
-            // Ajouter les classes pour le menu désactivé
-            heroSection.classList.remove(CSS_CLASSES.HERO_RESPONSIVE);
-            heroSection.classList.add(CSS_CLASSES.HERO_DEFAULT);
 
-            modalbg.classList.remove(CSS_CLASSES.MODAL_RESPONSIVE);
-            modalbg.classList.add(CSS_CLASSES.MODAL_DEFAULT);
+            // Restaurer les classes Hero
+            logEvent('info', 'Restauration des classes Hero pour état par défaut.', { heroBefore: heroSection.classList.value });
+            heroSection.classList.replace(CSS_CLASSES.HERO_RESPONSIVE, CSS_CLASSES.HERO_DEFAULT);
+            logEvent('success', 'Classes Hero restaurées avec succès.', { heroAfter: heroSection.classList.value });
+
+            // Restaurer les classes Modal
+            logEvent('info', 'Restauration des classes Modal pour état par défaut.', { modalBefore: modalbg.classList.value });
+            modalbg.classList.replace(CSS_CLASSES.MODAL_RESPONSIVE, CSS_CLASSES.MODAL_DEFAULT);
+            logEvent('success', 'Classes Modal restaurées avec succès.', { modalAfter: modalbg.classList.value });
         }
+
+        logEvent('testEnd', 'Fin de la fonction editNav.'); // Fin des tests
+
     } catch (error) {
-        logEvent('error', 'Erreur lors de la gestion du menu responsive.', { error });
+        // Log en cas d'erreur
+        logEvent('error', 'Erreur lors de la gestion du menu responsive.', { error: error.message });
+        console.error('Erreur dans editNav :', error);
     }
 }
-
 
 
 /*------------------------------------------------------------------------------------
@@ -173,28 +174,45 @@ function editNav() {
 
 function resetForm() {
     try {
-        // Sélectionne le formulaire dans la modale
+        logEvent('testStart', 'Début de la réinitialisation du formulaire.');
+
+        // Étape 1 : Sélectionne le formulaire dans la modale
         const form = document.querySelector('form');
+
         if (form) {
-            form.reset(); // Réinitialise tous les champs du formulaire
-            console.log('Formulaire réinitialisé.'); // Log : confirmation que le formulaire a été réinitialisé
+            logEvent('info', 'Formulaire sélectionné avec succès.');
 
-            // Supprime tous les messages d'erreur affichés
+            // Réinitialise tous les champs du formulaire
+            form.reset();
+            logEvent('success', 'Formulaire réinitialisé avec succès.');
+
+            // Étape 2 : Supprime tous les messages d'erreur affichés
             const errorMessages = form.querySelectorAll(`.${CSS_CLASSES.ERROR_MODAL}`);
-            errorMessages.forEach((error) => error.remove());
+            errorMessages.forEach((error) => {
+                error.remove();
+                logEvent('success', 'Message d\'erreur supprimé.', { errorContent: error.textContent });
+            });
 
-            // Retire la classe d'erreur des champs concernés (bordure rouge)
+            // Étape 3 : Retire la classe d'erreur des champs concernés
             const errorInputs = form.querySelectorAll(`.${CSS_CLASSES.ERROR_INPUT}`);
-            errorInputs.forEach((input) => input.classList.remove(CSS_CLASSES.ERROR_INPUT));
+            errorInputs.forEach((input) => {
+                input.classList.remove(CSS_CLASSES.ERROR_INPUT);
+                logEvent('success', `Classe d'erreur retirée du champ : ${input.id || input.name}`);
+            });
+
+            logEvent('testEnd', 'Réinitialisation complète du formulaire terminée.');
         } else {
             // Si aucun formulaire n'est trouvé
-            console.warn('Aucun formulaire trouvé à réinitialiser.');
+            logEvent('warn', 'Aucun formulaire trouvé à réinitialiser.');
         }
     } catch (error) {
         // Gestion des erreurs imprévues
-        console.error('Erreur lors de la réinitialisation du formulaire :', error);
+        logEvent('error', 'Erreur lors de la réinitialisation du formulaire.', { error: error.message });
+        console.error('Erreur dans resetForm :', error);
     }
 }
+
+
 
 
 /**
@@ -208,37 +226,30 @@ function resetForm() {
  * @returns {void}
  */
 function launchModal() {
-    logEvent('info', 'Début de la fonction launchModal.'); // Log initial pour indiquer le début de la fonction
+    logEvent('testStart', 'Début de la fonction launchModal.');
 
-    // Vérifie que modalbg est bien défini
     if (!modalbg) {
-        logEvent('error', 'modalbg est introuvable.'); // Log d'erreur si l'élément de la modale n'existe pas
-        return; // Interrompt l'exécution si modalbg est introuvable
+        logEvent('error', 'Élément modalbg introuvable.');
+        return;
     }
 
-    // Empêche d’afficher plusieurs fois la modale si elle est déjà active
     if (modalbg.classList.contains(CSS_CLASSES.MODAL_ACTIVE)) {
-        logEvent('warn', 'La modale est déjà affichée.'); // Log d'avertissement si la modale est déjà active
-        return; // Interrompt l'exécution si la modale est déjà affichée
+        logEvent('warn', 'La modale est déjà active.');
+        return;
     }
 
-    // Réinitialise le formulaire avant d'afficher la modale
     try {
-        resetForm(); // Appelle la fonction pour réinitialiser les champs du formulaire
-        logEvent('info', 'Formulaire réinitialisé.'); // Log confirmant que le formulaire a été réinitialisé
+        resetForm();
+        logEvent('success', 'Formulaire réinitialisé avec succès.');
+        modalbg.classList.add(CSS_CLASSES.MODAL_ACTIVE);
+        document.body.classList.add(CSS_CLASSES.BODY_NO_SCROLL);
+        modalOpen = true;
+        logEvent('success', 'Modale affichée avec succès.');
     } catch (error) {
-        logEvent('error', 'Erreur lors de la réinitialisation du formulaire.', error); // Log d'erreur en cas de problème avec la réinitialisation
+        logEvent('error', 'Erreur lors de l\'affichage de la modale.', { error });
     }
 
-    // Affiche la modale et désactive le défilement de la page principale
-    try {
-        modalbg.classList.add(CSS_CLASSES.MODAL_ACTIVE); // Ajoute la classe CSS pour activer la modale
-        document.body.classList.add(CSS_CLASSES.BODY_NO_SCROLL); // Ajoute une classe CSS pour désactiver le défilement de l'arrière-plan
-        modalOpen = true; // Met à jour l'état global indiquant que la modale est ouverte
-        logEvent('info', 'Modale affichée.'); // Log confirmant que la modale est affichée
-    } catch (error) {
-        logEvent('error', 'Erreur lors de l\'affichage de la modale.', error); // Log d'erreur en cas de problème d'affichage
-    }
+    logEvent('testEnd', 'Fin de la fonction launchModal.');
 }
 
 
@@ -254,25 +265,34 @@ function launchModal() {
  * @returns {void}
  */
 function closeModal() {
+    logEvent('testStart', 'Début de la fermeture de la modale.'); // Début de l'opération
+
     try {
-        logEvent('info', 'Tentative de fermeture de la modale.'); // Log initial pour signaler l'opération
+        // Vérification initiale de l'état de la modale
+        if (!modalbg.classList.contains(CSS_CLASSES.MODAL_ACTIVE)) {
+            logEvent('warn', 'Tentative de fermeture d\'une modale déjà fermée.');
+            return;
+        }
 
-        // Supprime la classe CSS active pour masquer la modale
+        // Étape 1 : Suppression de la classe active
         modalbg.classList.remove(CSS_CLASSES.MODAL_ACTIVE);
-        logEvent('info', 'Modale masquée.'); // Log confirmant la fermeture visuelle
+        logEvent('success', 'Classe CSS active supprimée : Modale masquée.', { modalState: modalbg.classList.value });
 
-        // Supprime la classe CSS qui désactive le défilement de la page
+        // Étape 2 : Réactivation du défilement
         document.body.classList.remove(CSS_CLASSES.BODY_NO_SCROLL);
-        logEvent('info', 'Défilement de l\'arrière-plan réactivé.'); // Log confirmant la réactivation du défilement
+        logEvent('success', 'Défilement de l\'arrière-plan réactivé.', { bodyClasses: document.body.classList.value });
 
-        // Mettre à jour l'état global indiquant que la modale est fermée
+        // Étape 3 : Mise à jour de l'état global
         modalOpen = false;
-        logEvent('info', 'État de la modale mis à jour : Fermée.', { modalOpen }); // Log confirmant la mise à jour de l'état
+        logEvent('info', 'État global mis à jour.', { modalOpen });
+
     } catch (error) {
-        // Gestion des erreurs potentielles
-        logEvent('error', 'Erreur lors de la fermeture de la modale.', { error }); // Log en cas d'erreur
-        console.error('Erreur lors de la fermeture de la modale :', error); // Affiche l'erreur dans la console pour débogage
+        // Gestion des erreurs
+        logEvent('error', 'Erreur lors de la fermeture de la modale.', { error: error.message });
+        console.error('Erreur dans closeModal :', error);
     }
+
+    logEvent('testEnd', 'Fin de la fermeture de la modale.'); // Fin de l'opération
 }
 
 
@@ -293,94 +313,86 @@ function validateField(event) {
     const field = event.target; // Champ ciblé par l'événement
     let errorMessage = ''; // Initialisation du message d'erreur
 
-    logEvent('info', `Début de validation du champ : ${field.id}`, { value: field.value.trim() }); // Log initial
+    logEvent('testStart', `Début de validation du champ : ${field.id}`, { value: field.value.trim() });
 
-    // Vérifie si le champ est vide
-    if (field.value.trim() === '') {
-        switch (field.id) {
-            case 'first':
-                errorMessage = 'Le prénom est requis.';
-                break;
-            case 'last':
-                errorMessage = 'Le nom est requis.';
-                break;
-            case 'email':
-                errorMessage = 'L\'e-mail est requis.';
-                break;
-            case 'birthdate':
-                errorMessage = 'La date de naissance est requise.';
-                break;
-            case 'quantity':
-                errorMessage = 'Le nombre de participations est requis.';
-                break;
-            case 'checkbox1':
-                if (!field.checked) {
+    try {
+        // Étape 1 : Vérification des champs vides
+        if (field.value.trim() === '') {
+            switch (field.id) {
+                case 'first':
+                    errorMessage = 'Le prénom est requis.';
+                    break;
+                case 'last':
+                    errorMessage = 'Le nom est requis.';
+                    break;
+                case 'email':
+                    errorMessage = 'L\'e-mail est requis.';
+                    break;
+                case 'birthdate':
+                    errorMessage = 'La date de naissance est requise.';
+                    break;
+                case 'quantity':
+                    errorMessage = 'Le nombre de participations est requis.';
+                    break;
+                case 'checkbox1':
                     errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
-                }
-                break;
+                    break;
+            }
+            logEvent('warn', `Champ vide détecté : ${field.id}`, { errorMessage });
+        } else {
+            // Étape 2 : Validation spécifique
+            switch (field.id) {
+                case 'first':
+                case 'last':
+                    if (field.value.trim().length < 2) {
+                        errorMessage = `${field.id === 'first' ? 'Le prénom' : 'Le nom'} doit contenir au moins 2 caractères.`;
+                    } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())) {
+                        errorMessage = `${field.id === 'first' ? 'Le prénom' : 'Le nom'} contient des caractères invalides.`;
+                    }
+                    break;
+
+                case 'email':
+                    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) {
+                        errorMessage = 'Veuillez entrer une adresse e-mail valide.';
+                    }
+                    break;
+
+                case 'birthdate':
+                    const birthDate = new Date(field.value);
+                    const today = new Date();
+                    if (birthDate >= today) {
+                        errorMessage = 'La date de naissance doit être dans le passé.';
+                    }
+                    break;
+
+                case 'quantity':
+                    if (isNaN(field.value) || field.value < 0 || field.value > 99) {
+                        errorMessage = 'Le nombre de participations doit être entre 0 et 99.';
+                    }
+                    break;
+            }
+
+            if (errorMessage) {
+                logEvent('warn', `Erreur de validation dans le champ : ${field.id}`, { errorMessage });
+            } else {
+                logEvent('success', `Validation réussie pour le champ : ${field.id}`, { value: field.value.trim() });
+            }
         }
 
-        logEvent('warn', `Champ vide détecté : ${field.id}`, { errorMessage }); // Log en cas de champ vide
-    } else {
-        // Si le champ n'est pas vide, effectue une validation spécifique selon le champ
-        switch (field.id) {
-            case 'first':
-                if (field.value.trim().length < 2) {
-                    errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
-                } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())) {
-                    errorMessage = 'Le prénom ne doit contenir que des lettres, des espaces ou des traits d’union.';
-                }
-                break;
-
-            case 'last':
-                if (field.value.trim().length < 2) {
-                    errorMessage = 'Le nom doit contenir au moins 2 caractères.';
-                } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())) {
-                    errorMessage = 'Le nom ne doit contenir que des lettres, des espaces, des apostrophes ou des traits d’union.';
-                }
-                break;
-
-            case 'email':
-                if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) {
-                    errorMessage = 'Veuillez entrer une adresse e-mail valide.';
-                }
-                break;
-
-            case 'birthdate':
-                const birthDate = new Date(field.value); // Convertit la date saisie en objet Date
-                const today = new Date(); // Date actuelle
-                if (birthDate >= today) {
-                    errorMessage = 'La date de naissance doit être dans le passé.';
-                }
-                break;
-
-            case 'quantity':
-                if (isNaN(field.value) || field.value < 0 || field.value > 99) {
-                    errorMessage = 'Le nombre de participations doit être entre 0 et 99.';
-                }
-                break;
-        }
-
-        // Log une erreur de validation si une condition échoue
+        // Étape 3 : Affichage ou suppression des erreurs
         if (errorMessage) {
-            logEvent('warn', `Erreur de validation dans le champ : ${field.id}`, { errorMessage, value: field.value.trim() });
+            showError(errorMessage, field);
+            field.classList.add('error');
+        } else {
+            removeError(field);
+            field.classList.remove('error');
         }
+    } catch (error) {
+        logEvent('error', `Erreur inattendue dans la validation : ${field.id}`, { error });
     }
 
-    // Affiche ou supprime le message d'erreur selon la validation
-    if (errorMessage) {
-        showError(errorMessage, field); // Affiche le message d'erreur
-        field.classList.add('error'); // Ajoute la classe d'erreur pour la bordure rouge
-    } else {
-        removeError(field); // Supprime le message d'erreur
-        field.classList.remove('error'); // Retire la classe d'erreur
-        logEvent('info', `Validation réussie pour le champ : ${field.id}`, { value: field.value.trim() }); // Log succès
-    }
-
-    logEvent('info', `Fin de validation du champ : ${field.id}`); // Log final de la validation
+    logEvent('testEnd', `Fin de validation pour le champ : ${field.id}`);
 }
-
-
 
 /**
  * ============ Fonction pour ouvrir la modale de confirmation ============ 
