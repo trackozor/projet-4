@@ -46,7 +46,7 @@ const CSS_CLASSES = {
     MODAL_ACTIVE: 'active',
     BODY_NO_SCROLL: 'no-scroll',
     NAV_RESPONSIVE: 'responsive',
-    HERO_DEFAULT: 'hero-section',
+    HERO_DEFAULT: 'hero-default',
     HERO_RESPONSIVE: 'hero-responsive',
     MODAL_DEFAULT: 'modal-default',
     MODAL_RESPONSIVE: 'modal-responsive',

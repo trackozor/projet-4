@@ -313,6 +313,17 @@ header img {
   letter-spacing: 0.1rem; /* Ajoute un léger espacement horizontal entre les lettres */
 }
 
+
+.hero-default {
+  top: 0%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+  transition: top 2s ease-in-out; /* Transition douce pour les changements */
+}
+
+.hero-responsive {
+  top:5%;
+  transition: top 2s ease-in-out; /* Transition douce pour les changements */
+}
+
 /*----------------------------------------------------------------*/
 /* Style du texte */
 .hero-content p {
