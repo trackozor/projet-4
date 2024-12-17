@@ -111,7 +111,9 @@ fieldset {
   border: 0; /* Pas de bordures */
 }
 
+/*------------------------------------------------------------------------*/
 /*-------------------- ANIMATIONS ----------------------------------------*/
+/*------------------------------------------------------------------------*/
 
 /* Animation pour faire clignoter la bordure rouge */
 @keyframes borderBlink {
@@ -140,14 +142,14 @@ header {
   justify-content: center; /* Centre les éléments enfants horizontalement */
   margin: 2% 0; /* Ajoute un espace de 5% de hauteur sous le header */
   background-color: white; /* Définit une couleur de fond blanche pour le header */
-  padding-top: 5%;
+  padding-top: 5%;/* Ajoute un espacement interne en haut pour le contenu du header */
 }
 
 
 /*----------------------------------------------------------------*/
 /* Image */
 header img {
-  display: block;
+  display: block;/* Affiche l'image comme un élément de bloc pour éviter les marges indésirables */
   width: 50vw; /* L'image occupe 50% de la largeur de la fenêtre */
   max-width: 120px; /* Limite la largeur maximale de l'image à 150px */
   height: auto; /* Préserve les proportions de l'image */
@@ -155,7 +157,7 @@ header img {
   object-fit: cover; /* Redimensionne l'image pour couvrir son conteneur tout en maintenant son ratio d'aspect */
   top: 4.6%; /* Place l'image à 1.2% du bord supérieur de la fenêtre */ 
   background-color: white; /* Ajoute un fond blanc derrière l'image */
-  padding:5% 0;
+  padding:5% 0;/* Ajoute un espacement vertical pour ajuster l'image */
 }
 
 
@@ -168,9 +170,9 @@ header img {
   display: flex; /* Active Flexbox pour organiser les éléments enfants */
   flex-direction: column; /* Organise les éléments en colonne */
   width: 85vw; /* Occupe 95% de la largeur de la fenêtre */
-  height: auto;
+  height: auto;  /* Ajuste automatiquement la hauteur en fonction du contenu */
   flex-wrap: nowrap; /* Empêche les éléments enfants de passer à la ligne */
-  transition:  top 2s ease-in-out;
+  transition:  top 2s ease-in-out; /* Anime les changements de position verticale avec une transition douce */
 }
 
 /*----------------------------------------------------------------*/
@@ -181,7 +183,7 @@ header img {
   border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
   font-weight: 500; /* Rend le texte légèrement plus épais */
   padding: 0.4rem; /* Ajoute un espacement interne de 0.3rem tout autour */
-  text-decoration: underline; 
+  text-decoration: underline; /* Souligne le texte pour indiquer une interaction */
 }
 
 /*---------------------------------------------------------------*/
@@ -209,7 +211,7 @@ header img {
 /* Affichage conditionnel de la liste (par défaut) */
 .nav-links {
   display: none; /* Masque les liens par défaut */
-  height: auto;
+  height: auto; /* Ajuste automatiquement la hauteur en fonction du contenu */
   position: relative; /* Position relative pour les ajustements internes */
   opacity: 0; /* Rends les liens invisibles initialement */
   transition: top 1s ease-in-out; /* Transition douce pour toutes les propriétés */
@@ -241,13 +243,13 @@ header img {
   justify-content: center; /* Centre les éléments verticalement */
   text-align: center; /* Centre le texte */
   width: 100%; /* Occupe toute la largeur disponible */
-  height: 10%;
+  height: 10%;/* Définit une hauteur relative pour le conteneur des liens */
   position: relative; /* Évite les chevauchements */
   margin: 0% auto; /* Centre horizontalement */
   padding: 1rem 0; /* Ajoute un espacement interne pour la lisibilité */
   margin-top: 10%; /* Décale les éléments vers le bas */
   opacity: 1; /* Rends les liens visibles */
-  transition:  top 2s  ease-in-out;
+  transition:  top 2s  ease-in-out; /* Anime le déplacement vertical avec une transition fluide */
 }
 
 /*--------------------------------------------------------------------*/
@@ -257,10 +259,8 @@ header img {
   flex-wrap: nowrap; /* Empêche le contenu de se diviser sur plusieurs lignes */
   justify-content: center; /* Centre le contenu horizontalement */
   margin: 0.5% 0; /* Ajoute un espacement vertical entre les liens */
-  transition:  top 2  ease-in-out;
+  transition:  top 2  ease-in-out; /* Anime le déplacement vertical avec une transition fluide */
 }
-
-
 
 
 /*------------------------------------------------------------------------------------*/
@@ -282,14 +282,13 @@ header img {
 /*----------------------------------------------------------------*/
 /* Image dans la section Hero */
 .hero-section img {
-  display: flex;
+  display: flex; /* Affiche l'image comme un bloc pour permettre le centrage horizontal */
   width: 85vw; /* L'image occupe 90% de la largeur */
   border-radius: 3%; /* Arrondi des coins de l'image */
   object-fit: cover; /* Redimensionne l'image en couvrant son conteneur */
   margin: 0 auto; /* Centre horizontalement l'image */
   justify-content: center; /* Centre horizontalement avec Flexbox */
   align-items: center; /* Centre verticalement avec Flexbox */
-
 }
 
 /*----------------------------------------------------------------*/
@@ -309,9 +308,9 @@ header img {
   color: black; /* Couleur noire pour le titre */
   font-size: 2.3em; /* Taille du texte pour le titre */
   margin:5% auto; /* Espacement vertical en haut */
-  font-weight: 600;
-  line-height: 3rem;
-  letter-spacing: 0.1rem;
+  font-weight: 600; /* Définit l'épaisseur du texte à semi-gras */
+  line-height: 3rem;  /* Ajuste l'espacement vertical entre les lignes pour plus de lisibilité */
+  letter-spacing: 0.1rem; /* Ajoute un léger espacement horizontal entre les lettres */
 }
 
 /*----------------------------------------------------------------*/
@@ -320,7 +319,7 @@ header img {
   font-size: 0.8rem; /* Taille réduite pour les paragraphes */
   font-weight: 500; /* Texte en gras */
   padding-bottom: 5%; /* Espacement sous le paragraphe */
-  line-height: 1rem;
+  line-height: 1rem;  /* Ajuste l'espacement vertical entre les lignes pour plus de lisibilité */
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -336,13 +335,10 @@ header img {
 /* Style pour le bouton d'inscription en mode mobile */
 .mobile-signup {
   display: block; /* Affiche le bouton en mode mobile */
-  justify-content: center; /* Centre le contenu horizontalement */
   margin: 7% auto; /* Centre le bouton et ajoute un espacement */
-  width:30vw;
-  padding:2% 0;
+  width:30vw; /* Définit la largeur du bouton à 30% de la largeur de la fenêtre */
+  padding:2% 0;  /* Ajoute un espacement vertical pour agrandir le bouton */
 }
-
-/*----------------------------------------------------------------*/
 
 
 /*------------------------------------------------------------------------------------*/
@@ -358,21 +354,21 @@ header img {
   transform: translateX(-50%); /* Corrige le centrage horizontal */
   width: 100%; /* Occupe toute la largeur pour un effet plein écran */
   height: 100%; /* Permet à la hauteur de s'adapter au contenu */
-  background-color: #232323;
+  background-color: #232323; /* Définit un fond gris très foncé, idéal pour le contraste avec du texte clair */
   color: white; /* Texte blanc */
   overflow-y: auto; /* Permet le défilement si le contenu dépasse la hauteur visible */
-  border-radius: 1%;
+  border-radius: 1%; /* Coin arrondis */
 }
 
 /*----------------------------------------------------------------*/
 .modal-default {
-  top: 8%;
+  top: 8%; /* Positionne la modale à 8% du bord supérieur de l'écran */
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
 /*----------------------------------------------------------------*/
 .modal-responsive {
-  top: 25%;
+  top: 25%; /* Positionne la modale plus bas dans le cas d'un affichage responsive */
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
@@ -381,31 +377,31 @@ header img {
   display: block; /* Affiche la modale lorsqu'elle est active */
 }
 
+/*--------------------------------------------------------------------------*/
 .modal-body {
-  background-color: #232323;
-  border-radius: 2rem;
-
+  background-color: #232323; /* Couleur gris très foncé pour le fond de la modale */
+  border-radius: 2rem; /* Ajoute un arrondi généreux pour adoucir l'apparence */
 }
 
+/*--------------------------------------------------------------------------*/
 /* Style global du formulaire */
 .formData {
   display: flex; /* Définit le formulaire comme un bloc */
-  justify-content: center;
+  justify-content: center; /* Centre les éléments enfants horizontalement */
   margin: 0 auto; /* Centre le formulaire horizontalement */
   padding: 0; /* Supprime les espacements internes */
   width: 80vw; /* Le formulaire occupe 100% de la largeur disponible */
-  
 }
 
-
+/*----------------------------------------------------------------------------*/
 .formData .legend { /* Ajoute un espacement de 12% à gauche pour le texte */
   font-size: 0.8rem;
   padding-top:5%;
   width:85vw;
   margin:0 auto; 
-
 }
 
+/*-----------------------------------------------------------------------------*/
 /* Liste des informations personnelles */
 .form-list li {
   display: flex; /* Utilise Flexbox pour organiser les éléments */
@@ -416,6 +412,7 @@ header img {
   margin: 0 auto; /* Centre horizontalement chaque élément */
 }
 
+/*----------------------------------------------------------------------------*/
 /* Champs d'entrée des informations personnelles */
 .form-list input {
   width: 95%; /* Les champs occupent toute la largeur disponible */
@@ -426,6 +423,11 @@ header img {
   background-color: #ffffff;
 }
 
+/*------------------------------------------------------------------------------------*/
+/*------------------ conteneur localisation ------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+
+
 .checkbox-label {
   display: flex;
   flex-direction: row;
@@ -433,6 +435,7 @@ header img {
   gap: 1%; /* Espacement entre l'icône et le texte */
 }
 
+/*-------------------------------------------------------------------------------*/
 /* Input de type checkbox invisible */
 .checkbox-input {
   position: absolute ; /* Positionne l'input en dehors du flux normal */
@@ -441,7 +444,7 @@ header img {
   height: 0; /* Définit une hauteur de 0 */
 }
 
-
+/*--------------------------------------------------------------------------------*/
 /* Conteneur de l'icône de la case à cocher */
 /* Liste en grille */
 .location-list {
@@ -450,10 +453,9 @@ header img {
   grid-template-rows:repeat(3, auto) ; /* Ajuste la largeur totale */
   width: 85vw;
   margin: 3% auto;
-  
 }
 
-
+/*---------------------------------------------------------------------------------*/
 .location-list li span {
   display:flex; 
   align-items: center; 
@@ -461,8 +463,7 @@ header img {
   margin:0 2%;
 }
 
-
-
+/*----------------------------------------------------------------*/
 /* Conteneur de l'icône (cercle avec bordure) */
 .checkbox-icon {
   display: flex; /* Remplace inline-flex si vous utilisez des pseudo-éléments */
@@ -476,6 +477,7 @@ header img {
   transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
+/*----------------------------------------------------------------*/
 .checkbox-icon::after {
   display: block; /* Affiche le point vert */
   position: relative;
@@ -488,16 +490,22 @@ header img {
   transition: opacity 0.3s ease-in-out;
 }
 
+/*----------------------------------------------------------------*/
 /* Style lorsque l'input est sélectionné */
 .checkbox-input:checked + .checkbox-icon {
   border-color: #279E7A; /* La bordure devient verte */
 }
 
+/*----------------------------------------------------------------*/
 .checkbox-input:checked + .checkbox-icon::after {
-  opacity: 1; /* Le point vert devient visible */
-  
+  opacity: 1; /* Le point vert devient visible */ 
 }
 
+/*------------------------------------------------------------------------------------*/
+/*------------------ section consentement --------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+
+/*-- conteneur --*/
 .consentement {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
@@ -505,12 +513,15 @@ header img {
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
   align-items: center;
 }
+
+/*----------------------------------------------------------------*/
+/*-- liste --*/
 .consentement li {
   width:85vw;
   font-size: 0.5rem;
-  
 }
 
+/*----------------------------------------------------------------*/
 /* Cache l'input natif */
 .checkbox-input2 {
   appearance: none; /* Supprime le style natif du navigateur */
@@ -520,6 +531,7 @@ header img {
   height: 0;
 }
 
+/*----------------------------------------------------------------*/
 /* Conteneur de la case à cocher */
 .checkbox-icon2 {
   display: inline-flex; /* Utilise Flexbox pour centrer la coche */
@@ -533,9 +545,9 @@ header img {
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Transitions douces */
   cursor: pointer; /* Curseur pointeur */
   margin:1% ; /* Espace harmonisé en pourcentage */
-
 }
 
+/*----------------------------------------------------------------*/
 /* Coche blanche (invisible par défaut) */
 .checkbox-icon2::after {
   content: '✓'; /* Symbole de coche */
@@ -546,15 +558,21 @@ header img {
   transition: opacity 0.3s ease; /* Transition fluide pour l'apparition */
 }
 
+/*----------------------------------------------------------------*/
 .checkbox-input2:checked + .checkbox-label2 .checkbox-icon2 {
   background-color: #279E7A; /* Fond vert */
   border-color: #279E7A; /* Bordure verte */
 }
 
+/*----------------------------------------------------------------*/
 /* Coche visible lorsqu'elle est cochée */
 .checkbox-input2:checked + .checkbox-label2 .checkbox-icon2::after {
   opacity: 1; /* Rend la coche visible */
 }
+
+/*------------------------------------------------------------------------------------*/
+/*------------------ bouton close  --------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 
 
 /* Bouton de fermeture (croix) */
@@ -567,6 +585,7 @@ header img {
   margin: 0; /* Supprime les marges externes */ 
 }
 
+/*----------------------------------------------------------------*/
 /* Création de la croix avec un symbole + pivoté */
 .close span {
   font-weight: 100; /* Applique un poids de police moyen */
@@ -577,6 +596,7 @@ header img {
   margin: 0; /* Aucune marge en bas */
 }
 
+/*----------------------------------------------------------------*/
 /* Bouton de soumission */
 .btn-submit {
     display: flex; /* Active Flexbox pour centrer les éléments */
@@ -585,6 +605,7 @@ header img {
     width:35%;
 }
 
+/*----------------------------------------------------------------*/
 /* Modale de confirmation (cachée par défaut) */
 #confirmation-modal {
   display: none;
@@ -600,12 +621,14 @@ header img {
   justify-content: space-evenly;
 }
 
+/*----------------------------------------------------------------*/
 #confirmation-modal span {
   font-size: 2rem;
   width:80vw;
   text-align: center;
 }
 
+/*----------------------------------------------------------------*/
 #confirmation-modal button {
   width: 25vw;
   padding: 5%;
@@ -613,7 +636,7 @@ header img {
   border: none;
 }
 
-
+/*----------------------------------------------------------------*/
 /* Classe pour les bordures rouges des champs avec des erreurs */
 .text-control.error-input {
   border: 2px solid red; /* Bordure rouge pour indiquer une erreur */
@@ -621,6 +644,7 @@ header img {
   animation: borderBlink 5s ease-in-out 3; /* Animation pour un effet de clignotement */
 }
 
+/*----------------------------------------------------------------*/
 /* Classe pour le message d'erreur */
 .error-modal {
   display: block; /* Rend l'erreur visible */
@@ -636,10 +660,9 @@ header img {
 }
 
 
-
-/*-------------------------------------------------------------------------*/
-/*------------------------ FOOTER -------------------------------------------*/
-/*---------------------------------------------------------------------------*/
+/*-----------------------------------------------------------*/
+/*------------------------ FOOTER ---------------------------*/
+/*-----------------------------------------------------------*/
 
 .copyright {
   display: flex;
@@ -657,17 +680,18 @@ header img {
 @media screen and (min-width: 768px) and (max-width:1023px) {
   
 
-
   header {
     width: 95%;
     margin:2% auto;
   }
+
   /*-----------------------------------------------------------------------------------*/
   header img {
     max-width: 150px;
     height:auto;
   }
 
+  /*-----------------------------------------------------------------------------------*/
   .topnav {
     flex-direction: column;
     align-items: center;
@@ -675,39 +699,47 @@ header img {
     margin: 0;
     background-color: transparent;
     justify-content: center;
-
   }
+
+  /*-----------------------------------------------------------------------------------*/
   .topnav i {
     font-size:1.3rem;
-    top:25px;
+    top:30px;
   }
+
+  /*-----------------------------------------------------------------------------------*/
   /* Affichage de la liste au clic sur l'icône (mode responsive) */
-.topnav.responsive .nav-links {
-  display: flex; /* Affiche les liens */
-  flex-direction: row; /* Organisation verticale */
-  justify-content: center; /* Centre les éléments verticalement */
-  text-align: center; /* Centre le texte */
-  width: 100%; /* Occupe toute la largeur disponible */
-  position: relative; /* Évite les chevauchements */
-  padding-top: 4%; /* Centre horizontalement */
-  opacity: 1; /* Rends les liens visibles */
-  transition:  top 2s  ease-in-out;
-}
+  .topnav.responsive .nav-links {
+    display: flex; /* Affiche les liens */
+    flex-direction: row; /* Organisation verticale */
+    justify-content: center; /* Centre les éléments verticalement */
+    text-align: center; /* Centre le texte */
+    width: 100%; /* Occupe toute la largeur disponible */
+    position: relative; /* Évite les chevauchements */
+    padding-top: 4%; /* Centre horizontalement */
+    opacity: 1; /* Rends les liens visibles */
+    transition:  top 2s  ease-in-out;
+  }
+
+  /*-----------------------------------------------------------------------------------*/
   .nav-links a {
     font-size: 1.2rem;
     width:auto
   }
 
+  /*-----------------------------------------------------------------------------------*/
   .hero-section  {
     width:95vw;
   }
+
   /*-------------------------------------------------------------------------------------*/
   .hero-section h2 {
-    width:80%;
-    font-size: 2.4rem;
-    margin:2% auto
+    width:85%;
+    font-size: 2rem;
+    margin:2% auto;
   }
 
+  /*-------------------------------------------------------------------------------------*/
   .hero-content {
     width:95%;
     margin:1% auto;
@@ -716,37 +748,40 @@ header img {
     justify-content: space-around;
     flex-wrap: wrap;
   }
+
   /*--------------------------------------------------------*/
   .hero-section p {
-    width:80%;
+    width:90%;
     margin:0 auto;
-    font-size: 1.2rem;
-    padding-bottom: 1%;
+    font-size: 1rem;
+    padding-bottom: 2%;
+    text-align: center ;
   }
 
+  /*---------------------------------------------------------*/
   .hero-section img {
     width: 80%;
-    
-
+    margin: 0 auto;
     object-fit: cover;
   }
+
   /*---------------------------------------------------------*/
   .mobile-signup {
     font-size: 1rem;
-  }
-  .modal-body {
-    width:70vw;
-    margin: 0 auto;
-  }
-  /*---------------------------------------------------------*/
-  .formData {
-    width:70vw;
+    margin:2% auto;
+    width:20vw;
+    border-radius: 0.6rem;
+    padding:1% 0; 
   }
 
-  /*----------------------------------------------------------*/
-  .formData label {
-    width:70vw;
-    margin: 0 auto;
+  /*---------------------------------------------------------*/
+  .modal-body {  
+    margin:2% auto;
+  }
+  
+  /*---------------------------------------------------------*/
+  .modal-default {
+    top: 10%;
   }
 
   /*----------------------------------------------------------*/
@@ -754,13 +789,35 @@ header img {
     font-size: 1rem;
     padding-left: 5%;
   }
-
+  
+  /*---------------------------------------------------------*/
+  .formData {
+    display: block;
+    width: 80%;
+  }
+  
+  /*---------------------------------------------------------*/
   .form-list li {
     width:95%;
   }
+  
+  /*---------------------------------------------------------*/
+  .form-list input{
+    padding:2% 1%;
+  } 
+  
   /*------------------------------------------------------------*/
   .consentement li{
   padding-left: 5%;
+  }
+  
+  /*---------------------------------------------------------*/
+  .location-list {
+  display: grid;
+  grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
+  grid-template-rows:repeat(3, auto) ; /* Ajuste la largeur totale */
+  width: 40vw;
+  margin: 3% auto;  
   }
 
   /*-------------------------------------------------------------*/
@@ -781,27 +838,31 @@ header img {
   }
 }
 
-/*------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
-
 /* -----------------Ordinateurs portable entre 1024 px et 1440px ------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------*/
 
 @media screen and (min-width: 1024px) and (max-width:1439px) {
 
+  /*---------------------------------------------------------*/
   /* icône */
   .topnav i {
     display: none;
   }
 
+  /*---------------------------------------------------------*/
   .topnav li span {
     display: flex;
     font-size: 1rem;
     font-weight: 700;    
   }
+  
+  /*---------------------------------------------------------*/
   .logo {
     padding-top:1%;
   }
 
+  /*---------------------------------------------------------*/
   /* menu textuelle */
   .nav-links  {
     gap: 3%;
@@ -814,9 +875,12 @@ header img {
     padding-top:1.5%;
     opacity: 1;
   }
+  
+  /*---------------------------------------------------------*/
   .nav {
     width: 60vw;
   }
+
   /*------------section principale ------------- */
   /* Conteneur */
   .hero-section {
@@ -828,6 +892,7 @@ header img {
     margin: 0 auto;
   }
 
+  /*---------------------------------------------------------*/
   .hero-content {
     width: 50%;
     justify-content:flex-end;
@@ -835,6 +900,7 @@ header img {
     margin-bottom: 5%;
   }
 
+  /*---------------------------------------------------------*/
   .hero-section h2{
     color: #ffffff;
     position: absolute;
@@ -848,6 +914,7 @@ header img {
     font-weight: 500;
   }
 
+  /*---------------------------------------------------------*/
   .hero-section p{
     color: #ffffff;
     font-size: 1rem;
@@ -857,6 +924,7 @@ header img {
     padding-left: 2%;
   }
 
+  /*---------------------------------------------------------*/
   .hero-section img {
     width: 75vw;
     margin: 0;
@@ -864,6 +932,7 @@ header img {
     object-fit: cover;
   }
 
+  /*---------------------------------------------------------*/
   .desktop-signup {
     display: flex;
     font-size: 1.2rem;
@@ -871,18 +940,24 @@ header img {
     justify-content: center;
   }
 
+  /*---------------------------------------------------------*/
   .mobile-signup{
     display: none;
   }
 
+  /*---------------------------------------------------------*/
   .bground {
     width: 95vw;
     max-width: 1024px;
     background-color: white;
   }
+
+  /*---------------------------------------------------------*/
   .bground.active {
     width:95vw
   }
+
+  /*---------------------------------------------------------*/
   .modal-body {
     width: 50vw;
     justify-content: center;
@@ -890,41 +965,52 @@ header img {
     border-radius: 2%;
     padding-bottom: 2%;
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
-
   }
+  
+  /*---------------------------------------------------------*/
   .content{
     display:fixed;
     width: 50vw;
     margin: 0 auto;
     justify-content: center;
   }
+
+  /*---------------------------------------------------------*/
   .formData {
     width: 50vw;
     margin: 0 auto;
     justify-content: center;
   }
 
+  /*---------------------------------------------------------*/
   .formData label {
     font-size: 1rem;
     padding-left: 2%;
   }
 
+  /*---------------------------------------------------------*/
   .formData .legend {
     font-size: 1rem;
     padding-left: 5%;
   }
+
+  /*---------------------------------------------------------*/
   .text-control {
     font-size: 1rem;
   }
+
+  /*---------------------------------------------------------*/
   .formData li {
     width: 45vw;
   }
 
+  /*---------------------------------------------------------*/
   .location-list { 
     grid-template-columns: repeat(3, 18vw); /* 3 colonnes de largeur égale */
     padding-left: 3%;
   }
 
+  /*---------------------------------------------------------*/
   .consentement {
     width: 45vw;
     margin: 2% auto;
@@ -932,11 +1018,12 @@ header img {
     padding-bottom: 5%;
   }
   
+  /*---------------------------------------------------------*/
   .btn-submit {
     font-size: 1.2rem;
   }
 
-  
+  /*---------------------------------------------------------*/  
   .copyright {
     position: absolute;
     font-size: 1rem;
@@ -944,21 +1031,22 @@ header img {
     padding-top: 5%;
     margin: 0;
     left:5%
-
   }
 }
 
-/* ------------------------------------------------------------------------------------------------------------------------*/
+
 /* ------------------------------------------------------------------------------------------------------------------------*/
 /* -----------------------------------------Écrans larges supérieur à 1440 px --------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------------*/
 
 @media screen and (min-width: 1440px)  {  
-/*------------ GLOBAL ------------- */
+
+  /*------------ GLOBAL ------------- */
   body {
     max-width: 1240px;
   }
 
-
+  /*-------------------------------------------------------*/
   /* Conteneur */
   header {
     width: 70vw;
@@ -966,6 +1054,7 @@ header img {
     font-weight: 900;
   }
 
+  /*-------------------------------------------------------*/
   header img {
     width: 90%;
     margin-top:3%;
@@ -973,17 +1062,20 @@ header img {
     padding-right: 5%;
   }
 
+  /*-------------------------------------------------------*/
   /*----------Barre de navigation-----*/
   /* icône */
   .topnav i {
     display: none;
   }
 
+  /*-----------------------------------*/
   .topnav li span {
     font-size: 1.2rem;
     font-weight: 700;    
   }
 
+  /*-----------------------------------*/
   /* menu textuelle */
   .nav-links  {
     gap: 3%;
@@ -995,9 +1087,12 @@ header img {
     justify-content: flex-end;
     opacity: 1;
   }
+
+  /*-----------------------------------*/
   .nav {
     width: 60vw;
   }
+
   /*------------section principale ------------- */
   /* Conteneur */
   .hero-section {
@@ -1008,12 +1103,14 @@ header img {
     border-radius: 0.5rem;
   }
 
+  /*-----------------------------------*/
   .hero-content {
     width: 60vw;
     justify-content:flex-end;
     padding:0 4%;
   }
 
+  /*-----------------------------------*/
   .hero-section h2{
     color: #ffffff;
     position: absolute;
@@ -1026,15 +1123,16 @@ header img {
     font-weight: 500;
   }
 
+  /*-----------------------------------*/
   .hero-section p{
     color: lightgray;
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 2rem;
     padding-bottom: 10%;
-
   }
 
+  /*-----------------------------------*/
   .hero-section img {
     position:relative;
     width: 90vw;
@@ -1043,11 +1141,14 @@ header img {
     object-fit: contain;
     border-radius: 0 1rem 1rem 0;
   }
+
+  /*-----------------------------------*/
   .modal-default {
     top: 10.5%;
     transition: top 1s ease-in-out; /* Transition douce pour les changements */
   }
 
+  /*-----------------------------------*/
   .desktop-signup {
     display: flex;
     font-size: 1.6rem;
@@ -1057,24 +1158,32 @@ header img {
     margin-bottom:25%
   }
 
+  /*-----------------------------------*/
   .mobile-signup{
     display: none;
   }
+
+  /*-----------------------------------*/
   .bground {
     width: 100vw;
     background-color: white;
   }
+
+  /*-----------------------------------*/
   .bground.active {
     width:95vw
   }
+
+  /*-----------------------------------*/
   .modal-body {
     width: 40vw;
     justify-content: center;
     margin:2% auto;
     padding-bottom: 2%;
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
-
   }
+  
+  /*-----------------------------------*/
   .content{
     display:fixed;
     width: 40vw;
@@ -1082,12 +1191,15 @@ header img {
     margin: 0 auto;
     justify-content: center;
   }
+
+  /*-----------------------------------*/
   .formData {
     width: 40vw;
     margin: 0 auto;
     justify-content: center;
   }
 
+  /*-----------------------------------*/
   .formData label {
     font-size: 1rem;
     padding-left: 2%;
@@ -1095,21 +1207,27 @@ header img {
     padding:1%; 
   }
 
+  /*-----------------------------------*/
   .formData .legend {
     font-size: 1rem;
     padding-left: 6%;
   }
+
+  /*-----------------------------------*/
   .text-control {
     font-size: 1rem;
     padding: 1%;
     height:2%
   }
+
+  /*-----------------------------------*/
   .formData li {
     width: 35vw;
     padding-left: 5%;
     margin:0;
   }
 
+  /*-----------------------------------*/
   .location-list { 
     grid-template-columns: repeat(3, 14vw); 
     grid-template-rows: repeat(2,2vw);
@@ -1118,6 +1236,7 @@ header img {
     margin:0 auto;
   }
 
+  /*-----------------------------------*/
   .consentement {
     width: 40vw;
     margin: 2% auto;
@@ -1125,11 +1244,12 @@ header img {
     padding-bottom: 1%;
   }
   
+  /*-----------------------------------*/
   .btn-submit {
     font-size: 1rem;
   }
 
-  
+  /*----------------------------------*/  
   .copyright {
     position: absolute;
     font-size: 1rem;
@@ -1137,7 +1257,6 @@ header img {
     margin: 0;
     padding-top: 2%;
     left:9%
-
   }
 }
 
