@@ -659,7 +659,7 @@ header img {
 .text-control.error-input {
   border: 2px solid red; /* Bordure rouge pour indiquer une erreur */
   box-shadow: 0 0 1rem red; /* Ombre rouge pour mettre en évidence l'erreur */
-  animation: borderBlink 5s ease-in-out 3; /* Animation pour un effet de clignotement */
+  animation: borderBlink 1s infinite ease-in-out ; /* Animation pour un effet de clignotement */
 }
 
 /*----------------------------------------------------------------*/
