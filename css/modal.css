@@ -190,7 +190,7 @@ header img {
   color: red; /* Définit la couleur de l'icône en rouge */
   cursor: pointer; /* Change le curseur en "pointeur" pour indiquer qu'il est cliquable */
   position: absolute; /* Place l'icône à une position fixe par rapport à la fenêtre */
-  right:4%; /* Positionne l'icône à 3.4% du bord droit de la fenêtre */
+  right:2%; /* Positionne l'icône à 3.4% du bord droit de la fenêtre */
   padding: 0.4rem; /* Ajoute un espacement interne de 0.4rem tout autour de l'icône */
   font-size: 1.2rem; /* Définit une taille de police de 1.4rem pour l'icône */
 
@@ -223,6 +223,7 @@ header img {
   justify-content: center; /* Centre les éléments de la liste */
   text-align: center; /* Centre le texte */
   padding: 1% 0; /* Ajoute un espace en haut et en bas */
+  transition: top 1s ease-in-out; /* Transition douce pour toutes les propriétés */
 }
 
 /*---------------------------------------------------------------------*/
@@ -246,7 +247,7 @@ header img {
   padding: 1rem 0; /* Ajoute un espacement interne pour la lisibilité */
   margin-top: 10%; /* Décale les éléments vers le bas */
   opacity: 1; /* Rends les liens visibles */
-  transition:  top 2  ease-in-out;
+  transition:  top 2s  ease-in-out;
 }
 
 /*--------------------------------------------------------------------*/
@@ -255,7 +256,7 @@ header img {
   display: flex; /* Affiche chaque lien comme un élément flex */
   flex-wrap: nowrap; /* Empêche le contenu de se diviser sur plusieurs lignes */
   justify-content: center; /* Centre le contenu horizontalement */
-  margin: 1% 0; /* Ajoute un espacement vertical entre les liens */
+  margin: 0.5% 0; /* Ajoute un espacement vertical entre les liens */
   transition:  top 2  ease-in-out;
 }
 
@@ -271,7 +272,7 @@ header img {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les enfants en colonne */
   width: 85vw; /* Occupe 90% de la largeur disponible */
-  margin: 0 auto; /* Centre horizontalement */
+  margin: 2% auto; /* Centre horizontalement */
   box-shadow: none; /* Désactive les ombres */
   justify-content: center; /* Centre verticalement */
   transition: top 2s ease-in-out; /* Transition douce pour le positionnement vertical */
@@ -283,7 +284,7 @@ header img {
 .hero-section img {
   display: flex;
   width: 85vw; /* L'image occupe 90% de la largeur */
-  border-radius: 2%; /* Arrondi des coins de l'image */
+  border-radius: 3%; /* Arrondi des coins de l'image */
   object-fit: cover; /* Redimensionne l'image en couvrant son conteneur */
   margin: 0 auto; /* Centre horizontalement l'image */
   justify-content: center; /* Centre horizontalement avec Flexbox */
@@ -306,16 +307,20 @@ header img {
 /* Style du titre */
 .hero-content h2 {
   color: black; /* Couleur noire pour le titre */
-  font-size: 2rem; /* Taille du texte pour le titre */
-  margin:10% auto; /* Espacement vertical en haut */
+  font-size: 2.3em; /* Taille du texte pour le titre */
+  margin:5% auto; /* Espacement vertical en haut */
+  font-weight: 600;
+  line-height: 3rem;
+  letter-spacing: 0.1rem;
 }
 
 /*----------------------------------------------------------------*/
 /* Style du texte */
 .hero-content p {
   font-size: 0.8rem; /* Taille réduite pour les paragraphes */
-  font-weight: 700; /* Texte en gras */
+  font-weight: 500; /* Texte en gras */
   padding-bottom: 5%; /* Espacement sous le paragraphe */
+  line-height: 1rem;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -332,7 +337,9 @@ header img {
 .mobile-signup {
   display: block; /* Affiche le bouton en mode mobile */
   justify-content: center; /* Centre le contenu horizontalement */
-  margin: 5% auto; /* Centre le bouton et ajoute un espacement */
+  margin: 7% auto; /* Centre le bouton et ajoute un espacement */
+  width:30vw;
+  padding:2% 0;
 }
 
 /*----------------------------------------------------------------*/
@@ -359,7 +366,7 @@ header img {
 
 /*----------------------------------------------------------------*/
 .modal-default {
-  top: 6%;
+  top: 8%;
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
@@ -638,7 +645,7 @@ header img {
   display: flex;
   justify-content: center; /* Centre le contenu horizontalement (nécessite Flexbox pour fonctionner pleinement) */
   margin: 0 auto; /* Centre horizontalement l'élément dans son conteneur */
-  font-size: 0.8rem; /* Définit une petite taille de police pour le texte */
+  font-size: 0.6rem; /* Définit une petite taille de police pour le texte */
   text-align: center; /* Centre le texte à l'intérieur de l'élément */
   color:#fe142f; /* Définit la couleur du texte en rouge */
 }
@@ -652,16 +659,16 @@ header img {
 
 
   header {
-    width:100%
+    width: 95%;
+    margin:2% auto;
   }
   /*-----------------------------------------------------------------------------------*/
   header img {
-    max-width: 160px;
+    max-width: 150px;
     height:auto;
   }
 
   .topnav {
-    width: 100%;
     flex-direction: column;
     align-items: center;
     padding: 0;
@@ -671,32 +678,56 @@ header img {
 
   }
   .topnav i {
-    font-size:1.6rem;
-    margin:0.5% 1%;
+    font-size:1.3rem;
+    top:25px;
   }
-
+  /* Affichage de la liste au clic sur l'icône (mode responsive) */
+.topnav.responsive .nav-links {
+  display: flex; /* Affiche les liens */
+  flex-direction: row; /* Organisation verticale */
+  justify-content: center; /* Centre les éléments verticalement */
+  text-align: center; /* Centre le texte */
+  width: 100%; /* Occupe toute la largeur disponible */
+  position: relative; /* Évite les chevauchements */
+  padding-top: 4%; /* Centre horizontalement */
+  opacity: 1; /* Rends les liens visibles */
+  transition:  top 2s  ease-in-out;
+}
   .nav-links a {
     font-size: 1.2rem;
     width:auto
   }
 
   .hero-section  {
-    width:100%;
+    width:95vw;
   }
   /*-------------------------------------------------------------------------------------*/
   .hero-section h2 {
-    font-size: 2.5rem;
+    width:80%;
+    font-size: 2.4rem;
+    margin:2% auto
   }
 
+  .hero-content {
+    width:95%;
+    margin:1% auto;
+    padding-top: 1%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
   /*--------------------------------------------------------*/
   .hero-section p {
-    font-size: 1.5rem;
-    padding-bottom: 1%;;
+    width:80%;
+    margin:0 auto;
+    font-size: 1.2rem;
+    padding-bottom: 1%;
   }
 
   .hero-section img {
-    width: 100%;
-    height: 55vh;
+    width: 80%;
+    
+
     object-fit: cover;
   }
   /*---------------------------------------------------------*/
