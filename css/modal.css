@@ -728,6 +728,8 @@ header img {
 
 
 
+
+
 /*-------------------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------- MEDIA QUERIES ------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -750,6 +752,7 @@ header img {
   /*----------------------------- SECTION TOPNAV --------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
   .topnav {
+    display: flex;
     flex-direction: column; /* Affiche les éléments en colonne */
     align-items: center; /* Centre les éléments horizontalement */
     padding: 0;
@@ -766,21 +769,43 @@ header img {
   .topnav.responsive .nav-links {
     display: flex; /* Affiche les liens */
     flex-direction: row; /* Organisation en ligne */
+    justify-content: space-around; /* Espace équitable entre les éléments */
     justify-content: center; /* Centre les liens */
     text-align: center; /* Centre le texte */
-    width: 100%; /* Occupe toute la largeur */
-    gap:2%;
+    width: 85vw; /* Occupe toute la largeur */
     position: relative;
     padding-top: 4%; /* Ajoute un espace en haut */
     opacity: 1; /* Rend les liens visibles */
     transition: top 2s ease-in-out; /* Transition douce */
   }
 
+  .nav-links li {
+    list-style: none; /* Supprime les puces */
+    flex: 1; /* Chaque élément prend une part égale de l'espace disponible */
+    text-align: center; /* Centre le contenu */
+  }
+
   .nav-links a {
-    font-size: 1.2rem; /* Augmente la taille de la police */
+    font-size: 1.3rem; /* Augmente la taille de la police */
     width: auto;
   }
 
+  .topnav span {
+    display: inline-block; /* Affiche chaque lien en bloc */
+    width: 100%; /* Occupe toute la largeur de l'espace disponible */
+    padding: 0.5rem 1rem; /* Ajoute un espace interne */
+    transition: all 0.3s ease-in-out; /* Transition douce pour le hover */
+  }
+    .topnav span:hover {
+  width:100%;
+  background-color: #ff0000; /* Change la couleur de fond en rouge vif (#ff0000) au survol */
+  color: #ffffff; /* Change la couleur du texte en blanc au survol */
+  border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
+  font-weight: 500; /* Rend le texte légèrement plus épais */
+  text-decoration: underline; /* Souligne le texte pour indiquer une interaction */
+  padding:2% 1%;
+  flex-wrap: nowrap;
+  }
   /*-----------------------------------------------------------------------------------*/
   /*----------------------------- SECTION HERO ----------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
