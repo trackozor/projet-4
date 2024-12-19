@@ -1799,10 +1799,16 @@ header img {
     max-width:1440px;
   }
 
-  /*-----------------------------------------------------------------------------------*/
+  /*---------------------------------------------------------------------------------*/
+  /*--------------------  HEADER  ---------------------------------------------------*/
+  /*---------------------------------------------------------------------------------*/
+
+
   /* Logo */
   .logo {
-    padding:2% 5%; /* Ajoute un léger espacement au-dessus du logo */
+    padding:1.5% 5%; /* Ajoute un léger espacement au-dessus du logo */
+    width:25vw;
+    max-width:200px;
   }
 
   
@@ -1956,10 +1962,11 @@ header img {
   }
 
   /*----------------------------------------------------------------*/
-/* Positionnement par défaut de la modale */
+  /* Positionnement par défaut de la modale */
   .modal-default {
     top: 12vh; /* Positionne la modale à 8% du bord supérieur de l'écran */
   }
+
   /*---------------------------------------------------------*/
   /* Modale active */
   .bground.active {
@@ -2000,7 +2007,7 @@ header img {
   /*---------------------------------------------------------*/
   /* Labels des formulaires */
   .formData label {
-    font-size: 0.8rem; /* Taille de texte standard */
+    font-size: 1rem; /* Taille de texte standard */
     margin: 0;
     padding:2% 5%;
     font-weight: 500;
@@ -2012,13 +2019,12 @@ header img {
     width:21vw;
     padding:3% 2%;
     margin:0 5%;
-    
   }
 
   /*---------------------------------------------------------*/
   /* Légendes des formulaires */
   .formData .legend {
-    font-size: 0.8rem; /* Taille de texte standard */
+    font-size: 1rem; /* Taille de texte standard */
     padding-left: 2%; /* Espacement à gauche */
     padding-top:1%;
     font-weight: 500;
@@ -2027,7 +2033,7 @@ header img {
   /*---------------------------------------------------------*/
   /* Champs d'entrée */
   .text-control {
-    font-size: 0.8rem; /* Taille de texte standard */
+    font-size: 1rem; /* Taille de texte standard */
     padding-left:5%
   }
 
@@ -2056,14 +2062,13 @@ header img {
     margin:0.5% 0;
   }
 
-
   /*-----------------------------------------------------------------------------------*/
   .location-list li span {
     margin :0;
     padding: 0;
   }
   
-    /*-----------------------------------------------------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
   /*bordure de l'icône */
   .checkbox-icon {
     width: 1rem;
@@ -2071,12 +2076,13 @@ header img {
   }
 
   /*-----------------------------------------------------------------------------------*/
-  /* rond centrale*/
+  /* rond centrale */
   .checkbox-icon::after {
     width: 0.8em;
     height: 0.8em;
   }
-    /*------------------------------------------------------------------------------------*/
+
+  /*------------------------------------------------------------------------------------*/
   /*------------------ conteneur consentement ------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
 
@@ -2121,6 +2127,7 @@ header img {
   .checkbox-icon2::after {
     font-size: 0.7rem;
   }
+
   /*---------------------------------------------------------*/
   /* Bouton de soumission */
   .btn-submit {
@@ -2155,9 +2162,10 @@ header img {
   
   /* Classe pour le message d'erreur */
   .error-modal {
-    font-size: 0.9rem; /* Taille augmentée pour lisibilité */
+    font-size: 1rem; /* Taille augmentée pour lisibilité */
     padding-bottom: 0; /* Supprime l'espacement en bas */
-    width:25vw;
+    width:15vw;
+    padding-left: 5%;
   }
 
   
@@ -2169,7 +2177,6 @@ header img {
     position: absolute; /* Positionnement absolu */
     font-size: 1rem; /* Taille de texte standard */
     padding: 3% 1% 2% 0; /* Espacement en haut */
-  
     left: 12%; /* Positionnement à gauche */
   }
 }
