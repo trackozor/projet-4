@@ -1118,13 +1118,15 @@ header img {
     width: 50vw; /* Largeur réduite */
     margin: 0 auto; /* Centre horizontalement */
     justify-content: center; /* Centre le contenu */
+    padding:2% auto;
   }
 
   /*----------------------- Section Formulaires --------------------*/
   /* Conteneur principal du formulaire */
   .formData {
-    width: 50vw; /* Largeur réduite pour les ordinateurs */
+    width: 40vw; /* Largeur réduite pour les ordinateurs */
     margin: 0 auto; /* Centre horizontalement */
+    padding: 5% 0;;
     justify-content: center; /* Centre le contenu */
   }
 
@@ -1132,9 +1134,14 @@ header img {
   /* Labels des formulaires */
   .formData label {
     font-size: 1rem; /* Taille de texte standard */
-    padding-left: 2%; /* Espacement à gauche */
+    padding-left: 5%; /* Espacement à gauche */
   }
-
+  .form-list input {
+    width:45vw;
+    padding:2% 3%;
+    margin:0 auto;
+    
+  }
   /*---------------------------------------------------------*/
   /* Légendes des formulaires */
   .formData .legend {
@@ -1151,12 +1158,16 @@ header img {
   /*---------------------------------------------------------*/
   /* Éléments de liste dans le formulaire */
   .formData li {
-    width: 45vw; /* Largeur ajustée */
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+    margin: 0; /* Largeur ajustée */
   }
-
+  
   /*----------------------- Section Localisation --------------------*/
   /* Liste des localisations */
   .location-list {
+    width: 80vw;
     grid-template-columns: repeat(3, 18vw); /* 3 colonnes égales */
     padding-left: 3%; /* Espacement à gauche */
   }
@@ -1189,229 +1200,229 @@ header img {
 }
 
 
-/* ------------------------------------------------------------------------------------------------------------------------*/
-/* -----------------------------------------Écrans larges supérieur à 1440 px --------------------------------------------*/
-/*-------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------*/
+/* ------------------- Écrans larges (min-width: 1440px) --------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------*/
 
-@media screen and (min-width: 1440px)  {  
+@media screen and (min-width: 1440px) {  
 
-  /*------------ GLOBAL ------------- */
+  /*-----------------------------------*/
+  /* Section Globale */
   body {
-    max-width: 1240px;
+    max-width: 1240px; /* Limite la largeur maximale du contenu */
   }
 
-  /*-------------------------------------------------------*/
-  /* Conteneur */
+  /*-----------------------------------*/
+  /* Section Header */
   header {
-    width: 70vw;
-    display: flex;
-    font-weight: 900;
+    width: 70vw; /* Adapte la largeur du header */
+    display: flex; /* Active Flexbox pour organiser les enfants */
+    font-weight: 900; /* Texte gras */
   }
 
-  /*-------------------------------------------------------*/
+  /*-----------------------------------*/
   header img {
-    width: 90%;
-    margin-top:3%;
-    padding-left: 8%;
-    padding-right: 5%;
+    width: 90%; /* Réduit la taille du logo */
+    margin-top: 3%; /* Ajoute un espace vertical au-dessus du logo */
+    padding-left: 8%; /* Espacement à gauche */
+    padding-right: 5%; /* Espacement à droite */
   }
 
-  /*-------------------------------------------------------*/
-  /*----------Barre de navigation-----*/
-  /* icône */
+  /*-----------------------------------*/
+  /* Icône du menu */
   .topnav i {
-    display: none;
+    display: none; /* Masque l'icône pour les grands écrans */
   }
 
   /*-----------------------------------*/
+  /* Liens de navigation */
   .topnav li span {
-    font-size: 1.2rem;
-    font-weight: 700;    
+    font-size: 1.2rem; /* Augmente légèrement la taille de la police */
+    font-weight: 700; /* Texte semi-gras */
   }
 
   /*-----------------------------------*/
-  /* menu textuelle */
-  .nav-links  {
-    gap: 3%;
-    display: flex;
-    padding-top: 5%;
-    flex-wrap: nowrap;
-    font-weight: 900;
-    width: 100%;
-    justify-content: flex-end;
-    opacity: 1;
+  .nav-links {
+    gap: 3%; /* Espacement entre les liens */
+    display: flex; /* Organisation en ligne */
+    padding-top: 5%; /* Espacement en haut */
+    flex-wrap: nowrap; /* Empêche les liens de revenir à la ligne */
+    font-weight: 900; /* Texte gras */
+    width: 100%; /* Utilise toute la largeur disponible */
+    justify-content: flex-end; /* Aligne les liens à droite */
+    opacity: 1; /* Liens visibles */
   }
 
   /*-----------------------------------*/
+  /* Conteneur des liens */
   .nav {
-    width: 60vw;
+    width: 60vw; /* Adapte la largeur */
   }
 
-  /*------------section principale ------------- */
-  /* Conteneur */
+  /*-----------------------------------*/
+  /* Section principale */
   .hero-section {
-    width: 70vw;
-    display: flex;
-    flex-direction: row;
-    background-color: #0b0c07;
-    border-radius: 0.5rem;
+    width: 70vw; /* Largeur réduite pour une mise en page plus compacte */
+    display: flex; /* Active Flexbox */
+    flex-direction: row; /* Organise les éléments horizontalement */
+    background-color: #0b0c07; /* Fond sombre */
+    border-radius: 0.5rem; /* Coins légèrement arrondis */
   }
 
   /*-----------------------------------*/
   .hero-content {
-    width: 60vw;
-    justify-content:flex-end;
-    padding:0 4%;
+    width: 60vw; /* Largeur ajustée pour le contenu */
+    justify-content: flex-end; /* Aligne le contenu à droite */
+    padding: 0 4%; /* Ajoute un espacement interne */
   }
 
   /*-----------------------------------*/
-  .hero-section h2{
-    color: #ffffff;
-    position: absolute;
-    z-index: 1;
-    font-size:5rem;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 65%;
-    top: 0%;
-    font-weight: 500;
+  .hero-section h2 {
+    color: #ffffff; /* Texte blanc */
+    position: absolute; /* Positionnement absolu */
+    z-index: 1; /* Place le titre au-dessus des autres éléments */
+    font-size: 5rem; /* Grande taille pour le titre */
+    flex-direction: row; /* Organisation horizontale */
+    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+    width: 65%; /* Adapte la largeur */
+    top: 0%; /* Position verticale */
+    font-weight: 500; /* Texte moyennement épais */
   }
 
   /*-----------------------------------*/
-  .hero-section p{
-    color: lightgray;
-    font-size: 1.5rem;
-    font-weight: 300;
-    line-height: 2rem;
-    padding-bottom: 10%;
+  .hero-section p {
+    color: lightgray; /* Texte gris clair */
+    font-size: 1.5rem; /* Texte légèrement plus grand */
+    font-weight: 300; /* Texte plus fin */
+    line-height: 2rem; /* Hauteur de ligne augmentée pour la lisibilité */
+    padding-bottom: 10%; /* Ajoute un espacement en bas */
   }
 
   /*-----------------------------------*/
   .hero-section img {
-    position:relative;
-    width: 90vw;
-    margin: 0;
-    padding: 0;
-    object-fit: contain;
-    border-radius: 0 1rem 1rem 0;
+    position: relative; /* Positionnement relatif */
+    width: 90vw; /* Largeur ajustée */
+    margin: 0; /* Pas de marge */
+    padding: 0; /* Pas d'espacement interne */
+    object-fit: contain; /* Garde les proportions de l'image */
+    border-radius: 0 1rem 1rem 0; /* Coins arrondis à droite */
   }
 
   /*-----------------------------------*/
+  /* Modale */
   .modal-default {
-    top: 10.5%;
-    transition: top 1s ease-in-out; /* Transition douce pour les changements */
+    top: 10.5%; /* Position ajustée pour la modale */
+    transition: top 1s ease-in-out; /* Transition douce */
   }
 
   /*-----------------------------------*/
   .desktop-signup {
-    display: flex;
-    font-size: 1.6rem;
-    width:12vw;
-    padding:2% 5%;
-    justify-content: center;
-    margin-bottom:25%
+    display: flex; /* Affiche le bouton d'inscription */
+    font-size: 1.6rem; /* Texte légèrement plus grand */
+    width: 12vw; /* Largeur ajustée */
+    padding: 2% 5%; /* Espacement interne */
+    justify-content: center; /* Centre le texte */
+    margin-bottom: 25%; /* Ajoute un espacement en bas */
   }
 
   /*-----------------------------------*/
-  .mobile-signup{
-    display: none;
+  .mobile-signup {
+    display: none; /* Masque le bouton d'inscription mobile */
   }
 
   /*-----------------------------------*/
   .bground {
-    width: 100vw;
-    background-color: white;
+    width: 100vw; /* Largeur maximale */
+    background-color: white; /* Fond blanc */
   }
 
   /*-----------------------------------*/
   .bground.active {
-    width:95vw
+    width: 95vw; /* Réduit légèrement la largeur */
   }
 
   /*-----------------------------------*/
   .modal-body {
-    width: 40vw;
-    justify-content: center;
-    margin:2% auto;
-    padding-bottom: 2%;
-    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+    width: 40vw; /* Largeur ajustée pour les écrans larges */
+    justify-content: center; /* Centre le contenu horizontalement */
+    margin: 2% auto; /* Centre la modale avec un espacement vertical */
+    padding-bottom: 2%; /* Ajoute un espacement en bas */
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
   }
-  
+
   /*-----------------------------------*/
-  .content{
-    display:fixed;
-    width: 40vw;
-    height:auto;
-    margin: 0 auto;
-    justify-content: center;
+  .content {
+    display: fixed; /* Position fixe */
+    width: 40vw; /* Largeur ajustée */
+    height: auto; /* Hauteur ajustée automatiquement */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+    justify-content: center; /* Centre le contenu */
   }
 
   /*-----------------------------------*/
   .formData {
-    width: 40vw;
-    margin: 0 auto;
-    justify-content: center;
+    width: 40vw; /* Largeur ajustée pour le formulaire */
+    margin: 0 auto; /* Centre le formulaire */
+    justify-content: center; /* Centre le contenu */
   }
 
   /*-----------------------------------*/
   .formData label {
-    font-size: 1rem;
-    padding-left: 2%;
-    margin:1% 0;
-    padding:1%; 
+    font-size: 1rem; /* Taille de texte standard */
+    padding-left: 2%; /* Espacement à gauche */
+    margin: 1% 0; /* Espacement vertical */
+    padding: 1%; /* Espacement interne */
   }
 
   /*-----------------------------------*/
   .formData .legend {
-    font-size: 1rem;
-    padding-left: 6%;
+    font-size: 1rem; /* Taille de texte standard */
+    padding-left: 6%; /* Espacement à gauche */
   }
 
   /*-----------------------------------*/
   .text-control {
-    font-size: 1rem;
-    padding: 1%;
-    height:2%
+    font-size: 1rem; /* Taille de texte standard */
+    padding: 1%; /* Espacement interne */
+    height: 2%; /* Hauteur ajustée */
   }
 
   /*-----------------------------------*/
   .formData li {
-    width: 35vw;
-    padding-left: 5%;
-    margin:0;
+    width: 35vw; /* Largeur ajustée */
+    padding-left: 5%; /* Espacement à gauche */
+    margin: 0; /* Pas de marge */
   }
 
   /*-----------------------------------*/
-  .location-list { 
-    grid-template-columns: repeat(3, 14vw); 
-    grid-template-rows: repeat(2,2vw);
-    padding-left: 4%;
-    padding-top: 1%;
-    margin:0 auto;
+  .location-list {
+    grid-template-columns: repeat(3, 14vw); /* 3 colonnes égales */
+    grid-template-rows: repeat(2, 2vw); /* 2 lignes égales */
+    padding-left: 4%; /* Espacement à gauche */
+    padding-top: 1%; /* Espacement en haut */
+    margin: 0 auto; /* Centre horizontalement */
   }
 
   /*-----------------------------------*/
   .consentement {
-    width: 40vw;
-    margin: 2% auto;
-    padding-left: 9%;
-    padding-bottom: 1%;
+    width: 40vw; /* Largeur ajustée */
+    margin: 2% auto; /* Centre horizontalement */
+    padding-left: 9%; /* Espacement à gauche */
+    padding-bottom: 1%; /* Espacement en bas */
   }
   
   /*-----------------------------------*/
   .btn-submit {
-    font-size: 1rem;
+    font-size: 1rem; /* Taille de texte standard */
   }
 
-  /*----------------------------------*/  
+  /*-----------------------------------*/  
   .copyright {
-    position: absolute;
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 0;
-    padding-top: 2%;
-    left:9%
+    position: absolute; /* Positionnement absolu */
+    font-size: 1rem; /* Taille de texte standard */
+    font-weight: 700; /* Texte gras */
+    margin: 0; /* Pas de marge supplémentaire */
+    padding-top: 2%; /* Espacement en haut */
+    left: 9%; /* Positionnement à gauche */
   }
 }
-
-
