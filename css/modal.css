@@ -493,37 +493,38 @@ header img {
 /*---------------------------------------------------------------------------------*/
 /* Styles pour les éléments de la grille (texte + icône) */
 .location-list li span {
-  display:flex; 
-  align-items: center; 
-  justify-content: center;
-  margin:0 2%;
+  display:flex; /* Utilise Flexbox pour aligner les éléments enfants dans un conteneur */
+  align-items: center; /* Centre verticalement le contenu dans le conteneur */
+  justify-content: center;/* Centre horizontalement le contenu dans le conteneur */
+  margin:0 2%;/* Ajoute une marge horizontale de 2% de chaque côté */
 }
 
 /*----------------------------------------------------------------*/
 /* Conteneur de l'icône (cercle avec bordure) */
 .checkbox-icon {
-  display: flex; /* Remplace inline-flex si vous utilisez des pseudo-éléments */
-  justify-content: center;
-  align-items: center;
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-  border: 2px solid #c4c4c4;
-  background-color: transparent;
-  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  display: flex; /* Active Flexbox pour centrer le contenu */
+  justify-content: center;/* Centre le contenu horizontalement */
+  align-items: center; /* Centre le contenu verticalement */
+  width: 0.8rem;/* Définit la largeur et la hauteur de l'icône à 0.8rem */
+  height: 0.8rem;/* Identique à la largeur pour obtenir une forme carrée */
+  border-radius: 50%;/* Arrondit les coins pour obtenir une forme circulaire */
+  border: 2px solid #c4c4c4; /* Applique une bordure grise de 2px autour de l'icône */
+  background-color: transparent;/* Définit un fond transparent pour l'icône */
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;/* Ajoute des transitions fluides pour les changements de bordure et de fond */
 }
 
 /*----------------------------------------------------------------*/
+/* Point vert pour indiquer l'état activé (coché) */
 .checkbox-icon::after {
-  display: block; /* Affiche le point vert */
-  position: relative;
-  content: '';
-  width: 0.7em;
-  height: 0.7em;
-  border-radius: 50%;
-  background-color: #279E7A;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  display: block; /* Rend le pseudo-élément visible sous forme de bloc */
+  position: relative;/* Positionne le pseudo-élément par rapport au conteneur parent */
+  content: '';/* Insère un contenu vide pour créer une forme stylisée */
+  width: 0.7em;/* Définit la largeur du point vert */
+  height: 0.7em; /* Définit la hauteur du point vert, identique à la largeur pour obtenir un cercle */
+  border-radius: 50%;/* Arrondit les coins pour obtenir une forme circulaire */
+  background-color: #279E7A;/* Définit la couleur verte pour le point */
+  opacity: 0;/* Rend le point invisible par défaut */
+  transition: opacity 0.3s ease-in-out;/* Ajoute une transition fluide pour rendre le point visible/invisible */
 }
 
 /*----------------------------------------------------------------*/
@@ -553,9 +554,9 @@ header img {
 /*----------------------------------------------------------------*/
 /*-- liste --*/
 .consentement li {
-  width:82vw;
-  font-size: 0.5rem;
-  margin: 0.5% auto;
+  width:82vw;/* Définit chaque élément de la liste à 82% de la largeur de la fenêtre */
+  font-size: 0.5rem;/* Définit une petite taille de police pour les textes */
+  margin: 0.5% auto; /* Ajoute un espacement vertical de 0.5% et centre chaque élément horizontalement */
 
 }
 
@@ -565,8 +566,8 @@ header img {
   appearance: none; /* Supprime le style natif du navigateur */
   position: absolute; /* Retire du flux visuel */
   opacity: 0; /* Rend l'élément invisible */
-  width: 0;
-  height: 0;
+  width: 0;/* Définit une largeur de 0 pour éviter qu'il n'occupe de l'espace */
+  height: 0;/* Définit une hauteur de 0 pour éviter qu'il n'occupe de l'espace */
 }
 
 /*----------------------------------------------------------------*/
@@ -596,11 +597,14 @@ header img {
 }
 
 /*----------------------------------------------------------------*/
+/* Styles appliqués lorsque l'input est coché */
 .checkbox-input2:checked + .checkbox-label2 .checkbox-icon2 {
   background-color: #279E7A; /* Fond vert */
   border-color: #279E7A; /* Bordure verte */
 }
 
+/*----------------------------------------------------------------*/
+/* Étiquette associée à la case à cocher */
 .checkbox-label2 {
     display: flex; /* Utilise flexbox pour organiser les enfants */
     align-items: center; /* Centre verticalement l'icône et le texte */
@@ -624,8 +628,8 @@ header img {
 /* Bouton de fermeture (croix) */
 .close {
   display: flex; /* Active Flexbox pour organiser les éléments */
-  max-height:25px ;
-  padding-right:8%;
+  max-height:25px ;/* Limite la hauteur maximale du bouton */
+  padding-right:8%; /* Ajoute un espacement à droite pour positionner la croix */
   width: 100%; /* Prend toute la largeur disponible */
   justify-content: flex-end;
   background-color: transparent; /* Fond transparent */
@@ -649,14 +653,14 @@ header img {
     display: flex; /* Active Flexbox pour centrer les éléments */
     justify-content: center; /* Centre horizontalement le contenu */
     margin: 2% auto; /* Centre le bouton horizontalement */
-    width:35%;
+    width:35%;/* Définit une largeur fixe pour le bouton, proportionnelle au conteneur */
 }
 
 /*----------------------------------------------------------------*/
 /* Modale de confirmation (cachée par défaut) */
 #confirmation-modal {
-  display: none;
-  flex-direction: column;
+  display: none;/* Masque la modale par défaut */
+  flex-direction: column;/* Organise les éléments verticalement */
   position: fixed; /* Positionne la modale en fondé */
   top: 2%; /* Positionne la modale au haut de la fenêtre */
   left: 0; /* Positionne la modale à gauche de la fenêtre */
@@ -665,22 +669,24 @@ header img {
   background-color: rgba(0, 0, 0,1); /* Fond transparent avec une transparence de 50% */
   z-index: 5000; /* Positionne la modale au dessus des autres éléments */
   align-items: center; /* Centre le contenu verticalement */
-  justify-content: space-evenly;
+  justify-content: space-evenly;/* Répartit les enfants verticalement avec un espacement uniforme */
 }
 
 /*----------------------------------------------------------------*/
+/* Style pour le texte à l'intérieur de la modale de confirmation */
 #confirmation-modal span {
-  font-size: 2rem;
-  width:80vw;
-  text-align: center;
+  font-size: 2rem;/* Grande taille pour mettre en évidence le texte */
+  width:80vw; /* Largeur relative à la fenêtre pour s'adapter aux écrans responsifs */
+  text-align: center;/* Centre horizontalement le texte */
 }
 
 /*----------------------------------------------------------------*/
+/* Style pour les boutons dans la modale de confirmation */
 #confirmation-modal button {
-  width: 25vw;
-  padding: 5%;
-  color: white;
-  border: none;
+  width: 25vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+  padding: 5%; /* Ajoute un espacement interne uniforme  */
+  color: white; /* Couleur de texte blanche pour un contraste sur fond sombre */
+  border: none; /* Supprime les bordures par défaut pour un style minimaliste */
 }
 
 /*----------------------------------------------------------------*/
@@ -712,13 +718,15 @@ header img {
 /*-----------------------------------------------------------*/
 
 .copyright {
-  display: flex;
+  display: flex;/* Active Flexbox pour centrer les éléments */
   justify-content: center; /* Centre le contenu horizontalement (nécessite Flexbox pour fonctionner pleinement) */
   margin: 0 auto; /* Centre horizontalement l'élément dans son conteneur */
   font-size: 0.6rem; /* Définit une petite taille de police pour le texte */
   text-align: center; /* Centre le texte à l'intérieur de l'élément */
   color:#fe142f; /* Définit la couleur du texte en rouge */
 }
+
+
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------- MEDIA QUERIES ------------------------------------------------------------*/
