@@ -36,7 +36,7 @@ const logStyles = {
     warn: rootStyles.getPropertyValue('--log-warn').trim() || "color: orange; font-weight: bold;",
     error: rootStyles.getPropertyValue('--log-error').trim() || "color: red; font-weight: bold;",
     success: rootStyles.getPropertyValue('--log-success').trim() || "color: teal; font-weight: bold;",
-    testStart: rootStyles.getPropertyValue('--log-test-start').trim() || "color: green; font-weight: bold;",
+    testStart: rootStyles.getPropertyValue('--log-test-start').trim() || "color: #FF69B4; font-weight: bold;",
     testEnd: rootStyles.getPropertyValue('--log-test-end').trim() || "color: purple; font-weight: bold;",
     default: rootStyles.getPropertyValue('--log-default').trim() || "color: black;",
 };
@@ -581,7 +581,7 @@ function removeError(inputElement) {
         }
 
         // === Supprimer le tooltip d'erreur ===
-        const parentElement = inputElement.parentElement;
+        const {parentElement} = inputElement;
         if (parentElement) {
             const existingError = parentElement.querySelector(`.${CSS_CLASSES.ERROR_MODAL}`);
             if (existingError) {

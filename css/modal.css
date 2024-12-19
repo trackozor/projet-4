@@ -36,7 +36,7 @@
   --log-warn: color: orange; font-weight: bold;/* Logs d'avertissement */
   --log-error: color: red; font-weight: bold;/* Logs d'erreurs */
   --log-success: color: teal; font-weight: bold;/* Logs de validation */
-  --log-test-start: color: green; font-weight: bold;/* Début des tests */
+  --log-test-start: color: #FF69B4; font-weight: bold;/* Début des tests */
   --log-test-end: color: purple; font-weight: bold;/* Fin des tests */
   --log-default: color: black; /* Logs par défaut */
 }
@@ -176,7 +176,7 @@ header img {
 .topnav {
   display: flex; /* Active Flexbox pour organiser les éléments enfants */
   flex-direction: column; /* Organise les éléments en colonne */
-  width: 85vw; /* Occupe 95% de la largeur de la fenêtre */
+  width: 100vw; /* Occupe 95% de la largeur de la fenêtre */
   height: auto;  /* Ajuste automatiquement la hauteur en fonction du contenu */
   flex-wrap: nowrap; /* Empêche les éléments enfants de passer à la ligne */
   transition:  top 2s ease-in-out; /* Anime les changements de position verticale avec une transition douce */
