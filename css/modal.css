@@ -991,7 +991,7 @@ header img {
   
   /* Conteneur principal de la navigation */
   .nav {
-    width: 60vw; /* Réduit la largeur de la barre de navigation */
+    width: 50vw; /* Réduit la largeur de la barre de navigation */
   }
 
   /*---------------------------------------------------------*/
@@ -1004,25 +1004,36 @@ header img {
   /* Styles pour le texte des liens de navigation */
   .topnav li span {
     display: flex; /* Affiche les liens sous forme de flexbox */
-    font-size: 1rem; /* Taille de police standardisée */
+    font-size: 0.8rem; /* Taille de police standardisée */
     font-weight: 700; /* Poids du texte plus épais */
+    padding:0.6rem 0.8rem;
   }
 
+  /*----------------------------------------------------------------*/
+  /* Style au survol */
+  .topnav span:hover {
+    background-color: #ff0000; /* Change la couleur de fond en rouge vif (#ff0000) au survol */
+    color: #ffffff; /* Change la couleur du texte en blanc au survol */
+    border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
+    font-weight: 500; /* Rend le texte légèrement plus épais */
+    padding: 0.5rem; /* Ajoute un espacement interne de 0.3rem tout autour */
+    text-decoration: underline; /* Souligne le texte pour indiquer une interaction */
+}
   /*---------------------------------------------------------*/
   /* Menu textuel */
   .nav-links  {
-    gap: 3%; /* Espacement entre les liens */
+    gap: 2%; /* Espacement entre les liens */
     display: flex; /* Affiche les liens sous forme de flexbox */
     flex-direction: row; /* Organise les liens en ligne */
     justify-content: flex-end; /* Aligne les liens à droite */
     flex-wrap: nowrap; /* Empêche les liens de revenir à la ligne */
     font-weight: 900; /* Texte en gras */
-    width: 100%; /* Le menu occupe toute la largeur disponible */
+    width: 65%; /* Le menu occupe toute la largeur disponible */
     padding-top: 1.5%; /* Espacement en haut */
     opacity: 1; /* Les liens sont visibles */
     position: absolute;
     top:2%;
-    right:2%;
+    right:0;
   }
 
   /*------------------------------------------------------------------------------------*/
@@ -1054,13 +1065,14 @@ header img {
     color: #ffffff; /* Couleur blanche pour le titre */
     position: absolute; /* Positionnement absolu */
     z-index: 3; /* Place le titre au-dessus des autres éléments */
-    font-size: 3.5rem; /* Grande taille pour attirer l'attention */
+    font-size: 3.8rem; /* Grande taille pour attirer l'attention */
     flex-direction: row; /* Organisation horizontale */
     flex-wrap: nowrap; /* Empêche le retour à la ligne */
-    width: 70%; /* Le titre occupe 70% de la largeur */
+    width: 75%; /* Le titre occupe 70% de la largeur */
     top: 1%; /* Positionnement vertical ajusté */
     left: 4%; /* Positionnement horizontal ajusté */
     font-weight: 500; /* Poids moyen du texte */
+    line-height: 4rem;
   }
 
   /*---------------------------------------------------------*/
@@ -1083,13 +1095,17 @@ header img {
     object-fit: cover; /* Remplit l'espace tout en gardant le ratio */
   }
 
-  /*---------------------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ BOUTON " JE m'inscris" ------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+
   /* Bouton d'inscription pour les ordinateurs */
   .desktop-signup {
     display: flex; /* Active Flexbox pour centrer les éléments */
-    font-size: 1.2rem; /* Taille de texte augmentée */
-    padding: 2%; /* Ajoute un espacement interne */
+    font-size: 1rem; /* Taille de texte augmentée */
+    padding: 4% 1%; /* Ajoute un espacement interne */
     justify-content: center; /* Centre le contenu horizontalement */
+    width:12vw
   }
 
   /*---------------------------------------------------------*/
