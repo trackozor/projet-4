@@ -1048,12 +1048,13 @@ header img {
     flex-direction: row; /* Organise les éléments horizontalement */
     background-color: #0b0c07; /* Couleur de fond sombre */
     margin: 2% auto; /* Centre horizontalement */
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
   }
 
   /*---------------------------------------------------------*/
   /* Conteneur de contenu dans la section principale */
   .hero-content {
-    width: 50%; /* Le contenu occupe la moitié de la largeur */
+    width: 60%; /* Le contenu occupe la moitié de la largeur */
     justify-content: flex-end; /* Aligne le contenu à droite */
     padding: 4%; /* Ajoute un espacement interne */
     margin-bottom: 5%; /* Ajoute un espacement en bas */
@@ -1069,19 +1070,19 @@ header img {
     flex-direction: row; /* Organisation horizontale */
     flex-wrap: nowrap; /* Empêche le retour à la ligne */
     width: 75%; /* Le titre occupe 70% de la largeur */
-    top: 1%; /* Positionnement vertical ajusté */
+    top:-4%; /* Positionnement vertical ajusté */
     left: 4%; /* Positionnement horizontal ajusté */
     font-weight: 500; /* Poids moyen du texte */
-    line-height: 4rem;
+    line-height: 5rem;
   }
 
   /*---------------------------------------------------------*/
   /* Paragraphe dans la section principale */
   .hero-section p {
     color: #ffffff; /* Texte blanc */
-    font-size: 1rem; /* Taille de texte standard */
+    font-size: 0.9rem; /* Taille de texte standard */
     font-weight: 500; /* Texte légèrement en gras */
-    padding-bottom: 25%; /* Espacement en bas */
+    margin-bottom: 15%; /* Espacement en bas */
     line-height: 1.5rem; /* Hauteur de ligne pour la lisibilité */
     padding-left: 2%; /* Espacement à gauche */
   }
@@ -1103,9 +1104,13 @@ header img {
   .desktop-signup {
     display: flex; /* Active Flexbox pour centrer les éléments */
     font-size: 1rem; /* Taille de texte augmentée */
-    padding: 4% 1%; /* Ajoute un espacement interne */
+    padding: 1% 0; /* Ajoute un espacement interne */
     justify-content: center; /* Centre le contenu horizontalement */
-    width:12vw
+    border-radius:0.3rem;
+    width:12vw;
+    margin: 2% 0;
+    position: absolute;
+    bottom:8%
   }
 
   /*---------------------------------------------------------*/
@@ -1114,7 +1119,10 @@ header img {
     display: none;
   }
 
-  /*----------------------- Section Modale --------------------*/
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ Fenêtre modale --------------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+
   /* Conteneur principal de la modale */
   .bground {
     width: 95vw; /* Largeur ajustée */
@@ -1122,6 +1130,11 @@ header img {
     background-color: white; /* Fond blanc */
   }
 
+  /*----------------------------------------------------------------*/
+/* Positionnement par défaut de la modale */
+.modal-default {
+  top: 7%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+}
   /*---------------------------------------------------------*/
   /* Modale active */
   .bground.active {
@@ -1132,55 +1145,60 @@ header img {
   /* Corps de la modale */
   .modal-body {
     width: 50vw; /* Largeur réduite pour les ordinateurs */
+    align-items: center;
+    padding:3% 0;
     justify-content: center; /* Centre le contenu horizontalement */
-    margin: 2% auto; /* Centre horizontalement et ajoute un espacement vertical */
+    margin: 0 auto; /* Centre horizontalement et ajoute un espacement vertical */
     border-radius: 2%; /* Coins arrondis */
-    padding-bottom: 2%; /* Espacement en bas */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
   }
   
   /*---------------------------------------------------------*/
   /* Contenu principal de la modale */
   .content {
-    display: fixed; /* Positionnement fixe */
+    display: block; /* Positionnement fixe */
+    align-items: center;
     width: 50vw; /* Largeur réduite */
     margin: 0 auto; /* Centre horizontalement */
     justify-content: center; /* Centre le contenu */
-    padding:2% auto;
+    padding:0;
   }
 
   /*----------------------- Section Formulaires --------------------*/
   /* Conteneur principal du formulaire */
   .formData {
-    width: 40vw; /* Largeur réduite pour les ordinateurs */
+    width: 30vw; /* Largeur réduite pour les ordinateurs */
     margin: 0 auto; /* Centre horizontalement */
-    padding: 5% 0;;
-    justify-content: center; /* Centre le contenu */
+    padding:1% 0;
+    justify-content: flex-start; /* Centre le contenu */
   }
 
   /*---------------------------------------------------------*/
   /* Labels des formulaires */
   .formData label {
-    font-size: 1rem; /* Taille de texte standard */
-    padding-left: 5%; /* Espacement à gauche */
+    font-size: 0.8rem; /* Taille de texte standard */
+    margin: 0;
+    padding:2% 5%;
   }
   .form-list input {
-    width:45vw;
-    padding:2% 3%;
-    margin:0 auto;
+    width:40vw;
+    padding:2.5% 2%;
+    margin:0 5%;
     
   }
   /*---------------------------------------------------------*/
   /* Légendes des formulaires */
   .formData .legend {
-    font-size: 1rem; /* Taille de texte standard */
-    padding-left: 5%; /* Espacement à gauche */
+    font-size: 0.8rem; /* Taille de texte standard */
+    padding-left: 4%; /* Espacement à gauche */
+    padding-top:2%;
   }
 
   /*---------------------------------------------------------*/
   /* Champs d'entrée */
   .text-control {
-    font-size: 1rem; /* Taille de texte standard */
+    font-size: 0.8rem; /* Taille de texte standard */
+    padding-left:5%
   }
 
   /*---------------------------------------------------------*/
@@ -1192,36 +1210,76 @@ header img {
     margin: 0; /* Largeur ajustée */
   }
   
-  /*----------------------- Section Localisation --------------------*/
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ conteneur localisation ------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+  
   /* Liste des localisations */
   .location-list {
     width: 80vw;
     grid-template-columns: repeat(3, 18vw); /* 3 colonnes égales */
-    padding-left: 3%; /* Espacement à gauche */
+    padding-left: 2.5%; /* Espacement à gauche */
+    margin:1% auto;
   }
 
   /*---------------------------------------------------------*/
   /* Section consentement */
   .consentement {
-    width: 45vw; /* Largeur ajustée */
-    margin: 2% auto; /* Centre horizontalement */
-    padding-left: 5%; /* Espacement à gauche */
-    padding-bottom: 5%; /* Espacement en bas */
+    width: 50vw; /* Largeur ajustée */
+    padding: 0;
+    margin:0; /* Centre horizontalement */
+    position: center;
   }
-  
+  /* Étiquette associée à la case à cocher */
+.checkbox-label2 {
+  display: flex; /* Utilise flexbox pour organiser les enfants */
+  align-items: center; /* Centre verticalement l'icône et le texte */
+  gap: 0.5rem; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
+  cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
+  margin: 0.5% auto; /* Centre horizontalement si nécessaire */
+  flex-shrink: 0; /* Empêche le rétrécissement des éléments */
+  padding:0.5% 0;
+}
+  .consentement li {
+    width: 100%;
+    padding-left: 2%;
+    margin:0;
+  }
+
   /*---------------------------------------------------------*/
   /* Bouton de soumission */
   .btn-submit {
-    font-size: 1.2rem; /* Taille de texte augmentée */
+    font-size: 0.9rem; /* Taille de texte augmentée */
+    width:15vw
   }
 
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ bouton close  --------------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+  /* Bouton de fermeture (croix) */
+  .close {
+    padding-right:6%;
+  }
+
+  /*---------------------------------------------------------*/
+  .close span {
+    font-weight: 100; /* Applique un poids de police moyen */
+    background-color: transparent; /* Fond transparent */
+    transform: rotate(45deg); /* Pivote le symbole pour former une croix */
+    font-size: 2rem; /* Taille de police pour la croix */
+    padding: 4% 1%; /* Aucun espacement en bas */
+    margin: 0; /* Aucune marge en bas */
+  }
+
+
+  
   /*---------------------------------------------------------*/  
   /* Section copyright */
   .copyright {
     position: absolute; /* Positionnement absolu */
-    font-size: 1rem; /* Taille de texte standard */
+    font-size: 0.7rem; /* Taille de texte standard */
     font-weight: 700; /* Texte en gras */
-    padding-top: 5%; /* Espacement en haut */
+    padding-top: 2%; /* Espacement en haut */
     margin: 0; /* Pas de marge supplémentaire */
     left: 5%; /* Positionnement à gauche */
   }
