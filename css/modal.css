@@ -932,6 +932,13 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- SECTION CONSENTEMENT ----------------------------------*/
   /*-----------------------------------------------------------------------------------*/
+
+  .consentement {
+    display: grid;
+    grid-template-rows:repeat(2,3vh);
+    margin:1% ;
+  }
+
   .consentement li {
     padding-left: 5%; /* Espacement à gauche pour alignement */
   }
@@ -1306,7 +1313,7 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- SECTION HEADER ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
-  .html {
+  .html, .body, header, footer {
     max-width:1440px;
   }
   /* Logo */
@@ -1320,6 +1327,7 @@ header img {
   /* Conteneur principal de la navigation */
   .nav {
     width: 60vw; /* Réduit la largeur de la barre de navigation */
+
   }
 
   /*---------------------------------------------------------*/
@@ -1372,6 +1380,7 @@ header img {
   .hero-section {
     position: relative; /* Positionnement relatif pour aligner les éléments internes */
     width: 90%; /* Largeur ajustée pour s'adapter à l'écran */
+    max-width: 1440px;
     display: flex; /* Active Flexbox pour organiser le contenu */
     flex-direction: row; /* Organise les éléments horizontalement */
     background-color: #0b0c07; /* Couleur de fond sombre */
@@ -1453,7 +1462,7 @@ header img {
 
   /* Conteneur principal de la modale */
   .bground {
-    width: 100%; /* Largeur ajustée */
+    width: 100vw; /* Largeur ajustée */
     background-color: white; /* Fond blanc */
   }
 
@@ -1461,7 +1470,7 @@ header img {
 /* Positionnement par défaut de la modale */
 .modal-default {
   top: 9%; /* Positionne la modale à 8% du bord supérieur de l'écran */
-  left:60%;
+  left:50%;
 }
   /*---------------------------------------------------------*/
   /* Modale active */
@@ -1472,9 +1481,9 @@ header img {
   /*---------------------------------------------------------*/
   /* Corps de la modale */
   .modal-body {
-    width: 37vw; /* Largeur réduite pour les ordinateurs */
+    width: 25vw; /* Largeur réduite pour les ordinateurs */
     align-items: center;
-    padding:2% 0;
+    padding:2%;
     margin: 0 auto; /* Centre horizontalement et ajoute un espacement vertical */
     border-radius: 2%; /* Coins arrondis */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
@@ -1485,7 +1494,7 @@ header img {
   .content {
     display: block; /* Positionnement fixe */
     align-items: center;
-    width: 40vw; /* Largeur réduite */
+    width: 25vw; /* Largeur réduite */
     margin: 0 auto; /* Centre horizontalement */
     justify-content: center; /* Centre le contenu */
     padding:0;
@@ -1494,7 +1503,7 @@ header img {
   /*----------------------- Section Formulaires --------------------*/
   /* Conteneur principal du formulaire */
   .formData {
-    width: 30vw; /* Largeur réduite pour les ordinateurs */
+    width: 25vw; /* Largeur réduite pour les ordinateurs */
     margin: 0 auto; /* Centre horizontalement */
     padding:0.5% 0;
     justify-content: flex-start; /* Centre le contenu */
@@ -1508,8 +1517,8 @@ header img {
     padding:2% 5%;
   }
   .form-list input {
-    width:30vw;
-    padding:2% 2%;
+    width:21vw;
+    padding:3% 2%;
     margin:0 5%;
     
   }
@@ -1517,7 +1526,7 @@ header img {
   /* Légendes des formulaires */
   .formData .legend {
     font-size: 0.8rem; /* Taille de texte standard */
-    padding-left: 2.5%; /* Espacement à gauche */
+    padding-left: 2%; /* Espacement à gauche */
     padding-top:1%;
   }
 
@@ -1531,7 +1540,7 @@ header img {
   /*---------------------------------------------------------*/
   /* Éléments de liste dans le formulaire */
   .formData li {
-    width:40vw;
+    width:30vw;
     margin: 0 auto;
     padding: 0;
     margin: 0; /* Largeur ajustée */
@@ -1543,21 +1552,27 @@ header img {
   
   /* Liste des localisations */
   .location-list {
-    width:40vw;
-    grid-template-columns: repeat(3, 12vw); 
-    margin:1% 0;
-    gap:2%
+    width:30vw;
+    grid-template-columns: repeat(3, 8vw);
+    grid-template-rows:repeat(2,3vh); 
+    margin:0;
+    padding: 0;
+    gap:2%;
+    margin:0.5% 0;
   }
   .location-list li span {
     margin :0;
+    padding: 0;
   }
   /*---------------------------------------------------------*/
   /* Section consentement */
   .consentement {
-    width: 30vw; /* Largeur ajustée */
+    width: 30vw;
+    display: grid;
+    grid-template-rows:repeat(2,3vh);
     padding: 0;
     margin:0; /* Centre horizontalement */
-    position: cleft;
+    position: left;
   }
 
   /*---------------------------------------------------------*/
@@ -1574,16 +1589,17 @@ header img {
 
   /*---------------------------------------------------------*/
   .consentement li {
-    width: 100%;
-    padding-left: 2%;
+    width: 30vw;
+    padding-left: 0;
     margin:0;
+    font-size: 0.65rem;
   }
 
   /*---------------------------------------------------------*/
   /* Bouton de soumission */
   .btn-submit {
     font-size: 0.9rem; /* Taille de texte augmentée */
-    width:15vw
+    width:10vw
   }
 
   /*------------------------------------------------------------------------------------*/
@@ -1592,7 +1608,7 @@ header img {
   
   /* Bouton de fermeture (croix) */
   .close {
-    padding-right:6%;
+    padding-right:1%;
   }
 
   /*---------------------------------------------------------*/
@@ -1613,10 +1629,10 @@ header img {
   
   .copyright {
     position: absolute; /* Positionnement absolu */
-    font-size: 0.7rem; /* Taille de texte standard */
+    font-size: 1rem; /* Taille de texte standard */
     font-weight: 700; /* Texte en gras */
-    padding-top: 2%; /* Espacement en haut */
+    padding-top: 1%; /* Espacement en haut */
     margin: 0; /* Pas de marge supplémentaire */
-    left: 5%; /* Positionnement à gauche */
+    left: 10%; /* Positionnement à gauche */
   }
 }
