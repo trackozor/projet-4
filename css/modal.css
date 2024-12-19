@@ -907,6 +907,13 @@ header img {
   /* Conteneur principal de la modale */
   .modal-body {
     margin: 2% auto;
+    width:80%;
+  }
+
+  /*-----------------------------------------------------------------------------------*/
+  .content {
+    width: 70%;
+    padding-left:5%
   }
 
   /*----------------------------------------------------------------*/
@@ -922,7 +929,7 @@ header img {
   /* Conteneur principal des champs de formulaire */
   .formData {
     display: block;
-    width: 80%;
+    width: 70%;
   }
 
   /*----------------------------------------------------------------*/
@@ -942,7 +949,7 @@ header img {
   /* Styles pour les champs de saisie */
   .form-list input {
     padding: 2% 1%; /* Espacement interne ajusté */
-    width:70vw;
+    width:95%;
   }
 
   /*----------------------------------------------------------------*/
@@ -958,9 +965,9 @@ header img {
   .location-list {
     display: grid; /* Active la grille */
     grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
-    grid-template-rows: repeat(3, auto); /* 3 lignes */
+    grid-template-rows: repeat(2, 3vh); /* 3 lignes */
     width: 80vw; /* Réduit la largeur pour les écrans moyens */
-    margin: 0 auto; /* Centre la grille */
+    margin: 1% auto; /* Centre la grille */
     padding-left: 5%;
   }
 
@@ -986,17 +993,23 @@ header img {
   /*--------------------------- SECTION BUTTONS ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
   
+  .close {
+    width:80vw;
+    padding-right:0;
+  }
   /* Bouton de fermeture (croix) */
   .close span {
     font-size: 2.5rem; /* Taille augmentée pour visibilité */
     padding-top: 1%;
-    padding-right:6%
+    padding-left:2%
   }
 
   /*----------------------------------------------------------------*/
   /* Bouton de soumission */
   .btn-submit {
-      width:20%;/* Définit une largeur fixe pour le bouton, proportionnelle au conteneur */
+      display: block;
+      width:20vw;
+      margin:3% 45% ;
   }
 
 
@@ -1356,12 +1369,12 @@ header img {
     max-width:1440px;
   }
 
-
   /*-----------------------------------------------------------------------------------*/
   /* Logo */
   .logo {
     padding:2% 5%; /* Ajoute un léger espacement au-dessus du logo */
   }
+
   /*--------------------------------------------------------------------------------------*/
   /*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
   /*--------------------------------------------------------------------------------------*/
@@ -1369,7 +1382,6 @@ header img {
   /* Conteneur principal de la navigation */
   .nav {
     width: 60vw; /* Réduit la largeur de la barre de navigation */
-
   }
 
   /*---------------------------------------------------------*/
@@ -1665,6 +1677,7 @@ header img {
   }
 
   /*---------------------------------------------------------*/
+  /* Création de la croix avec un symbole + pivoté */
   .close span {
     font-weight: 100; /* Applique un poids de police moyen */
     background-color: transparent; /* Fond transparent */
