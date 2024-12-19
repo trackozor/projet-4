@@ -55,7 +55,7 @@ html {
 /*=============== Style du corps de la page =============*/
 body {
   min-width: 300px;/* Définit une largeur minimale pour garantir une mise en page adaptée aux très petits écrans */
-  max-width: 1200px; /* Limite la largeur maximale du contenu à 1200px pour éviter une trop grande extension sur les grands écrans */
+  max-width: 1440px; /* Limite la largeur maximale du contenu à 1200px pour éviter une trop grande extension sur les grands écrans */
   font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
   background-color: white; /* Définit une couleur de fond blanche pour le corps du document */
   display: flex; /* Utilise Flexbox pour organiser les enfants du <body> */ 
@@ -1222,7 +1222,11 @@ header img {
     margin:1% auto;
   }
 
-  /*---------------------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ conteneur consentement ------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+  
+
   /* Section consentement */
   .consentement {
     width: 50vw; /* Largeur ajustée */
@@ -1230,16 +1234,20 @@ header img {
     margin:0; /* Centre horizontalement */
     position: center;
   }
+
+  /*---------------------------------------------------------*/
   /* Étiquette associée à la case à cocher */
-.checkbox-label2 {
-  display: flex; /* Utilise flexbox pour organiser les enfants */
-  align-items: center; /* Centre verticalement l'icône et le texte */
-  gap: 0.5rem; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
-  cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
-  margin: 0.5% auto; /* Centre horizontalement si nécessaire */
-  flex-shrink: 0; /* Empêche le rétrécissement des éléments */
-  padding:0.5% 0;
-}
+  .checkbox-label2 {
+    display: flex; /* Utilise flexbox pour organiser les enfants */
+    align-items: center; /* Centre verticalement l'icône et le texte */
+    gap: 0.5rem; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
+    cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
+    margin: 0.5% auto; /* Centre horizontalement si nécessaire */
+    flex-shrink: 0; /* Empêche le rétrécissement des éléments */
+    padding:0.5% 0;
+  }
+
+  /*---------------------------------------------------------*/
   .consentement li {
     width: 100%;
     padding-left: 2%;
@@ -1256,6 +1264,7 @@ header img {
   /*------------------------------------------------------------------------------------*/
   /*------------------ bouton close  --------------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
+  
   /* Bouton de fermeture (croix) */
   .close {
     padding-right:6%;
@@ -1273,8 +1282,10 @@ header img {
 
 
   
-  /*---------------------------------------------------------*/  
-  /* Section copyright */
+  /*-----------------------------------------------------------*/
+  /*------------------------ FOOTER ---------------------------*/
+  /*-----------------------------------------------------------*/
+
   .copyright {
     position: absolute; /* Positionnement absolu */
     font-size: 0.7rem; /* Taille de texte standard */
@@ -1291,225 +1302,321 @@ header img {
 /*---------------------------------------------------------------------------------------------------------*/
 
 @media screen and (min-width: 1440px) {  
-
-  /*-----------------------------------*/
-  /* Section Globale */
-  body {
-    max-width: 1240px; /* Limite la largeur maximale du contenu */
+  
+  /*-----------------------------------------------------------------------------------*/
+  /*--------------------------- SECTION HEADER ---------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+  .html {
+    max-width:1440px;
   }
-
-  /*-----------------------------------*/
-  /* Section Header */
-  header {
-    width: 70vw; /* Adapte la largeur du header */
-    display: flex; /* Active Flexbox pour organiser les enfants */
-    font-weight: 900; /* Texte gras */
+  /* Logo */
+  .logo {
+    padding:2% 5%; /* Ajoute un léger espacement au-dessus du logo */
   }
-
-  /*-----------------------------------*/
-  header img {
-    width: 90%; /* Réduit la taille du logo */
-    margin-top: 3%; /* Ajoute un espace vertical au-dessus du logo */
-    padding-left: 8%; /* Espacement à gauche */
-    padding-right: 5%; /* Espacement à droite */
-  }
-
-  /*-----------------------------------*/
-  /* Icône du menu */
-  .topnav i {
-    display: none; /* Masque l'icône pour les grands écrans */
-  }
-
-  /*-----------------------------------*/
-  /* Liens de navigation */
-  .topnav li span {
-    font-size: 1.2rem; /* Augmente légèrement la taille de la police */
-    font-weight: 700; /* Texte semi-gras */
-    position:absolute;
-  }
-
-  /*-----------------------------------*/
-  .nav-links {
-    gap: 3%; /* Espacement entre les liens */
-    display: flex; /* Organisation en ligne */
-    padding-top: 5%; /* Espacement en haut */
-    flex-wrap: nowrap; /* Empêche les liens de revenir à la ligne */
-    font-weight: 900; /* Texte gras */
-    width: 100%; /* Utilise toute la largeur disponible */
-    justify-content: flex-end; /* Aligne les liens à droite */
-    opacity: 1; /* Liens visibles */
-  }
-
-  /*-----------------------------------*/
-  /* Conteneur des liens */
+  /*--------------------------------------------------------------------------------------*/
+  /*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
+  /*--------------------------------------------------------------------------------------*/
+  
+  /* Conteneur principal de la navigation */
   .nav {
-    width: 60vw; /* Adapte la largeur */
+    width: 60vw; /* Réduit la largeur de la barre de navigation */
   }
 
-  /*-----------------------------------*/
-  /* Section principale */
+  /*---------------------------------------------------------*/
+  /* Icône du menu (barre hamburger) */
+  .topnav i {
+    display: none; /* Masque l'icône du menu sur les grands écrans */
+  }
+
+  /*---------------------------------------------------------*/
+  /* Styles pour le texte des liens de navigation */
+  .topnav li span {
+    display: flex; /* Affiche les liens sous forme de flexbox */
+    font-size: 1.2rem; /* Taille de police standardisée */
+    font-weight: 700; /* Poids du texte plus épais */
+    padding:0.6rem 0.8rem;
+  }
+
+  /*----------------------------------------------------------------*/
+  /* Style au survol */
+  .topnav span:hover {
+    background-color: #ff0000; /* Change la couleur de fond en rouge vif (#ff0000) au survol */
+    color: #ffffff; /* Change la couleur du texte en blanc au survol */
+    border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
+    font-weight: 500; /* Rend le texte légèrement plus épais */
+    padding: 0.5rem; /* Ajoute un espacement interne de 0.3rem tout autour */
+    text-decoration: underline; /* Souligne le texte pour indiquer une interaction */
+}
+  /*---------------------------------------------------------*/
+  /* Menu textuel */
+  .nav-links  {
+    gap: 2%; /* Espacement entre les liens */
+    display: flex; /* Affiche les liens sous forme de flexbox */
+    flex-direction: row; /* Organise les liens en ligne */
+    justify-content: flex-end; /* Aligne les liens à droite */
+    flex-wrap: nowrap; /* Empêche les liens de revenir à la ligne */
+    font-weight: 900; /* Texte en gras */
+    width: 65%; /* Le menu occupe toute la largeur disponible */
+    padding-top: 1.5%; /* Espacement en haut */
+    opacity: 1; /* Les liens sont visibles */
+    position: absolute;
+    top:2%;
+    right:0;
+  }
+
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ SECTION PRINCIPALE ----------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+
+  /* Conteneur */
   .hero-section {
-    width: 70vw; /* Largeur réduite pour une mise en page plus compacte */
-    display: flex; /* Active Flexbox */
+    position: relative; /* Positionnement relatif pour aligner les éléments internes */
+    width: 90%; /* Largeur ajustée pour s'adapter à l'écran */
+    display: flex; /* Active Flexbox pour organiser le contenu */
     flex-direction: row; /* Organise les éléments horizontalement */
-    background-color: #0b0c07; /* Fond sombre */
-    border-radius: 0.5rem; /* Coins légèrement arrondis */
-  }
-
-  /*-----------------------------------*/
-  .hero-content {
-    width: 60vw; /* Largeur ajustée pour le contenu */
-    justify-content: flex-end; /* Aligne le contenu à droite */
-    padding: 0 4%; /* Ajoute un espacement interne */
-  }
-
-  /*-----------------------------------*/
-  .hero-section h2 {
-    color: #ffffff; /* Texte blanc */
-    position: absolute; /* Positionnement absolu */
-    z-index: 1; /* Place le titre au-dessus des autres éléments */
-    font-size: 5rem; /* Grande taille pour le titre */
-    flex-direction: row; /* Organisation horizontale */
-    flex-wrap: nowrap; /* Empêche le retour à la ligne */
-    width: 65%; /* Adapte la largeur */
-    top: 0%; /* Position verticale */
-    font-weight: 500; /* Texte moyennement épais */
-  }
-
-  /*-----------------------------------*/
-  .hero-section p {
-    color: lightgray; /* Texte gris clair */
-    font-size: 1.5rem; /* Texte légèrement plus grand */
-    font-weight: 300; /* Texte plus fin */
-    line-height: 2rem; /* Hauteur de ligne augmentée pour la lisibilité */
-    padding-bottom: 10%; /* Ajoute un espacement en bas */
-  }
-
-  /*-----------------------------------*/
-  .hero-section img {
-    position: relative; /* Positionnement relatif */
-    width: 90vw; /* Largeur ajustée */
-    margin: 0; /* Pas de marge */
-    padding: 0; /* Pas d'espacement interne */
-    object-fit: contain; /* Garde les proportions de l'image */
-    border-radius: 0 1rem 1rem 0; /* Coins arrondis à droite */
-  }
-
-  /*-----------------------------------*/
-  /* Modale */
-  .modal-default {
-    top: 10.5%; /* Position ajustée pour la modale */
-    transition: top 1s ease-in-out; /* Transition douce */
-  }
-
-  /*-----------------------------------*/
-  .desktop-signup {
-    display: flex; /* Affiche le bouton d'inscription */
-    font-size: 1.6rem; /* Texte légèrement plus grand */
-    width: 12vw; /* Largeur ajustée */
-    padding: 2% 5%; /* Espacement interne */
-    justify-content: center; /* Centre le texte */
-    margin-bottom: 25%; /* Ajoute un espacement en bas */
-  }
-
-  /*-----------------------------------*/
-  .mobile-signup {
-    display: none; /* Masque le bouton d'inscription mobile */
-  }
-
-  /*-----------------------------------*/
-  .bground {
-    width: 100vw; /* Largeur maximale */
-    background-color: white; /* Fond blanc */
-  }
-
-  /*-----------------------------------*/
-  .bground.active {
-    width: 95vw; /* Réduit légèrement la largeur */
-  }
-
-  /*-----------------------------------*/
-  .modal-body {
-    width: 40vw; /* Largeur ajustée pour les écrans larges */
-    justify-content: center; /* Centre le contenu horizontalement */
-    margin: 2% auto; /* Centre la modale avec un espacement vertical */
-    padding-bottom: 2%; /* Ajoute un espacement en bas */
+    background-color: #0b0c07; /* Couleur de fond sombre */
+    margin: 2% auto; /* Centre horizontalement */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
   }
 
-  /*-----------------------------------*/
-  .content {
-    display: fixed; /* Position fixe */
-    width: 40vw; /* Largeur ajustée */
-    height: auto; /* Hauteur ajustée automatiquement */
-    margin: 0 auto; /* Centre le contenu horizontalement */
-    justify-content: center; /* Centre le contenu */
+  /*---------------------------------------------------------*/
+  /* Conteneur de contenu dans la section principale */
+  .hero-content {
+    width: 60%; /* Le contenu occupe la moitié de la largeur */
+    justify-content: flex-end; /* Aligne le contenu à droite */
+    padding: 4%; /* Ajoute un espacement interne */
+    margin-bottom: 5%; /* Ajoute un espacement en bas */
   }
 
-  /*-----------------------------------*/
-  .formData {
-    width: 40vw; /* Largeur ajustée pour le formulaire */
-    margin: 0 auto; /* Centre le formulaire */
-    justify-content: center; /* Centre le contenu */
+  /*---------------------------------------------------------*/
+  /* Titre dans la section principale */
+  .hero-section h2 {
+    color: #ffffff; /* Couleur blanche pour le titre */
+    position: absolute; /* Positionnement absolu */
+    z-index: 3; /* Place le titre au-dessus des autres éléments */
+    font-size: 4rem; /* Grande taille pour attirer l'attention */
+    flex-direction: row; /* Organisation horizontale */
+    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+    width: 65%; /* Le titre occupe 70% de la largeur */
+    top:0; /* Positionnement vertical ajusté */
+    left: 4%; /* Positionnement horizontal ajusté */
+    font-weight: 500; /* Poids moyen du texte */
+    line-height: 4.5rem;
   }
 
-  /*-----------------------------------*/
-  .formData label {
-    font-size: 1rem; /* Taille de texte standard */
+  /*---------------------------------------------------------*/
+  /* Paragraphe dans la section principale */
+  .hero-section p {
+    color: #ffffff; /* Texte blanc */
+    font-size: 1.5rem; /* Taille de texte standard */
+    font-weight: 500; /* Texte légèrement en gras */
+    margin-bottom: 25%; /* Espacement en bas */
+    line-height: 2rem; /* Hauteur de ligne pour la lisibilité */
     padding-left: 2%; /* Espacement à gauche */
-    margin: 1% 0; /* Espacement vertical */
-    padding: 1%; /* Espacement interne */
   }
 
-  /*-----------------------------------*/
-  .formData .legend {
-    font-size: 1rem; /* Taille de texte standard */
-    padding-left: 6%; /* Espacement à gauche */
-  }
-
-  /*-----------------------------------*/
-  .text-control {
-    font-size: 1rem; /* Taille de texte standard */
-    padding: 1%; /* Espacement interne */
-    height: 2%; /* Hauteur ajustée */
-  }
-
-  /*-----------------------------------*/
-  .formData li {
-    width: 35vw; /* Largeur ajustée */
-    padding-left: 5%; /* Espacement à gauche */
+  /*---------------------------------------------------------*/
+  /* Image dans la section principale */
+  .hero-section img {
+    width: 75vw; /* Largeur ajustée à l'écran */
     margin: 0; /* Pas de marge */
+    padding: 0; /* Pas de padding */
+    object-fit: cover; /* Remplit l'espace tout en gardant le ratio */
   }
 
-  /*-----------------------------------*/
-  .location-list {
-    grid-template-columns: repeat(3, 14vw); /* 3 colonnes égales */
-    grid-template-rows: repeat(2, 2vw); /* 2 lignes égales */
-    padding-left: 4%; /* Espacement à gauche */
-    padding-top: 1%; /* Espacement en haut */
-    margin: 0 auto; /* Centre horizontalement */
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ BOUTON " JE m'inscris" ------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+
+  /* Bouton d'inscription pour les ordinateurs */
+  .desktop-signup {
+    display: flex; /* Active Flexbox pour centrer les éléments */
+    font-size: 1rem; /* Taille de texte augmentée */
+    padding: 1% 0; /* Ajoute un espacement interne */
+    justify-content: center; /* Centre le contenu horizontalement */
+    border-radius:0.3rem;
+    width:12vw;
+    margin: 2% 0;
+    position: absolute;
+    bottom:8%
   }
 
-  /*-----------------------------------*/
-  .consentement {
-    width: 40vw; /* Largeur ajustée */
-    margin: 2% auto; /* Centre horizontalement */
-    padding-left: 9%; /* Espacement à gauche */
-    padding-bottom: 1%; /* Espacement en bas */
+  /*---------------------------------------------------------*/
+  /* Masque le bouton d'inscription pour mobile */
+  .mobile-signup {
+    display: none;
+  }
+
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ Fenêtre modale --------------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+
+  /* Conteneur principal de la modale */
+  .bground {
+    width: 100%; /* Largeur ajustée */
+    background-color: white; /* Fond blanc */
+  }
+
+  /*----------------------------------------------------------------*/
+/* Positionnement par défaut de la modale */
+.modal-default {
+  top: 9%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+  left:60%;
+}
+  /*---------------------------------------------------------*/
+  /* Modale active */
+  .bground.active {
+    width: 100vw; /* Maintient la largeur */
+  }
+
+  /*---------------------------------------------------------*/
+  /* Corps de la modale */
+  .modal-body {
+    width: 37vw; /* Largeur réduite pour les ordinateurs */
+    align-items: center;
+    padding:2% 0;
+    margin: 0 auto; /* Centre horizontalement et ajoute un espacement vertical */
+    border-radius: 2%; /* Coins arrondis */
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
   }
   
-  /*-----------------------------------*/
-  .btn-submit {
-    font-size: 1rem; /* Taille de texte standard */
+  /*---------------------------------------------------------*/
+  /* Contenu principal de la modale */
+  .content {
+    display: block; /* Positionnement fixe */
+    align-items: center;
+    width: 40vw; /* Largeur réduite */
+    margin: 0 auto; /* Centre horizontalement */
+    justify-content: center; /* Centre le contenu */
+    padding:0;
   }
 
-  /*-----------------------------------*/  
+  /*----------------------- Section Formulaires --------------------*/
+  /* Conteneur principal du formulaire */
+  .formData {
+    width: 30vw; /* Largeur réduite pour les ordinateurs */
+    margin: 0 auto; /* Centre horizontalement */
+    padding:0.5% 0;
+    justify-content: flex-start; /* Centre le contenu */
+  }
+
+  /*---------------------------------------------------------*/
+  /* Labels des formulaires */
+  .formData label {
+    font-size: 0.8rem; /* Taille de texte standard */
+    margin: 0;
+    padding:2% 5%;
+  }
+  .form-list input {
+    width:30vw;
+    padding:2% 2%;
+    margin:0 5%;
+    
+  }
+  /*---------------------------------------------------------*/
+  /* Légendes des formulaires */
+  .formData .legend {
+    font-size: 0.8rem; /* Taille de texte standard */
+    padding-left: 2.5%; /* Espacement à gauche */
+    padding-top:1%;
+  }
+
+  /*---------------------------------------------------------*/
+  /* Champs d'entrée */
+  .text-control {
+    font-size: 0.8rem; /* Taille de texte standard */
+    padding-left:5%
+  }
+
+  /*---------------------------------------------------------*/
+  /* Éléments de liste dans le formulaire */
+  .formData li {
+    width:40vw;
+    margin: 0 auto;
+    padding: 0;
+    margin: 0; /* Largeur ajustée */
+  }
+  
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ conteneur localisation ------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+  
+  /* Liste des localisations */
+  .location-list {
+    width:40vw;
+    grid-template-columns: repeat(3, 12vw); 
+    margin:1% 0;
+    gap:2%
+  }
+  .location-list li span {
+    margin :0;
+  }
+  /*---------------------------------------------------------*/
+  /* Section consentement */
+  .consentement {
+    width: 30vw; /* Largeur ajustée */
+    padding: 0;
+    margin:0; /* Centre horizontalement */
+    position: cleft;
+  }
+
+  /*---------------------------------------------------------*/
+  /* Étiquette associée à la case à cocher */
+  .checkbox-label2 {
+    display: flex; /* Utilise flexbox pour organiser les enfants */
+    align-items: center; /* Centre verticalement l'icône et le texte */
+    gap:1%; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
+    cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
+    margin: 0.5% auto; /* Centre horizontalement si nécessaire */
+    flex-shrink: 0; /* Empêche le rétrécissement des éléments */
+    padding:0.5% 0;
+  }
+
+  /*---------------------------------------------------------*/
+  .consentement li {
+    width: 100%;
+    padding-left: 2%;
+    margin:0;
+  }
+
+  /*---------------------------------------------------------*/
+  /* Bouton de soumission */
+  .btn-submit {
+    font-size: 0.9rem; /* Taille de texte augmentée */
+    width:15vw
+  }
+
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ bouton close  --------------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+  
+  /* Bouton de fermeture (croix) */
+  .close {
+    padding-right:6%;
+  }
+
+  /*---------------------------------------------------------*/
+  .close span {
+    font-weight: 100; /* Applique un poids de police moyen */
+    background-color: transparent; /* Fond transparent */
+    transform: rotate(45deg); /* Pivote le symbole pour former une croix */
+    font-size: 2rem; /* Taille de police pour la croix */
+    padding: 4% 1%; /* Aucun espacement en bas */
+    margin: 0; /* Aucune marge en bas */
+  }
+
+
+  
+  /*-----------------------------------------------------------*/
+  /*------------------------ FOOTER ---------------------------*/
+  /*-----------------------------------------------------------*/
+  
   .copyright {
     position: absolute; /* Positionnement absolu */
-    font-size: 1rem; /* Taille de texte standard */
-    font-weight: 700; /* Texte gras */
-    margin: 0; /* Pas de marge supplémentaire */
+    font-size: 0.7rem; /* Taille de texte standard */
+    font-weight: 700; /* Texte en gras */
     padding-top: 2%; /* Espacement en haut */
-    left: 9%; /* Positionnement à gauche */
+    margin: 0; /* Pas de marge supplémentaire */
+    left: 5%; /* Positionnement à gauche */
   }
 }
