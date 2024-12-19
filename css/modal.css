@@ -907,13 +907,13 @@ header img {
   /* Conteneur principal de la modale */
   .modal-body {
     margin: 2% auto;
-    width:80%;
+    width:100%;
   }
 
   /*-----------------------------------------------------------------------------------*/
   .content {
-    width: 70%;
-    padding-left:5%
+    width: 80%;
+    margin:0 auto;
   }
 
   /*----------------------------------------------------------------*/
@@ -930,19 +930,24 @@ header img {
   .formData {
     display: block;
     width: 70%;
+    font-weight: 500;
   }
 
   /*----------------------------------------------------------------*/
   /* Styles pour la légende des champs de formulaire */
   .formData .legend {
-    font-size: 1rem;
-    padding-left: 5%;
+    font-size: 0.8rem;
+    padding-left: 7%;
+    font-weight: 500;
+    margin: 0;
+    padding-top:3%;
   }
 
   /*----------------------------------------------------------------*/
   /* Styles pour les éléments de liste dans les formulaires */
   .form-list li {
     width: 95%;
+    padding:0;
   }
 
   /*----------------------------------------------------------------*/
@@ -967,8 +972,8 @@ header img {
     grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
     grid-template-rows: repeat(2, 3vh); /* 3 lignes */
     width: 80vw; /* Réduit la largeur pour les écrans moyens */
-    margin: 1% auto; /* Centre la grille */
-    padding-left: 5%;
+    margin: 2% auto; /* Centre la grille */
+    padding-left: 8%;
   }
 
   /*-----------------------------------------------------------------------------------*/
@@ -979,29 +984,39 @@ header img {
   .consentement {
     display: grid;
     grid-template-rows:repeat(2,3vh);
-    margin:1% ;
+    margin:1% 0;
   }
 
   /*-----------------------------------------------------------------------------------*/
   /*-- liste --*/
   .consentement li {
-    padding-left: 5%; /* Espacement à gauche pour alignement */
+    padding-left: 7%; /* Espacement à gauche pour alignement */
   }
 
+  /*-----------------------------------------------------------------------------------*/
+  /* icône validation box */
+  .checkbox-icon2 {
+    width:0.9rem;
+    height:0.9rem;
+  }
 
+  /*-----------------------------------------------------------------------------------*/
+  /* Coche validation */
+  .checkbox-icon2::after {
+    font-size: 0.7rem;
+  }
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- SECTION BUTTONS ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
   
   .close {
-    width:80vw;
-    padding-right:0;
+    width:83vw;
   }
+
   /* Bouton de fermeture (croix) */
   .close span {
     font-size: 2.5rem; /* Taille augmentée pour visibilité */
     padding-top: 1%;
-    padding-left:2%
   }
 
   /*----------------------------------------------------------------*/
@@ -1009,7 +1024,7 @@ header img {
   .btn-submit {
       display: block;
       width:20vw;
-      margin:3% 45% ;
+      margin:3% 35% ;
   }
 
 
@@ -1019,7 +1034,7 @@ header img {
   
   /* Classe pour le message d'erreur */
   .error-modal {
-    font-size: 1rem; /* Taille augmentée pour lisibilité */
+    font-size: 0.9rem; /* Taille augmentée pour lisibilité */
     padding-bottom: 0; /* Supprime l'espacement en bas */
   }
 }
