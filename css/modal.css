@@ -738,34 +738,44 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /*----------------------------- SECTION HEADER --------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
+
+  /* Conteneur principal du header */
   header {
-    width: 95%;
-    margin: 2% auto;
+      width: 95%; /* Le header occupe 95% de la largeur de la fenêtre */
+      margin: 2% auto; /* Ajoute un espacement de 2% autour et centre horizontalement */
   }
 
+  /*----------------------------------------------------------------*/
+  /* Logo dans le header */
   header img {
-    max-width: 150px;
-    height: auto; /* Préserve le ratio de l'image */
+      max-width: 150px; /* Limite la largeur maximale de l'image à 150 pixels */
+      height: auto; /* Conserve les proportions originales de l'image */
   }
 
   /*-----------------------------------------------------------------------------------*/
   /*----------------------------- SECTION TOPNAV --------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
+  
+  /* Conteneur principal de la barre de navigation */
   .topnav {
-    display: flex;
+    display: flex;/* Utilise Flexbox pour organiser les éléments */
     flex-direction: column; /* Affiche les éléments en colonne */
     align-items: center; /* Centre les éléments horizontalement */
-    padding: 0;
-    margin: 0;
+    padding: 0;/* Supprime les marges internes */
+    margin: 0;/* Supprime les marges externes */
     background-color: transparent; /* Fond transparent */
     justify-content: center; /* Centre les éléments verticalement */
   }
 
+  /*----------------------------------------------------------------*/
+  /* Icône dans la barre de navigation */
   .topnav i {
     font-size: 1.3rem; /* Taille des icônes */
     top: 30px; /* Positionne verticalement */
   }
 
+  /*----------------------------------------------------------------*/
+  /* Liens affichés en mode responsive */
   .topnav.responsive .nav-links {
     display: flex; /* Affiche les liens */
     flex-direction: row; /* Organisation en ligne */
@@ -773,39 +783,49 @@ header img {
     justify-content: center; /* Centre les liens */
     text-align: center; /* Centre le texte */
     width: 85vw; /* Occupe toute la largeur */
-    position: relative;
+    position: relative; /* Position relative pour un ajustement dynamique */
     padding-top: 4%; /* Ajoute un espace en haut */
     opacity: 1; /* Rend les liens visibles */
     transition: top 2s ease-in-out; /* Transition douce */
   }
 
+  /*----------------------------------------------------------------*/
+  /* Style des lignes la liste dans .nav-links*/
   .nav-links li {
     list-style: none; /* Supprime les puces */
     flex: 1; /* Chaque élément prend une part égale de l'espace disponible */
     text-align: center; /* Centre le contenu */
   }
 
+  /*----------------------------------------------------------------*/
+  /* Styles pour les liens (a) */
   .nav-links a {
     font-size: 1.3rem; /* Augmente la taille de la police */
-    width: auto;
+    width: auto;/* Ajuste la largeur automatiquement */
   }
 
+  /*----------------------------------------------------------------*/
+  /* Conteneur pour le texte des liens (span) */
   .topnav span {
     display: inline-block; /* Affiche chaque lien en bloc */
     width: 100%; /* Occupe toute la largeur de l'espace disponible */
     padding: 0.5rem 1rem; /* Ajoute un espace interne */
     transition: all 0.3s ease-in-out; /* Transition douce pour le hover */
   }
-    .topnav span:hover {
-  width:100%;
-  background-color: #ff0000; /* Change la couleur de fond en rouge vif (#ff0000) au survol */
-  color: #ffffff; /* Change la couleur du texte en blanc au survol */
-  border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
-  font-weight: 500; /* Rend le texte légèrement plus épais */
-  text-decoration: underline; /* Souligne le texte pour indiquer une interaction */
-  padding:2% 1%;
-  flex-wrap: nowrap;
+  /*----------------------------------------------------------------*/
+  /* Style au survol */
+  .topnav span:hover {
+    width:100%;/* Laisse le texte occuper toute la largeur */
+    background-color: #ff0000; /* Change la couleur de fond en rouge vif (#ff0000) au survol */
+    color: #ffffff; /* Change la couleur du texte en blanc au survol */
+    border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
+    font-weight: 500; /* Rend le texte légèrement plus épais */
+    text-decoration: underline; /* Souligne le texte pour indiquer une interaction */
+    padding:2% 1%;/* Augmente légèrement l'espacement interne au survol */
+    flex-wrap: nowrap;/* Empêche le retour à la ligne du contenu */
   }
+
+
   /*-----------------------------------------------------------------------------------*/
   /*----------------------------- SECTION HERO ----------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
@@ -813,12 +833,14 @@ header img {
     width: 95vw; /* Largeur adaptée aux écrans moyens */
   }
 
+  /*----------------------------------------------------------------*/
   .hero-section h2 {
     width: 85%;
     font-size: 2rem; /* Taille adaptée aux écrans moyens */
     margin: 2% auto; /* Centre le titre */
   }
 
+  /*----------------------------------------------------------------*/
   .hero-content {
     width: 95%; /* Largeur adaptée */
     margin: 1% auto;
@@ -828,6 +850,7 @@ header img {
     flex-wrap: wrap; /* Permet aux éléments de revenir à la ligne */
   }
 
+  /*----------------------------------------------------------------*/
   .hero-section p {
     width: 90%;
     margin: 0 auto;
@@ -836,12 +859,14 @@ header img {
     text-align: center; /* Texte centré */
   }
 
+  /*----------------------------------------------------------------*/
   .hero-section img {
     width: 80%;
     margin: 0 auto;
     object-fit: cover; /* Maintient les proportions tout en remplissant l'espace */
   }
 
+  /*----------------------------------------------------------------*/
   .mobile-signup {
     font-size: 1rem; /* Taille de police standardisée */
     margin: 2% auto; /* Centre le bouton */
@@ -850,6 +875,8 @@ header img {
     padding: 1% 0; /* Espacement interne vertical */
   }
 
+
+
   /*-----------------------------------------------------------------------------------*/
   /*----------------------------- SECTION MODAL ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
@@ -857,6 +884,7 @@ header img {
     margin: 2% auto;
   }
 
+  /*----------------------------------------------------------------*/
   .modal-default {
     top: 10%; /* Position ajustée pour les écrans moyens */
   }
@@ -869,15 +897,18 @@ header img {
     padding-left: 5%;
   }
 
+  /*----------------------------------------------------------------*/
   .formData {
     display: block;
     width: 80%;
   }
 
+  /*----------------------------------------------------------------*/
   .form-list li {
     width: 95%;
   }
 
+  /*----------------------------------------------------------------*/
   .form-list input {
     padding: 2% 1%; /* Espacement interne ajusté */
     width:70vw;
@@ -911,15 +942,19 @@ header img {
     padding-right:6%
   }
 
+  /*----------------------------------------------------------------*/
   .text-control {
     font-size: 1rem; /* Taille adaptée aux écrans moyens */
   }
 
+  /*----------------------------------------------------------------*/
   .error-modal {
     font-size: 1rem; /* Taille augmentée pour lisibilité */
     padding-bottom: 0; /* Supprime l'espacement en bas */
   }
 }
+
+
 /*---------------------------------------------------------------------------------------------------------*/
 /* -----------------Ordinateurs portable entre 1024 px et 1440px ------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
