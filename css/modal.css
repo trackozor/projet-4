@@ -887,11 +887,14 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /*----------------------------- SECTION MODAL ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
+  
+  /* Conteneur principal de la modale */
   .modal-body {
     margin: 2% auto;
   }
 
   /*----------------------------------------------------------------*/
+  /* Styles pour la modale par défaut */
   .modal-default {
     top: 10%; /* Position ajustée pour les écrans moyens */
   }
@@ -899,23 +902,28 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /*----------------------------- SECTION FORMS ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
-  .formData .legend {
-    font-size: 1rem;
-    padding-left: 5%;
-  }
-
-  /*----------------------------------------------------------------*/
+  
+  /* Conteneur principal des champs de formulaire */
   .formData {
     display: block;
     width: 80%;
   }
 
   /*----------------------------------------------------------------*/
+  /* Styles pour la légende des champs de formulaire */
+  .formData .legend {
+    font-size: 1rem;
+    padding-left: 5%;
+  }
+
+  /*----------------------------------------------------------------*/
+  /* Styles pour les éléments de liste dans les formulaires */
   .form-list li {
     width: 95%;
   }
 
   /*----------------------------------------------------------------*/
+  /* Styles pour les champs de saisie */
   .form-list input {
     padding: 2% 1%; /* Espacement interne ajusté */
     width:70vw;
@@ -963,198 +971,220 @@ header img {
 
 
 /*---------------------------------------------------------------------------------------------------------*/
-/* -----------------Ordinateurs portable entre 1024 px et 1440px ------------------------------------------*/
+/* ----------------- Ordinateurs portables entre 1024px et 1440px -----------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
 
-@media screen and (min-width: 1024px) and (max-width:1439px) {
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
 
   /*---------------------------------------------------------*/
-  /* icône */
+  /* Icône du menu (barre hamburger) */
   .topnav i {
-    display: none;
+    display: none; /* Masque l'icône du menu sur les grands écrans */
   }
 
   /*---------------------------------------------------------*/
+  /* Styles pour le texte des liens de navigation */
   .topnav li span {
-    display: flex;
-    font-size: 1rem;
-    font-weight: 700;    
+    display: flex; /* Affiche les liens sous forme de flexbox */
+    font-size: 1rem; /* Taille de police standardisée */
+    font-weight: 700; /* Poids du texte plus épais */
   }
   
   /*---------------------------------------------------------*/
+  /* Logo */
   .logo {
-    padding-top:1%;
+    padding-top: 1%; /* Ajoute un léger espacement au-dessus du logo */
   }
 
   /*---------------------------------------------------------*/
-  /* menu textuelle */
+  /* Menu textuel */
   .nav-links  {
-    gap: 3%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
-    font-weight: 900;
-    width: 100%;
-    padding-top:1.5%;
-    opacity: 1;
-  }
-  
-  /*---------------------------------------------------------*/
-  .nav {
-    width: 60vw;
+    gap: 3%; /* Espacement entre les liens */
+    display: flex; /* Affiche les liens sous forme de flexbox */
+    flex-direction: row; /* Organise les liens en ligne */
+    justify-content: flex-end; /* Aligne les liens à droite */
+    flex-wrap: nowrap; /* Empêche les liens de revenir à la ligne */
+    font-weight: 900; /* Texte en gras */
+    width: 100%; /* Le menu occupe toute la largeur disponible */
+    padding-top: 1.5%; /* Espacement en haut */
+    opacity: 1; /* Les liens sont visibles */
   }
 
-  /*------------section principale ------------- */
+  /*---------------------------------------------------------*/
+  /* Conteneur principal de la navigation */
+  .nav {
+    width: 60vw; /* Réduit la largeur de la barre de navigation */
+  }
+
+  /*------------------------ Section principale ------------------------*/
   /* Conteneur */
   .hero-section {
-    position:relative;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    background-color: #0b0c07;
-    margin: 0 auto;
+    position: relative; /* Positionnement relatif pour aligner les éléments internes */
+    width: 90%; /* Largeur ajustée pour s'adapter à l'écran */
+    display: flex; /* Active Flexbox pour organiser le contenu */
+    flex-direction: row; /* Organise les éléments horizontalement */
+    background-color: #0b0c07; /* Couleur de fond sombre */
+    margin: 0 auto; /* Centre horizontalement */
   }
 
   /*---------------------------------------------------------*/
+  /* Conteneur de contenu dans la section principale */
   .hero-content {
-    width: 50%;
-    justify-content:flex-end;
-    padding: 4%;
-    margin-bottom: 5%;
+    width: 50%; /* Le contenu occupe la moitié de la largeur */
+    justify-content: flex-end; /* Aligne le contenu à droite */
+    padding: 4%; /* Ajoute un espacement interne */
+    margin-bottom: 5%; /* Ajoute un espacement en bas */
   }
 
   /*---------------------------------------------------------*/
-  .hero-section h2{
-    color: #ffffff;
-    position: absolute;
-    z-index: 3;
-    font-size: 4rem;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 70%;
-    top:-5.5%;
-    left:4%;
-    font-weight: 500;
+  /* Titre dans la section principale */
+  .hero-section h2 {
+    color: #ffffff; /* Couleur blanche pour le titre */
+    position: absolute; /* Positionnement absolu */
+    z-index: 3; /* Place le titre au-dessus des autres éléments */
+    font-size: 4rem; /* Grande taille pour attirer l'attention */
+    flex-direction: row; /* Organisation horizontale */
+    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+    width: 70%; /* Le titre occupe 70% de la largeur */
+    top: -5.5%; /* Positionnement vertical ajusté */
+    left: 4%; /* Positionnement horizontal ajusté */
+    font-weight: 500; /* Poids moyen du texte */
   }
 
   /*---------------------------------------------------------*/
-  .hero-section p{
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 500;
-    padding-bottom: 8%;
-    line-height: 1.5rem;
-    padding-left: 2%;
+  /* Paragraphe dans la section principale */
+  .hero-section p {
+    color: #ffffff; /* Texte blanc */
+    font-size: 1rem; /* Taille de texte standard */
+    font-weight: 500; /* Texte légèrement en gras */
+    padding-bottom: 8%; /* Espacement en bas */
+    line-height: 1.5rem; /* Hauteur de ligne pour la lisibilité */
+    padding-left: 2%; /* Espacement à gauche */
   }
 
   /*---------------------------------------------------------*/
+  /* Image dans la section principale */
   .hero-section img {
-    width: 75vw;
-    margin: 0;
-    padding: 0;
-    object-fit: cover;
+    width: 75vw; /* Largeur ajustée à l'écran */
+    margin: 0; /* Pas de marge */
+    padding: 0; /* Pas de padding */
+    object-fit: cover; /* Remplit l'espace tout en gardant le ratio */
   }
 
   /*---------------------------------------------------------*/
+  /* Bouton d'inscription pour les ordinateurs */
   .desktop-signup {
-    display: flex;
-    font-size: 1.2rem;
-    padding:2%;
-    justify-content: center;
+    display: flex; /* Active Flexbox pour centrer les éléments */
+    font-size: 1.2rem; /* Taille de texte augmentée */
+    padding: 2%; /* Ajoute un espacement interne */
+    justify-content: center; /* Centre le contenu horizontalement */
   }
 
   /*---------------------------------------------------------*/
-  .mobile-signup{
+  /* Masque le bouton d'inscription pour mobile */
+  .mobile-signup {
     display: none;
   }
 
-  /*---------------------------------------------------------*/
+  /*----------------------- Section Modale --------------------*/
+  /* Conteneur principal de la modale */
   .bground {
-    width: 95vw;
-    max-width: 1024px;
-    background-color: white;
+    width: 95vw; /* Largeur ajustée */
+    max-width: 1024px; /* Largeur maximale */
+    background-color: white; /* Fond blanc */
   }
 
   /*---------------------------------------------------------*/
+  /* Modale active */
   .bground.active {
-    width:95vw
+    width: 95vw; /* Maintient la largeur */
   }
 
   /*---------------------------------------------------------*/
+  /* Corps de la modale */
   .modal-body {
-    width: 50vw;
-    justify-content: center;
-    margin:2% auto;
-    border-radius: 2%;
-    padding-bottom: 2%;
-    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+    width: 50vw; /* Largeur réduite pour les ordinateurs */
+    justify-content: center; /* Centre le contenu horizontalement */
+    margin: 2% auto; /* Centre horizontalement et ajoute un espacement vertical */
+    border-radius: 2%; /* Coins arrondis */
+    padding-bottom: 2%; /* Espacement en bas */
+    box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
   }
   
   /*---------------------------------------------------------*/
-  .content{
-    display:fixed;
-    width: 50vw;
-    margin: 0 auto;
-    justify-content: center;
+  /* Contenu principal de la modale */
+  .content {
+    display: fixed; /* Positionnement fixe */
+    width: 50vw; /* Largeur réduite */
+    margin: 0 auto; /* Centre horizontalement */
+    justify-content: center; /* Centre le contenu */
   }
 
-  /*---------------------------------------------------------*/
+  /*----------------------- Section Formulaires --------------------*/
+  /* Conteneur principal du formulaire */
   .formData {
-    width: 50vw;
-    margin: 0 auto;
-    justify-content: center;
+    width: 50vw; /* Largeur réduite pour les ordinateurs */
+    margin: 0 auto; /* Centre horizontalement */
+    justify-content: center; /* Centre le contenu */
   }
 
   /*---------------------------------------------------------*/
+  /* Labels des formulaires */
   .formData label {
-    font-size: 1rem;
-    padding-left: 2%;
+    font-size: 1rem; /* Taille de texte standard */
+    padding-left: 2%; /* Espacement à gauche */
   }
 
   /*---------------------------------------------------------*/
+  /* Légendes des formulaires */
   .formData .legend {
-    font-size: 1rem;
-    padding-left: 5%;
+    font-size: 1rem; /* Taille de texte standard */
+    padding-left: 5%; /* Espacement à gauche */
   }
 
   /*---------------------------------------------------------*/
+  /* Champs d'entrée */
   .text-control {
-    font-size: 1rem;
+    font-size: 1rem; /* Taille de texte standard */
   }
 
   /*---------------------------------------------------------*/
+  /* Éléments de liste dans le formulaire */
   .formData li {
-    width: 45vw;
+    width: 45vw; /* Largeur ajustée */
+  }
+
+  /*----------------------- Section Localisation --------------------*/
+  /* Liste des localisations */
+  .location-list {
+    grid-template-columns: repeat(3, 18vw); /* 3 colonnes égales */
+    padding-left: 3%; /* Espacement à gauche */
   }
 
   /*---------------------------------------------------------*/
-  .location-list { 
-    grid-template-columns: repeat(3, 18vw); /* 3 colonnes de largeur égale */
-    padding-left: 3%;
-  }
-
-  /*---------------------------------------------------------*/
+  /* Section consentement */
   .consentement {
-    width: 45vw;
-    margin: 2% auto;
-    padding-left: 5%;
-    padding-bottom: 5%;
+    width: 45vw; /* Largeur ajustée */
+    margin: 2% auto; /* Centre horizontalement */
+    padding-left: 5%; /* Espacement à gauche */
+    padding-bottom: 5%; /* Espacement en bas */
   }
   
   /*---------------------------------------------------------*/
+  /* Bouton de soumission */
   .btn-submit {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Taille de texte augmentée */
   }
 
   /*---------------------------------------------------------*/  
+  /* Section copyright */
   .copyright {
-    position: absolute;
-    font-size: 1rem;
-    font-weight: 700;
-    padding-top: 5%;
-    margin: 0;
-    left:5%
+    position: absolute; /* Positionnement absolu */
+    font-size: 1rem; /* Taille de texte standard */
+    font-weight: 700; /* Texte en gras */
+    padding-top: 5%; /* Espacement en haut */
+    margin: 0; /* Pas de marge supplémentaire */
+    left: 5%; /* Positionnement à gauche */
   }
 }
 
