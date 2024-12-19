@@ -30,6 +30,10 @@ const confirmationModal = document.getElementById('confirmation-modal'); // Él�
 const closeModalBtn = document.getElementById('close-modal-btn'); // Bouton permettant de fermer la modale de confirmation
 const navLinks = document.querySelector('.nav-links');
 
+// ========= Activation des logs =========
+const ENABLE_LOGS = true; // Option pour désactiver les logs globalement
+
+
 // ======= Styles pour les logs =======
 const logStyles = {
     info: rootStyles.getPropertyValue('--log-info').trim() || "color: blue; font-weight: bold;",
@@ -76,7 +80,7 @@ let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale.
  * @param {string} message - Message descriptif de l'événement.
  * @param {Object} [data={}] - Données supplémentaires à afficher (facultatif).
  */
-const ENABLE_LOGS = true; // Option pour désactiver les logs globalement
+
 
 function logEvent(type, message, data = {}) {
     if (!ENABLE_LOGS) {

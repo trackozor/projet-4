@@ -102,10 +102,12 @@ a {
   text-decoration: none; /* Enlève le soulignement */
 }
 
+/*================= Style pour les groupes de champs (fieldset) =================*/
 fieldset {
   border: none; /* Supprime la bordure par défaut autour du champ groupé */
 }
 
+/*================= Accessibilité : Masquer un élément visuellement mais le garder lisible pour les lecteurs d'écran =================*/
 .sr-only {
   position: absolute; /* Positionné en dehors du flux de la page */
   width: 1px; /* Très petit mais toujours existant */
@@ -320,12 +322,15 @@ header img {
   letter-spacing: 0.1rem; /* Ajoute un léger espacement horizontal entre les lettres */
 }
 
-
+/*----------------------------------------------------------------*/
+/* Positionnement par défaut de la section "hero" */
 .hero-default {
   top: 0%; /* Positionne la modale à 8% du bord supérieur de l'écran */
   transition: top 2s ease-in-out; /* Transition douce pour les changements */
 }
 
+/*----------------------------------------------------------------*/
+/* Positionnement responsive de la section "hero" */
 .hero-responsive {
   top:5%;
   transition: top 2s ease-in-out; /* Transition douce pour les changements */
@@ -349,7 +354,7 @@ header img {
   display: none; /* Masque le bouton en mode desktop */
 }
 
-
+/*----------------------------------------------------------------*/
 /* Style pour le bouton d'inscription en mode mobile */
 .mobile-signup {
   display: block; /* Affiche le bouton en mode mobile */
@@ -379,23 +384,27 @@ header img {
 }
 
 /*----------------------------------------------------------------*/
+/* Positionnement par défaut de la modale */
 .modal-default {
   top: 8%; /* Positionne la modale à 8% du bord supérieur de l'écran */
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
 /*----------------------------------------------------------------*/
+/* Positionnement responsive de la modale */
 .modal-responsive {
   top: 25%; /* Positionne la modale plus bas dans le cas d'un affichage responsive */
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
 /*--------------------------------------------------------------------------*/
+/* Style appliqué lorsque la modale est active */
 .bground.active {
   display: block; /* Affiche la modale lorsqu'elle est active */
 }
 
 /*--------------------------------------------------------------------------*/
+/* Style du corps principal de la fenêtre modale */
 .modal-body {
   background-color: #232323; /* Couleur gris très foncé pour le fond de la modale */
   border-radius: 2rem; /* Ajoute un arrondi généreux pour adoucir l'apparence */
@@ -412,11 +421,12 @@ header img {
 }
 
 /*----------------------------------------------------------------------------*/
-.formData .legend { /* Ajoute un espacement de 12% à gauche pour le texte */
-  font-size: 0.8rem;
-  padding-top:5%;
-  width:80vw;
-  margin:0 auto; 
+/* Styles pour la légende à l'intérieur d'un conteneur formData */
+.formData .legend { 
+  font-size: 0.8rem; /* Définit une petite taille de police pour un affichage discret mais lisible */
+  padding-top: 5%; /* Ajoute un espacement interne en haut pour aérer le contenu verticalement */
+  width: 80vw; /* Définit une largeur relative à la taille de la fenêtre (viewport) pour s'adapter aux différents écrans */
+  margin: 0 auto; /* Centre horizontalement l'élément dans son conteneur parent */
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -429,10 +439,14 @@ header img {
   padding: 0; /* Supprime les espacements internes */
   margin: 0 auto; /* Centre horizontalement chaque élément */
 }
+
+/*----------------------------------------------------------------------------*/
+/* Label associé à chaque champ de saisie */
 .form-list label {
-  width: 75vw;
-  padding-left:2%;
+  width: 75vw;/* Les étiquettes occupent 75% de la largeur visible */
+  padding-left:2%;/* Ajoute un léger décalage à gauche pour l'espacement */
 }
+
 /*----------------------------------------------------------------------------*/
 /* Champs d'entrée des informations personnelles */
 .form-list input {
@@ -440,18 +454,18 @@ header img {
   padding: 4% 2%; /* Ajoute un espacement de 4% en haut/bas et 2% à gauche/droite */
   border: none; /* Supprime les bordures par défaut */
   border-radius: 0.5rem; /* Ajoute des coins arrondis de 0.5rem */
-  margin: 0 auto;
-  background-color: #ffffff;
+  margin: 0 auto;/* Centre chaque champ d'entrée horizontalement */
+  background-color: #ffffff;/* Définit une couleur de fond blanche pour les champs */
 }
 
 /*------------------------------------------------------------------------------------*/
 /*------------------ conteneur localisation ------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 
-
+/* Styles pour les étiquettes associées aux cases à cocher */
 .checkbox-label {
-  display: flex;
-  flex-direction: row;
+  display: flex;/* Active Flexbox pour aligner les éléments enfants */
+  flex-direction: row;/* Aligne les éléments horizontalement (icône + texte) */
   align-items: center; /* Aligne verticalement les éléments */
   gap: 1%; /* Espacement entre l'icône et le texte */
 }
@@ -469,14 +483,15 @@ header img {
 /* Conteneur de l'icône de la case à cocher */
 /* Liste en grille */
 .location-list {
-  display: grid;
+  display: grid;/* Active Grid Layout pour organiser les éléments en grille */
   grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
   grid-template-rows:repeat(3, auto) ; /* Ajuste la largeur totale */
-  width: 82vw;
-  margin: 3% auto;
+  width: 82vw; /* Ajuste la largeur globale pour occuper 82% de la fenêtre visible */
+  margin: 3% auto;/* Ajoute un espace extérieur et centre horizontalement la grille */
 }
 
 /*---------------------------------------------------------------------------------*/
+/* Styles pour les éléments de la grille (texte + icône) */
 .location-list li span {
   display:flex; 
   align-items: center; 
