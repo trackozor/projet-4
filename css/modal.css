@@ -472,7 +472,7 @@ header img {
   display: grid;
   grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
   grid-template-rows:repeat(3, auto) ; /* Ajuste la largeur totale */
-  width: 85vw;
+  width: 82vw;
   margin: 3% auto;
 }
 
@@ -530,7 +530,7 @@ header img {
 .consentement {
   display: flex; /* Active Flexbox pour organiser les éléments */
   flex-direction: column; /* Organise les éléments verticalement */
-  width: 90vw; /* La liste occupe toute la largeur disponible */
+  width: 82vw; /* La liste occupe toute la largeur disponible */
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
   align-items: center;
 }
@@ -538,8 +538,10 @@ header img {
 /*----------------------------------------------------------------*/
 /*-- liste --*/
 .consentement li {
-  width:85vw;
+  width:82vw;
   font-size: 0.5rem;
+  margin: 0.5% auto;
+
 }
 
 /*----------------------------------------------------------------*/
@@ -565,7 +567,6 @@ header img {
   border: 2px solid transparent; /* Bordure par défaut transparente */
   transition: background-color 0.3s ease, border-color 0.3s ease; /* Transitions douces */
   cursor: pointer; /* Curseur pointeur */
-  margin:1% ; /* Espace harmonisé en pourcentage */
 }
 
 /*----------------------------------------------------------------*/
@@ -585,6 +586,15 @@ header img {
   border-color: #279E7A; /* Bordure verte */
 }
 
+.checkbox-label2 {
+    display: flex; /* Utilise flexbox pour organiser les enfants */
+    align-items: center; /* Centre verticalement l'icône et le texte */
+    gap: 0.5rem; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
+    cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
+    margin: 0 auto; /* Centre horizontalement si nécessaire */
+    flex-shrink: 0; /* Empêche le rétrécissement des éléments */
+}
+
 /*----------------------------------------------------------------*/
 /* Coche visible lorsqu'elle est cochée */
 .checkbox-input2:checked + .checkbox-label2 .checkbox-icon2::after {
@@ -600,6 +610,7 @@ header img {
 .close {
   display: flex; /* Active Flexbox pour organiser les éléments */
   max-height:25px ;
+  padding-right:8%;
   width: 100%; /* Prend toute la largeur disponible */
   justify-content: flex-end;
   background-color: transparent; /* Fond transparent */
@@ -672,7 +683,7 @@ header img {
   font-size: 0.8rem; /* Taille de police légèrement réduite */
   background-color:#232323; /* Fond noir pour contraster avec le texte */
   color: #fe142f; /* Texte rouge pour indiquer une erreur */
-  padding: 1% 0; /* Ajoute un espacement interne pour rendre le texte plus lisible */
+  padding: 1% 2%; /* Ajoute un espacement interne pour rendre le texte plus lisible */
   width: 90%; /* Largeur ajustée pour s'insérer correctement sous le champ */
   text-align: left; /* Texte aligné à gauche */
   margin-top: 2%; /* Espace au-dessus pour ne pas chevaucher le champ */

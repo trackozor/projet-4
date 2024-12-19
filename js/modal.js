@@ -86,9 +86,21 @@ function logEvent(type, message, data = {}) {
     const timestamp = new Date().toLocaleTimeString(); // Récupère l'heure actuelle au format HH:MM:SS.
     const prefix = `[GameOn][${timestamp}]`; // Préfixe standard pour identifier les logs et horodatage.
     
+    const icons = {
+        info: 'ℹ️',
+        warn: '⚠️',
+        error: '❌',
+        success: '✅',
+        testStart: '🚀', // Début des tests
+        testEnd: '🎯', // Fin des tests
+        default: '🔵',
+    };
+
+    const icon = icons[type] || icons.default; // Icône par défaut si le type est inconnu
+
     // Récupère le style approprié depuis `logStyles` en fonction du type (info, warn, error).
     const style = logStyles[type] || logStyles.default || 'color: black;';
-    const fullMessage = `${prefix} ${type.toUpperCase()}: ${message}`; // Message complet à afficher.
+    const fullMessage = `${icon} ${prefix} ${type.toUpperCase()}: ${message}`; // Message complet à afficher.
 
     // Vérification : Si le message est vide, afficher un avertissement.
     if (!message) {
@@ -101,6 +113,20 @@ function logEvent(type, message, data = {}) {
     console[type] 
         ? console[type](`%c${fullMessage}`, style, data) 
         : console.log(`%c${fullMessage}`, style, data); // Fallback vers `console.log` si le type est inconnu.
+}
+
+/**
+ * ============ Fonction pour faire défiler la page vers le haut ============ 
+ * 
+ * - Déplace la vue utilisateur en haut de la page de manière fluide.
+ * - Peut être appelée dans un contexte de fermeture de modale.
+ * 
+ * @returns {void}
+ */
+function scrollToTop() {
+    logEvent('info', 'Début du défilement vers le haut de la page.');
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Défilement fluide
+    logEvent('success', 'Défilement vers le haut effectué avec succès.');
 }
 
 
@@ -440,19 +466,6 @@ function openConfirmationModal() {
 
 
 
-/**
- * ============ Fonction pour faire défiler la page vers le haut ============ 
- * 
- * - Déplace la vue utilisateur en haut de la page de manière fluide.
- * - Peut être appelée dans un contexte de fermeture de modale.
- * 
- * @returns {void}
- */
-function scrollToTop() {
-    logEvent('info', 'Début du défilement vers le haut de la page.');
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Défilement fluide
-    logEvent('success', 'Défilement vers le haut effectué avec succès.');
-}
 
 /**
  * ============ Fonction pour fermer la modale de confirmation ============ 
