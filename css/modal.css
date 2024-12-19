@@ -976,6 +976,24 @@ header img {
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
 
+  
+  /*-----------------------------------------------------------------------------------*/
+  /*--------------------------- SECTION HEADER ---------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+
+  /* Logo */
+  .logo {
+    padding:1.5% 2%; /* Ajoute un léger espacement au-dessus du logo */
+  }
+  /*--------------------------------------------------------------------------------------*/
+  /*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
+  /*--------------------------------------------------------------------------------------*/
+  
+  /* Conteneur principal de la navigation */
+  .nav {
+    width: 60vw; /* Réduit la largeur de la barre de navigation */
+  }
+
   /*---------------------------------------------------------*/
   /* Icône du menu (barre hamburger) */
   .topnav i {
@@ -988,12 +1006,6 @@ header img {
     display: flex; /* Affiche les liens sous forme de flexbox */
     font-size: 1rem; /* Taille de police standardisée */
     font-weight: 700; /* Poids du texte plus épais */
-  }
-  
-  /*---------------------------------------------------------*/
-  /* Logo */
-  .logo {
-    padding-top: 1%; /* Ajoute un léger espacement au-dessus du logo */
   }
 
   /*---------------------------------------------------------*/
@@ -1008,15 +1020,15 @@ header img {
     width: 100%; /* Le menu occupe toute la largeur disponible */
     padding-top: 1.5%; /* Espacement en haut */
     opacity: 1; /* Les liens sont visibles */
+    position: absolute;
+    top:2%;
+    right:2%;
   }
 
-  /*---------------------------------------------------------*/
-  /* Conteneur principal de la navigation */
-  .nav {
-    width: 60vw; /* Réduit la largeur de la barre de navigation */
-  }
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ SECTION PRINCIPALE ----------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
 
-  /*------------------------ Section principale ------------------------*/
   /* Conteneur */
   .hero-section {
     position: relative; /* Positionnement relatif pour aligner les éléments internes */
@@ -1024,7 +1036,7 @@ header img {
     display: flex; /* Active Flexbox pour organiser le contenu */
     flex-direction: row; /* Organise les éléments horizontalement */
     background-color: #0b0c07; /* Couleur de fond sombre */
-    margin: 0 auto; /* Centre horizontalement */
+    margin: 2% auto; /* Centre horizontalement */
   }
 
   /*---------------------------------------------------------*/
@@ -1042,11 +1054,11 @@ header img {
     color: #ffffff; /* Couleur blanche pour le titre */
     position: absolute; /* Positionnement absolu */
     z-index: 3; /* Place le titre au-dessus des autres éléments */
-    font-size: 4rem; /* Grande taille pour attirer l'attention */
+    font-size: 3.5rem; /* Grande taille pour attirer l'attention */
     flex-direction: row; /* Organisation horizontale */
     flex-wrap: nowrap; /* Empêche le retour à la ligne */
     width: 70%; /* Le titre occupe 70% de la largeur */
-    top: -5.5%; /* Positionnement vertical ajusté */
+    top: 1%; /* Positionnement vertical ajusté */
     left: 4%; /* Positionnement horizontal ajusté */
     font-weight: 500; /* Poids moyen du texte */
   }
@@ -1057,7 +1069,7 @@ header img {
     color: #ffffff; /* Texte blanc */
     font-size: 1rem; /* Taille de texte standard */
     font-weight: 500; /* Texte légèrement en gras */
-    padding-bottom: 8%; /* Espacement en bas */
+    padding-bottom: 25%; /* Espacement en bas */
     line-height: 1.5rem; /* Hauteur de ligne pour la lisibilité */
     padding-left: 2%; /* Espacement à gauche */
   }
@@ -1239,6 +1251,7 @@ header img {
   .topnav li span {
     font-size: 1.2rem; /* Augmente légèrement la taille de la police */
     font-weight: 700; /* Texte semi-gras */
+    position:absolute;
   }
 
   /*-----------------------------------*/
