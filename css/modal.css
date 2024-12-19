@@ -800,7 +800,7 @@ header img {
   /*----------------------------------------------------------------*/
   /* Styles pour les liens (a) */
   .nav-links a {
-    font-size: 1.3rem; /* Augmente la taille de la police */
+    font-size: 1rem; /* Augmente la taille de la police */
     width: auto;/* Ajuste la largeur automatiquement */
   }
 
@@ -829,48 +829,55 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /*----------------------------- SECTION HERO ----------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
+  
+  /* Conteneur principal de la section héroïque */
   .hero-section {
     width: 95vw; /* Largeur adaptée aux écrans moyens */
   }
 
   /*----------------------------------------------------------------*/
+  /* Styles pour le titre de la section hero */
   .hero-section h2 {
-    width: 85%;
+    width: 85%;/* Réduit la largeur du titre pour éviter qu'il n'occupe tout l'espace */
     font-size: 2rem; /* Taille adaptée aux écrans moyens */
     margin: 2% auto; /* Centre le titre */
   }
 
   /*----------------------------------------------------------------*/
+  /* Conteneur des éléments de contenu de la section hero */
   .hero-content {
     width: 95%; /* Largeur adaptée */
-    margin: 1% auto;
+    margin: 1% auto;/* Centre le contenu horizontalement et ajoute un petit espacement vertical */
     padding-top: 1%; /* Ajoute un espacement vertical */
-    display: flex;
-    justify-content: space-around;
+    display: flex;/* Active Flexbox pour organiser les enfants */
+    justify-content: space-around; /* Ajoute un espacement uniforme entre les éléments */
     flex-wrap: wrap; /* Permet aux éléments de revenir à la ligne */
   }
 
   /*----------------------------------------------------------------*/
+  /* Styles pour le paragraphe de la section hero */
   .hero-section p {
-    width: 90%;
-    margin: 0 auto;
-    font-size: 1rem;
+    width: 90%;/* Largeur ajustée pour un affichage harmonieux */
+    margin: 0 auto;/* Centre le paragraphe horizontalement */
+    font-size: 1rem; /* Taille de texte standardisée pour les écrans moyens */
     padding-bottom: 2%; /* Espacement en bas */
     text-align: center; /* Texte centré */
   }
 
   /*----------------------------------------------------------------*/
+  /* Styles pour l'image dans la section hero */
   .hero-section img {
-    width: 80%;
-    margin: 0 auto;
+    width: 80%;/* Largeur ajustée à 80% de l'espace disponible */
+    margin: 0 auto;/* Centre l'image horizontalement */
     object-fit: cover; /* Maintient les proportions tout en remplissant l'espace */
   }
 
   /*----------------------------------------------------------------*/
+  /* Bouton d'inscription en mode mobile */
   .mobile-signup {
     font-size: 1rem; /* Taille de police standardisée */
     margin: 2% auto; /* Centre le bouton */
-    width: 20vw; /* Réduit la largeur */
+    width: 17vw; /* Réduit la largeur */
     border-radius: 0.6rem; /* Coins arrondis */
     padding: 1% 0; /* Espacement interne vertical */
   }
