@@ -45,14 +45,15 @@
 /*------------------   STYLES GLOBAUX   ----------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 
-/*============= Réinitialisation globale des marges et des espacements ============ */
+/*  Réinitialisation globale des marges et des espacements  */
 html { 
   box-sizing: border-box;/* Définit le modèle de box-sizing pour inclure les bordures et les marges dans les dimensions des éléments */
   margin: 0;/* Supprime les marges par défaut de l'élément <html> */
   padding: 0;/* Supprime les espacements internes par défaut de l'élément <html> */
 }
 
-/*=============== Style du corps de la page =============*/
+/*------------------------------------------------------------------------------------*/
+/* Style du corps de la page */
 body {
   min-width: 300px;/* Définit une largeur minimale pour garantir une mise en page adaptée aux très petits écrans */
   max-width: 1440px; /* Limite la largeur maximale du contenu à 1200px pour éviter une trop grande extension sur les grands écrans */
@@ -66,8 +67,8 @@ body {
   margin: 0 auto;/* Centrage horizontal du contenu dans la fenêtre en ajoutant des marges automatiques */
 }
 
-
-/*=================== Styles des boutons ================*/
+/*------------------------------------------------------------------------------------*/
+/* Styles des boutons */
 button {
   width: 10rem; /* Définit une largeur fixe de 10rem pour le bouton */
   background: #fe142f; /* Applique une couleur de fond rouge vif (#fe142f) */
@@ -81,13 +82,14 @@ button {
   transition: background-color 0.3s ease; /* Ajoute une transition douce pour les changements de couleur de fond */
 }
 
-/* ================ Styles pour les listes ==================*/
+/*------------------------------------------------------------------------------------*/
+/* Styles pour les listes */
 ul {
   list-style-type: none; /* Supprime les puces ou numéros par défaut des éléments de liste */
 }
 
-
-/*================= Styles des étiquettes =====================*/
+/*------------------------------------------------------------------------------------*/
+/* Styles des étiquettes */
 label {
   font-family: var(--font-default); /* Applique la police par défaut définie dans les variables CSS globales */
   font-size: var(--font-size-small); /* Définit la taille de police à une valeur petite pour les étiquettes */
@@ -95,19 +97,20 @@ label {
   flex-wrap: nowrap; /* Empêche le contenu de se répartir sur plusieurs lignes dans un contexte flex */
 }
 
-
-/*================= Style global pour les liens =================*/
+/*------------------------------------------------------------------------------------*/
+/* Style global pour les liens */
 a {
   color: inherit; /* Hérite de la couleur du texte parent (cela enlève le bleu par défaut) */
   text-decoration: none; /* Enlève le soulignement */
 }
-
-/*================= Style pour les groupes de champs (fieldset) =================*/
+/*------------------------------------------------------------------------------------*/
+/* Style pour les groupes de champs (fieldset) */
 fieldset {
   border: none; /* Supprime la bordure par défaut autour du champ groupé */
 }
 
-/*================= Accessibilité : Masquer un élément visuellement mais le garder lisible pour les lecteurs d'écran =================*/
+/*------------------------------------------------------------------------------------*/
+/* Accessibilité : Masquer un élément visuellement mais le garder lisible pour les lecteurs d'écran */
 .sr-only {
   position: absolute; /* Positionné en dehors du flux de la page */
   width: 1px; /* Très petit mais toujours existant */
@@ -273,7 +276,7 @@ header img {
 
 
 /*------------------------------------------------------------------------------------*/
-/*------------------ SECTION PRINCIPALE ----------------------------------------------*/
+/*------------------ SECTION PRINCIPALE  (HERO) --------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 
 /* Conteneur principal */
@@ -410,7 +413,10 @@ header img {
   border-radius: 2rem; /* Ajoute un arrondi généreux pour adoucir l'apparence */
 }
 
-/*--------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/*-----------------------------  FORMULAIRE -----------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+
 /* Style global du formulaire */
 .formData {
   display: flex; /* Définit le formulaire comme un bloc */
@@ -459,7 +465,7 @@ header img {
 }
 
 /*------------------------------------------------------------------------------------*/
-/*------------------ conteneur localisation ------------------------------------------*/
+/*------------------ SECTION LOCATION LIST -------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 
 /* Styles pour les étiquettes associées aux cases à cocher */
@@ -539,7 +545,7 @@ header img {
 }
 
 /*------------------------------------------------------------------------------------*/
-/*------------------ section consentement --------------------------------------------*/
+/*------------------ SECTION CONSENTEMENT --------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 
 /*-- conteneur --*/
@@ -621,7 +627,7 @@ header img {
 }
 
 /*------------------------------------------------------------------------------------*/
-/*------------------ bouton close  --------------------------------------------------*/
+/*------------------ SECTION BUTTONS  -------------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
 
 
@@ -656,7 +662,10 @@ header img {
     width:35%;/* Définit une largeur fixe pour le bouton, proportionnelle au conteneur */
 }
 
-/*----------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/*--------------------------- MODALE CONFIRMATION -----------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+
 /* Modale de confirmation (cachée par défaut) */
 #confirmation-modal {
   display: none;/* Masque la modale par défaut */
@@ -689,7 +698,11 @@ header img {
   border: none; /* Supprime les bordures par défaut pour un style minimaliste */
 }
 
-/*----------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------*/
+/*--------------------------- MODALE ERROR ------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+
 /* Classe pour les bordures rouges des champs avec des erreurs */
 .text-control.error-input {
   border: 2px solid red; /* Bordure rouge pour indiquer une erreur */
@@ -736,7 +749,7 @@ header img {
 
 @media screen and (min-width: 768px) and (max-width:1023px) {
   /*-----------------------------------------------------------------------------------*/
-  /*----------------------------- SECTION HEADER --------------------------------------*/
+  /*-----------------------------  HEADER ---------------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
 
   /* Conteneur principal du header */
@@ -753,7 +766,7 @@ header img {
   }
 
   /*-----------------------------------------------------------------------------------*/
-  /*----------------------------- SECTION TOPNAV --------------------------------------*/
+  /*----------------------------- BARRE DE NAVIGATION ---------------------------------*/
   /*-----------------------------------------------------------------------------------*/
   
   /* Conteneur principal de la barre de navigation */
@@ -827,7 +840,7 @@ header img {
 
 
   /*-----------------------------------------------------------------------------------*/
-  /*----------------------------- SECTION HERO ----------------------------------------*/
+  /*----------------------------- SECTION PRINCIPALE (HERO) ---------------------------*/
   /*-----------------------------------------------------------------------------------*/
   
   /* Conteneur principal de la section héroïque */
@@ -872,8 +885,11 @@ header img {
     object-fit: cover; /* Maintient les proportions tout en remplissant l'espace */
   }
 
-  /*----------------------------------------------------------------*/
-  /* Bouton d'inscription en mode mobile */
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ BOUTON " JE m'inscris" ------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+
+  /* Style pour le bouton d'inscription en mode mobile */
   .mobile-signup {
     font-size: 1rem; /* Taille de police standardisée */
     margin: 2% auto; /* Centre le bouton */
@@ -885,7 +901,7 @@ header img {
 
 
   /*-----------------------------------------------------------------------------------*/
-  /*----------------------------- SECTION MODAL ---------------------------------------*/
+  /*----------------------------- fENETRE MODAL ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
   
   /* Conteneur principal de la modale */
@@ -900,7 +916,7 @@ header img {
   }
 
   /*-----------------------------------------------------------------------------------*/
-  /*----------------------------- SECTION FORMS ---------------------------------------*/
+  /*-----------------------------  FORMULAIRE -----------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
   
   /* Conteneur principal des champs de formulaire */
@@ -929,23 +945,16 @@ header img {
     width:70vw;
   }
 
-  /*-----------------------------------------------------------------------------------*/
-  /*--------------------------- SECTION CONSENTEMENT ----------------------------------*/
-  /*-----------------------------------------------------------------------------------*/
-
-  .consentement {
-    display: grid;
-    grid-template-rows:repeat(2,3vh);
-    margin:1% ;
-  }
-
-  .consentement li {
-    padding-left: 5%; /* Espacement à gauche pour alignement */
+  /*----------------------------------------------------------------*/
+  .text-control {
+    font-size: 1rem; /* Taille adaptée aux écrans moyens */
   }
 
   /*-----------------------------------------------------------------------------------*/
   /*-------------------------- SECTION LOCATION LIST ----------------------------------*/
   /*-----------------------------------------------------------------------------------*/
+  /* Conteneur de l'icône de la case à cocher */
+  /* Liste en grille */
   .location-list {
     display: grid; /* Active la grille */
     grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
@@ -956,8 +965,28 @@ header img {
   }
 
   /*-----------------------------------------------------------------------------------*/
+  /*--------------------------- SECTION CONSENTEMENT ----------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+
+  /*-- conteneur --*/
+  .consentement {
+    display: grid;
+    grid-template-rows:repeat(2,3vh);
+    margin:1% ;
+  }
+
+  /*-----------------------------------------------------------------------------------*/
+  /*-- liste --*/
+  .consentement li {
+    padding-left: 5%; /* Espacement à gauche pour alignement */
+  }
+
+
+  /*-----------------------------------------------------------------------------------*/
   /*--------------------------- SECTION BUTTONS ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
+  
+  /* Bouton de fermeture (croix) */
   .close span {
     font-size: 2.5rem; /* Taille augmentée pour visibilité */
     padding-top: 1%;
@@ -965,11 +994,17 @@ header img {
   }
 
   /*----------------------------------------------------------------*/
-  .text-control {
-    font-size: 1rem; /* Taille adaptée aux écrans moyens */
+  /* Bouton de soumission */
+  .btn-submit {
+      width:20%;/* Définit une largeur fixe pour le bouton, proportionnelle au conteneur */
   }
 
-  /*----------------------------------------------------------------*/
+
+  /*-----------------------------------------------------------------------------------*/
+  /*--------------------------- MODALE ERROR ------------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+  
+  /* Classe pour le message d'erreur */
   .error-modal {
     font-size: 1rem; /* Taille augmentée pour lisibilité */
     padding-bottom: 0; /* Supprime l'espacement en bas */
@@ -985,13 +1020,14 @@ header img {
 
   
   /*-----------------------------------------------------------------------------------*/
-  /*--------------------------- SECTION HEADER ---------------------------------------*/
+  /*---------------------------  HEADER -----------------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
 
   /* Logo */
   .logo {
     padding:1.5% 2%; /* Ajoute un léger espacement au-dessus du logo */
   }
+
   /*--------------------------------------------------------------------------------------*/
   /*--------------------- BARRE DE NAVIGATION --------------------------------------------*/
   /*--------------------------------------------------------------------------------------*/
@@ -1138,10 +1174,10 @@ header img {
   }
 
   /*----------------------------------------------------------------*/
-/* Positionnement par défaut de la modale */
-.modal-default {
-  top: 7%; /* Positionne la modale à 8% du bord supérieur de l'écran */
-}
+  /* Positionnement par défaut de la modale */
+  .modal-default {
+    top: 7%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+  }
   /*---------------------------------------------------------*/
   /* Modale active */
   .bground.active {
@@ -1187,12 +1223,15 @@ header img {
     margin: 0;
     padding:2% 5%;
   }
+  
+  /*-----------------------------------------------------------------------------------*/
+  /* Champs d'entrée des informations personnelles */
   .form-list input {
     width:40vw;
     padding:2.5% 2%;
     margin:0 5%;
-    
   }
+
   /*---------------------------------------------------------*/
   /* Légendes des formulaires */
   .formData .legend {
@@ -1217,6 +1256,12 @@ header img {
     margin: 0; /* Largeur ajustée */
   }
   
+  /* Bouton de soumission */
+  .btn-submit {
+    font-size: 0.9rem; /* Taille de texte augmentée */
+    width:15vw
+  }
+
   /*------------------------------------------------------------------------------------*/
   /*------------------ conteneur localisation ------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
@@ -1255,23 +1300,17 @@ header img {
   }
 
   /*---------------------------------------------------------*/
+  /*-- liste --*/
   .consentement li {
     width: 100%;
     padding-left: 2%;
     margin:0;
   }
 
-  /*---------------------------------------------------------*/
-  /* Bouton de soumission */
-  .btn-submit {
-    font-size: 0.9rem; /* Taille de texte augmentée */
-    width:15vw
-  }
+  /*------------------------------------------------------------------------------------*/
+  /*------------------ SECTION BUTTONS  -------------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
 
-  /*------------------------------------------------------------------------------------*/
-  /*------------------ bouton close  --------------------------------------------------*/
-  /*------------------------------------------------------------------------------------*/
-  
   /* Bouton de fermeture (croix) */
   .close {
     padding-right:6%;
@@ -1287,8 +1326,6 @@ header img {
     margin: 0; /* Aucune marge en bas */
   }
 
-
-  
   /*-----------------------------------------------------------*/
   /*------------------------ FOOTER ---------------------------*/
   /*-----------------------------------------------------------*/
@@ -1313,9 +1350,14 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- SECTION HEADER ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
+
+  /* adaptation et limitation largeur grand écran */
   .html, .body, header, footer {
     max-width:1440px;
   }
+
+
+  /*-----------------------------------------------------------------------------------*/
   /* Logo */
   .logo {
     padding:2% 5%; /* Ajoute un léger espacement au-dessus du logo */
@@ -1354,7 +1396,8 @@ header img {
     font-weight: 500; /* Rend le texte légèrement plus épais */
     padding: 0.5rem; /* Ajoute un espacement interne de 0.3rem tout autour */
     text-decoration: underline; /* Souligne le texte pour indiquer une interaction */
-}
+  }
+
   /*---------------------------------------------------------*/
   /* Menu textuel */
   .nav-links  {
@@ -1468,10 +1511,10 @@ header img {
 
   /*----------------------------------------------------------------*/
 /* Positionnement par défaut de la modale */
-.modal-default {
-  top: 9%; /* Positionne la modale à 8% du bord supérieur de l'écran */
-  left:50%;
-}
+  .modal-default {
+    top: 9%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+    left:50%;
+  }
   /*---------------------------------------------------------*/
   /* Modale active */
   .bground.active {
@@ -1516,12 +1559,16 @@ header img {
     margin: 0;
     padding:2% 5%;
   }
+
+
+  /*-----------------------------------------------------------------------------------*/
   .form-list input {
     width:21vw;
     padding:3% 2%;
     margin:0 5%;
     
   }
+
   /*---------------------------------------------------------*/
   /* Légendes des formulaires */
   .formData .legend {
@@ -1560,12 +1607,18 @@ header img {
     gap:2%;
     margin:0.5% 0;
   }
+
+
+  /*-----------------------------------------------------------------------------------*/
   .location-list li span {
     margin :0;
     padding: 0;
   }
-  /*---------------------------------------------------------*/
-  /* Section consentement */
+
+    /*------------------------------------------------------------------------------------*/
+  /*------------------ conteneur consentement ------------------------------------------*/
+  /*------------------------------------------------------------------------------------*/
+
   .consentement {
     width: 30vw;
     display: grid;
