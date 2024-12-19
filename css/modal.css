@@ -733,166 +733,168 @@ header img {
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 @media screen and (min-width: 768px) and (max-width:1023px) {
-  
-
+  /*-----------------------------------------------------------------------------------*/
+  /*----------------------------- SECTION HEADER --------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
   header {
     width: 95%;
-    margin:2% auto;
+    margin: 2% auto;
   }
 
-  /*-----------------------------------------------------------------------------------*/
   header img {
     max-width: 150px;
-    height:auto;
+    height: auto; /* Préserve le ratio de l'image */
   }
 
+  /*-----------------------------------------------------------------------------------*/
+  /*----------------------------- SECTION TOPNAV --------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
   .topnav {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Affiche les éléments en colonne */
+    align-items: center; /* Centre les éléments horizontalement */
     padding: 0;
     margin: 0;
-    background-color: transparent;
-    justify-content: center;
+    background-color: transparent; /* Fond transparent */
+    justify-content: center; /* Centre les éléments verticalement */
   }
 
-  /*-----------------------------------------------------------------------------------*/
   .topnav i {
-    font-size:1.3rem;
-    top:30px;
+    font-size: 1.3rem; /* Taille des icônes */
+    top: 30px; /* Positionne verticalement */
   }
 
-  /*-----------------------------------------------------------------------------------*/
-  /* Affichage de la liste au clic sur l'icône (mode responsive) */
   .topnav.responsive .nav-links {
     display: flex; /* Affiche les liens */
-    flex-direction: row; /* Organisation verticale */
-    justify-content: center; /* Centre les éléments verticalement */
+    flex-direction: row; /* Organisation en ligne */
+    justify-content: center; /* Centre les liens */
     text-align: center; /* Centre le texte */
-    width: 100%; /* Occupe toute la largeur disponible */
-    position: relative; /* Évite les chevauchements */
-    padding-top: 4%; /* Centre horizontalement */
-    opacity: 1; /* Rends les liens visibles */
-    transition:  top 2s  ease-in-out;
+    width: 100%; /* Occupe toute la largeur */
+    gap:2%;
+    position: relative;
+    padding-top: 4%; /* Ajoute un espace en haut */
+    opacity: 1; /* Rend les liens visibles */
+    transition: top 2s ease-in-out; /* Transition douce */
   }
 
-  /*-----------------------------------------------------------------------------------*/
   .nav-links a {
-    font-size: 1.2rem;
-    width:auto
+    font-size: 1.2rem; /* Augmente la taille de la police */
+    width: auto;
   }
 
   /*-----------------------------------------------------------------------------------*/
-  .hero-section  {
-    width:95vw;
+  /*----------------------------- SECTION HERO ----------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+  .hero-section {
+    width: 95vw; /* Largeur adaptée aux écrans moyens */
   }
 
-  /*-------------------------------------------------------------------------------------*/
   .hero-section h2 {
-    width:85%;
-    font-size: 2rem;
-    margin:2% auto;
+    width: 85%;
+    font-size: 2rem; /* Taille adaptée aux écrans moyens */
+    margin: 2% auto; /* Centre le titre */
   }
 
-  /*-------------------------------------------------------------------------------------*/
   .hero-content {
-    width:95%;
-    margin:1% auto;
-    padding-top: 1%;
+    width: 95%; /* Largeur adaptée */
+    margin: 1% auto;
+    padding-top: 1%; /* Ajoute un espacement vertical */
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permet aux éléments de revenir à la ligne */
   }
 
-  /*--------------------------------------------------------*/
   .hero-section p {
-    width:90%;
-    margin:0 auto;
+    width: 90%;
+    margin: 0 auto;
     font-size: 1rem;
-    padding-bottom: 2%;
-    text-align: center ;
+    padding-bottom: 2%; /* Espacement en bas */
+    text-align: center; /* Texte centré */
   }
 
-  /*---------------------------------------------------------*/
   .hero-section img {
     width: 80%;
     margin: 0 auto;
-    object-fit: cover;
+    object-fit: cover; /* Maintient les proportions tout en remplissant l'espace */
   }
 
-  /*---------------------------------------------------------*/
   .mobile-signup {
-    font-size: 1rem;
-    margin:2% auto;
-    width:20vw;
-    border-radius: 0.6rem;
-    padding:1% 0; 
+    font-size: 1rem; /* Taille de police standardisée */
+    margin: 2% auto; /* Centre le bouton */
+    width: 20vw; /* Réduit la largeur */
+    border-radius: 0.6rem; /* Coins arrondis */
+    padding: 1% 0; /* Espacement interne vertical */
   }
 
-  /*---------------------------------------------------------*/
-  .modal-body {  
-    margin:2% auto;
+  /*-----------------------------------------------------------------------------------*/
+  /*----------------------------- SECTION MODAL ---------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+  .modal-body {
+    margin: 2% auto;
   }
-  
-  /*---------------------------------------------------------*/
+
   .modal-default {
-    top: 10%;
+    top: 10%; /* Position ajustée pour les écrans moyens */
   }
 
-  /*----------------------------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+  /*----------------------------- SECTION FORMS ---------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
   .formData .legend {
     font-size: 1rem;
     padding-left: 5%;
   }
-  
-  /*---------------------------------------------------------*/
+
   .formData {
     display: block;
     width: 80%;
   }
-  
-  /*---------------------------------------------------------*/
+
   .form-list li {
-    width:95%;
+    width: 95%;
   }
-  
-  /*---------------------------------------------------------*/
-  .form-list input{
-    padding:2% 1%;
-  } 
-  
-  /*------------------------------------------------------------*/
-  .consentement li{
-  padding-left: 5%;
+
+  .form-list input {
+    padding: 2% 1%; /* Espacement interne ajusté */
+    width:70vw;
   }
-  
-  /*---------------------------------------------------------*/
+
+  /*-----------------------------------------------------------------------------------*/
+  /*--------------------------- SECTION CONSENTEMENT ----------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+  .consentement li {
+    padding-left: 5%; /* Espacement à gauche pour alignement */
+  }
+
+  /*-----------------------------------------------------------------------------------*/
+  /*-------------------------- SECTION LOCATION LIST ----------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
   .location-list {
-  display: grid;
-  grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
-  grid-template-rows:repeat(3, auto) ; /* Ajuste la largeur totale */
-  width: 40vw;
-  margin: 3% auto;  
+    display: grid; /* Active la grille */
+    grid-template-columns: repeat(3, auto); /* 3 colonnes de largeur égale */
+    grid-template-rows: repeat(3, auto); /* 3 lignes */
+    width: 80vw; /* Réduit la largeur pour les écrans moyens */
+    margin: 0 auto; /* Centre la grille */
+    padding-left: 5%;
   }
 
-  /*-------------------------------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+  /*--------------------------- SECTION BUTTONS ---------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
   .close span {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Taille augmentée pour visibilité */
     padding-top: 1%;
+    padding-right:6%
   }
 
-  /*-----------------------------------------------------------------*/
-  .text-control{
-    font-size: 1rem;
+  .text-control {
+    font-size: 1rem; /* Taille adaptée aux écrans moyens */
   }
 
-  /*-------------------------------------------------------------------*/
   .error-modal {
-    font-size: 1.2rem;
-    padding-bottom:0;
+    font-size: 1rem; /* Taille augmentée pour lisibilité */
+    padding-bottom: 0; /* Supprime l'espacement en bas */
   }
 }
-
 /*---------------------------------------------------------------------------------------------------------*/
 /* -----------------Ordinateurs portable entre 1024 px et 1440px ------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
