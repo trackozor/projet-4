@@ -502,7 +502,7 @@ header img {
   display:flex; /* Utilise Flexbox pour aligner les éléments enfants dans un conteneur */
   align-items: center; /* Centre verticalement le contenu dans le conteneur */
   justify-content: center;/* Centre horizontalement le contenu dans le conteneur */
-  margin:0 2%;/* Ajoute une marge horizontale de 2% de chaque côté */
+  margin:0  2%;/* Ajoute une marge horizontale de 2% de chaque côté */
 }
 
 /*----------------------------------------------------------------*/
@@ -1328,11 +1328,10 @@ header img {
   
   /* Liste des localisations */
   .location-list {
-    width: 40vw;
-    grid-template-columns: repeat(3, 14vw); /* 3 colonnes égales */
-    grid-template-rows: repeat(2, 3.5vh) ;
-    padding-left: 2.5%; /* Espacement à gauche */
-    margin:1% 0;
+    width: 100%;
+    grid-template-columns: repeat(3, 13vw); /* 3 colonnes égales */
+    grid-template-rows: repeat(2, 3.5vh) ; 
+    margin:2% ;
     gap:2%;
   }
 
@@ -1606,7 +1605,7 @@ header img {
   /* Conteneur principal de la modale */
   .bground {
     width: 100vw; /* Largeur ajustée */
-    background-color: white; /* Fond blanc */
+    background-color: #ffffff80 /* Fond blanc */
   }
 
   /*----------------------------------------------------------------*/
@@ -1614,7 +1613,6 @@ header img {
   .modal-default {
     top: 12%;
     width:30vw; /* Positionne la modale à 8% du bord supérieur de l'écran */
-    margin:0 auto;
     
   }
   /*---------------------------------------------------------*/
@@ -1651,9 +1649,9 @@ header img {
 
   /* Conteneur principal du formulaire */
   .formData {
-    width: 25vw; /* Largeur réduite pour les ordinateurs */
-    margin: 0 auto; /* Centre horizontalement */
-    padding:0.5% 0;
+    width: 20vw; /* Largeur réduite pour les ordinateurs */
+    margin: 0.5% auto; /* Centre horizontalement */
+    padding:1% 0;
     justify-content: flex-start; /* Centre le contenu */
   }
 
@@ -1695,9 +1693,8 @@ header img {
   /* Éléments de liste dans le formulaire */
   .formData li {
     width:25vw;
-    margin: 0 auto;
+    margin: 3% auto;
     padding: 0;
-    margin: 0; /* Largeur ajustée */
     font-weight: 500;
   }
   
@@ -1707,22 +1704,23 @@ header img {
   
   /* Liste des localisations */
   .location-list {
-    width:30vw;
+    width:24vw;
     grid-template-columns: repeat(3, 8vw);
     grid-template-rows:repeat(2,3vh); 
-    margin:0;
+    margin:1% 0 2% 0;
     padding: 0;
     gap:2%;
-    margin:0.5% 0;
   }
-
-
+  .location-list .town {
+    padding-top: 1%;
+    padding-left: 1%;
+  }
   /*-----------------------------------------------------------------------------------*/
   .location-list li span {
     margin :0;
     padding: 0;
   }
-  
+
     /*-----------------------------------------------------------------------------------*/
   /*bordure de l'icône */
   .checkbox-icon {
@@ -1743,11 +1741,16 @@ header img {
   .consentement {
     width: 30vw;
     display: grid;
-    grid-template-rows:repeat(2,2.5vh);
+    grid-template-rows:repeat(2,3vh);
     padding: 0;
     margin:0; /* Centre horizontalement */
     position: left;
   }
+
+    .condition {
+      padding-left:1%;
+      padding-top: 1%;
+    }
 
   /*---------------------------------------------------------*/
   /* Étiquette associée à la case à cocher */
@@ -2113,11 +2116,10 @@ header img {
   .location-list {
     width:30vw;
     grid-template-columns: repeat(3, 8vw);
-    grid-template-rows:repeat(2,3.5vh); 
-    margin:0;
+    grid-template-rows:repeat(2,3vh); 
+    margin:0.5%;
     padding: 0;
-    gap:2%;
-    margin:0.5% 0;
+    gap:0.5vh;
   }
 
   /*-----------------------------------------------------------------------------------*/
@@ -2129,15 +2131,15 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /*bordure de l'icône */
   .checkbox-icon {
-    width: 1rem;
-    height: 1rem;
+    width: 1em;
+    height: 1em;
   }
 
   /*-----------------------------------------------------------------------------------*/
   /* rond centrale */
   .checkbox-icon::after {
-    width: 0.7em;
-    height: 0.7em;
+    width: 0.8em;
+    height: 0.8em;
   }
 
   /*------------------------------------------------------------------------------------*/
@@ -2224,7 +2226,7 @@ header img {
   .error-modal {
     font-size: 1rem; /* Taille augmentée pour lisibilité */
     padding-bottom: 0; /* Supprime l'espacement en bas */
-    width:15vw;
+    width:20vw;
     padding-left: 5%;
   }
 

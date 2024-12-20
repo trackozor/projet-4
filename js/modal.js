@@ -39,9 +39,7 @@ const logStyles = {
     info: rootStyles.getPropertyValue('--log-info').trim() || "color: blue; font-weight: bold;",
     warn: rootStyles.getPropertyValue('--log-warn').trim() || "color: orange; font-weight: bold;",
     error: rootStyles.getPropertyValue('--log-error').trim() || "color: red; font-weight: bold;",
-    success: rootStyles.getPropertyValue('--log-success').trim() || "color: teal; font-weight: bold;",
-    testStart: rootStyles.getPropertyValue('--log-test-start').trim() || "color: #FF69B4; font-weight: bold;",
-    testEnd: rootStyles.getPropertyValue('--log-test-end').trim() || "color: purple; font-weight: bold;",
+    success: rootStyles.getPropertyValue('--log-success').trim() || "color: green; font-weight: bold;",
     default: rootStyles.getPropertyValue('--log-default').trim() || "color: black;",
 };
 
@@ -95,8 +93,6 @@ function logEvent(type, message, data = {}) {
         warn: '⚠️',
         error: '❌',
         success: '✅',
-        testStart: '🚀', // Début des tests
-        testEnd: '🎯', // Fin des tests
         default: '🔵',
     };
 
@@ -179,9 +175,6 @@ function editNav() {
             modalbg.classList.replace(CSS_CLASSES.MODAL_RESPONSIVE, CSS_CLASSES.MODAL_DEFAULT);
             logEvent('success', 'Classes Modal restaurées avec succès.', { modalAfter: modalbg.classList.value });
         }
-
-        logEvent('testEnd', 'Fin de la fonction editNav.'); // Fin des tests
-
     } catch (error) {
         // Log en cas d'erreur
         logEvent('error', 'Erreur lors de la gestion du menu responsive.', { error: error.message });
@@ -204,14 +197,10 @@ function editNav() {
 
 function resetForm() {
     try {
-        logEvent('testStart', 'Début de la réinitialisation du formulaire.');
-
         // Étape 1 : Sélectionne le formulaire dans la modale
         const form = document.querySelector('form');
 
         if (form) {
-            logEvent('info', 'Formulaire sélectionné avec succès.');
-
             // Réinitialise tous les champs du formulaire
             form.reset();
             logEvent('success', 'Formulaire réinitialisé avec succès.');
@@ -230,7 +219,6 @@ function resetForm() {
                 logEvent('success', `Classe d'erreur retirée du champ : ${input.id || input.name}`);
             });
 
-            logEvent('testEnd', 'Réinitialisation complète du formulaire terminée.');
         } else {
             // Si aucun formulaire n'est trouvé
             logEvent('warn', 'Aucun formulaire trouvé à réinitialiser.');
@@ -256,7 +244,6 @@ function resetForm() {
  * @returns {void}
  */
 function launchModal() {
-    logEvent('testStart', 'Début de la fonction launchModal.');
 
     if (!modalbg) {
         logEvent('error', 'Élément modalbg introuvable.');
@@ -279,7 +266,6 @@ function launchModal() {
         logEvent('error', 'Erreur lors de l\'affichage de la modale.', { error });
     }
 
-    logEvent('testEnd', 'Fin de la fonction launchModal.');
 }
 
 
@@ -295,8 +281,6 @@ function launchModal() {
  * @returns {void}
  */
 function closeModal() {
-    logEvent('testStart', 'Début de la fermeture de la modale.'); // Début de l'opération
-
     try {
         // Vérification initiale de l'état de la modale
         if (!modalbg.classList.contains(CSS_CLASSES.MODAL_ACTIVE)) {
@@ -321,8 +305,6 @@ function closeModal() {
         logEvent('error', 'Erreur lors de la fermeture de la modale.', { error: error.message });
         console.error('Erreur dans closeModal :', error);
     }
-
-    logEvent('testEnd', 'Fin de la fermeture de la modale.'); // Fin de l'opération
 }
 
 
@@ -343,7 +325,6 @@ function validateField(event) {
     const field = event.target; // Champ ciblé par l'événement
     let errorMessage = ''; // Initialisation du message d'erreur
 
-    logEvent('testStart', `Début de validation du champ : ${field.id}`, { value: field.value.trim() });
 
     try {
         // Étape 1 : Vérification des champs vides
@@ -402,8 +383,13 @@ function validateField(event) {
                 case 'birthdate':
                     const birthDate = new Date(field.value);
                     const today = new Date();
+                    const maxBirthDate = new Date(today.getFullYear() - 150, today.getMonth(), today.getDate()); // Date limite : 150 ans avant aujourd'hui
+
                     if (birthDate >= today) {
                         errorMessage = 'La date de naissance doit être dans le passé.';
+                    } else if (birthDate < maxBirthDate) {
+                        errorMessage = 'La date de naissance ne peut pas dépasser 150 ans.';
+
                     }
                     break;
 
@@ -433,7 +419,6 @@ function validateField(event) {
         logEvent('error', `Erreur inattendue dans la validation : ${field.id}`, { error });
     }
 
-    logEvent('testEnd', `Fin de validation pour le champ : ${field.id}`);
 }
 
 
@@ -449,8 +434,6 @@ function validateField(event) {
  */
 function openConfirmationModal() {
     try {
-        logEvent('testStart', 'Début de l\'ouverture de la modale de confirmation.'); // Début du test
-
         // Vérifie si la modale est déjà active
         if (confirmationModal.classList.contains(CSS_CLASSES.MODAL_ACTIVE)) {
             logEvent('warn', 'La modale de confirmation est déjà ouverte.'); // Avertissement si déjà active
@@ -465,7 +448,6 @@ function openConfirmationModal() {
         document.body.classList.add(CSS_CLASSES.BODY_NO_SCROLL);
         logEvent('info', 'Défilement de l\'arrière-plan désactivé.', { scrollState: 'disabled' });
 
-        logEvent('testEnd', 'Fin de l\'ouverture de la modale de confirmation.'); // Fin du test
     } catch (error) {
         // Gestion des erreurs avec des logs colorisés
         logEvent('error', 'Erreur lors de l\'ouverture de la modale de confirmation.', { error: error.message });
@@ -489,7 +471,6 @@ function openConfirmationModal() {
  */
 closeModalBtn.addEventListener('click', function () {
     try {
-        logEvent('testStart', 'Début de la fermeture de la modale de confirmation.');
 
         // Vérifie si la modale est active avant de la fermer
         if (!confirmationModal.classList.contains(CSS_CLASSES.MODAL_ACTIVE)) {
@@ -505,8 +486,8 @@ closeModalBtn.addEventListener('click', function () {
         // Étape 2 : Réactiver le défilement de l'arrière-plan
         document.body.classList.remove(CSS_CLASSES.BODY_NO_SCROLL);
         logEvent('success', 'Défilement de l\'arrière-plan réactivé.');
+        resetForm();
 
-        logEvent('testEnd', 'Fermeture de la modale de confirmation terminée.');
     } catch (error) {
         // Gestion des erreurs
         logEvent('error', 'Erreur lors de la fermeture de la modale de confirmation.', { error: error.message });
@@ -705,6 +686,7 @@ function main() {
     closeBtn.addEventListener('click', () => {
         logEvent('info', 'Clic sur le bouton de fermeture de modale.'); // Log du clic sur le bouton de fermeture
         closeModal(); // Ferme la modale
+        
     });
 
     document.addEventListener('keydown', (event) => {
