@@ -699,7 +699,7 @@ header img {
 }
 /* Modale visible (active) */
 #confirmation-modal.active {
-  display: block; /* Affiche la modale */
+  display: flex; /* Affiche la modale */
   opacity: 1; /* Rends la modale visible */
 }
 
@@ -2228,7 +2228,25 @@ header img {
     padding-left: 5%;
   }
 
+  /*-----------------------------------------------------------------------------------*/
+/*--------------------------- MODALE CONFIRMATION -----------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+
+  /* Modale de confirmation (cachée par défaut) */
+  #confirmation-modal {
+    left: 35%; /* Positionne la modale à gauche de la fenêtre */
+    width: 30vw; /* Occupe toute la largeur disponible */
+    height: 80%; /* Occupe toute la hauteur disponible */
+    border-radius: 1rem;
+  }
+
+  /*----------------------------------------------------------------*/
+  /* Style pour les boutons dans la modale de confirmation */
+  #confirmation-modal button {
+  width: 8vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+  padding:3% 2%; /* Ajoute un espacement interne uniforme  */
   
+  }
   /*-----------------------------------------------------------*/
   /*------------------------ FOOTER ---------------------------*/
   /*-----------------------------------------------------------*/

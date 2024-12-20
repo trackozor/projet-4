@@ -493,16 +493,12 @@ closeModalBtn.addEventListener('click', function () {
 
         // Étape 1 : Masquer la modale
         confirmationModal.classList.remove(CSS_CLASSES.MODAL_ACTIVE);
+        confirmationModal.setAttribute('aria-hidden', 'true'); // Mise à jour pour l'accessibilité
         logEvent('success', 'Modale de confirmation masquée.');
 
         // Étape 2 : Réactiver le défilement de l'arrière-plan
         document.body.classList.remove(CSS_CLASSES.BODY_NO_SCROLL);
         logEvent('success', 'Défilement de l\'arrière-plan réactivé.');
-
-        // Étape 3 : Gestion spécifique pour le mode paysage
-        if (isLandscape) { 
-            scrollToTop(); // Appelle la fonction de défilement
-        }
 
         logEvent('testEnd', 'Fermeture de la modale de confirmation terminée.');
     } catch (error) {
@@ -511,6 +507,7 @@ closeModalBtn.addEventListener('click', function () {
         console.error('Erreur lors de la fermeture de la modale de confirmation :', error);
     }
 });
+
 
 
 /**
