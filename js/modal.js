@@ -347,7 +347,13 @@ function validateField(event) {
 
     try {
         // Étape 1 : Vérification des champs vides
-        if (field.value.trim() === '') {
+        if (field.type === 'checkbox') {
+            // Vérifie si la checkbox n'est pas cochée
+            if (!field.checked && field.id === 'checkbox1') {
+                errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
+                logEvent('warn', `Validation échouée pour la checkbox : ${field.id}`, { errorMessage });
+            }
+        } else if (field.value.trim() === '') {
             switch (field.id) {
                 case 'first':
                     errorMessage = 'Le prénom est requis.';
