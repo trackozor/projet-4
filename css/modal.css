@@ -1178,7 +1178,7 @@ header img {
   /* Paragraphe dans la section principale */
   .hero-section p {
     color: #ffffff; /* Texte blanc */
-    font-size: 0.9rem; /* Taille de texte standard */
+    font-size: 1rem; /* Taille de texte standard */
     font-weight: 500; /* Texte légèrement en gras */
     margin-bottom: 15%; /* Espacement en bas */
     line-height: 1.5rem; /* Hauteur de ligne pour la lisibilité */
@@ -1188,7 +1188,7 @@ header img {
   /*---------------------------------------------------------*/
   /* Image dans la section principale */
   .hero-section img {
-    width: 75vw; /* Largeur ajustée à l'écran */
+    width: 80vw; /* Largeur ajustée à l'écran */
     margin: 0; /* Pas de marge */
     padding: 0; /* Pas de padding */
     object-fit: cover; /* Remplit l'espace tout en gardant le ratio */
@@ -1225,13 +1225,13 @@ header img {
   .bground {
     width: 95vw; /* Largeur ajustée */
     max-width: 1024px; /* Largeur maximale */
-    background-color: white; /* Fond blanc */
+    background-color:#ffffff80; /* Fond blanc */
   }
 
   /*----------------------------------------------------------------*/
   /* Positionnement par défaut de la modale */
   .modal-default {
-    top: 7%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+    top: 0%; /* Positionne la modale à 8% du bord supérieur de l'écran */
     width:30vw;
   }
   /*---------------------------------------------------------*/
@@ -2014,7 +2014,7 @@ header img {
   /* Conteneur principal de la modale */
   .bground {
     width: 100vw; /* Largeur ajustée */
-    background-color: white; /* Fond blanc */
+    background-color: #ffffff80; /* Fond blanc */
   }
 
   /*----------------------------------------------------------------*/
