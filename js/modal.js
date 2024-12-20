@@ -66,9 +66,8 @@ let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale.
 
 
 /*========================================================================================*/
-/*                       =========== Fonctions ===================                        */
+/*                       =========== Fonctions utilitaires ===================            */
 /*========================================================================================*/
-
 
 /*======================Fonction log console==============================================*/
 /**
@@ -78,8 +77,6 @@ let modalOpen = false; // Variable pour suivre l'état d'ouverture de la modale.
  * @param {string} message - Message descriptif de l'événement.
  * @param {Object} [data={}] - Données supplémentaires à afficher (facultatif).
  */
-
-
 function logEvent(type, message, data = {}) {
     if (!ENABLE_LOGS) {
         return; // Si les logs sont désactivés, sortir de la fonction immédiatement.
@@ -115,21 +112,9 @@ function logEvent(type, message, data = {}) {
         : console.log(`%c${fullMessage}`, style, data); // Fallback vers `console.log` si le type est inconnu.
 }
 
-/**
- * ============ Fonction pour faire défiler la page vers le haut ============ 
- * 
- * - Déplace la vue utilisateur en haut de la page de manière fluide.
- * - Peut être appelée dans un contexte de fermeture de modale.
- * 
- * @returns {void}
- */
-function scrollToTop() {
-    logEvent('info', 'Début du défilement vers le haut de la page.');
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Défilement fluide
-    logEvent('success', 'Défilement vers le haut effectué avec succès.');
-}
-
-
+/*===============================================================================================*/
+/*                                 ======= Affichage responsive toggle =======                   */           
+/*===============================================================================================*/
 /** 
  * ============ Fonction pour activer/désactiver le menu responsive. ============
  * 
@@ -141,40 +126,24 @@ function scrollToTop() {
  */
 function editNav() {
     try {
-        logEvent('testStart', 'Début de la fonction editNav.'); // Début des tests
+        // Toggle de la classe responsive
+        const isResponsive = navElement.classList.toggle(CSS_CLASSES.NAV_RESPONSIVE);
 
-        // Étape 1 : Toggle de la classe responsive
-        navElement.classList.toggle(CSS_CLASSES.NAV_RESPONSIVE);
-        logEvent('info', 'Toggle de la classe NAV_RESPONSIVE effectué.', {
-            currentClasses: navElement.classList.value
-        });
-
-        // Étape 2 : Vérification si la classe NAV_RESPONSIVE est activée
-        if (navElement.classList.contains(CSS_CLASSES.NAV_RESPONSIVE)) {
-            logEvent('info', 'Menu responsive activé.', { navState: 'opened' });
-
-            // Modifier les classes Hero
-            logEvent('info', 'Modification des classes Hero pour état responsive.', { heroBefore: heroSection.classList.value });
+        // Modifier les classes Hero et Modal en fonction de l'état responsive
+        if (isResponsive) {
+            // Activation du mode responsive
             heroSection.classList.replace(CSS_CLASSES.HERO_DEFAULT, CSS_CLASSES.HERO_RESPONSIVE);
-            logEvent('success', 'Classes Hero modifiées avec succès.', { heroAfter: heroSection.classList.value });
-
-            // Modifier les classes Modal
-            logEvent('info', 'Modification des classes Modal pour état responsive.', { modalBefore: modalbg.classList.value });
             modalbg.classList.replace(CSS_CLASSES.MODAL_DEFAULT, CSS_CLASSES.MODAL_RESPONSIVE);
-            logEvent('success', 'Classes Modal modifiées avec succès.', { modalAfter: modalbg.classList.value });
         } else {
-            logEvent('info', 'Menu responsive désactivé.', { navState: 'closed' });
-
-            // Restaurer les classes Hero
-            logEvent('info', 'Restauration des classes Hero pour état par défaut.', { heroBefore: heroSection.classList.value });
+            // Désactivation du mode responsive
             heroSection.classList.replace(CSS_CLASSES.HERO_RESPONSIVE, CSS_CLASSES.HERO_DEFAULT);
-            logEvent('success', 'Classes Hero restaurées avec succès.', { heroAfter: heroSection.classList.value });
-
-            // Restaurer les classes Modal
-            logEvent('info', 'Restauration des classes Modal pour état par défaut.', { modalBefore: modalbg.classList.value });
             modalbg.classList.replace(CSS_CLASSES.MODAL_RESPONSIVE, CSS_CLASSES.MODAL_DEFAULT);
-            logEvent('success', 'Classes Modal restaurées avec succès.', { modalAfter: modalbg.classList.value });
         }
+
+        // Log unique pour indiquer le changement
+        logEvent('info', `Menu responsive ${isResponsive ? 'activé' : 'désactivé'}.`, {
+            responsiveState: isResponsive ? 'opened' : 'closed',
+        });
     } catch (error) {
         // Log en cas d'erreur
         logEvent('error', 'Erreur lors de la gestion du menu responsive.', { error: error.message });
@@ -182,19 +151,11 @@ function editNav() {
     }
 }
 
+/*===============================================================================================*/
+/*                                 ======= Formulaire =======                                    */           
+/*===============================================================================================*/
 
-/*------------------------------------------------------------------------------------
- * ============ Fonction pour réinitialiser le formulaire de la modale. ============
- * 
- * - Efface tous les champs du formulaire en les réinitialisant à leurs valeurs par défaut.
- * - Supprime les messages d'erreur affichés sous les champs.
- * - Retire les classes d'erreur (bordures rouges) des champs invalides.
- * - Gère les exceptions si le formulaire n'est pas trouvé ou si une erreur survient.
- * 
- * @returns {void}
-------------------------------------------------------------------------------------------*/
-
-
+/* ============ Fonction pour réinitialiser le formulaire de la modale. ============*/
 function resetForm() {
     try {
         // Étape 1 : Sélectionne le formulaire dans la modale
@@ -230,19 +191,11 @@ function resetForm() {
     }
 }
 
+/*===============================================================================================*/
+/*                                 ======= Modale inscription =======                            */           
+/*===============================================================================================*/
 
-
-
-/**
- * ============ Fonction pour afficher la modale et empêcher le défilement en arrière-plan. ============
- * 
- * - Vérifie si la modale est déjà affichée pour éviter les duplications.
- * - Réinitialise le formulaire avant d'afficher la modale.
- * - Affiche la modale et désactive le défilement de la page principale.
- * - Journalise chaque étape pour faciliter le suivi.
- * 
- * @returns {void}
- */
+/* ============ Fonction pour afficher la modale et empêcher le défilement en arrière-plan. ============*/
 function launchModal() {
 
     if (!modalbg) {
@@ -264,22 +217,11 @@ function launchModal() {
         logEvent('success', 'Modale affichée avec succès.');
     } catch (error) {
         logEvent('error', 'Erreur lors de l\'affichage de la modale.', { error });
+        console.error('Erreur dans launchModal:', error);
     }
-
 }
 
-
-
-/**
- * ============ Fonction pour fermer la modale ============ 
- * 
- * - Supprime la classe CSS utilisée pour afficher la modale.
- * - Réactive le défilement de la page principale en supprimant la classe dédiée.
- * - Met à jour l'état global `modalOpen` pour refléter la fermeture de la modale.
- * - Journalise chaque étape importante et gère les erreurs éventuelles.
- * 
- * @returns {void}
- */
+/* ============ Fonction pour fermer la modale ============*/
 function closeModal() {
     try {
         // Vérification initiale de l'état de la modale
@@ -309,18 +251,11 @@ function closeModal() {
 
 
 
+/*===============================================================================================*/
+/*                                 ======= Validation des champs =======                         */           
+/*===============================================================================================*/
 
-/**
- * ============ Fonction de validation des champs ============
- * 
- * - Vérifie si un champ de formulaire contient des erreurs.
- * - Affiche un message d'erreur spécifique si la validation échoue.
- * - Retire les erreurs et les styles d'erreur si la validation est réussie.
- * - Log les étapes pour un suivi détaillé des actions.
- * 
- * @param {Event} event - L'événement déclenché lors de la validation.
- * @returns {void}
- */
+/* ============ Fonction de validation des champs ============*/
 function validateField(event) {
     const field = event.target; // Champ ciblé par l'événement
     let errorMessage = ''; // Initialisation du message d'erreur
@@ -422,16 +357,11 @@ function validateField(event) {
 }
 
 
-/**
- * ============ Fonction pour ouvrir la modale de confirmation ============ 
- * 
- * - Ajoute la classe CSS pour afficher la modale de confirmation.
- * - Désactive le défilement de l'arrière-plan en appliquant une classe dédiée.
- * - Vérifie si la modale est déjà active pour éviter des répétitions.
- * - Journalise chaque étape importante et gère les éventuelles erreurs.
- * 
- * @returns {void}
- */
+/*===============================================================================================*/
+/*                                 ======= Modal de confirmation =======                         */           
+/*===============================================================================================*/
+
+/* ============ Fonction pour ouvrir la modale de confirmation ============*/
 function openConfirmationModal() {
     try {
         // Vérifie si la modale est déjà active
@@ -456,9 +386,6 @@ function openConfirmationModal() {
 }
 
 
-
-
-
 /**
  * ============ Fonction pour fermer la modale de confirmation ============ 
  * 
@@ -469,7 +396,7 @@ function openConfirmationModal() {
  * 
  * @returns {void}
  */
-closeModalBtn.addEventListener('click', function () {
+function closeConfirmationModal() {
     try {
 
         // Vérifie si la modale est active avant de la fermer
@@ -493,7 +420,7 @@ closeModalBtn.addEventListener('click', function () {
         logEvent('error', 'Erreur lors de la fermeture de la modale de confirmation.', { error: error.message });
         console.error('Erreur lors de la fermeture de la modale de confirmation :', error);
     }
-});
+};
 
 
 
@@ -551,8 +478,6 @@ function showError(message, inputElement) {
     }
 }
 
-
-/**
 /**
  * ============ Fonction pour supprimer un message d'erreur et retirer la bordure rouge ============ 
  * 
@@ -687,6 +612,12 @@ function main() {
         logEvent('info', 'Clic sur le bouton de fermeture de modale.'); // Log du clic sur le bouton de fermeture
         closeModal(); // Ferme la modale
         
+    });
+
+    // === Gestion des touches pour fermer la modale avec la touche Esc ===
+
+    closeModalBtn.addEventListener('click', function (){
+        closeConfirmationModal()
     });
 
     document.addEventListener('keydown', (event) => {
