@@ -1228,6 +1228,7 @@ header img {
   /* Positionnement par défaut de la modale */
   .modal-default {
     top: 7%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+    width:30vw;
   }
   /*---------------------------------------------------------*/
   /* Modale active */
@@ -1238,7 +1239,7 @@ header img {
   /*---------------------------------------------------------*/
   /* Corps de la modale */
   .modal-body {
-    width: 50vw; /* Largeur réduite pour les ordinateurs */
+    width: 45vw; /* Largeur réduite pour les ordinateurs */
     align-items: center;
     padding:3% 0;
     justify-content: center; /* Centre le contenu horizontalement */
@@ -1252,7 +1253,7 @@ header img {
   .content {
     display: block; /* Positionnement fixe */
     align-items: center;
-    width: 50vw; /* Largeur réduite */
+    width: 45vw; /* Largeur réduite */
     margin: 0 auto; /* Centre horizontalement */
     justify-content: center; /* Centre le contenu */
     padding:0;
@@ -1261,7 +1262,7 @@ header img {
   /*----------------------- Section Formulaires --------------------*/
   /* Conteneur principal du formulaire */
   .formData {
-    width: 30vw; /* Largeur réduite pour les ordinateurs */
+    width: 25vw; /* Largeur réduite pour les ordinateurs */
     margin: 0 auto; /* Centre horizontalement */
     padding:1% 0;
     justify-content: flex-start; /* Centre le contenu */
@@ -1273,12 +1274,14 @@ header img {
     font-size: 0.8rem; /* Taille de texte standard */
     margin: 0;
     padding:2% 5%;
+    width:45vw;
+    font-weight: 500;
   }
   
   /*-----------------------------------------------------------------------------------*/
   /* Champs d'entrée des informations personnelles */
   .form-list input {
-    width:40vw;
+    width:39vw;
     padding:2.5% 2%;
     margin:0 5%;
   }
@@ -1287,8 +1290,9 @@ header img {
   /* Légendes des formulaires */
   .formData .legend {
     font-size: 0.8rem; /* Taille de texte standard */
-    padding-left: 4%; /* Espacement à gauche */
+    padding-left: 3%; /* Espacement à gauche */
     padding-top:2%;
+    font-weight: 500;
   }
 
   /*---------------------------------------------------------*/
@@ -1301,16 +1305,16 @@ header img {
   /*---------------------------------------------------------*/
   /* Éléments de liste dans le formulaire */
   .formData li {
-    width: 80%;
+    width: 45vw;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 ;
     margin: 0; /* Largeur ajustée */
   }
   
   /* Bouton de soumission */
   .btn-submit {
     font-size: 0.9rem; /* Taille de texte augmentée */
-    width:15vw
+    width:13vw
   }
 
   /*------------------------------------------------------------------------------------*/
@@ -1319,12 +1323,33 @@ header img {
   
   /* Liste des localisations */
   .location-list {
-    width: 80vw;
-    grid-template-columns: repeat(3, 18vw); /* 3 colonnes égales */
+    width: 40vw;
+    grid-template-columns: repeat(3, 14vw); /* 3 colonnes égales */
+    grid-template-rows: repeat(2, 3.5vh) ;
     padding-left: 2.5%; /* Espacement à gauche */
-    margin:1% auto;
+    margin:1% 0;
+    gap:2%;
   }
 
+  /*------------------------------------------------------------------------------------*/
+  .location-list li span {
+    margin: 0;
+    padding:0;
+  }
+
+  /*-----------------------------------------------------------------------------------*/
+  /*bordure de l'icône */
+  .checkbox-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /*-----------------------------------------------------------------------------------*/
+  /* rond centrale*/
+  .checkbox-icon::after {
+    width: 0.8em;
+    height: 0.8em;
+  }
   /*------------------------------------------------------------------------------------*/
   /*------------------ conteneur consentement ------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
@@ -1333,9 +1358,11 @@ header img {
   /* Section consentement */
   .consentement {
     width: 50vw; /* Largeur ajustée */
+    display: grid;
+    grid-template-rows:repeat(2,3vh);
     padding: 0;
     margin:0; /* Centre horizontalement */
-    position: center;
+    
   }
 
   /*---------------------------------------------------------*/
@@ -1354,9 +1381,24 @@ header img {
   /*-- liste --*/
   .consentement li {
     width: 100%;
-    padding-left: 2%;
-    margin:0;
+    padding-left: 1%;
+    margin:1% 0;
+    font-weight: 500;
   }
+
+    /*-----------------------------------------------------------------------------------*/
+  /* icône validation box */
+  .checkbox-icon2 {
+    width:0.9rem;
+    height:0.9rem;
+  }
+
+  /*-----------------------------------------------------------------------------------*/
+  /* Coche validation */
+  .checkbox-icon2::after {
+    font-size: 0.7rem;
+  }
+  
 
   /*------------------------------------------------------------------------------------*/
   /*------------------ SECTION BUTTONS  -------------------------------------------------*/
@@ -1364,7 +1406,8 @@ header img {
 
   /* Bouton de fermeture (croix) */
   .close {
-    padding-right:6%;
+    padding-right:2%;
+    padding-top: 15%;
   }
 
   /*---------------------------------------------------------*/
@@ -1881,11 +1924,13 @@ header img {
     margin: 2% auto; /* Centre horizontalement */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
   }
-
+  .hero-default {
+    top:10%;
+  }
   /*---------------------------------------------------------*/
   /* Conteneur de contenu dans la section principale */
   .hero-content {
-    width: 60%; /* Le contenu occupe la moitié de la largeur */
+    width: 40%; /* Le contenu occupe la moitié de la largeur */
     justify-content: flex-end; /* Aligne le contenu à droite */
     padding: 4%; /* Ajoute un espacement interne */
     margin-bottom: 5%; /* Ajoute un espacement en bas */
@@ -1911,9 +1956,9 @@ header img {
   /* Paragraphe dans la section principale */
   .hero-section p {
     color: #ffffff; /* Texte blanc */
-    font-size: 1.5rem; /* Taille de texte standard */
+    font-size: 1.4rem; /* Taille de texte standard */
     font-weight: 500; /* Texte légèrement en gras */
-    margin-bottom: 15%; /* Espacement en bas */
+    margin-bottom: 20%; /* Espacement en bas */
     line-height: 2rem; /* Hauteur de ligne pour la lisibilité */
     padding-left: 2%; /* Espacement à gauche */
   }
@@ -1921,7 +1966,7 @@ header img {
   /*---------------------------------------------------------*/
   /* Image dans la section principale */
   .hero-section img {
-    width: 55vw; /* Largeur ajustée à l'écran */
+    width: 45vw; /* Largeur ajustée à l'écran */
     margin: 0; /* Pas de marge */
     padding: 0; /* Pas de padding */
     object-fit: cover; /* Remplit l'espace tout en gardant le ratio */
@@ -1964,7 +2009,7 @@ header img {
   /*----------------------------------------------------------------*/
   /* Positionnement par défaut de la modale */
   .modal-default {
-    top: 12vh; /* Positionne la modale à 8% du bord supérieur de l'écran */
+    top: 10%; /* Positionne la modale à 8% du bord supérieur de l'écran */
   }
 
   /*---------------------------------------------------------*/
@@ -2078,8 +2123,8 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /* rond centrale */
   .checkbox-icon::after {
-    width: 0.8em;
-    height: 0.8em;
+    width: 0.7em;
+    height: 0.7em;
   }
 
   /*------------------------------------------------------------------------------------*/
@@ -2125,7 +2170,7 @@ header img {
   /*-----------------------------------------------------------------------------------*/
   /* Coche validation */
   .checkbox-icon2::after {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 
   /*---------------------------------------------------------*/
