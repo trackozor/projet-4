@@ -1654,15 +1654,18 @@ header img {
     margin: 0.5% auto; /* Centre horizontalement */
     padding:1% 0;
     justify-content: flex-start; /* Centre le contenu */
+    font-weight: 500;
   }
 
   /*---------------------------------------------------------*/
   /* Labels des formulaires */
   .formData label {
+    width: 20vw;
     font-size: 0.8rem; /* Taille de texte standard */
     margin: 0;
     padding:2% 5%;
     font-weight: 500;
+
   }
 
 
@@ -1678,8 +1681,8 @@ header img {
   /* Légendes des formulaires */
   .formData .legend {
     font-size: 0.8rem; /* Taille de texte standard */
-    padding-left: 2%; /* Espacement à gauche */
-    padding-top:1%;
+    padding:0 2%; /* Espacement à gauche */
+    margin:0;
     font-weight: 500;
   }
 
@@ -1708,9 +1711,10 @@ header img {
     width:24vw;
     grid-template-columns: repeat(3, 8vw);
     grid-template-rows:repeat(2,3vh); 
-    margin:1% 0 2% 0;
+    margin:1vh  0;
     padding: 0;
     gap:2%;
+    font-weight: 500;
   }
   .location-list .town {
     padding-top: 1%;
@@ -1749,13 +1753,18 @@ header img {
   }
 
     .condition {
-      padding-left:1%;
+      width:20vw;
+      padding-left:2%;
       padding-top: 1%;
+      font-weight: 500;
+      display: flex;
+      flex-wrap: nowrap;
     }
 
   /*---------------------------------------------------------*/
   /* Étiquette associée à la case à cocher */
   .checkbox-label2 {
+    width: 35vw;
     display: flex; /* Utilise flexbox pour organiser les enfants */
     align-items: center; /* Centre verticalement l'icône et le texte */
     gap:1%; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
@@ -1821,7 +1830,8 @@ header img {
   .error-modal {
     font-size: 0.9rem; /* Taille augmentée pour lisibilité */
     padding-bottom: 0; /* Supprime l'espacement en bas */
-    width:25vw;
+    width:20vw;
+    padding-left:5%;
   }
 
   
@@ -1909,7 +1919,7 @@ header img {
     justify-content:space-between; /* Aligne les liens à droite */
     flex-wrap: nowrap; /* Empêche les liens de revenir à la ligne */
     font-weight: 900; /* Texte en gras */
-    width: 65%; /* Le menu occupe toute la largeur disponible */
+    width: 50%; /* Le menu occupe toute la largeur disponible */
     padding-top: 1.5%; /* Espacement en haut */
     opacity: 1; /* Les liens sont visibles */
     position: absolute;
@@ -2022,7 +2032,7 @@ header img {
   /*----------------------------------------------------------------*/
   /* Positionnement par défaut de la modale */
   .modal-default {
-    top: 10%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+    top: 13%; /* Positionne la modale à 8% du bord supérieur de l'écran */
     width:25vw;
   }
 
@@ -2037,7 +2047,7 @@ header img {
   .modal-body {
     width: 25vw; /* Largeur réduite pour les ordinateurs */
     align-items: center;
-    padding:5%;
+    padding:8% 5%;
     margin: 0 auto; /* Centre horizontalement et ajoute un espacement vertical */
     border-radius: 2%; /* Coins arrondis */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
@@ -2070,6 +2080,7 @@ header img {
   /*---------------------------------------------------------*/
   /* Labels des formulaires */
   .formData label {
+    width:20vw;
     font-size: 1rem; /* Taille de texte standard */
     margin: 0;
     padding:2% 5%;
@@ -2080,17 +2091,19 @@ header img {
   /* Champs d'entrée des informations personnelles */
   .form-list input {
     width:21vw;
-    padding:3% 2%;
+    padding: 2%;
     margin:0 5%;
   }
 
   /*---------------------------------------------------------*/
   /* Légendes des formulaires */
   .formData .legend {
+    width:27vw;
     font-size: 1rem; /* Taille de texte standard */
-    padding-left: 2%; /* Espacement à gauche */
-    padding-top:1%;
+    padding-left: 0; /* Espacement à gauche */
+    padding-top:1.5%;
     font-weight: 500;
+    margin:0 auto;
   }
 
   /*---------------------------------------------------------*/
@@ -2118,8 +2131,8 @@ header img {
   .location-list {
     width:30vw;
     grid-template-columns: repeat(3, 8vw);
-    grid-template-rows:repeat(2,3vh); 
-    margin:0.5%;
+    grid-template-rows:repeat(2,2.5vh); 
+    margin:1% 0;
     padding: 0;
     gap:0.5vh;
   }
