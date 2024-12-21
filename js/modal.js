@@ -423,22 +423,7 @@ function closeConfirmationModal() {
 };
 
 
-
-/**
-/**
-/**
- * ============ Fonction pour afficher un message d'erreur et ajouter une bordure rouge ============ 
- * 
- * - Supprime les erreurs précédentes avant d'afficher un nouveau message d'erreur.
- * - Ajoute une bordure rouge autour du champ cible pour indiquer l'erreur.
- * - Crée et affiche un message d'erreur sous le champ concerné.
- * - Utilise uniquement les classes CSS définies pour le style.
- * - Journalise chaque étape et gère les erreurs éventuelles.
- * 
- * @param {string} message - Message d'erreur à afficher.
- * @param {HTMLElement} inputElement - Champ d'entrée cible.
- * @returns {void}
- */
+/* ============ Fonction pour afficher un message d'erreur et ajouter une bordure rouge ============*/
 function showError(message, inputElement) {
     try {
         // === Validation des paramètres ===
@@ -478,16 +463,8 @@ function showError(message, inputElement) {
     }
 }
 
-/**
- * ============ Fonction pour supprimer un message d'erreur et retirer la bordure rouge ============ 
- * 
- * - Retire la classe CSS d'erreur (`error-input`) appliquée au champ d'entrée ciblé.
- * - Supprime le message d'erreur (tooltip) affiché sous le champ, si présent.
- * - Log chaque étape importante et gère les éventuelles erreurs.
- * 
- * @param {HTMLElement} inputElement - Champ d'entrée cible.
- * @returns {void}
- */
+
+/* ============ Fonction pour supprimer un message d'erreur et retirer la bordure rouge ============ */
 function removeError(inputElement) {
     try {
         // === Validation des paramètres ===
@@ -527,19 +504,8 @@ function removeError(inputElement) {
 }
 
 
+/* ============ Point d'entrée principal du script ============*/
 
-
-/**
-/**
- * ============ Point d'entrée principal du script ============
- * 
- * - Configure les éléments interactifs de la page (placeholders, écouteurs d'événements, etc.).
- * - Initialise les modales et gère leurs interactions.
- * - Valide le formulaire en temps réel et lors de sa soumission.
- * - Journalise chaque étape importante pour un suivi précis.
- * 
- * @returns {void}
- */
 function main() {
     logEvent('info', 'Début de l\'initialisation principale.'); // Log initial signalant le début du script
     // === Gestion du clic sur le bouton de menu pour le responsive ===
