@@ -65,6 +65,7 @@ body {
   align-items: center; /* Centre les éléments enfants sur l'axe horizontal */
   width: 80vw; /* Définit une largeur relative à 85 % de la largeur de la fenêtre */
   margin: 0 auto;/* Centrage horizontal du contenu dans la fenêtre en ajoutant des marges automatiques */
+  transition: top 3s ease-in-out; /* Transition douce pour toutes les propriétés */
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -243,7 +244,7 @@ header img {
 /*---------------------------------------------------------------------*/
 /* Style des lignes la liste dans .nav-links*/
 .nav-links li {
-  padding: 0.5% 0; /* Espacement vertical pour chaque élément */
+  padding: 1% 0; /* Espacement vertical pour chaque élément */
   font-weight: 700; /* Texte en gras */
 }
 
@@ -270,7 +271,7 @@ header img {
   display: flex; /* Affiche chaque lien comme un élément flex */
   flex-wrap: nowrap; /* Empêche le contenu de se diviser sur plusieurs lignes */
   justify-content: center; /* Centre le contenu horizontalement */
-  margin: 0.5% 0; /* Ajoute un espacement vertical entre les liens */
+  margin: 0; /* Ajoute un espacement vertical entre les liens */
   transition:  top 2  ease-in-out; /* Anime le déplacement vertical avec une transition fluide */
 }
 
@@ -550,11 +551,12 @@ header img {
 
 /*-- conteneur --*/
 .consentement {
-  display: flex; /* Active Flexbox pour organiser les éléments */
-  flex-direction: column; /* Organise les éléments verticalement */
+  display: grid; /* Active Flexbox pour organiser les éléments */
+  grid-template-rows: repeat(2,2.5vh);
   width: 82vw; /* La liste occupe toute la largeur disponible */
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
   align-items: center;
+  font-weight: 500;
 }
 
 /*----------------------------------------------------------------*/
