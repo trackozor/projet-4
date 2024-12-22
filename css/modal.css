@@ -552,7 +552,7 @@ header img {
 /*-- conteneur --*/
 .consentement {
   display: grid; /* Active Flexbox pour organiser les éléments */
-  grid-template-rows: repeat(2,2.5vh);
+  grid-template-rows: repeat(2,3.5vh);
   width: 82vw; /* La liste occupe toute la largeur disponible */
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
   align-items: center;
@@ -582,8 +582,8 @@ header img {
 /* Conteneur de la case à cocher */
 .checkbox-icon2 {
   display: inline-flex; /* Utilise Flexbox pour centrer la coche */
-  width: 0.7rem; /* Taille de la case */
-  height: 0.7rem; /* Taille de la case */
+  width: 1rem; /* Taille de la case */
+  height: 1rem; /* Taille de la case */
   background-color: #c4c4c4; /* Couleur grise par défaut */
   border-radius: 0.3rem; /* Coins légèrement arrondis */
   justify-content: center; /* Centre horizontalement */
@@ -597,7 +597,7 @@ header img {
 /* Coche blanche (invisible par défaut) */
 .checkbox-icon2::after {
   content: '✓'; /* Symbole de coche */
-  font-size: 0.5rem; /* Taille de la coche */
+  font-size: 0.7rem; /* Taille de la coche */
   color: white; /* Couleur de la coche */
   opacity: 0; /* Cachée par défaut */
   transform: rotate(20deg); /* Incline légèrement la coche vers la droite */
@@ -760,15 +760,18 @@ header img {
 
   /* Conteneur principal du header */
   header {
-      width: 95%; /* Le header occupe 95% de la largeur de la fenêtre */
-      margin: 2% auto; /* Ajoute un espacement de 2% autour et centre horizontalement */
+      width: 80vw; /* Le header occupe 95% de la largeur de la fenêtre */
+      margin: 2% 0; /* Ajoute un espacement de 2% autour et centre horizontalement */
   }
 
   /*----------------------------------------------------------------*/
   /* Logo dans le header */
   header img {
-      max-width: 150px; /* Limite la largeur maximale de l'image à 150 pixels */
+      max-width: 170px; /* Limite la largeur maximale de l'image à 150 pixels */
       height: auto; /* Conserve les proportions originales de l'image */
+      margin:0;
+      padding-left:0;
+      left:2%
   }
 
   /*-----------------------------------------------------------------------------------*/
@@ -784,6 +787,7 @@ header img {
     margin: 0;/* Supprime les marges externes */
     background-color: transparent; /* Fond transparent */
     justify-content: center; /* Centre les éléments verticalement */
+    width:70vw;
   }
 
   /*----------------------------------------------------------------*/
@@ -796,52 +800,55 @@ header img {
   /*----------------------------------------------------------------*/
   /* Liens affichés en mode responsive */
   .topnav.responsive .nav-links {
-    display: flex; /* Affiche les liens */
-    flex-direction: row; /* Organisation en ligne */
-    justify-content: space-around; /* Espace équitable entre les éléments */
-    justify-content: center; /* Centre les liens */
-    text-align: center; /* Centre le texte */
-    width: 85vw; /* Occupe toute la largeur */
+    display: grid; /* Affiche les liens */
+    grid-template-columns: repeat(4,25%);
     position: relative; /* Position relative pour un ajustement dynamique */
-    padding-top: 4%; /* Ajoute un espace en haut */
-    opacity: 1; /* Rend les liens visibles */
-    transition: top 2s ease-in-out; /* Transition douce */
+    padding:0 ;
+    margin: 5% 0;
+    opacity: 1; /* Rends les liens visibles */
+    transition: all 0.3s ease-in-out; /* Transition fluide pour les propriétés */
+    
   }
 
+  
   /*----------------------------------------------------------------*/
   /* Style des lignes la liste dans .nav-links*/
   .nav-links li {
+    font-size: 1rem;
     list-style: none; /* Supprime les puces */
-    flex: 1; /* Chaque élément prend une part égale de l'espace disponible */
     text-align: center; /* Centre le contenu */
+    margin: 0; /* Ajoute un espacement horizontal entre les éléments */
+    padding: 0;
   }
 
   /*----------------------------------------------------------------*/
   /* Styles pour les liens (a) */
   .nav-links a {
-    font-size: 1rem; /* Augmente la taille de la police */
-    width: auto;/* Ajuste la largeur automatiquement */
+    font-size: 0.9rem; /* Taille de la police */
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    color: #000; /* Couleur de texte noire */
+    padding: 0.5rem 1%; /* Ajoute de l'espace autour du texte */
+    display: block; /* Transforme les liens en blocs cliquables */
+    transition: all 0.3s ease-in-out; /* Transition douce pour les interactions */
   }
 
   /*----------------------------------------------------------------*/
   /* Conteneur pour le texte des liens (span) */
   .topnav span {
-    display: inline-block; /* Affiche chaque lien en bloc */
-    width: 100%; /* Occupe toute la largeur de l'espace disponible */
-    padding: 0.5rem 1rem; /* Ajoute un espace interne */
+    width:auto;
+    display: block; /* Affiche chaque lien en bloc */
+    padding: 7% 1%;
+    margin:0;
     transition: all 0.3s ease-in-out; /* Transition douce pour le hover */
+    border-radius: 0.3rem; /* Coins légèrement arrondis */
   }
   /*----------------------------------------------------------------*/
   /* Style au survol */
   .topnav span:hover {
-    width:100%;/* Laisse le texte occuper toute la largeur */
-    background-color: #ff0000; /* Change la couleur de fond en rouge vif (#ff0000) au survol */
-    color: #ffffff; /* Change la couleur du texte en blanc au survol */
-    border-radius: 0.5rem; /* Ajoute un léger arrondi aux coins de l'élément */
-    font-weight: 500; /* Rend le texte légèrement plus épais */
+    background-color: #ff0000; /* Fond rouge au survol */
+    color: #ffffff; /* Texte blanc au survol */
     text-decoration: underline; /* Souligne le texte pour indiquer une interaction */
-    padding:2% 1%;/* Augmente légèrement l'espacement interne au survol */
-    flex-wrap: nowrap;/* Empêche le retour à la ligne du contenu */
+    padding: 7% 1%; /* Augmente légèrement l'espacement interne au survol */
   }
 
 
@@ -891,6 +898,9 @@ header img {
     object-fit: cover; /* Maintient les proportions tout en remplissant l'espace */
   }
 
+  .hero-responsive {
+    top:20%
+  }
   /*------------------------------------------------------------------------------------*/
   /*------------------ BOUTON " JE m'inscris" ------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
@@ -927,6 +937,13 @@ header img {
   .modal-default {
     top: 10%; /* Position ajustée pour les écrans moyens */
   }
+
+  /*----------------------------------------------------------------*/
+/* Positionnement responsive de la modale */
+.modal-responsive {
+  top: 20%; /* Positionne la modale plus bas dans le cas d'un affichage responsive */
+  transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+}
 
   /*-----------------------------------------------------------------------------------*/
   /*-----------------------------  FORMULAIRE -----------------------------------------*/
@@ -1100,6 +1117,7 @@ header img {
     display: none; /* Masque l'icône du menu sur les grands écrans */
   }
 
+  
   /*---------------------------------------------------------*/
   /* Styles pour le texte des liens de navigation */
   .topnav li span {
