@@ -255,105 +255,141 @@ function closeModal() {
 /*                                 ======= Validation des champs =======                         */           
 /*===============================================================================================*/
 
-/* ============ Fonction de validation des champs ============*/
-function validateField(event) {
-    const field = event.target; // Champ ciblé par l'événement
-    let errorMessage = ''; // Initialisation du message d'erreur
+/* ============ Fonction de validation du champ prénom ===================*/
+function validateFirstName(event) {
+    const field = event.target;
+    const value = field.value.trim();
+    let errorMessage = '';
 
-
-    try {
-        // Étape 1 : Vérification des champs vides
-        if (field.type === 'checkbox') {
-            // Vérifie si la checkbox n'est pas cochée
-            if (!field.checked && field.id === 'checkbox1') {
-                errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
-                logEvent('warn', `Validation échouée pour la checkbox : ${field.id}`, { errorMessage });
-            }
-        } else if (field.value.trim() === '') {
-            switch (field.id) {
-                case 'first':
-                    errorMessage = 'Le prénom est requis.';
-                    break;
-                case 'last':
-                    errorMessage = 'Le nom est requis.';
-                    break;
-                case 'email':
-                    errorMessage = 'L\'e-mail est requis.';
-                    break;
-                case 'birthdate':
-                    errorMessage = 'La date de naissance est requise.';
-                    break;
-                case 'quantity':
-                    errorMessage = 'Le nombre de participations est requis.';
-                    break;
-                case 'checkbox1':
-                    errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
-                    break;
-            }
-            logEvent('warn', `Champ vide détecté : ${field.id}`, { errorMessage });
-        } else {
-            // Étape 2 : Validation spécifique
-            switch (field.id) {
-                case 'first':// Validation pour le champ "first" (prénom) 
-                case 'last': // Validation pour le champ "last" (nom)
-                    
-                    // Vérifie si la valeur contient moins de 2 caractères
-                    if (field.value.trim().length < 2) {
-                        errorMessage = `${field.id === 'first' ? 'Le prénom' : 'Le nom'} doit contenir au moins 2 caractères.`;
-                        // Génère un message d'erreur spécifique pour le prénom ou le nom
-                    
-                     // Vérifie si la valeur contient des caractères invalides à l'aide d'une regex
-                    } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(field.value.trim())) {
-                        errorMessage = `${field.id === 'first' ? 'Le prénom' : 'Le nom'} contient des caractères invalides.`;
-                        // Génère un message d'erreur si des caractères non autorisés sont présents
-                    }
-                    break;
-
-                case 'email':
-                    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value.trim())) {
-                        errorMessage = 'Veuillez entrer une adresse e-mail valide.';
-                    }
-                    break;
-
-                case 'birthdate':
-                    const birthDate = new Date(field.value);
-                    const today = new Date();
-                    const maxBirthDate = new Date(today.getFullYear() - 150, today.getMonth(), today.getDate()); // Date limite : 150 ans avant aujourd'hui
-
-                    if (birthDate >= today) {
-                        errorMessage = 'La date de naissance doit être dans le passé.';
-                    } else if (birthDate < maxBirthDate) {
-                        errorMessage = 'La date de naissance ne peut pas dépasser 150 ans.';
-
-                    }
-                    break;
-
-                case 'quantity':
-                    if (isNaN(field.value) || field.value < 0 || field.value > 99) {
-                        errorMessage = 'Le nombre de participations doit être entre 0 et 99.';
-                    }
-                    break;
-            }
-
-            if (errorMessage) {
-                logEvent('warn', `Erreur de validation dans le champ : ${field.id}`, { errorMessage });
-            } else {
-                logEvent('success', `Validation réussie pour le champ : ${field.id}`, { value: field.value.trim() });
-            }
-        }
-
-        // Étape 3 : Affichage ou suppression des erreurs
-        if (errorMessage) {
-            showError(errorMessage, field);
-            field.classList.add('error');
-        } else {
-            removeError(field);
-            field.classList.remove('error');
-        }
-    } catch (error) {
-        logEvent('error', `Erreur inattendue dans la validation : ${field.id}`, { error });
+    if (value === '') {
+        errorMessage = 'Le prénom est requis.';
+    } else if (value.length < 2) {
+        errorMessage = 'Le prénom doit contenir au moins 2 caractères.';
+    } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(value)) {
+        errorMessage = 'Le prénom contient des caractères invalides.';
     }
 
+    if (errorMessage) {
+        showError(errorMessage, field);
+        logEvent('warn', 'Validation échouée pour le prénom', { errorMessage });
+    } else {
+        removeError(field);
+        logEvent('success', 'Validation réussie pour le prénom', { value });
+    }
+}
+
+
+/* ============ Fonction de validation du champ nom ===================*/
+function validateLastName(event) {
+    const field = event.target;
+    const value = field.value.trim();
+    let errorMessage = '';
+
+    if (value === '') {
+        errorMessage = 'Le nom est requis.';
+    } else if (value.length < 2) {
+        errorMessage = 'Le nom doit contenir au moins 2 caractères.';
+    } else if (!/^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?:[-' ][a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/.test(value)) {
+        errorMessage = 'Le nom contient des caractères invalides.';
+    }
+
+    if (errorMessage) {
+        showError(errorMessage, field);
+        logEvent('warn', 'Validation échouée pour le nom', { errorMessage });
+    } else {
+        removeError(field);
+        logEvent('success', 'Validation réussie pour le nom', { value });
+    }
+}
+
+
+/* ============ Fonction de validation du champ email ===================*/
+function validateEmail(event) {
+    const field = event.target;
+    const value = field.value.trim();
+    let errorMessage = '';
+
+    if (value === '') {
+        errorMessage = 'L\'e-mail est requis.';
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+        errorMessage = 'Veuillez entrer une adresse e-mail valide.';
+    }
+
+    if (errorMessage) {
+        showError(errorMessage, field);
+        logEvent('warn', 'Validation échouée pour l\'e-mail', { errorMessage });
+    } else {
+        removeError(field);
+        logEvent('success', 'Validation réussie pour l\'e-mail', { value });
+    }
+}
+
+/*================Fonction de validation de la date de naissance =================*/
+function validateBirthdate(event) {
+    const field = event.target;
+    const value = field.value.trim();
+    let errorMessage = '';
+
+    if (value === '') {
+        errorMessage = 'La date de naissance est requise.';
+    } else {
+        const birthDate = new Date(value);
+        const today = new Date();
+        const maxBirthDate = new Date(today.getFullYear() - 150, today.getMonth(), today.getDate());
+
+        if (birthDate >= today) {
+            errorMessage = 'La date de naissance doit être dans le passé.';
+        } else if (birthDate < maxBirthDate) {
+            errorMessage = 'La date de naissance ne peut pas dépasser 150 ans.';
+        }
+    }
+
+    if (errorMessage) {
+        showError(errorMessage, field);
+        logEvent('warn', 'Validation échouée pour la date de naissance', { errorMessage });
+    } else {
+        removeError(field);
+        logEvent('success', 'Validation réussie pour la date de naissance', { value });
+    }
+}
+
+/*=====================Fonction validation de quantité du nombre de tournoi effectué ============*/
+function validateQuantity(event) {
+    const field = event.target;
+    const value = field.value.trim();
+    let errorMessage = '';
+
+    if (value === '') {
+        errorMessage = 'Le nombre de participations est requis.';
+    } else if (isNaN(value) || value < 0 || value > 99) {
+        errorMessage = 'Le nombre de participations doit être entre 0 et 99.';
+    }
+
+    if (errorMessage) {
+        showError(errorMessage, field);
+        logEvent('warn', 'Validation échouée pour la quantité', { errorMessage });
+    } else {
+        removeError(field);
+        logEvent('success', 'Validation réussie pour la quantité', { value });
+    }
+}
+
+/*=============== Fonction de validation de la checkbox consentement =================*/
+function validateCheckbox(event) {
+    const field = event.target;
+    let errorMessage = '';
+
+    if (!field.checked) {
+        errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
+    }
+
+    if (errorMessage) {
+        showError(errorMessage, field);
+        logEvent('warn', 'Validation échouée pour la checkbox', { errorMessage });
+    } else {
+        removeError(field);
+        logEvent('success', 'Validation réussie pour la checkbox', {});
+    }
 }
 
 
@@ -506,93 +542,96 @@ function removeError(inputElement) {
 
 /* ============ Point d'entrée principal du script ============*/
 
+
 function main() {
     logEvent('info', 'Début de l\'initialisation principale.'); // Log initial signalant le début du script
+
     // === Gestion du clic sur le bouton de menu pour le responsive ===
     document.getElementById('menu-toggle').addEventListener('click', editNav);
+
     // === Configuration des placeholders pour le champ de date ===
     birthdateInput.addEventListener('focus', () => {
-        logEvent('info', 'Focus sur le champ de date : affichage du placeholder.'); // Log lors du focus sur le champ
+        logEvent('info', 'Focus sur le champ de date : affichage du placeholder.');
         birthdateInput.placeholder = 'jj/mm/aaaa'; // Ajoute un placeholder lors du focus
     });
     birthdateInput.addEventListener('blur', () => {
         if (!birthdateInput.value) {
-            logEvent('info', 'Champ de date vide après perte du focus : suppression du placeholder.'); // Log après perte de focus
+            logEvent('info', 'Champ de date vide après perte du focus : suppression du placeholder.');
             birthdateInput.placeholder = ''; // Supprime le placeholder si le champ est vide
         }
     });
 
     // === Gestion des clics sur l'arrière-plan de la modale pour la fermer ===
     modalbg.addEventListener('click', (event) => {
-        if (event.target === modalbg) { // Vérifie que l'utilisateur a cliqué sur l'arrière-plan et non sur le contenu
-            logEvent('info', 'Clic détecté sur l\'arrière-plan : fermeture de la modale.'); // Log du clic sur l'arrière-plan
-            closeModal(); // Ferme la modale
+        if (event.target === modalbg) {
+            logEvent('info', 'Clic détecté sur l\'arrière-plan : fermeture de la modale.');
+            closeModal();
         }
     });
 
-    // === Validation en temps réel des champs du formulaire ===
-    inputs.forEach((input) => {
-        input.addEventListener('input', (event) => {
-            logEvent('info', `Modification détectée sur le champ : ${event.target.id}`); // Log des modifications
-            validateField(event); // Valide le champ en temps réel
-        });
-        input.addEventListener('blur', (event) => {
-            logEvent('info', `Perte de focus sur le champ : ${event.target.id}`); // Log de la perte de focus
-            validateField(event); // Valide le champ lors de la perte de focus
-        });
-    });
+    // === Validation spécifique des champs du formulaire ===
+    document.getElementById('first').addEventListener('blur', validateFirstName);
+    document.getElementById('last').addEventListener('blur', validateLastName);
+    document.getElementById('email').addEventListener('blur', validateEmail);
+    document.getElementById('birthdate').addEventListener('blur', validateBirthdate);
+    document.getElementById('quantity').addEventListener('blur', validateQuantity);
+    document.getElementById('checkbox1').addEventListener('change', validateCheckbox);
 
     // === Gestion de la soumission du formulaire ===
     document.querySelector('form').addEventListener('submit', function (event) {
         let isValid = true; // Initialise la validité globale du formulaire
-        logEvent('info', 'Tentative de soumission du formulaire.'); // Log du début de la soumission
+        logEvent('info', 'Tentative de soumission du formulaire.');
 
-        // Valide tous les champs obligatoires
-        inputs.forEach((input) => {
-            validateField({ target: input }); // Valide chaque champ
-            if (input.classList.contains('error')) {
-                isValid = false; // Si un champ a une erreur, le formulaire est invalide
-            }
-        });
+        // Valide chaque champ individuellement
+        validateFirstName({ target: document.getElementById('first') });
+        validateLastName({ target: document.getElementById('last') });
+        validateEmail({ target: document.getElementById('email') });
+        validateBirthdate({ target: document.getElementById('birthdate') });
+        validateQuantity({ target: document.getElementById('quantity') });
+        validateCheckbox({ target: document.getElementById('checkbox1') });
+
+        // Vérifie si des erreurs sont présentes
+        const inputs = document.querySelectorAll('.error');
+        if (inputs.length > 0) {
+            isValid = false;
+        }
 
         // Empêche la soumission si des erreurs sont présentes
         if (!isValid) {
-            event.preventDefault(); // Annule l'action par défaut (soumission)
-            logEvent('warn', 'Échec de la soumission : des erreurs sont présentes dans le formulaire.'); // Log d'avertissement
-            alert('Veuillez corriger les erreurs avant de soumettre le formulaire.'); // Alerte pour l'utilisateur
+            event.preventDefault();
+            logEvent('warn', 'Échec de la soumission : des erreurs sont présentes dans le formulaire.');
+            alert('Veuillez corriger les erreurs avant de soumettre le formulaire.');
         } else {
             event.preventDefault(); // Empêche la redirection pour gérer la soumission autrement
-            logEvent('info', 'Formulaire valide : ouverture de la modale de confirmation.'); // Log de succès
+            logEvent('info', 'Formulaire valide : ouverture de la modale de confirmation.');
             openConfirmationModal(); // Ouvre la modale de confirmation
         }
     });
 
     // === Gestion des clics sur les boutons pour ouvrir la modale ===
     modalbtn.forEach(btn => btn.addEventListener('click', () => {
-        logEvent('info', 'Clic sur un bouton d\'ouverture de modale.'); // Log du clic sur le bouton
-        launchModal(); // Ouvre la modale
+        logEvent('info', 'Clic sur un bouton d\'ouverture de modale.');
+        launchModal();
     }));
 
     // === Gestion des clics sur le bouton pour fermer la modale ===
     closeBtn.addEventListener('click', () => {
-        logEvent('info', 'Clic sur le bouton de fermeture de modale.'); // Log du clic sur le bouton de fermeture
-        closeModal(); // Ferme la modale
-        
+        logEvent('info', 'Clic sur le bouton de fermeture de modale.');
+        closeModal();
     });
 
     // === Gestion des touches pour fermer la modale avec la touche Esc ===
-
-    closeModalBtn.addEventListener('click', function (){
-        closeConfirmationModal()
+    closeModalBtn.addEventListener('click', function () {
+        closeConfirmationModal();
     });
 
     document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modalOpen) {
-        closeModal();
-    }
-});
-    logEvent('info', 'Initialisation principale terminée.'); // Log final confirmant la fin de l'initialisation
+        if (event.key === 'Escape' && modalOpen) {
+            closeModal();
+        }
+    });
 
+    logEvent('info', 'Initialisation principale terminée.');
 }
 
 /*======================================================================================*/

@@ -2277,9 +2277,10 @@ header img {
 
   /* Modale de confirmation (cachée par défaut) */
   #confirmation-modal {
-    left: 35%; /* Positionne la modale à gauche de la fenêtre */
-    width: 30vw; /* Occupe toute la largeur disponible */
-    height: 80%; /* Occupe toute la hauteur disponible */
+    left: 37.5%;
+    top:15%; /* Positionne la modale à gauche de la fenêtre */
+    width: 29vw; /* Occupe toute la largeur disponible */
+    height: 71%; /* Occupe toute la hauteur disponible */
     border-radius: 1rem;
   }
 
