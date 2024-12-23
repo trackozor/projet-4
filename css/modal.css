@@ -1100,6 +1100,7 @@ header img {
   /* Logo */
   .logo {
     padding:1.5% 2%; /* Ajoute un léger espacement au-dessus du logo */
+    max-width: 160px;
   }
 
   /*--------------------------------------------------------------------------------------*/
@@ -1477,7 +1478,8 @@ header img {
   /*------------------------------------------------------------*/
   /* Logo */
   .logo {
-    padding:2% 8%; /* Ajoute un léger espacement au-dessus du logo */
+    padding:1.5% 8%; /* Ajoute un léger espacement au-dessus du logo */
+    max-width:200px;
   }
 
   /*--------------------------------------------------------------------------------------*/
@@ -1889,9 +1891,9 @@ header img {
 
   /* Logo */
   .logo {
-    padding:1.5% 5%; /* Ajoute un léger espacement au-dessus du logo */
+    padding:1% 5%; /* Ajoute un léger espacement au-dessus du logo */
     width:25vw;
-    max-width:200px;
+    max-width:250px;
   }
 
   /*--------------------------------------------------------------------------------------*/
@@ -1992,7 +1994,7 @@ header img {
     top:1%; /* Positionnement vertical ajusté */
     left: 5%; /* Positionnement horizontal ajusté */
     font-weight: 500; /* Poids moyen du texte */
-    line-height: 5.5rem;
+    line-height: 6.5rem;
   }
 
   /*---------------------------------------------------------*/
@@ -2046,13 +2048,14 @@ header img {
   /* Conteneur principal de la modale */
   .bground {
     width: 100vw; /* Largeur ajustée */
+    height:100vh;
     background-color: #ffffff80; /* Fond blanc */
   }
 
   /*----------------------------------------------------------------*/
   /* Positionnement par défaut de la modale */
   .modal-default {
-    top: 13%; /* Positionne la modale à 8% du bord supérieur de l'écran */
+    top: 0%; /* Positionne la modale à 8% du bord supérieur de l'écran */
     width:25vw;
   }
 
@@ -2060,17 +2063,20 @@ header img {
   /* Modale active */
   .bground.active {
     width: 100vw; /* Maintient la largeur */
+    height:100vh;
   }
 
   /*---------------------------------------------------------*/
   /* Corps de la modale */
   .modal-body {
+    position: absolute;
     width: 25vw; /* Largeur réduite pour les ordinateurs */
     align-items: center;
-    padding:8% 5%;
+    padding: 2%;
     margin: 0 auto; /* Centre horizontalement et ajoute un espacement vertical */
     border-radius: 2%; /* Coins arrondis */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
+    top:16%
   }
   
   /*---------------------------------------------------------*/
