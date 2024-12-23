@@ -104,6 +104,7 @@ const DOM = {
 };
 
 
+
 /*========================================================================================*/
 /*                       =========== Fonctions utilitaires ===================            */
 /*========================================================================================*/
@@ -193,13 +194,6 @@ function addClass(element, className) {
 /**
  * Supprime une classe CSS d'un élément HTML.
  * 
- * Étapes :
- * 1. Valide que `element` est un élément HTML.
- * 2. Valide que `className` est une chaîne de caractères non vide.
- * 3. Vérifie si la classe est présente sur l'élément.
- * 4. Supprime la classe si elle est présente.
- * 5. Retourne un booléen indiquant si l'opération a réussi.
- * 
  * @param {HTMLElement} element - Élément HTML cible.
  * @param {string} className - Nom de la classe CSS à supprimer.
  * @returns {boolean} - `true` si la classe a été supprimée, `false` si elle n'était pas présente ou en cas d'erreur.
@@ -231,5 +225,63 @@ function removeClass(element, className) {
     } catch (error) {
         console.error('removeClass: Une erreur est survenue lors de la suppression de la classe.', { error });
         return false; // Échec de l'opération
+    }
+}
+
+/*===============================================================================================*/
+/*                                 ======= Affichage responsive toggle =======                   */           
+/*===============================================================================================*/
+/** 
+ * Fonction pour activer/désactiver le menu responsive.
+ * 
+ * Étapes :
+ * 1. Ajoute ou retire la classe "responsive" à l'élément de navigation (`navElement`).
+ * 2. Modifie les classes des sections Hero et Modale pour s'adapter au mode responsive.
+ * 3. Enregistre les actions effectuées dans la console pour un suivi précis.
+ * 4. Gère les erreurs avec un bloc try-catch.
+ * 
+ * @returns {void}
+ */
+function editNav() {
+    try {
+        // Vérifie si l'élément de navigation existe
+        if (!DOM.navElement || !DOM.heroSection || !DOM.modalbg) {
+            throw new Error('Certains éléments DOM requis sont introuvables.');
+        }
+
+        // Alterne la classe "responsive" sur l'élément de navigation
+        const isResponsive = DOM.navElement.classList.toggle(CONFIG.CSS_CLASSES.NAV_RESPONSIVE);
+
+        // Applique les classes appropriées pour la section Hero et la modale
+        if (isResponsive) {
+            // Activation du mode responsive
+            DOM.heroSection.classList.replace(
+                CONFIG.CSS_CLASSES.HERO_DEFAULT,
+                CONFIG.CSS_CLASSES.HERO_RESPONSIVE
+            );
+            DOM.modalbg.classList.replace(
+                CONFIG.CSS_CLASSES.MODAL_DEFAULT,
+                CONFIG.CSS_CLASSES.MODAL_RESPONSIVE
+            );
+        } else {
+            // Désactivation du mode responsive
+            DOM.heroSection.classList.replace(
+                CONFIG.CSS_CLASSES.HERO_RESPONSIVE,
+                CONFIG.CSS_CLASSES.HERO_DEFAULT
+            );
+            DOM.modalbg.classList.replace(
+                CONFIG.CSS_CLASSES.MODAL_RESPONSIVE,
+                CONFIG.CSS_CLASSES.MODAL_DEFAULT
+            );
+        }
+
+        // Log l'état actuel du menu responsive
+        logEvent('info', `Menu responsive ${isResponsive ? 'activé' : 'désactivé'}.`, {
+            responsiveState: isResponsive ? 'opened' : 'closed',
+        });
+    } catch (error) {
+        // Gestion des erreurs
+        logEvent('error', 'Erreur lors de la gestion du menu responsive.', { error: error.message });
+        console.error('Erreur dans editNav :', error);
     }
 }
