@@ -13,34 +13,37 @@
 /* =============================== */
 
 const CONFIG = {
-    ENABLE_LOGS: true, // Activation/désactivation des logs
+     /* ====== Configuration des logs ====== */
+    ENABLE_LOGS: true, // Permet d'activer ou de désactiver les logs dans la console. Utile pour basculer entre les environnements (développement/production).
+    
+    /*====== Classes CSS utilisées ======*/
     CSS_CLASSES: {
-        ERROR_INPUT: 'error-input',
-        ERROR_MODAL: 'error-modal',
-        MODAL_ACTIVE: 'active',
-        BODY_NO_SCROLL: 'no-scroll',
-        NAV_RESPONSIVE: 'responsive',
-        HERO_DEFAULT: 'hero-default',
-        HERO_RESPONSIVE: 'hero-responsive',
-        MODAL_DEFAULT: 'modal-default',
-        MODAL_RESPONSIVE: 'modal-responsive',
+        ERROR_INPUT: 'error-input', // Classe CSS pour styliser un champ avec une erreur (ex : bordure rouge).
+        ERROR_MODAL: 'error-modal', // Classe CSS pour afficher une erreur dans la modale.
+        MODAL_ACTIVE: 'active',  // Classe CSS pour indiquer qu'une modale est active et visible.
+        BODY_NO_SCROLL: 'no-scroll', // Classe CSS pour empêcher le défilement de la page lorsque la modale est ouverte.
+        NAV_RESPONSIVE: 'responsive', // Classe CSS pour activer le mode "responsive" du menu de navigation.
+        HERO_DEFAULT: 'hero-default', // Classe CSS pour le style par défaut de la section "hero".
+        HERO_RESPONSIVE: 'hero-responsive', // Classe CSS pour ajuster la section "hero" en mode responsive.
+        MODAL_DEFAULT: 'modal-default', // Classe CSS pour le style par défaut de la modale.
+        MODAL_RESPONSIVE: 'modal-responsive',  // Classe CSS pour adapter la modale au mode responsive.
     },
     LOG_STYLES: {
-        info: "color: blue; font-weight: bold;",
-        warn: "color: orange; font-weight: bold;",
-        error: "color: red; font-weight: bold;",
-        success: "color: green; font-weight: bold;",
-        default: "color: black;",
+        info: "color: blue; font-weight: bold;", // Style pour les messages d'information.
+        warn: "color: orange; font-weight: bold;", // Style pour les avertissements.
+        error: "color: red; font-weight: bold;", // Style pour les erreurs critiques.
+        success: "color: green; font-weight: bold;", // Style pour les messages indiquant une réussite.
+        default: "color: black;", // Style par défaut pour les messages qui ne correspondent pas à un type spécifique.
     },
     LOG_ICONS: {
-        info: 'ℹ️',
-        warn: '⚠️',
-        error: '❌',
-        success: '✅',
-        default: '🔵',
+        info: 'ℹ️',  // Icône pour les messages d'information.
+        warn: '⚠️', // Icône pour les avertissements.
+        error: '❌', // Icône pour les erreurs critiques.
+        success: '✅', // Icône pour indiquer une réussite.
+        default: '🔵', // Icône par défaut si le type de message n'est pas défini.
     },
     MEDIA: {
-        isMobile: window.matchMedia("(max-width: 768px)").matches, // Indique si l'utilisateur est sur mobile
+        isMobile: window.matchMedia("(max-width: 768px)").matches, // Indique si l'utilisateur utilise un appareil avec un écran de taille inférieure ou égale à 768px.
     },
 };
 
@@ -50,19 +53,56 @@ const CONFIG = {
 /* =============================== */
 
 const DOM = {
-    rootStyles: getComputedStyle(document.documentElement),
-    navElement: document.getElementById("Topnav"),
-    modalbg: document.querySelector(".bground"),
-    heroSection: document.querySelector(".hero-content"),
-    modalbtn: document.querySelectorAll(".modal-btn"),
-    formData: document.querySelectorAll(".formData"),
-    closeBtn: document.querySelector(".close"),
-    inputs: document.querySelectorAll('input'),
-    birthdateInput: document.getElementById('birthdate'),
-    confirmationModal: document.getElementById('confirmation-modal'),
-    closeModalBtn: document.getElementById('close-modal-btn'),
-    navLinks: document.querySelector('.nav-links'),
+    // ====== Styles racine ======
+    rootStyles: getComputedStyle(document.documentElement), 
+    // Récupère les styles CSS globaux définis sur l'élément racine (généralement :root). 
+    // Utile pour accéder aux variables CSS dynamiquement.
+
+    // ====== Navigation ======
+    navElement: document.getElementById("Topnav"), 
+    // Élément principal de la barre de navigation.
+
+    // ====== Modale ======
+    modalbg: document.querySelector(".bground"), 
+    // Conteneur de la modale incluant l'arrière-plan et le contenu principal.
+
+    // ====== Section Hero ======
+    heroSection: document.querySelector(".hero-content"), 
+    // Section principale (généralement un en-tête ou une image de présentation).
+
+    // ====== Boutons de la modale ======
+    modalbtn: document.querySelectorAll(".modal-btn"), 
+    // Tous les boutons qui déclenchent l'ouverture de la modale.
+
+    // ====== Champs de formulaire ======
+    formData: document.querySelectorAll(".formData"), 
+    // Conteneurs pour chaque champ de formulaire (inclut les labels, inputs, messages d'erreur).
+
+    // ====== Bouton pour fermer la modale ======
+    closeBtn: document.querySelector(".close"), 
+    // Bouton permettant de fermer la modale.
+
+    // ====== Champs d'entrée ======
+    inputs: document.querySelectorAll('input'), 
+    // Tous les champs d'entrée (input) présents dans le formulaire.
+
+    // ====== Champ de saisie pour la date de naissance ======
+    birthdateInput: document.getElementById('birthdate'), 
+    // Champ spécifique pour saisir la date de naissance.
+
+    // ====== Modale de confirmation ======
+    confirmationModal: document.getElementById('confirmation-modal'), 
+    // Conteneur de la modale de confirmation affichée après une soumission réussie.
+
+    // ====== Bouton pour fermer la modale de confirmation ======
+    closeModalBtn: document.getElementById('close-modal-btn'), 
+    // Bouton utilisé pour fermer la modale de confirmation.
+
+    // ====== Liens de navigation ======
+    navLinks: document.querySelector('.nav-links'), 
+    // Conteneur pour les liens de navigation. Utilisé notamment pour gérer l'état responsive du menu.
 };
+
 
 /*========================================================================================*/
 /*                       =========== Fonctions utilitaires ===================            */
@@ -148,6 +188,8 @@ function addClass(element, className) {
 }
 
 
+
+/* ========================= Fonction pour supprimer une classe CSS =================*/
 /**
  * Supprime une classe CSS d'un élément HTML.
  * 
