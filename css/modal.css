@@ -772,9 +772,8 @@ header img {
   /*-----------------------------------------------------------------------------------*/
 
   label {
-    font-size: 1rem; /* Augmente la taille de police pour les labels */
+    font-size: var(--font-size-base)
   }
-  
   
   /*-----------------------------------------------------------------------------------*/
   /*-----------------------------  HEADER ---------------------------------------------*/
@@ -846,10 +845,10 @@ header img {
   /*----------------------------------------------------------------*/
   /* Styles pour les liens (a) */
   .nav-links a {
-    font-size: 0.9rem; /* Taille de la police */
+    font-size: 1rem; /* Taille de la police */
     text-decoration: none; /* Supprime le soulignement par défaut */
     color: #000; /* Couleur de texte noire */
-    padding: 0.5rem 1%; /* Ajoute de l'espace autour du texte */
+    padding: 0.5% 2%; /* Ajoute de l'espace autour du texte */
     display: block; /* Transforme les liens en blocs cliquables */
     transition: all 0.3s ease-in-out; /* Transition douce pour les interactions */
   }
@@ -920,8 +919,10 @@ header img {
     object-fit: cover; /* Maintient les proportions tout en remplissant l'espace */
   }
 
+  
+  /*-----------------------------------------------------------------------------------*/
   .hero-responsive {
-    top:20%
+    top:1%;
   }
   /*------------------------------------------------------------------------------------*/
   /*------------------ BOUTON " JE m'inscris" ------------------------------------------*/

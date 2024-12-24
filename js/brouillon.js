@@ -750,3 +750,166 @@ document.addEventListener('DOMContentLoaded', () => {
     logEvent('info', 'DOM entièrement chargé. Début de l\'exécution du script principal.'); // Log confirmant le chargement complet du DOM
     main(); // Appelle la fonction principale pour initialiser toutes les fonctionnalités
 });
+
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* ============ Point d'entrée principal du script ============*/
+
+
+/**
+ * Point d'entrée principal du script.
+ * 
+ * Étapes principales :
+ * 1. Configure les gestionnaires d'événements pour les éléments interactifs (navigation, modale, formulaire).
+ * 2. Gère les placeholders dynamiques pour le champ de date.
+ * 3. Initialise la validation des champs du formulaire.
+ * 4. Log l'état initial pour un suivi précis.
+ * 
+ * @returns {void}
+ */
+function main() {
+    logEvent('info', 'Début de l\'initialisation principale.');
+
+    // === Étape 1 : Gestion du menu responsive ===
+    const menuToggleButton = DOM.navElement.querySelector('#menu-toggle');
+    if (menuToggleButton) {
+        menuToggleButton.addEventListener('click', editNav);
+    } else {
+        logEvent('warn', 'Bouton de menu toggle introuvable.');
+    }
+
+    // === Étape 2 : Configuration des placeholders pour le champ de date ===
+    if (DOM.birthdateInput) {
+        DOM.birthdateInput.addEventListener('focus', () => {
+            logEvent('info', 'Focus sur le champ de date : affichage du placeholder.');
+            DOM.birthdateInput.placeholder = 'jj/mm/aaaa'; // Ajoute un placeholder lors du focus
+        });
+
+        DOM.birthdateInput.addEventListener('blur', () => {
+            if (!DOM.birthdateInput.value) {
+                logEvent('info', 'Champ de date vide après perte du focus : suppression du placeholder.');
+                DOM.birthdateInput.placeholder = ''; // Supprime le placeholder si le champ est vide
+            }
+        });
+    } else {
+        logEvent('warn', 'Champ de date de naissance introuvable.');
+    }
+
+    // === Étape 3 : Gestion des clics sur l'arrière-plan de la modale ===
+    if (DOM.modalbg) {
+        DOM.modalbg.addEventListener('click', (event) => {
+            if (event.target === DOM.modalbg) {
+                logEvent('info', 'Clic détecté sur l\'arrière-plan : fermeture de la modale.');
+                closeModal();
+            }
+        });
+    } else {
+        logEvent('warn', 'Élément modalbg introuvable.');
+    }
+
+    // === Étape 4 : Initialisation de la validation des champs ===
+    const fields = {
+        first: validateFirstName,
+        last: validateLastName,
+        email: validateEmail,
+        birthdate: validateBirthdate,
+        quantity: validateQuantity,
+    };
+
+    // Ajout des écouteurs pour les champs
+    Object.keys(fields).forEach((fieldId) => {
+        const fieldElement = document.getElementById(fieldId);
+        if (fieldElement) {
+            const eventType = 'blur';
+            fieldElement.addEventListener(eventType, fields[fieldId]);
+        } else {
+            logEvent('warn', `Champ "${fieldId}" introuvable.`);
+        }
+    });
+
+    // Ajout d'un écouteur spécifique pour la case à cocher
+    const checkboxElement = document.getElementById('checkbox1');
+    if (checkboxElement) {
+        checkboxElement.addEventListener('change', validateCheckbox);
+    } else {
+        logEvent('warn', 'Case à cocher "checkbox1" introuvable.');
+    }
+
+    // === Étape 5 : Gestion de la soumission du formulaire ===
+    const formElement = document.querySelector('form');
+    if (formElement) {
+        formElement.addEventListener('submit', (event) => {
+            logEvent('info', 'Tentative de soumission du formulaire.');
+
+            let isValid = true;
+
+            // Valide chaque champ
+            Object.keys(fields).forEach((fieldId) => {
+                const fieldElement = document.getElementById(fieldId);
+                if (fieldElement) {
+                    const fieldIsValid = fields[fieldId]({ target: fieldElement });
+                    if (!fieldIsValid) {
+                        isValid = false;
+                    }
+                }
+            });
+
+            // Valide la case à cocher
+            if (checkboxElement) {
+                const checkboxIsValid = validateCheckbox({ target: checkboxElement });
+                if (!checkboxIsValid) {
+                    isValid = false;
+                }
+            }
+
+            // Vérifie si des erreurs persistent dans le DOM
+            const errorInputs = formElement.querySelectorAll(`.${CONFIG.CSS_CLASSES.ERROR_INPUT}`);
+            if (errorInputs.length > 0) {
+                isValid = false;
+            
+            } else {
+                event.preventDefault();
+                logEvent('info', 'Formulaire valide : ouverture de la modale de confirmation.');
+                openConfirmationModal(); // Ouvre la modale de confirmation
+            }
+        });
+    } else {
+        logEvent('warn', 'Formulaire principal introuvable.');
+    }
+
+    // === Étape 6 : Gestion des boutons de la modale ===
+    if (DOM.modalbtn) {
+        DOM.modalbtn.forEach((btn) => btn.addEventListener('click', () => {
+            logEvent('info', 'Clic sur un bouton d\'ouverture de modale.');
+            launchModal();
+        }));
+    } else {
+        logEvent('warn', 'Boutons pour ouvrir la modale introuvables.');
+    }
+
+    if (DOM.closeBtn) {
+        DOM.closeBtn.addEventListener('click', () => {
+            logEvent('info', 'Clic sur le bouton de fermeture de modale.');
+            closeModal();
+        });
+    } else {
+        logEvent('warn', 'Bouton de fermeture de modale introuvable.');
+    }
+
+    // === Étape 7 : Gestion des interactions clavier (touche Esc) ===
+    if (DOM.closeModalBtn) {
+        DOM.closeModalBtn.addEventListener('click', closeConfirmationModal);
+    } else {
+        logEvent('warn', 'Bouton de fermeture de confirmation introuvable.');
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modalOpen) {
+            closeModal();
+        }
+    });
+
+    logEvent('info', 'Initialisation principale terminée.');
+}
