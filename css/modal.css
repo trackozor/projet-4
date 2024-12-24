@@ -552,7 +552,7 @@ header img {
 /*-- conteneur --*/
 .consentement {
   display: grid; /* Active Flexbox pour organiser les éléments */
-  grid-template-rows: repeat(2,3.5vh);
+  grid-template-rows: repeat(2,3vh);
   width: 82vw; /* La liste occupe toute la largeur disponible */
   justify-content: flex-start; /* Aligne les éléments verticalement au centre */
   align-items: center;
@@ -564,7 +564,7 @@ header img {
 .consentement li {
   width:82vw;/* Définit chaque élément de la liste à 82% de la largeur de la fenêtre */
   font-size: 0.5rem;/* Définit une petite taille de police pour les textes */
-  margin: 0.5% auto; /* Ajoute un espacement vertical de 0.5% et centre chaque élément horizontalement */
+  margin: 1% auto; /* Ajoute un espacement vertical de 0.5% et centre chaque élément horizontalement */
 
 }
 
@@ -723,7 +723,7 @@ header img {
   font-size: 0.8rem; /* Taille de police légèrement réduite */
   background-color:#232323; /* Fond noir pour contraster avec le texte */
   color: #fe142f; /* Texte rouge pour indiquer une erreur */
-  padding: 1% 2%; /* Ajoute un espacement interne pour rendre le texte plus lisible */
+  padding:  2%; /* Ajoute un espacement interne pour rendre le texte plus lisible */
   width: 90%; /* Largeur ajustée pour s'insérer correctement sous le champ */
   text-align: left; /* Texte aligné à gauche */
   margin-top: 2%; /* Espace au-dessus pour ne pas chevaucher le champ */
@@ -731,8 +731,19 @@ header img {
   border-radius: 4px; /* Coins arrondis pour un design moderne */
 }
 
-
-/*-----------------------------------------------------------*/
+/* Erreur spécifique à la section consentement */
+.consentement .error-modal {
+    color: #fe142f; /* Texte rouge vif pour les erreurs */
+    padding: 0;
+    font-size: 0.8rem; /* Taille de police adaptée */
+    margin:0;
+    text-align: right;
+    left:6%;
+    bottom:1.2vh; /* Alignement à gauche */
+    width: 80%; /* S'adapte à la largeur de la section */
+  
+}
+/*----------------------------------------------------------*/
 /*------------------------ FOOTER ---------------------------*/
 /*-----------------------------------------------------------*/
 
