@@ -731,6 +731,7 @@ header img {
   border-radius: 4px; /* Coins arrondis pour un design moderne */
 }
 
+/*---------------------------------------------------------*/
 /* Erreur spécifique à la section consentement */
 .consentement .error-modal {
     color: #fe142f; /* Texte rouge vif pour les erreurs */
@@ -740,9 +741,9 @@ header img {
     text-align: right;
     left:6%;
     bottom:1.2vh; /* Alignement à gauche */
-    width: 80%; /* S'adapte à la largeur de la section */
-  
+    width: 80%; /* S'adapte à la largeur de la section */ 
 }
+
 /*----------------------------------------------------------*/
 /*------------------------ FOOTER ---------------------------*/
 /*-----------------------------------------------------------*/
@@ -765,6 +766,16 @@ header img {
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 @media screen and (min-width: 768px) and (max-width:1023px) {
+
+  /*-----------------------------------------------------------------------------------*/
+  /*-----------------------------  GLOBAL ---------------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+
+  label {
+    font-size: 1rem; /* Augmente la taille de police pour les labels */
+  }
+  
+  
   /*-----------------------------------------------------------------------------------*/
   /*-----------------------------  HEADER ---------------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
@@ -970,7 +981,7 @@ header img {
   /*----------------------------------------------------------------*/
   /* Styles pour la légende des champs de formulaire */
   .formData .legend {
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding-left: 7%;
     font-weight: 500;
     margin: 0;
@@ -1036,6 +1047,7 @@ header img {
     margin:1% 0;
   }
 
+  
   /*-----------------------------------------------------------------------------------*/
   /*-- liste --*/
   .consentement li {
@@ -1086,6 +1098,17 @@ header img {
     font-size: 0.9rem; /* Taille augmentée pour lisibilité */
     padding-bottom: 0; /* Supprime l'espacement en bas */
   }
+
+  .consentement .error-modal {
+    color: #fe142f; /* Texte rouge vif pour les erreurs */
+    padding: 0;
+    font-size: 0.9rem; /* Taille de police adaptée */
+    margin:0;
+    text-align: left;
+    left:4.5%;
+    bottom:2vh; /* Alignement à gauche */
+    width: 80%; /* S'adapte à la largeur de la section */ 
+}
 }
 
 /*-----------------------------------------------------------*/
@@ -1776,6 +1799,7 @@ header img {
   /*------------------ SECTION CONSENTEMENT  --------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
 
+  /* Conteneurs */
   .consentement {
     width: 30vw;
     display: grid;
@@ -1785,14 +1809,16 @@ header img {
     position: left;
   }
 
-    .condition {
-      width:20vw;
-      padding-left:2%;
-      padding-top: 1%;
-      font-weight: 500;
-      display: flex;
-      flex-wrap: nowrap;
-    }
+  /*---------------------------------------------------------*/
+  /* texte */
+  .condition {
+    width:20vw;
+    padding-left:2%;
+    padding-top: 1%;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: nowrap;
+  }
 
   /*---------------------------------------------------------*/
   /* Étiquette associée à la case à cocher */
@@ -1827,6 +1853,7 @@ header img {
   .checkbox-icon2::after {
     font-size: 0.7rem;
   }
+
   /*---------------------------------------------------------*/
   /* Bouton de soumission */
   .btn-submit {
