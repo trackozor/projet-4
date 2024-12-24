@@ -1662,43 +1662,49 @@ header img {
 
   /* Conteneur principal de la modale */
   .bground {
-    width: 100vw; /* Largeur ajustée */
+    width: 100%; /* Largeur ajustée */
     background-color: #ffffff80 /* Fond blanc */
   }
 
   /*----------------------------------------------------------------*/
 /* Positionnement par défaut de la modale */
   .modal-default {
-    top: 12%;
-    width:30vw; /* Positionne la modale à 8% du bord supérieur de l'écran */
-    
+    top: 0%;
+    margin: 0 auto;
+  
   }
   /*---------------------------------------------------------*/
   /* Modale active */
   .bground.active {
-    width: 100vw; /* Maintient la largeur */
+    width: 100%; /* Maintient la largeur */
+    height:100%;
   }
 
   /*---------------------------------------------------------*/
   /* Corps de la modale */
   .modal-body {
+    position:absolute;
     width: 25vw; /* Largeur réduite pour les ordinateurs */
-    align-items: center;
-    padding:5%;
-    margin: 0 auto; /* Centre horizontalement et ajoute un espacement vertical */
+    display: block;
+    justify-content: center;
+    padding:5% ;
+    margin: 0 ; /* Centre horizontalement et ajoute un espacement vertical */
     border-radius: 2%; /* Coins arrondis */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
+
+    
   }
   
   /*---------------------------------------------------------*/
   /* Contenu principal de la modale */
   .content {
+    width: 20vw;
+    position: relative;
     display: block; /* Positionnement fixe */
-    align-items: center;
-    width: 25vw; /* Largeur réduite */
     margin: 0 auto; /* Centre horizontalement */
     justify-content: center; /* Centre le contenu */
-    padding:0;
+    padding:0 ;
+    top: 9%;
   }
 
   /*-----------------------------------------------------------------------------------*/
@@ -1707,20 +1713,19 @@ header img {
 
   /* Conteneur principal du formulaire */
   .formData {
-    width: 20vw; /* Largeur réduite pour les ordinateurs */
-    margin: 0.5% auto; /* Centre horizontalement */
-    padding:1% 0;
-    justify-content: flex-start; /* Centre le contenu */
+    width: 25vw; /* Largeur réduite pour les ordinateurs */
+    margin: 0 auto; /* Centre horizontalement */
+    padding:1% 0; /* Centre le contenu */
     font-weight: 500;
   }
 
   /*---------------------------------------------------------*/
   /* Labels des formulaires */
   .formData label {
-    width: 20vw;
+    width: 25vw;
     font-size: 0.8rem; /* Taille de texte standard */
-    margin: 0;
-    padding:2% 5%;
+    margin: 1% 0;
+    padding:2%  ;
     font-weight: 500;
 
   }
@@ -1728,33 +1733,35 @@ header img {
 
   /*---------------------------------------------------------*/
   .form-list input {
-    width:21vw;
-    padding:3% 2%;
-    margin:0 5%;
+    width:22vw;
+    padding:4% 3% ;
+    margin:0 3%;
     
   }
 
   /*---------------------------------------------------------*/
   /* Légendes des formulaires */
   .formData .legend {
+    width:25vw;
     font-size: 0.8rem; /* Taille de texte standard */
     padding:0 2%; /* Espacement à gauche */
-    margin:0;
+    margin: 0;
     font-weight: 500;
+    padding-top: 1%;
   }
 
   /*---------------------------------------------------------*/
   /* Champs d'entrée */
   .text-control {
     font-size: 0.8rem; /* Taille de texte standard */
-    padding-left:5%
+    padding:5% ;
   }
 
   /*---------------------------------------------------------*/
   /* Éléments de liste dans le formulaire */
   .formData li {
     width:25vw;
-    margin: 3% auto;
+    margin: 0 auto;
     padding: 0;
     font-weight: 500;
   }
@@ -1768,15 +1775,11 @@ header img {
     width:24vw;
     grid-template-columns: repeat(3, 8vw);
     grid-template-rows:repeat(2,3vh); 
-    margin:1vh  0;
-    padding: 0;
-    gap:2%;
+    margin:  0;
+    padding: 0 2%;
     font-weight: 500;
   }
-  .location-list .town {
-    padding-top: 1%;
-    padding-left: 1%;
-  }
+  
   /*-----------------------------------------------------------------------------------*/
   .location-list li span {
     margin :0;
@@ -1802,7 +1805,7 @@ header img {
 
   /* Conteneurs */
   .consentement {
-    width: 30vw;
+    width:30vw;
     display: grid;
     grid-template-rows:repeat(2,3vh);
     padding: 0;
@@ -1813,10 +1816,10 @@ header img {
   /*---------------------------------------------------------*/
   /* texte */
   .condition {
-    width:20vw;
-    padding-left:2%;
+    font-size: 0.8rem;
+    width:auto;
     padding-top: 1%;
-    font-weight: 500;
+    font-weight: 300;
     display: flex;
     flex-wrap: nowrap;
   }
@@ -1824,23 +1827,17 @@ header img {
   /*---------------------------------------------------------*/
   /* Étiquette associée à la case à cocher */
   .checkbox-label2 {
-    width: 35vw;
+    width: 25vw;
     display: flex; /* Utilise flexbox pour organiser les enfants */
     align-items: center; /* Centre verticalement l'icône et le texte */
-    gap:1%; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
+    gap:2%; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
     cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
     margin: 0.5% auto; /* Centre horizontalement si nécessaire */
     flex-shrink: 0; /* Empêche le rétrécissement des éléments */
     padding:0.5% 0;
   }
 
-  /*---------------------------------------------------------*/
-  .consentement li {
-    width: 30vw;
-    padding-left: 0;
-    margin:0;
-    font-size: 0.65rem;
-  }
+  
 
   /*-----------------------------------------------------------------------------------*/
   /* icône validation box */
@@ -1868,18 +1865,21 @@ header img {
   
   /* Bouton de fermeture (croix) */
   .close {
-    padding-right: 0.5%;
+    left: 35%;
     
   }
 
   /*---------------------------------------------------------*/
   /* Création de la croix avec un symbole + pivoté */
   .close span {
+    position: relative;
+    
+    z-index: 50;
     font-weight: 100; /* Applique un poids de police moyen */
     background-color: transparent; /* Fond transparent */
     transform: rotate(45deg); /* Pivote le symbole pour former une croix */
     font-size: 2rem; /* Taille de police pour la croix */
-    padding: 6% 0; /* Aucun espacement en bas */
+    padding:8% 0; /* Aucun espacement en bas */
     margin: 0; /* Aucune marge en bas */
   }
 
@@ -1892,7 +1892,7 @@ header img {
     font-size: 0.9rem; /* Taille augmentée pour lisibilité */
     padding-bottom: 0; /* Supprime l'espacement en bas */
     width:20vw;
-    padding-left:5%;
+    padding-left:2%;
   }
 
   
@@ -2184,7 +2184,6 @@ header img {
     width:30vw;
     margin: 0 auto;
     padding: 0;
-    margin: 0; /* Largeur ajustée */
     font-weight: 500;
   }
   
