@@ -1494,6 +1494,9 @@ header img {
     margin: 0; /* Pas de marge supplémentaire */
     left: 5%; /* Positionnement à gauche */
   }
+
+
+  
   /*================================================================================================================================================*/
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- MODALE ERROR ------------------------------------------*/
@@ -1711,7 +1714,7 @@ header img {
     width: 25vw; /* Largeur réduite pour les ordinateurs */
     display: block;
     justify-content: center;
-    padding:5% ;
+    padding:8% 5% 5% 5% ;
     margin: 0 ; /* Centre horizontalement et ajoute un espacement vertical */
     border-radius: 2%; /* Coins arrondis */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
@@ -1728,7 +1731,7 @@ header img {
     margin: 0 auto; /* Centre horizontalement */
     justify-content: center; /* Centre le contenu */
     padding:0 ;
-    top: 9%;
+    top: 7%;
   }
 
   /*-----------------------------------------------------------------------------------*/
@@ -1748,7 +1751,7 @@ header img {
   .formData label {
     width: 25vw;
     font-size: 0.8rem; /* Taille de texte standard */
-    margin: 1% 0;
+    margin: 2% 0;
     padding:2%  ;
     font-weight: 500;
 
@@ -1800,7 +1803,7 @@ header img {
     grid-template-columns: repeat(3, 8vw);
     grid-template-rows:repeat(2,3vh); 
     margin:  0;
-    padding: 0 2%;
+    padding: 0 2% 3% 2%;
     font-weight: 500;
   }
   
@@ -1897,13 +1900,12 @@ header img {
   /* Création de la croix avec un symbole + pivoté */
   .close span {
     position: relative;
-    
     z-index: 50;
     font-weight: 100; /* Applique un poids de police moyen */
     background-color: transparent; /* Fond transparent */
     transform: rotate(45deg); /* Pivote le symbole pour former une croix */
     font-size: 2rem; /* Taille de police pour la croix */
-    padding:8% 0; /* Aucun espacement en bas */
+    padding:10% 0; /* Aucun espacement en bas */
     margin: 0; /* Aucune marge en bas */
   }
 
@@ -1919,7 +1921,16 @@ header img {
     padding-left:2%;
   }
 
-  
+  .consentement .error-modal {
+    color: #fe142f; /* Texte rouge vif pour les erreurs */
+    padding: 0;
+    font-size: 0.8rem; /* Taille de police adaptée */
+    margin:0;
+    text-align: left;
+    left:9%;
+    width: 80%;
+    top:10%; /* S'adapte à la largeur de la section */ 
+  }
   /*-----------------------------------------------------------*/
   /*------------------------ FOOTER ---------------------------*/
   /*-----------------------------------------------------------*/
@@ -2135,22 +2146,24 @@ header img {
     position: absolute;
     width: 25vw; /* Largeur réduite pour les ordinateurs */
     align-items: center;
-    padding: 2%;
+    padding: 3% 0.5% 0.5% 0.5%;
     margin: 0 auto; /* Centre horizontalement et ajoute un espacement vertical */
     border-radius: 2%; /* Coins arrondis */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
-    top:16%
+    top:14.5%
   }
   
   /*---------------------------------------------------------*/
   /* Contenu principal de la modale */
   .content {
     display: block; /* Positionnement fixe */
+    position: relative;
     align-items: center;
     width: 25vw; /* Largeur réduite */
     margin: 0 auto; /* Centre horizontalement */
     justify-content: center; /* Centre le contenu */
     padding:0;
+    top:17%
   }
 
   /*-----------------------------------------------------------------------------------*/
@@ -2163,7 +2176,6 @@ header img {
     margin: 0 auto; /* Centre horizontalement */
     padding:0.5% 0;
     font-weight: 500;
-    justify-content: flex-start; /* Centre le contenu */
   }
 
   /*---------------------------------------------------------*/
@@ -2251,9 +2263,9 @@ header img {
 
   /*-- conteneur --*/
   .consentement {
-    width: 35vw;
+    width: 30vw;
     display: grid;
-    grid-template-rows:repeat(2,4vh);
+    grid-template-rows:repeat(2,3vh);
     padding: 0;
     margin:2% 0; /* Centre horizontalement */
     position: left;
@@ -2274,11 +2286,20 @@ header img {
   /*---------------------------------------------------------*/
   /*-- liste --*/
   .consentement li {
-    width: 35vw;
-    padding-left: 0;
+    width: 100%;
+    padding-left: 2%;
     margin:0;
     font-size: 0.65rem;
   }
+  .condition {
+    font-size: 0.9rem;
+    width:auto;
+    padding-top: 1%;
+    font-weight: 300;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
 
   /*-----------------------------------------------------------------------------------*/
   /* icône validation box */
@@ -2306,18 +2327,20 @@ header img {
   
   /* Bouton de fermeture (croix) */
   .close {
-    padding-right: 0.5%;
+    left:5%;
     
   }
 
   /*---------------------------------------------------------*/
   /* Création de la croix avec un symbole + pivoté */
   .close span {
+    position: relative;
+    z-index: 50;
     font-weight: 100; /* Applique un poids de police moyen */
     background-color: transparent; /* Fond transparent */
     transform: rotate(45deg); /* Pivote le symbole pour former une croix */
     font-size: 2rem; /* Taille de police pour la croix */
-    padding: 6% 0; /* Aucun espacement en bas */
+    padding: 1% 0; /* Aucun espacement en bas */
     margin: 0; /* Aucune marge en bas */
   }
 
@@ -2341,9 +2364,10 @@ header img {
       font-size: 0.8rem; /* Taille de police adaptée */
       margin: 0;
       text-align: left;
-      left:9.5%;
-      padding: 0.5% 0 1% 0;
-      width: 65%; /* S'adapte à la largeur de la section */ 
+      left:12.5%;
+      margin:3% 0 1% 0;
+      padding: 0;
+      width: 80%; /* S'adapte à la largeur de la section */ 
   }
   /*-----------------------------------------------------------------------------------*/
 /*--------------------------- MODALE CONFIRMATION -----------------------------------*/
