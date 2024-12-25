@@ -209,7 +209,6 @@ header img {
   right:0.5vw; /* Positionne l'icône à 3.4% du bord droit de la fenêtre */
   padding: 0.4rem; /* Ajoute un espacement interne de 0.4rem tout autour de l'icône */
   font-size: 1.2rem; /* Définit une taille de police de 1.4rem pour l'icône */
-
 }
 
 /*----------------------------------------------------------------*/
@@ -615,12 +614,12 @@ header img {
 /*----------------------------------------------------------------*/
 /* Étiquette associée à la case à cocher */
 .checkbox-label2 {
-    display: flex; /* Utilise flexbox pour organiser les enfants */
-    align-items: center; /* Centre verticalement l'icône et le texte */
-    gap: 0.5rem; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
-    cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
-    margin: 0 auto; /* Centre horizontalement si nécessaire */
-    flex-shrink: 0; /* Empêche le rétrécissement des éléments */
+  display: flex; /* Utilise flexbox pour organiser les enfants */
+  align-items: center; /* Centre verticalement l'icône et le texte */
+  gap: 0.5rem; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
+  cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
+  margin: 0 auto; /* Centre horizontalement si nécessaire */
+  flex-shrink: 0; /* Empêche le rétrécissement des éléments */
 }
 
 /*----------------------------------------------------------------*/
@@ -659,10 +658,10 @@ header img {
 /*----------------------------------------------------------------*/
 /* Bouton de soumission */
 .btn-submit {
-    display: flex; /* Active Flexbox pour centrer les éléments */
-    justify-content: center; /* Centre horizontalement le contenu */
-    margin: 2% auto; /* Centre le bouton horizontalement */
-    width:35%;/* Définit une largeur fixe pour le bouton, proportionnelle au conteneur */
+  display: flex; /* Active Flexbox pour centrer les éléments */
+  justify-content: center; /* Centre horizontalement le contenu */
+  margin: 2% auto; /* Centre le bouton horizontalement */
+  width:35%;/* Définit une largeur fixe pour le bouton, proportionnelle au conteneur */
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -739,14 +738,14 @@ header img {
 /*---------------------------------------------------------*/
 /* Erreur spécifique à la section consentement */
 .consentement .error-modal {
-    color: #fe142f; /* Texte rouge vif pour les erreurs */
-    padding: 0;
-    font-size: 0.8rem; /* Taille de police adaptée */
-    margin:0;
-    text-align: right;
-    left:6%;
-    bottom:1.2vh; /* Alignement à gauche */
-    width: 80%; /* S'adapte à la largeur de la section */ 
+  color: #fe142f; /* Texte rouge vif pour les erreurs */
+  padding: 0;
+  font-size: 0.8rem; /* Taille de police adaptée */
+  margin:0;
+  text-align: right;
+  left:6%;
+  bottom:1.2vh; /* Alignement à gauche */
+  width: 80%; /* S'adapte à la largeur de la section */ 
 }
 
 /*----------------------------------------------------------*/
@@ -761,9 +760,6 @@ header img {
   text-align: center; /* Centre le texte à l'intérieur de l'élément */
   color:#fe142f; /* Définit la couleur du texte en rouge */
 }
-
-
-
 
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -786,18 +782,18 @@ header img {
 
   /* Conteneur principal du header */
   header {
-      width: 80vw; /* Le header occupe 95% de la largeur de la fenêtre */
-      margin: 2% 0; /* Ajoute un espacement de 2% autour et centre horizontalement */
+    width: 80vw; /* Le header occupe 95% de la largeur de la fenêtre */
+    margin: 2% 0; /* Ajoute un espacement de 2% autour et centre horizontalement */
   }
 
   /*----------------------------------------------------------------*/
   /* Logo dans le header */
   header img {
-      max-width: 170px; /* Limite la largeur maximale de l'image à 150 pixels */
-      height: auto; /* Conserve les proportions originales de l'image */
-      margin:0;
-      padding-left:0;
-      left:2%
+    max-width: 170px; /* Limite la largeur maximale de l'image à 150 pixels */
+    height: auto; /* Conserve les proportions originales de l'image */
+    margin:0;
+    padding-left:0;
+    left:2%
   }
 
   /*-----------------------------------------------------------------------------------*/
@@ -833,10 +829,8 @@ header img {
     margin: 5% 0;
     opacity: 1; /* Rends les liens visibles */
     transition: all 0.3s ease-in-out; /* Transition fluide pour les propriétés */
-    
   }
 
-  
   /*----------------------------------------------------------------*/
   /* Style des lignes la liste dans .nav-links*/
   .nav-links li {
@@ -868,6 +862,7 @@ header img {
     transition: all 0.3s ease-in-out; /* Transition douce pour le hover */
     border-radius: 0.3rem; /* Coins légèrement arrondis */
   }
+
   /*----------------------------------------------------------------*/
   /* Style au survol */
   .topnav span:hover {
@@ -969,11 +964,11 @@ header img {
   }
 
   /*----------------------------------------------------------------*/
-/* Positionnement responsive de la modale */
+  /* Positionnement responsive de la modale */
   .modal-responsive {
     top: 14%; /* Positionne la modale plus bas dans le cas d'un affichage responsive */
     transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
-}
+  }
 
   /*-----------------------------------------------------------------------------------*/
   /*-----------------------------  FORMULAIRE -----------------------------------------*/
@@ -1074,6 +1069,7 @@ header img {
   .checkbox-icon2::after {
     font-size: 0.7rem;
   }
+
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- SECTION BUTTONS ---------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
@@ -1091,9 +1087,9 @@ header img {
   /*----------------------------------------------------------------*/
   /* Bouton de soumission */
   .btn-submit {
-      display: block;
-      width:20vw;
-      margin:3% 35% ;
+    display: block;
+    width:20vw;
+    margin:3% 35% ;
   }
 
   /*-----------------------------------------------------------------------------------*/
@@ -1400,7 +1396,6 @@ header img {
     width: 45vw;
     margin: 0 auto;
     padding: 0 ;
-    margin: 0; /* Largeur ajustée */
   }
   
   /*-----------------------------------------------------------*/
@@ -1442,11 +1437,11 @@ header img {
     width: 0.8em;
     height: 0.8em;
   }
+
   /*------------------------------------------------------------------------------------*/
   /*------------------ SECTION CONSENTEMENT ------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
   
-
   /* Section consentement */
   .consentement {
     width: 50vw; /* Largeur ajustée */
@@ -1529,11 +1524,11 @@ header img {
   /*----------------------------------------------------------------*/
   /* Style pour les boutons dans la modale de confirmation */
   #confirmation-modal button {
-  width: 15vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
-  font-size: 1.2rem;
-  padding:2% 4%; /* Ajoute un espacement interne uniforme  */
-  position:relative; 
-  top:20%;/**/
+    width: 15vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+    font-size: 1.2rem;
+    padding:2% 4%; /* Ajoute un espacement interne uniforme  */
+    position:relative; 
+    top:20%;/**/
   }
 
   /*-----------------------------------------------------------*/
@@ -1550,7 +1545,6 @@ header img {
   }
 
 
-  
   /*================================================================================================================================================*/
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- MODALE ERROR ------------------------------------------*/
@@ -1772,8 +1766,6 @@ header img {
     margin: 0 ; /* Centre horizontalement et ajoute un espacement vertical */
     border-radius: 2%; /* Coins arrondis */
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25); /* Ombre subtile */
-
-    
   }
   
   /*---------------------------------------------------------*/
@@ -1808,7 +1800,6 @@ header img {
     margin: 2% 0;
     padding:2%  ;
     font-weight: 500;
-
   }
 
 
@@ -1880,7 +1871,8 @@ header img {
     width: 0.8em;
     height: 0.8em;
   }
-    /*------------------------------------------------------------------------------------*/
+  
+  /*------------------------------------------------------------------------------------*/
   /*------------------ SECTION CONSENTEMENT  --------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
 
@@ -1916,9 +1908,7 @@ header img {
     margin: 0.5% auto; /* Centre horizontalement si nécessaire */
     flex-shrink: 0; /* Empêche le rétrécissement des éléments */
     padding:0.5% 0;
-  }
-
-  
+  } 
 
   /*-----------------------------------------------------------------------------------*/
   /* icône validation box */
@@ -1947,7 +1937,6 @@ header img {
   /* Bouton de fermeture (croix) */
   .close {
     left: 35%;
-    
   }
 
   /*---------------------------------------------------------*/
@@ -2003,10 +1992,10 @@ header img {
   /*----------------------------------------------------------------*/
   /* Style pour les boutons dans la modale de confirmation */
   #confirmation-modal button {
-  width: 10vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
-  padding:3% 4%; /* Ajoute un espacement interne uniforme  */
-  position:relative; 
-  top:25%;/**/
+    width: 10vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+    padding:3% 4%; /* Ajoute un espacement interne uniforme  */
+    position:relative; 
+    top:25%;/**/
   }
   /*-----------------------------------------------------------*/
   /*------------------------ FOOTER ---------------------------*/
@@ -2377,7 +2366,6 @@ header img {
     flex-wrap: nowrap;
   }
 
-
   /*-----------------------------------------------------------------------------------*/
   /* icône validation box */
   .checkbox-icon2 {
@@ -2405,7 +2393,6 @@ header img {
   /* Bouton de fermeture (croix) */
   .close {
     left:5%;
-    
   }
 
   /*---------------------------------------------------------*/
@@ -2436,15 +2423,15 @@ header img {
   /*---------------------------------------------------------*/
   /* Erreur spécifique à la section consentement */
   .consentement .error-modal {
-      color: #fe142f; /* Texte rouge vif pour les erreurs */
-      padding: 0;
-      font-size: 0.8rem; /* Taille de police adaptée */
-      margin: 0;
-      text-align: left;
-      left:12.5%;
-      margin:3% 0 1% 0;
-      padding: 0;
-      width: 80%; /* S'adapte à la largeur de la section */ 
+    color: #fe142f; /* Texte rouge vif pour les erreurs */
+    padding: 0;
+    font-size: 0.8rem; /* Taille de police adaptée */
+    margin: 0;
+    text-align: left;
+    left:12.5%;
+    margin:3% 0 1% 0;
+    padding: 0;
+    width: 80%; /* S'adapte à la largeur de la section */ 
   }
 
 
@@ -2465,8 +2452,8 @@ header img {
   /*----------------------------------------------------------------*/
   /* Style pour les boutons dans la modale de confirmation */
   #confirmation-modal button {
-  width: 8vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
-  padding:3% 2%; /* Ajoute un espacement interne uniforme  */
+    width: 8vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+    padding:3% 2%; /* Ajoute un espacement interne uniforme  */
   }
 
 
