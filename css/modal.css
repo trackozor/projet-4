@@ -110,6 +110,7 @@ fieldset {
   border: none; /* Supprime la bordure par défaut autour du champ groupé */
 }
 
+
 /*------------------------------------------------------------------------------------*/
 /* Accessibilité : Masquer un élément visuellement mais le garder lisible pour les lecteurs d'écran */
 .sr-only {
@@ -686,16 +687,20 @@ header img {
 /*----------------------------------------------------------------*/
 /* Style pour le texte à l'intérieur de la modale de confirmation */
 #confirmation-modal span {
-  font-size: 2rem;/* Grande taille pour mettre en évidence le texte */
-  width:80vw; /* Largeur relative à la fenêtre pour s'adapter aux écrans responsifs */
+  font-size: 2.4rem;/* Grande taille pour mettre en évidence le texte */
+  width:65%; /* Largeur relative à la fenêtre pour s'adapter aux écrans responsifs */
   text-align: center;/* Centre horizontalement le texte */
+  font-weight: 500;
+  line-height: 4rem;
 }
 
 /*----------------------------------------------------------------*/
 /* Style pour les boutons dans la modale de confirmation */
 #confirmation-modal button {
-  width: 25vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
-  padding: 5%; /* Ajoute un espacement interne uniforme  */
+  position:relative;
+  top:15%;
+  width: 35vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+  padding:3% 5%; /* Ajoute un espacement interne uniforme  */
   color: white; /* Couleur de texte blanche pour un contraste sur fond sombre */
   border: none; /* Supprime les bordures par défaut pour un style minimaliste */
 }
@@ -1091,7 +1096,32 @@ header img {
       margin:3% 35% ;
   }
 
+  /*-----------------------------------------------------------------------------------*/
+  /*--------------------------- MODALE CONFIRMATION -----------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
 
+
+  /*----------------------------------------------------------------*/
+  /* Style pour le texte à l'intérieur de la modale de confirmation */
+  #confirmation-modal span {
+    font-size: 3.6rem;/* Grande taille pour mettre en évidence le texte */
+    width:55%; /* Largeur relative à la fenêtre pour s'adapter aux écrans responsifs */
+    text-align: center;/* Centre horizontalement le texte */
+    font-weight: 500;
+    line-height: 4rem;
+  }
+
+  /*----------------------------------------------------------------*/
+  /* Style pour les boutons dans la modale de confirmation */
+  #confirmation-modal button {
+    position:relative;
+    top:12%;
+    font-size: 1.3rem;
+    width: 30vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+    padding:2% 5%; /* Ajoute un espacement interne uniforme  */
+    color: white; /* Couleur de texte blanche pour un contraste sur fond sombre */
+    border: none; /* Supprime les bordures par défaut pour un style minimaliste */
+  }
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- MODALE ERROR ------------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
@@ -1480,6 +1510,30 @@ header img {
     font-size: 2rem; /* Taille de police pour la croix */
     padding: 4% 1%; /* Aucun espacement en bas */
     margin: 0; /* Aucune marge en bas */
+  }
+
+  /*-----------------------------------------------------------------------------------*/
+/*--------------------------- MODALE CONFIRMATION -----------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+
+  /* Modale de confirmation (cachée par défaut) */
+  #confirmation-modal {
+    display: none;
+    left: 26.5%;
+    top:7%; /* Positionne la modale à gauche de la fenêtre */
+    width: 45vw; /* Occupe toute la largeur disponible */
+    height: 65%; /* Occupe toute la hauteur disponible */
+    border-radius: 1rem;
+  }
+
+  /*----------------------------------------------------------------*/
+  /* Style pour les boutons dans la modale de confirmation */
+  #confirmation-modal button {
+  width: 15vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+  font-size: 1.2rem;
+  padding:2% 4%; /* Ajoute un espacement interne uniforme  */
+  position:relative; 
+  top:20%;/**/
   }
 
   /*-----------------------------------------------------------*/
@@ -1931,6 +1985,29 @@ header img {
     width: 80%;
     top:10%; /* S'adapte à la largeur de la section */ 
   }
+
+/*-----------------------------------------------------------------------------------*/
+/*--------------------------- MODALE CONFIRMATION -----------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+
+  /* Modale de confirmation (cachée par défaut) */
+  #confirmation-modal {
+    display: none;
+    left: 38%;
+    top:8%; /* Positionne la modale à gauche de la fenêtre */
+    width: 29vw; /* Occupe toute la largeur disponible */
+    height: 70%; /* Occupe toute la hauteur disponible */
+    border-radius: 1rem;
+  }
+
+  /*----------------------------------------------------------------*/
+  /* Style pour les boutons dans la modale de confirmation */
+  #confirmation-modal button {
+  width: 10vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+  padding:3% 4%; /* Ajoute un espacement interne uniforme  */
+  position:relative; 
+  top:25%;/**/
+  }
   /*-----------------------------------------------------------*/
   /*------------------------ FOOTER ---------------------------*/
   /*-----------------------------------------------------------*/
@@ -2369,12 +2446,15 @@ header img {
       padding: 0;
       width: 80%; /* S'adapte à la largeur de la section */ 
   }
+
+
   /*-----------------------------------------------------------------------------------*/
 /*--------------------------- MODALE CONFIRMATION -----------------------------------*/
 /*-----------------------------------------------------------------------------------*/
 
   /* Modale de confirmation (cachée par défaut) */
   #confirmation-modal {
+    display:none;
     left: 37.5%;
     top:15%; /* Positionne la modale à gauche de la fenêtre */
     width: 29vw; /* Occupe toute la largeur disponible */
@@ -2387,8 +2467,9 @@ header img {
   #confirmation-modal button {
   width: 8vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
   padding:3% 2%; /* Ajoute un espacement interne uniforme  */
-  
   }
+
+
   /*-----------------------------------------------------------*/
   /*------------------------ FOOTER ---------------------------*/
   /*-----------------------------------------------------------*/
