@@ -336,7 +336,7 @@ header img {
 /*----------------------------------------------------------------*/
 /* Positionnement responsive de la section "hero" */
 .hero-responsive {
-  top:5%;
+  top:25vh;
   transition: top 2s ease-in-out; /* Transition douce pour les changements */
 }
 
@@ -397,7 +397,7 @@ header img {
 /*----------------------------------------------------------------*/
 /* Positionnement responsive de la modale */
 .modal-responsive {
-  top: 25%; /* Positionne la modale plus bas dans le cas d'un affichage responsive */
+  top: 20%; /* Positionne la modale plus bas dans le cas d'un affichage responsive */
   transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
@@ -919,7 +919,9 @@ header img {
     object-fit: cover; /* Maintient les proportions tout en remplissant l'espace */
   }
 
-  
+  .hero-default {
+    top:5%;
+  }
   /*-----------------------------------------------------------------------------------*/
   .hero-responsive {
     top:1%;
@@ -963,9 +965,9 @@ header img {
 
   /*----------------------------------------------------------------*/
 /* Positionnement responsive de la modale */
-.modal-responsive {
-  top: 20%; /* Positionne la modale plus bas dans le cas d'un affichage responsive */
-  transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
+  .modal-responsive {
+    top: 14%; /* Positionne la modale plus bas dans le cas d'un affichage responsive */
+    transition: top 0.3s ease-in-out; /* Transition douce pour les changements */
 }
 
   /*-----------------------------------------------------------------------------------*/
@@ -1109,18 +1111,18 @@ header img {
     left:4.5%;
     bottom:2vh; /* Alignement à gauche */
     width: 80%; /* S'adapte à la largeur de la section */ 
-}
-}
+  }
+
 
 /*-----------------------------------------------------------*/
 /*------------------------ FOOTER ---------------------------*/
 /*-----------------------------------------------------------*/
 
-.copyright {
-  font-size: 0.7rem; /* Définit une petite taille de police pour le texte */
-  
+  .copyright {
+    font-size: 0.7rem; /* Définit une petite taille de police pour le texte */
+    
+  }
 }
-
 /*---------------------------------------------------------------------------------------------------------*/
 /* ----------------- Ordinateurs portables entre 1024px et 1440px -----------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
@@ -1411,7 +1413,7 @@ header img {
     height: 0.8em;
   }
   /*------------------------------------------------------------------------------------*/
-  /*------------------ conteneur consentement ------------------------------------------*/
+  /*------------------ SECTION CONSENTEMENT ------------------------------------------*/
   /*------------------------------------------------------------------------------------*/
   
 
@@ -1492,6 +1494,28 @@ header img {
     margin: 0; /* Pas de marge supplémentaire */
     left: 5%; /* Positionnement à gauche */
   }
+  /*================================================================================================================================================*/
+  /*-----------------------------------------------------------------------------------*/
+  /*--------------------------- MODALE ERROR ------------------------------------------*/
+  /*-----------------------------------------------------------------------------------*/
+  
+  /* Classe pour le message d'erreur */
+  .error-modal {
+    font-size: 0.9rem; /* Taille augmentée pour lisibilité */
+    padding-bottom: 0; /* Supprime l'espacement en bas */
+    padding-left:5%
+  }
+
+  .consentement .error-modal {
+    color: #fe142f; /* Texte rouge vif pour les erreurs */
+    padding: 0;
+    font-size: 0.9rem; /* Taille de police adaptée */
+    margin:2% 0;
+    text-align: left;
+    left:11%;
+    bottom:2vh; /* Alignement à gauche */
+    width: 80%; /* S'adapte à la largeur de la section */ 
+  }  
 }
 
 
@@ -2227,11 +2251,11 @@ header img {
 
   /*-- conteneur --*/
   .consentement {
-    width: 30vw;
+    width: 35vw;
     display: grid;
-    grid-template-rows:repeat(2,3vh);
+    grid-template-rows:repeat(2,4vh);
     padding: 0;
-    margin:0; /* Centre horizontalement */
+    margin:2% 0; /* Centre horizontalement */
     position: left;
   }
 
@@ -2240,7 +2264,7 @@ header img {
   .checkbox-label2 {
     display: flex; /* Utilise flexbox pour organiser les enfants */
     align-items: center; /* Centre verticalement l'icône et le texte */
-    gap:1%; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
+    gap:3%; /* Espace entre l'icône et le texte, unité rem pour flexibilité */
     cursor: pointer; /* Affiche le curseur pointeur pour l’interaction */
     margin: 0.5% auto; /* Centre horizontalement si nécessaire */
     flex-shrink: 0; /* Empêche le rétrécissement des éléments */
@@ -2250,7 +2274,7 @@ header img {
   /*---------------------------------------------------------*/
   /*-- liste --*/
   .consentement li {
-    width: 30vw;
+    width: 35vw;
     padding-left: 0;
     margin:0;
     font-size: 0.65rem;
@@ -2309,6 +2333,18 @@ header img {
     padding-left: 5%;
   }
 
+  /*---------------------------------------------------------*/
+  /* Erreur spécifique à la section consentement */
+  .consentement .error-modal {
+      color: #fe142f; /* Texte rouge vif pour les erreurs */
+      padding: 0;
+      font-size: 0.8rem; /* Taille de police adaptée */
+      margin: 0;
+      text-align: left;
+      left:9.5%;
+      padding: 0.5% 0 1% 0;
+      width: 65%; /* S'adapte à la largeur de la section */ 
+  }
   /*-----------------------------------------------------------------------------------*/
 /*--------------------------- MODALE CONFIRMATION -----------------------------------*/
 /*-----------------------------------------------------------------------------------*/
