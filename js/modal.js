@@ -43,7 +43,7 @@ const CONFIG = {
         default: '🔵', // Icône par défaut si le type de message n'est pas défini.
     },
     MEDIA: {
-        isMobile: window.matchMedia("(max-width: 1024px)").matches, // Indique si l'utilisateur utilise un appareil avec un écran de taille inférieure ou égale à 1024px.
+        isMobile: window.matchMedia("(max-width: 1023px)").matches, // Indique si l'utilisateur utilise un appareil avec un écran de taille inférieure ou égale à 1024px.
     },
 };
 
@@ -369,13 +369,14 @@ function resetForm() {
  * - Ne contient que des lettres, des accents, des espaces, des apostrophes ou des tirets.
  * 
  * @param {Event} event - Événement déclenché lors de l'interaction avec le champ.
+ * @returns {boolean} - Retourne `true` si la validation est réussie, sinon `false`.
  */
 function validateFirstName(event) {
     const field = event.target; // Champ cible
     const value = field.value.trim(); // Supprime les espaces inutiles
     let errorMessage = '';
 
-    // Validation des critères
+    // === Validation des critères ===
     if (value === '') {
         errorMessage = 'Le prénom est requis.';
     } else if (value.length < 2) {
@@ -384,15 +385,18 @@ function validateFirstName(event) {
         errorMessage = 'Le prénom contient des caractères invalides.';
     }
 
-    // Gestion des erreurs
+    // === Gestion des erreurs ===
     if (errorMessage) {
         showError(errorMessage, field); // Affiche un message d'erreur
-        logEvent('warn', 'Validation échouée pour le prénom', { errorMessage });
+        logEvent('warn', 'Validation échouée pour le prénom.', { errorMessage, value });
+        return false; // Indique une validation échouée
     } else {
         removeError(field); // Supprime tout message d'erreur existant
-        logEvent('success', 'Validation réussie pour le prénom', { value });
+        logEvent('success', 'Validation réussie pour le prénom.', { value });
+        return true; // Indique une validation réussie
     }
 }
+
 
 /* ============ Fonction de validation du champ nom ===================*/
 /**
@@ -401,16 +405,17 @@ function validateFirstName(event) {
  * Critères de validation similaires à ceux du prénom :
  * - Non vide.
  * - Longueur minimale de 2 caractères.
- * - Ne contient que des caractères valides.
+ * - Ne contient que des lettres, des accents, des espaces, des apostrophes ou des tirets.
  * 
  * @param {Event} event - Événement déclenché lors de l'interaction avec le champ.
+ * @returns {boolean} - Retourne `true` si la validation est réussie, sinon `false`.
  */
 function validateLastName(event) {
-    const field = event.target;
-    const value = field.value.trim();
+    const field = event.target; // Champ cible
+    const value = field.value.trim(); // Supprime les espaces inutiles
     let errorMessage = '';
 
-    // Validation des critères
+    // === Validation des critères ===
     if (value === '') {
         errorMessage = 'Le nom est requis.';
     } else if (value.length < 2) {
@@ -419,13 +424,15 @@ function validateLastName(event) {
         errorMessage = 'Le nom contient des caractères invalides.';
     }
 
-    // Gestion des erreurs
+    // === Gestion des erreurs ===
     if (errorMessage) {
-        showError(errorMessage, field);
-        logEvent('warn', 'Validation échouée pour le nom', { errorMessage });
+        showError(errorMessage, field); // Affiche un message d'erreur
+        logEvent('warn', 'Validation échouée pour le nom.', { errorMessage, value });
+        return false; // Indique une validation échouée
     } else {
-        removeError(field);
-        logEvent('success', 'Validation réussie pour le nom', { value });
+        removeError(field); // Supprime tout message d'erreur existant
+        logEvent('success', 'Validation réussie pour le nom.', { value });
+        return true; // Indique une validation réussie
     }
 }
 
@@ -438,28 +445,32 @@ function validateLastName(event) {
  * - Respecte un format d'adresse e-mail valide.
  * 
  * @param {Event} event - Événement déclenché lors de l'interaction avec le champ.
+ * @returns {boolean} - Retourne `true` si la validation est réussie, sinon `false`.
  */
 function validateEmail(event) {
     const field = event.target;
     const value = field.value.trim();
     let errorMessage = '';
 
-    // Validation des critères
+    // === Validation des critères ===
     if (value === '') {
         errorMessage = 'L\'e-mail est requis.';
     } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
         errorMessage = 'Veuillez entrer une adresse e-mail valide.';
     }
 
-    // Gestion des erreurs
+    // === Gestion des erreurs ===
     if (errorMessage) {
-        showError(errorMessage, field);
-        logEvent('warn', 'Validation échouée pour l\'e-mail', { errorMessage });
+        showError(errorMessage, field); // Affiche un message d'erreur
+        logEvent('warn', 'Validation échouée pour l\'e-mail.', { errorMessage, value });
+        return false; // Indique une validation échouée
     } else {
-        removeError(field);
-        logEvent('success', 'Validation réussie pour l\'e-mail', { value });
+        removeError(field); // Supprime tout message d'erreur existant
+        logEvent('success', 'Validation réussie pour l\'e-mail.', { value });
+        return true; // Indique une validation réussie
     }
 }
+
 
 /*================Fonction de validation de la date de naissance =================*/
 /**
@@ -469,45 +480,48 @@ function validateEmail(event) {
  * - Non vide.
  * - Date inférieure à la date actuelle.
  * - Date ne dépassant pas 100 ans dans le passé.
- * - Date inférieure à 18 ans
+ * - Date supérieure à 18 ans dans le passé.
  * 
  * @param {Event} event - Événement déclenché lors de l'interaction avec le champ.
+ * @returns {boolean} - Retourne `true` si la validation est réussie, sinon `false`.
  */
 function validateBirthdate(event) {
-    const field = event.target;
-    const value = field.value.trim();
+    const field = event.target; // Champ cible
+    const value = field.value.trim(); // Supprime les espaces inutiles
     let errorMessage = '';
 
-    // Validation des critères
+    // === Validation des critères ===
     if (value === '') {
         errorMessage = 'La date de naissance est requise.';
     } else {
         const birthDate = new Date(value);
         const today = new Date();
         const maxBirthDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
-        const majBirthdate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        const minBirthDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
 
-
-        if (birthDate >= today) {
+        if (isNaN(birthDate.getTime())) {
+            errorMessage = 'Veuillez entrer une date valide.';
+        } else if (birthDate >= today) {
             errorMessage = 'La date de naissance doit être dans le passé.';
         } else if (birthDate < maxBirthDate) {
             errorMessage = 'La date de naissance ne peut pas dépasser 100 ans.';
-        } else if (birthDate > majBirthdate) {
+        } else if (birthDate > minBirthDate) {
             errorMessage = 'Vous devez avoir au moins 18 ans pour vous inscrire à un tournoi.';
         }
     }
 
-    // Gestion des erreurs
+    // === Gestion des erreurs ===
     if (errorMessage) {
-        showError(errorMessage, field);
-        logEvent('warn', 'Validation échouée pour la date de naissance', { errorMessage });
+        showError(errorMessage, field); // Affiche un message d'erreur
+        logEvent('warn', 'Validation échouée pour la date de naissance', { errorMessage, value });
+        return false; // Validation échouée
     } else {
-        removeError(field);
+        removeError(field); // Supprime tout message d'erreur existant
         logEvent('success', 'Validation réussie pour la date de naissance', { value });
+        return true; // Validation réussie
     }
 }
-
-/*=====================Fonction validation de quantité du nombre de tournoi effectué ============*/
+/*===================== Fonction validation de quantité du nombre de tournoi effectué ============*/
 /**
  * Valide le champ "Quantité" (nombre de participations).
  * 
@@ -516,26 +530,29 @@ function validateBirthdate(event) {
  * - Valeur numérique entre 0 et 99.
  * 
  * @param {Event} event - Événement déclenché lors de l'interaction avec le champ.
+ * @returns {boolean} - Retourne `true` si la validation est réussie, sinon `false`.
  */
 function validateQuantity(event) {
-    const field = event.target;
-    const value = field.value.trim();
+    const field = event.target; // Champ cible
+    const value = field.value.trim(); // Nettoie les espaces inutiles
     let errorMessage = '';
 
-    // Validation des critères
+    // === Validation des critères ===
     if (value === '') {
         errorMessage = 'Le nombre de participations est requis.';
     } else if (isNaN(value) || value < 0 || value > 99) {
         errorMessage = 'Le nombre de participations doit être entre 0 et 99.';
     }
 
-    // Gestion des erreurs
+    // === Gestion des erreurs ===
     if (errorMessage) {
-        showError(errorMessage, field);
-        logEvent('warn', 'Validation échouée pour la quantité', { errorMessage });
+        showError(errorMessage, field); // Affiche un message d'erreur
+        logEvent('warn', 'Validation échouée pour la quantité', { errorMessage, value });
+        return false; // Validation échouée
     } else {
-        removeError(field);
+        removeError(field); // Supprime tout message d'erreur existant
         logEvent('success', 'Validation réussie pour la quantité', { value });
+        return true; // Validation réussie
     }
 }
 
@@ -548,23 +565,26 @@ function validateQuantity(event) {
  * - La checkbox doit être cochée.
  * 
  * @param {Event} event - Événement déclenché lors de l'interaction avec la checkbox.
+ * @returns {boolean} - Retourne `true` si la validation est réussie, sinon `false`.
  */
 function validateCheckbox(event) {
-    const field = event.target;
+    const field = event.target; // Champ cible
     let errorMessage = '';
 
-    // Validation des critères
+    // === Validation des critères ===
     if (!field.checked) {
         errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
     }
 
-    // Gestion des erreurs
+    // === Gestion des erreurs ===
     if (errorMessage) {
-        showError(errorMessage, field);
+        showError(errorMessage, field); // Affiche un message d'erreur
         logEvent('warn', 'Validation échouée pour la checkbox', { errorMessage });
+        return false; // Validation échouée
     } else {
-        removeError(field);
-        logEvent('success', 'Validation réussie pour la checkbox', {});
+        removeError(field); // Supprime tout message d'erreur existant
+        logEvent('success', 'Validation réussie pour la checkbox');
+        return true; // Validation réussie
     }
 }
 
@@ -867,26 +887,10 @@ function closeConfirmationModal() {
 }
 
 
+function setupEventListeners() {
+    logEvent('info', 'Configuration des écouteurs d\'événements.');
 
-/*================================================================================================================================================*/
-/* ============ Point d'entrée principal du script ============*/
-
-
-/**
- * Point d'entrée principal du script.
- * 
- * Étapes principales :
- * 1. Configure les gestionnaires d'événements pour les éléments interactifs (navigation, modale, formulaire).
- * 2. Gère les placeholders dynamiques pour le champ de date.
- * 3. Initialise la validation des champs du formulaire.
- * 4. Log l'état initial pour un suivi précis.
- * 
- * @returns {void}
- */
-function main() {
-    logEvent('info', 'Début de l\'initialisation principale.');
-
-    // === Étape 1 : Gestion du menu responsive ===
+    // Menu responsive
     const menuToggleButton = DOM.navElement.querySelector('#menu-toggle');
     if (menuToggleButton) {
         menuToggleButton.addEventListener('click', editNav);
@@ -894,36 +898,62 @@ function main() {
         logEvent('warn', 'Bouton de menu toggle introuvable.');
     }
 
-    // === Étape 2 : Configuration des placeholders pour le champ de date ===
+    // Placeholder dynamique pour le champ date de naissance
     if (DOM.birthdateInput) {
-        DOM.birthdateInput.addEventListener('focus', () => {
-            logEvent('info', 'Focus sur le champ de date : affichage du placeholder.');
-            DOM.birthdateInput.placeholder = 'jj/mm/aaaa'; // Ajoute un placeholder lors du focus
-        });
-
-        DOM.birthdateInput.addEventListener('blur', () => {
-            if (!DOM.birthdateInput.value) {
-                logEvent('info', 'Champ de date vide après perte du focus : suppression du placeholder.');
-                DOM.birthdateInput.placeholder = ''; // Supprime le placeholder si le champ est vide
-            }
-        });
+        DOM.birthdateInput.addEventListener('focus', handleBirthdateFocus);
+        DOM.birthdateInput.addEventListener('blur', handleBirthdateBlur);
     } else {
         logEvent('warn', 'Champ de date de naissance introuvable.');
     }
 
-    // === Étape 3 : Gestion des clics sur l'arrière-plan de la modale ===
+    // Gestion des clics sur l'arrière-plan de la modale
     if (DOM.modalbg) {
-        DOM.modalbg.addEventListener('click', (event) => {
-            if (event.target === DOM.modalbg) {
-                logEvent('info', 'Clic détecté sur l\'arrière-plan : fermeture de la modale.');
-                closeModal();
-            }
-        });
+        DOM.modalbg.addEventListener('click', handleModalBackgroundClick);
     } else {
         logEvent('warn', 'Élément modalbg introuvable.');
     }
 
-    // === Étape 4 : Initialisation de la validation des champs ===
+    // Validation des champs
+    setupFieldValidation();
+
+    // Gestion de la soumission du formulaire
+    const formElement = document.querySelector('form');
+    if (formElement) {
+        formElement.addEventListener('submit', handleFormSubmit);
+    } else {
+        logEvent('warn', 'Formulaire principal introuvable.');
+    }
+
+    // Gestion des boutons de la modale
+    setupModalButtons();
+
+    // Gestion des interactions clavier
+    document.addEventListener('keydown', handleKeyDown);
+}
+
+
+function setupModalButtons() {
+    if (DOM.modalbtn) {
+        DOM.modalbtn.forEach((btn) => btn.addEventListener('click', launchModal));
+    } else {
+        logEvent('warn', 'Boutons pour ouvrir la modale introuvables.');
+    }
+
+    if (DOM.closeBtn) {
+        DOM.closeBtn.addEventListener('click', closeModal);
+    } else {
+        logEvent('warn', 'Bouton de fermeture de modale introuvable.');
+    }
+
+    if (DOM.closeModalBtn) {
+        DOM.closeModalBtn.addEventListener('click', closeConfirmationModal);
+    } else {
+        logEvent('warn', 'Bouton de fermeture de confirmation introuvable.');
+    }
+}
+
+
+function setupFieldValidation() {
     const fields = {
         first: validateFirstName,
         last: validateLastName,
@@ -932,99 +962,97 @@ function main() {
         quantity: validateQuantity,
     };
 
-    // Ajout des écouteurs pour les champs
     Object.keys(fields).forEach((fieldId) => {
         const fieldElement = document.getElementById(fieldId);
         if (fieldElement) {
-            const eventType = 'blur';
-            fieldElement.addEventListener(eventType, fields[fieldId]);
+            fieldElement.addEventListener('blur', fields[fieldId]);
         } else {
             logEvent('warn', `Champ "${fieldId}" introuvable.`);
         }
     });
 
-    // Ajout d'un écouteur spécifique pour la case à cocher
     const checkboxElement = document.getElementById('checkbox1');
     if (checkboxElement) {
         checkboxElement.addEventListener('change', validateCheckbox);
     } else {
         logEvent('warn', 'Case à cocher "checkbox1" introuvable.');
     }
+}
 
-    // === Étape 5 : Gestion de la soumission du formulaire ===
-    const formElement = document.querySelector('form');
-    if (formElement) {
-        formElement.addEventListener('submit', (event) => {
-            logEvent('info', 'Tentative de soumission du formulaire.');
+function handleBirthdateFocus() {
+    logEvent('info', 'Focus sur le champ de date.');
+    DOM.birthdateInput.placeholder = 'jj/mm/aaaa';
+}
 
-            let isValid = true;
+function handleBirthdateBlur() {
+    if (!DOM.birthdateInput.value) {
+        logEvent('info', 'Perte de focus avec champ vide.');
+        DOM.birthdateInput.placeholder = '';
+    }
+}
 
-            // Valide chaque champ
-            Object.keys(fields).forEach((fieldId) => {
-                const fieldElement = document.getElementById(fieldId);
-                if (fieldElement) {
-                    const fieldIsValid = fields[fieldId]({ target: fieldElement });
-                    if (!fieldIsValid) {
-                        isValid = false;
-                    }
-                }
-            });
+function handleModalBackgroundClick(event) {
+    if (event.target === DOM.modalbg) {
+        logEvent('info', 'Clic détecté sur l\'arrière-plan de la modale.');
+        closeModal();
+    }
+}
 
-            // Valide la case à cocher
-            if (checkboxElement) {
-                const checkboxIsValid = validateCheckbox({ target: checkboxElement });
-                if (!checkboxIsValid) {
-                    isValid = false;
-                }
-            }
+function handleFormSubmit(event) {
+    event.preventDefault();
+    logEvent('info', 'Soumission du formulaire détectée.');
 
-            // Vérifie si des erreurs persistent dans le DOM
-            const errorInputs = formElement.querySelectorAll(`.${CONFIG.CSS_CLASSES.ERROR_INPUT}`);
-            if (errorInputs.length > 0) {
+    const formValid = validateForm();
+
+    if (formValid) {
+        logEvent('info', 'Formulaire valide.');
+        openConfirmationModal();
+    } else {
+        logEvent('error', 'Échec de la validation du formulaire.');
+        showErrorModal();
+    }
+}
+
+function validateForm() {
+    let isValid = true;
+
+    const fields = ['first', 'last', 'email', 'birthdate', 'quantity'];
+    fields.forEach((fieldId) => {
+        const fieldElement = document.getElementById(fieldId);
+        if (fieldElement) {
+            const fieldIsValid = fieldElement.dispatchEvent(new Event('blur'));
+            if (!fieldIsValid) {
                 isValid = false;
-            
-            } else {
-                event.preventDefault();
-                logEvent('info', 'Formulaire valide : ouverture de la modale de confirmation.');
-                openConfirmationModal(); // Ouvre la modale de confirmation
             }
-        });
-    } else {
-        logEvent('warn', 'Formulaire principal introuvable.');
-    }
-
-    // === Étape 6 : Gestion des boutons de la modale ===
-    if (DOM.modalbtn) {
-        DOM.modalbtn.forEach((btn) => btn.addEventListener('click', () => {
-            logEvent('info', 'Clic sur un bouton d\'ouverture de modale.');
-            launchModal();
-        }));
-    } else {
-        logEvent('warn', 'Boutons pour ouvrir la modale introuvables.');
-    }
-
-    if (DOM.closeBtn) {
-        DOM.closeBtn.addEventListener('click', () => {
-            logEvent('info', 'Clic sur le bouton de fermeture de modale.');
-            closeModal();
-        });
-    } else {
-        logEvent('warn', 'Bouton de fermeture de modale introuvable.');
-    }
-
-    // === Étape 7 : Gestion des interactions clavier (touche Esc) ===
-    if (DOM.closeModalBtn) {
-        DOM.closeModalBtn.addEventListener('click', closeConfirmationModal);
-    } else {
-        logEvent('warn', 'Bouton de fermeture de confirmation introuvable.');
-    }
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modalOpen) {
-            closeModal();
         }
     });
 
+    const checkboxElement = document.getElementById('checkbox1');
+    if (checkboxElement) {
+        const checkboxIsValid = checkboxElement.dispatchEvent(new Event('change'));
+        if (!checkboxIsValid) {
+            isValid = false;
+        }
+    }
+
+    return isValid;
+}
+/**
+ * Point d'entrée principal du script.
+ * 
+ * Étapes principales :
+ * 1. Configure les gestionnaires d'événements pour les champs et les boutons.
+ * 2. Log l'état initial pour suivi.
+ * 
+ * @returns {void}
+ */
+function main() {
+    logEvent('info', 'Début de l\'initialisation principale.');
+
+    // Étape 1 : Configure les gestionnaires d'événements
+    setupEventListeners();
+
+    // Étape 2 : Log l'état initial
     logEvent('info', 'Initialisation principale terminée.');
 }
 
