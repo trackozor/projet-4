@@ -23,6 +23,7 @@ const CONFIG = {
         warn: true,  // Activer/Désactiver les avertissements
         error: true, // Activer/Désactiver les erreurs
         success: false, // Activer/Désactiver les logs de succès
+        check: true, // Activer/Désactiver les logs de la checkbox info
     },
 
     /*====== Classes CSS utilisées ======*/
@@ -43,6 +44,7 @@ const CONFIG = {
         error: "color: red; font-weight: bold;", // Style pour les erreurs critiques.
         success: "color: green; font-weight: bold;", // Style pour les messages indiquant une réussite.
         default: "color: black;", // Style par défaut pour les messages qui ne correspondent pas à un type spécifique.
+        check: "background-color: pink; color: purple;font-weight: bold;", // Style pour la checkbox d'info
     },
     LOG_ICONS: {
         info: 'ℹ️',  // Icône pour les messages d'information.
@@ -103,6 +105,7 @@ const DOM = {
 
     // Récupérer la checkbox dans le DOM
     checkboxElement: document.querySelector('#checkbox1'),
+    checkboxElement1: document.querySelector('#checkbox2'),
     // ====== Modale de confirmation ======
 
     confirmationModal: document.getElementById('confirmation-modal'), 
@@ -1020,7 +1023,9 @@ function closeErrorModal() {
 
 /*===============================================================================================*/
 /*                                 ======= Gestion des événements =======                         */           
-/*===============================================================================================*//* ============ Gestion du Focus sur la Date de Naissance ============ */
+/*===============================================================================================*/
+
+/* ============ Gestion du Focus sur la Date de Naissance ============ */
 /**
  * Ajoute un placeholder dynamique lors du focus sur le champ de date de naissance.
  * 
@@ -1118,7 +1123,13 @@ function handleFormSubmit(event) {
         logEvent('error', 'Validation interrompue : champs vides détectés.');
         return; // Empêche la soumission
     }
-
+    const checkboxElement1 = document.getElementById('checkbox2');
+    if (!checkboxElement.checked) {
+        logEvent('info', 'checkbox prévenu non activé');
+    }else {
+        logEvent('info', 'checkbox prévenu active');
+    }
+    
     // Si tous les champs sont remplis, passe à la validation globale
     const formValid = validateForm();
 
@@ -1361,28 +1372,48 @@ function setupFieldValidation() {
 }
 
 function setupCheckboxListener() {
-    const checkboxElement = document.getElementById('checkbox1');
+    // Gérer la première checkbox
+    const checkboxElement1 = document.getElementById('checkbox1');
 
-    if (checkboxElement) {
+    if (checkboxElement1) {
         // Valide l'état initial de la checkbox
-        validateCheckbox({ target: checkboxElement });
+        validateCheckbox({ target: checkboxElement1 });
 
         // Ajouter un écouteur pour surveiller les changements d'état
-        checkboxElement.addEventListener('change', (event) => {
+        checkboxElement1.addEventListener('change', (event) => {
             if (event.target.checked) {
                 // La checkbox est cochée
-                logEvent('info', 'Checkbox cochée.');
-                removeError(checkboxElement); // Supprimer les erreurs éventuelles
+                logEvent('info', 'Première checkbox cochée.', { checkboxId: 'checkbox1', isChecked: true });
+                removeError(checkboxElement1); // Supprimer les erreurs éventuelles
             } else {
                 // La checkbox n'est pas cochée
-                logEvent('warn', 'Checkbox non cochée.');
-                showError('Vous devez accepter les conditions d\'utilisation.', checkboxElement); // Afficher une erreur
+                logEvent('warn', 'Première checkbox non cochée.', { checkboxId: 'checkbox1', isChecked: false });
+                showError('Vous devez accepter les conditions d\'utilisation.', checkboxElement1); // Afficher une erreur
             }
         });
     } else {
-        logEvent('error', 'Checkbox introuvable dans le DOM.');
+        logEvent('error', 'Première checkbox introuvable dans le DOM.');
+    }
+
+    // Gérer la deuxième checkbox
+    const checkboxElement2 = document.getElementById('checkbox2');
+
+    if (checkboxElement2) {
+        // Ajouter un écouteur pour surveiller les changements d'état
+        checkboxElement2.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                // La deuxième checkbox est cochée
+                logEvent('check', 'Deuxième checkbox cochée.', { checkboxId: 'checkbox2', isChecked: true });
+            } else {
+                // La deuxième checkbox n'est pas cochée
+                logEvent('check', 'Deuxième checkbox non cochée.', { checkboxId: 'checkbox2', isChecked: false });
+            }
+        });
+    } else {
+        logEvent('error', 'Deuxième checkbox introuvable dans le DOM.');
     }
 }
+
 
 
 
