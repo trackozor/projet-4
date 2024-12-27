@@ -38,6 +38,8 @@ const CONFIG = {
         MODAL_DEFAULT: 'modal-default', // Classe CSS pour le style par défaut de la modale.
         MODAL_RESPONSIVE: 'modal-responsive',  // Classe CSS pour adapter la modale au mode responsive.
     },
+
+
     LOG_STYLES: {
         info: "color: blue; font-weight: bold;", // Style pour les messages d'information.
         warn: "color: orange; font-weight: bold;", // Style pour les avertissements.
@@ -46,6 +48,8 @@ const CONFIG = {
         default: "color: black;", // Style par défaut pour les messages qui ne correspondent pas à un type spécifique.
         check: "background-color: pink; color: purple;font-weight: bold;", // Style pour la checkbox d'info
     },
+
+
     LOG_ICONS: {
         info: 'ℹ️',  // Icône pour les messages d'information.
         warn: '⚠️', // Icône pour les avertissements.
@@ -53,6 +57,8 @@ const CONFIG = {
         success: '✅', // Icône pour indiquer une réussite.
         default: '🔵', // Icône par défaut si le type de message n'est pas défini.
     },
+
+    
     MEDIA: {
         isMobile: window.matchMedia("(max-width: 1023px)").matches, // Indique si l'utilisateur utilise un appareil avec un écran de taille inférieure ou égale à 1024px.
     },
