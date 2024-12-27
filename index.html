@@ -64,30 +64,30 @@
 
                     <!-- Corps de la modale -->
                     <div class="modal-body"> 
-                        <form name="reserve" action="./index.html" method="get" > <!-- Formulaire de réservation -->
+                        <form name="reserve" action="./index.html" method="get" novalidate> <!-- Formulaire de réservation -->
                             <!-- Champ pour le prénom -->
                             <fieldset class="formData">
                                 <legend class="sr-only">Informations Personnelles</legend> <!-- Légende pour décrire le groupe de champs -->
                                 <ul class="form-list">
                                     <li>
                                         <label for="first">Prénom</label> <!-- Label pour le champ prénom -->
-                                        <input class="text-control" type="text" id="first" name="first" minlength="2" required> <!-- Champ de saisie pour le prénom -->
+                                        <input class="text-control" type="text" id="first" name="first" minlength="2" > <!-- Champ de saisie pour le prénom -->
                                     </li>
                                     <li>
                                         <label for="last">Nom</label> <!-- Label pour le champ nom -->
-                                        <input class="text-control" type="text" id="last" name="last" required> <!-- Champ de saisie pour le nom -->
+                                        <input class="text-control" type="text" id="last" name="last" > <!-- Champ de saisie pour le nom -->
                                     </li>
                                     <li>
                                         <label for="email">E-mail</label> <!-- Label pour le champ email -->
-                                        <input class="text-control" type="email" id="email" name="email" required> <!-- Champ de saisie pour l'email -->
+                                        <input class="text-control" type="email" id="email" name="email" > <!-- Champ de saisie pour l'email -->
                                     </li>
                                     <li>
                                         <label for="birthdate">Date de naissance</label> <!-- Label pour la date de naissance -->
-                                        <input class="text-control" type="date" id="birthdate" name="birthdate" required> <!-- Champ de saisie pour la date de naissance -->
+                                        <input class="text-control" type="date" id="birthdate" name="birthdate" > <!-- Champ de saisie pour la date de naissance -->
                                     </li>
                                     <li>
                                         <label for="quantity">À combien de tournois avez-vous déjà participé ?</label> <!-- Label pour le nombre de participations -->
-                                        <input class="text-control" type="number" id="quantity" name="quantity" min="0" max="99" required> <!-- Champ de saisie pour le nombre de participations -->
+                                        <input class="text-control" type="number" id="quantity" name="quantity" min="0" max="99" > <!-- Champ de saisie pour le nombre de participations -->
                                     </li>
                                 </ul>
                             </fieldset>

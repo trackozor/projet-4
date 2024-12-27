@@ -18,8 +18,8 @@ const CONFIG = {
     
      /* ====== Niveaux de Logs ====== */
     LOG_LEVELS: {
-        default: false,
-        info: false,  // Activer/Désactiver les logs d'information
+        default: true,
+        info: true,  // Activer/Désactiver les logs d'information
         warn: true,  // Activer/Désactiver les avertissements
         error: true, // Activer/Désactiver les erreurs
         success: false, // Activer/Désactiver les logs de succès
@@ -104,6 +104,7 @@ const DOM = {
     // Récupérer la checkbox dans le DOM
     checkboxElement: document.querySelector('#checkbox1'),
     // ====== Modale de confirmation ======
+
     confirmationModal: document.getElementById('confirmation-modal'), 
     // Conteneur de la modale de confirmation affichée après une soumission réussie.
 
@@ -1083,19 +1084,42 @@ function handleModalBackgroundClick(event) {
  * @param {Event} event - Événement de soumission du formulaire.
  * @returns {void}
  */
+
 function handleFormSubmit(event) {
     event.preventDefault();
     logEvent('info', 'Soumission du formulaire détectée.');
+
+    let hasEmptyFields = false;
+
+    // Vérification des champs obligatoires
+    const requiredFields = ['first', 'last', 'email', 'birthdate', 'quantity'];
+    requiredFields.forEach((fieldId) => {
+        const fieldElement = document.getElementById(fieldId);
+        if (fieldElement && fieldElement.value.trim() === '') {
+            // Affiche une erreur pour les champs vides
+            showError('Ce champ est requis.', fieldElement);
+            logEvent('warn', `Champ "${fieldId}" vide lors de la soumission.`, {
+                fieldId,
+            });
+            hasEmptyFields = true;
+        }
+    });
 
     // Vérification explicite de la checkbox
     const checkboxElement = document.getElementById('checkbox1');
     if (!checkboxElement.checked) {
         logEvent('warn', 'Checkbox non cochée lors de la soumission.');
-        showError('Vous devez accepter les conditions d\'utilisation.', checkboxElement); // Affiche une erreur
+        showError('Vous devez accepter les conditions d\'utilisation.', checkboxElement);
+        hasEmptyFields = true;
+    }
+
+    // Si des champs sont vides, ne pas valider le formulaire
+    if (hasEmptyFields) {
+        logEvent('error', 'Validation interrompue : champs vides détectés.');
         return; // Empêche la soumission
     }
 
-    // Si la checkbox est valide, passe à la validation globale
+    // Si tous les champs sont remplis, passe à la validation globale
     const formValid = validateForm();
 
     if (formValid) {
@@ -1331,8 +1355,6 @@ function setupFieldValidation() {
     if (checkboxElement) {
         checkboxElement.addEventListener('change', validateCheckbox);
 
-        // Validation initiale au chargement
-        validateCheckbox({ target: checkboxElement });
     } else {
         logEvent('warn', 'Case à cocher "checkbox1" introuvable.');
     }
