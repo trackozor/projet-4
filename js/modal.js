@@ -16,6 +16,15 @@ const CONFIG = {
      /* ====== Configuration des logs ====== */
     ENABLE_LOGS: true, // Permet d'activer ou de désactiver les logs dans la console. Utile pour basculer entre les environnements (développement/production).
     
+     /* ====== Niveaux de Logs ====== */
+    LOG_LEVELS: {
+        default: false,
+        info: false,  // Activer/Désactiver les logs d'information
+        warn: true,  // Activer/Désactiver les avertissements
+        error: true, // Activer/Désactiver les erreurs
+        success: false, // Activer/Désactiver les logs de succès
+    },
+
     /*====== Classes CSS utilisées ======*/
     CSS_CLASSES: {
         ERROR_INPUT: 'error-input', // Classe CSS pour styliser un champ avec une erreur (ex : bordure rouge).
@@ -48,7 +57,7 @@ const CONFIG = {
 };
 
 let modalOpen = false; // Variable globale pour suivre l'état de la modale
-
+let isCheckboxValid = false; // Indique si la checkbox est valide
 
 /*================================================================================================================================================*/
 /* =============================== */
@@ -92,6 +101,8 @@ const DOM = {
     birthdateInput: document.getElementById('birthdate'), 
     // Champ spécifique pour saisir la date de naissance.
 
+    // Récupérer la checkbox dans le DOM
+    checkboxElement: document.querySelector('#checkbox1'),
     // ====== Modale de confirmation ======
     confirmationModal: document.getElementById('confirmation-modal'), 
     // Conteneur de la modale de confirmation affichée après une soumission réussie.
@@ -99,6 +110,15 @@ const DOM = {
     // ====== Bouton pour fermer la modale de confirmation ======
     closeModalBtn: document.getElementById('close-modal-btn'), 
     // Bouton utilisé pour fermer la modale de confirmation.
+
+     // ====== Modale d'erreur ======
+    errorModal: {
+        container: document.getElementById('error-modal'), 
+        // Conteneur principal de la modale d'erreur.
+        content: document.querySelector('error-modal .modal-content'), 
+        // Contenu interne de la modale d'erreur (messages, actions, etc.).
+    },
+
 
     // ====== Liens de navigation ======
     navLinks: document.querySelector('.nav-links'), 
@@ -113,17 +133,35 @@ const DOM = {
 
 /*======================Fonction log console==============================================*/
 /**
- * Log les événements dans la console avec horodatage, préfixes et styles.
+ * Log les événements dans la console avec horodatage, icônes et styles personnalisés.
  * 
- * @param {string} type - Type de log : 'info', 'warn', 'error'.
- * @param {string} message - Message descriptif de l'événement.
- * @param {Object} [data={}] - Données supplémentaires à afficher .
+ * Étapes principales :
+ * 1. Vérifie si les logs sont activés globalement (`CONFIG.ENABLE_LOGS`).
+ * 2. Filtre les logs en fonction des niveaux activés dans `CONFIG.LOG_LEVELS`.
+ * 3. Récupère l'horodatage et construit un préfixe pour identifier l'origine du log.
+ * 4. Associe une icône et un style au log en fonction de son type.
+ * 5. Valide que le message est fourni avant d'afficher quoi que ce soit.
+ * 6. Affiche le log dans la console avec un style formaté, ou gère les erreurs si elles surviennent.
+ *
+ * @param {string} type - Niveau du log : 'info', 'warn', 'error', 'success', etc.
+ * @param {string} message - Description de l'événement à loguer.
+ * @param {Object} [data={}] - (Optionnel) Données supplémentaires liées au log.
+ * 
+ * @example
+ * logEvent('info', 'Chargement terminé', { module: 'Formulaire', status: 'OK' });
+ * logEvent('error', 'Échec de la validation', { field: 'email', reason: 'Format invalide' });
  */
+
 function logEvent(type, message, data = {}) {
     
     /* 1. Vérifie si les logs sont activés via CONFIG.ENABLE_LOGS.*/  
     if (!CONFIG.ENABLE_LOGS) {
         return; // Si les logs sont désactivés, sortir de la fonction immédiatement.
+    }
+
+    // Vérifie si le type de log est activé dans LOG_LEVELS
+    if (!CONFIG.LOG_LEVELS[type]) {
+        return; // Si le type de log est désactivé, ne rien afficher
     }
 
     /* 2. Récupère l'horodatage et construit un préfixe pour identifier la source du log.*/
@@ -163,29 +201,29 @@ function logEvent(type, message, data = {}) {
 function addClass(element, className) {
     // Vérifie si l'élément est valide
     if (!(element instanceof HTMLElement)) {
-        console.error('addClass: Le paramètre "element" n\'est pas un élément HTML valide.', { element });
+        logEvent('error','addClass: Le paramètre "element" n\'est pas un élément HTML valide.', { element });
         return false; // Échec de l'opération
     }
 
     // Vérifie si la classe est une chaîne de caractères valide
     if (typeof className !== 'string' || className.trim() === '') {
-        console.error('addClass: Le paramètre "className" est invalide.', { className });
+        logEvent('error','addClass: Le paramètre "className" est invalide.', { className });
         return false; // Échec de l'opération
     }
 
     // Vérifie si la classe est déjà présente
     if (element.classList.contains(className)) {
-        console.info(`addClass: La classe "${className}" est déjà présente sur l'élément.`, { element });
+        logEvent('info'`addClass: La classe "${className}" est déjà présente sur l'élément.`, { element });
         return false; // Pas besoin d'ajouter la classe
     }
 
     // Ajoute la classe à l'élément
     try {
         element.classList.add(className);
-        console.info(`addClass: La classe "${className}" a été ajoutée avec succès.`, { element });
+        logEvent('success',`addClass: La classe "${className}" a été ajoutée avec succès.`, { element });
         return true; // Succès de l'opération
     } catch (error) {
-        console.error('addClass: Une erreur est survenue lors de l\'ajout de la classe.', { error });
+        logEvent('error','addClass: Une erreur est survenue lors de l\'ajout de la classe.', { error });
         return false; // Échec de l'opération
     }
 }
@@ -203,29 +241,29 @@ function addClass(element, className) {
 function removeClass(element, className) {
     // 1. Vérifie que l'élément est un élément HTML valide
     if (!(element instanceof HTMLElement)) {
-        console.error('removeClass: Le paramètre "element" n\'est pas un élément HTML valide.', { element });
+        logEvent('error','removeClass: Le paramètre "element" n\'est pas un élément HTML valide.', { element });
         return false; // Échec de l'opération
     }
 
     // 2. Vérifie que le nom de la classe est une chaîne non vide
     if (typeof className !== 'string' || className.trim() === '') {
-        console.error('removeClass: Le paramètre "className" est invalide.', { className });
+        logEvent('error','removeClass: Le paramètre "className" est invalide.', { className });
         return false; // Échec de l'opération
     }
 
     // 3. Vérifie si la classe est présente sur l'élément
     if (!element.classList.contains(className)) {
-        console.info(`removeClass: La classe "${className}" n'est pas présente sur l'élément.`, { element });
+        logEvent('info',`removeClass: La classe "${className}" n'est pas présente sur l'élément.`, { element });
         return false; // Pas besoin de retirer la classe
     }
 
     // 4. Retire la classe de l'élément
     try {
         element.classList.remove(className);
-        console.info(`removeClass: La classe "${className}" a été retirée avec succès.`, { element });
+        logEvent('success',`removeClass: La classe "${className}" a été retirée avec succès.`, { element });
         return true; // Succès de l'opération
     } catch (error) {
-        console.error('removeClass: Une erreur est survenue lors de la suppression de la classe.', { error });
+        logEvent('error','removeClass: Une erreur est survenue lors de la suppression de la classe.', { error });
         return false; // Échec de l'opération
     }
 }
@@ -568,12 +606,15 @@ function validateQuantity(event) {
  * @returns {boolean} - Retourne `true` si la validation est réussie, sinon `false`.
  */
 function validateCheckbox(event) {
-    const field = event.target; // Champ cible
+    const field = event?.target || document.getElementById('checkbox1'); // Cible le champ
     let errorMessage = '';
 
     // === Validation des critères ===
     if (!field.checked) {
         errorMessage = 'Vous devez accepter les conditions d\'utilisation.';
+        isCheckboxValid = false; // La checkbox est invalide
+    } else {
+        isCheckboxValid = true; // La checkbox est valide
     }
 
     // === Gestion des erreurs ===
@@ -584,9 +625,10 @@ function validateCheckbox(event) {
     } else {
         removeError(field); // Supprime tout message d'erreur existant
         logEvent('success', 'Validation réussie pour la checkbox');
-        return true; // Validation réussie
+        return isCheckboxValid; // Validation réussie
     }
 }
+
 
 
 /*================================================================================================================================================*/
@@ -629,7 +671,6 @@ function showError(message, inputElement) {
     } catch (error) {
         // === Gestion des erreurs ===
         logEvent('error', 'Erreur dans showError.', { error: error.message });
-        console.error('Erreur dans showError :', error);
     }
 }
 
@@ -654,7 +695,6 @@ function removeError(inputElement) {
     } catch (error) {
         // Gestion des erreurs
         logEvent('error', 'Erreur dans removeError.', { error: error.message });
-        console.error('Erreur dans removeError :', error);
     }
 }
 
@@ -713,7 +753,6 @@ function launchModal() {
     } catch (error) {
         // Étape 8 : Gestion des erreurs
         logEvent('error', 'Erreur lors de l\'affichage de la modale.', { error: error.message });
-        console.error('Erreur dans launchModal :', error);
     }
 }
 
@@ -759,7 +798,6 @@ function closeModal() {
     } catch (error) {
         // Étape 6 : Gestion des erreurs
         logEvent('error', 'Erreur lors de la fermeture de la modale.', { error: error.message });
-        console.error('Erreur dans closeModal :', error);
     }
 }
 
@@ -885,8 +923,297 @@ function closeConfirmationModal() {
         console.error('Erreur dans closeModal :', error);
     }
 }
+/* ============ Affichage de la Modale d'Erreur ============ */
+/**
+/**
+ * Affiche la modale d'erreur avec un message approprié.
+ *
+ * Étapes principales :
+ * 1. Vérifie si la modale d'erreur est définie dans `DOM`.
+ * 2. Si la modale n'existe pas, log une erreur et arrête le processus.
+ * 3. Ajoute les classes nécessaires pour afficher la modale et désactiver le défilement.
+ * 4. Configure le bouton de fermeture de la modale d'erreur.
+ * 5. Log l'action pour le suivi.
+ * 6. Gestion des erreurs imprévues.
+ *
+ * @returns {void}
+ */
+function showErrorModal() {
+    try {
+        // Étape 1 : Vérifie si la modale d'erreur est définie dans `DOM`
+        if (!DOM.errorModal) {
+            logEvent(
+                'error',
+                'Modale d\'erreur introuvable dans l\'objet DOM. Vérifiez que l\'élément existe dans le HTML.'
+            );
+            return; // Arrête le processus si la modale n'est pas définie
+        }
+
+        // Étape 2 : Active la modale et empêche le défilement
+        DOM.errorModal.classList.add(CONFIG.CSS_CLASSES.MODAL_ACTIVE);
+        document.body.classList.add(CONFIG.CSS_CLASSES.BODY_NO_SCROLL);
+
+        // Étape 3 : Configure le bouton de fermeture
+        const closeErrorModalBtn = DOM.errorModal.querySelector('.close-btn');
+        if (closeErrorModalBtn) {
+            closeErrorModalBtn.addEventListener('click', () => {
+                closeErrorModal();
+            });
+        } else {
+            logEvent(
+                'warn',
+                'Bouton de fermeture introuvable dans la modale d\'erreur.'
+            );
+        }
+
+        logEvent('info', 'Modale d\'erreur affichée avec succès.');
+    } catch (error) {
+        // Étape 6 : Gestion des erreurs imprévues
+        logEvent(
+            'error',
+            'Erreur lors de l\'affichage de la modale d\'erreur.',
+            { error: error.message }
+        );
+        console.error('Erreur dans showErrorModal :', error);
+    }
+}
+
+/**
+ * Ferme la modale d'erreur et réactive le défilement.
+ *
+ * Étapes principales :
+ * 1. Vérifie si la modale d'erreur est définie dans `DOM`.
+ * 2. Retire les classes CSS actives pour masquer la modale.
+ * 3. Réactive le défilement de la page.
+ * 4. Log l'action pour le suivi.
+ * 5. Gestion des erreurs imprévues.
+ *
+ * @returns {void}
+ */
+function closeErrorModal() {
+    try {
+        // Étape 1 : Vérifie si la modale d'erreur est définie dans `DOM`
+        if (!DOM.errorModal) {
+            logEvent(
+                'error',
+                'Modale d\'erreur introuvable dans l\'objet DOM. Impossible de la fermer.'
+            );
+            return; // Arrête le processus si la modale n'est pas définie
+        }
+
+        // Étape 2 : Désactive la modale et réactive le défilement
+        DOM.errorModal.classList.remove(CONFIG.CSS_CLASSES.MODAL_ACTIVE);
+        document.body.classList.remove(CONFIG.CSS_CLASSES.BODY_NO_SCROLL);
+
+        logEvent('info', 'Modale d\'erreur fermée avec succès.');
+    } catch (error) {
+        // Étape 5 : Gestion des erreurs imprévues
+        logEvent(
+            'error',
+            'Erreur lors de la fermeture de la modale d\'erreur.',
+            { error: error.message }
+        );
+        console.error('Erreur dans closeErrorModal :', error);
+    }
+}
+
+/*===============================================================================================*/
+/*                                 ======= Gestion des événements =======                         */           
+/*===============================================================================================*//* ============ Gestion du Focus sur la Date de Naissance ============ */
+/**
+ * Ajoute un placeholder dynamique lors du focus sur le champ de date de naissance.
+ * 
+ * Étapes principales :
+ * 1. Ajoute un texte d'exemple ('jj/mm/aaaa') comme placeholder.
+ * 2. Logue l'événement pour suivi.
+ * 
+ * @returns {void}
+ */
+function handleBirthdateFocus() {
+    logEvent('info', 'Focus sur le champ de date.');
+    DOM.birthdateInput.placeholder = 'jj/mm/aaaa';
+}
+
+/* ============ Gestion du Blur sur la Date de Naissance ============ */
+/**
+ * Retire le placeholder si le champ est vide lors de la perte de focus.
+ * 
+ * Étapes principales :
+ * 1. Vérifie si la valeur du champ est vide.
+ * 2. Retire le placeholder si aucun texte n'est saisi.
+ * 
+ * @returns {void}
+ */
+function handleBirthdateBlur() {
+    if (!DOM.birthdateInput.value) {
+        logEvent('info', 'Perte de focus avec champ vide.');
+        DOM.birthdateInput.placeholder = '';
+    }
+}
+
+/* ============ Gestion du Clic sur l'Arrière-Plan de la Modale ============ */
+/**
+ * Ferme la modale si un clic est détecté sur son arrière-plan.
+ * 
+ * Étapes principales :
+ * 1. Vérifie que l'élément cliqué est l'arrière-plan de la modale.
+ * 2. Ferme la modale en appelant la fonction `closeModal`.
+ * 
+ * @param {Event} event - Événement de clic capturé.
+ * @returns {void}
+ */
+function handleModalBackgroundClick(event) {
+    if (event.target === DOM.modalbg) {
+        logEvent('info', 'Clic détecté sur l\'arrière-plan de la modale.');
+        closeModal();
+    }
+}
 
 
+/* ============ Gestion de la Soumission du Formulaire ============ */
+/**
+ * Valide le formulaire et ouvre la modale de confirmation si valide.
+ * 
+ * Étapes principales :
+ * 1. Empêche le rechargement de la page à la soumission.
+ * 2. Valide les champs du formulaire.
+ * 3. Si valide, ouvre la modale de confirmation.
+ * 4. Si invalide, affiche les erreurs.
+ * 
+ * @param {Event} event - Événement de soumission du formulaire.
+ * @returns {void}
+ */
+function handleFormSubmit(event) {
+    event.preventDefault();
+    logEvent('info', 'Soumission du formulaire détectée.');
+
+    // Vérification explicite de la checkbox
+    const checkboxElement = document.getElementById('checkbox1');
+    if (!checkboxElement.checked) {
+        logEvent('warn', 'Checkbox non cochée lors de la soumission.');
+        showError('Vous devez accepter les conditions d\'utilisation.', checkboxElement); // Affiche une erreur
+        return; // Empêche la soumission
+    }
+
+    // Si la checkbox est valide, passe à la validation globale
+    const formValid = validateForm();
+
+    if (formValid) {
+        logEvent('info', 'Formulaire valide.');
+        openConfirmationModal();
+    } else {
+        logEvent('error', 'Échec de la validation du formulaire.');
+        showErrorModal(); // Affiche une modale d'erreur
+    }
+}
+
+
+/* ============ Validation Globale du Formulaire ============ */
+/**
+ * Valide tous les champs du formulaire et retourne le résultat global.
+ * 
+ * Étapes principales :
+ * 1. Parcourt tous les champs à valider.
+ * 2. Déclenche un événement de validation pour chaque champ.
+ * 3. Valide également la checkbox des conditions générales.
+ * 4. Retourne `true` si tous les champs sont valides, sinon `false`.
+ * 
+ * @returns {boolean} - Résultat de la validation globale.
+ */
+function validateForm() {
+    let isValid = true;
+
+    // === Étape 1 : Validation des champs ===
+    const fields = ['first', 'last', 'email', 'birthdate', 'quantity'];
+    fields.forEach((fieldId) => {
+        const fieldElement = document.getElementById(fieldId);
+
+        if (fieldElement) {
+            // Déclenche l'événement de validation pour chaque champ
+            const fieldIsValid = fieldElement.dispatchEvent(new Event('blur'));
+
+            if (!fieldIsValid) {
+                logEvent('warn', `Validation échouée pour le champ "${fieldId}".`, {
+                    fieldId,
+                    value: fieldElement.value,
+                });
+                isValid = false;
+            } else {
+                logEvent('success', `Validation réussie pour le champ "${fieldId}".`, {
+                    fieldId,
+                    value: fieldElement.value,
+                });
+            }
+        } else {
+            logEvent('error', `Champ "${fieldId}" introuvable dans le DOM.`);
+            isValid = false;
+        }
+    });
+
+    // === Étape 2 : Validation de la checkbox ===
+    const checkboxElement = document.getElementById('checkbox1');
+
+    if (checkboxElement) {
+        if (!checkboxElement.checked) {
+            // Si la checkbox n'est pas cochée, affiche une erreur
+            showError('Vous devez accepter les conditions d\'utilisation.', checkboxElement);
+            logEvent('warn', 'Checkbox non cochée.', { isChecked: false });
+            isValid = false;
+        } else {
+            // Si la checkbox est cochée, supprime les erreurs
+            removeError(checkboxElement);
+            logEvent('success', 'Checkbox validée avec succès.', { isChecked: true });
+        }
+    } else {
+        // Si la checkbox est absente du DOM, log une erreur critique
+        logEvent('error', 'Checkbox introuvable dans le DOM.');
+        isValid = false;
+    }
+
+    // === Étape 3 : Retourne le résultat global ===
+    logEvent('info', 'Résultat final de la validation du formulaire.', { isValid });
+    return isValid;
+}
+
+
+
+/**
+ * Gère les interactions clavier, comme la fermeture de la modale avec la touche Echap.
+ *
+ * @param {KeyboardEvent} event - Événement clavier déclenché.
+ */
+function handleKeyDown(event) {
+    if (event.key === 'Escape') { // Vérifie si la touche Escape est pressée
+        if (DOM.errorModal.classList.contains(CONFIG.CSS_CLASSES.MODAL_ACTIVE)) {
+            DOM.errorModal.classList.remove(CONFIG.CSS_CLASSES.MODAL_ACTIVE);
+            document.body.classList.remove(CONFIG.CSS_CLASSES.BODY_NO_SCROLL);
+            logEvent('info', 'Modale d\'erreur fermée via la touche Échap.');
+        }
+        if (DOM.confirmationModal.classList.contains(CONFIG.CSS_CLASSES.MODAL_ACTIVE)) {
+            DOM.confirmationModal.classList.remove(CONFIG.CSS_CLASSES.MODAL_ACTIVE);
+            document.body.classList.remove(CONFIG.CSS_CLASSES.BODY_NO_SCROLL);
+            logEvent('info', 'Modale de confirmation fermée via la touche Échap.');
+        }
+    }
+}
+
+/*================================================================================================================================================*/
+/*===============================================================================================*/
+/*                                 ======= Configuration des écouteurs =======                         */           
+/*===============================================================================================*/
+/* ============ Configuration des Écouteurs d'Événements ============ */
+/**
+ * Configure les écouteurs d'événements pour les éléments interactifs.
+ * 
+ * Étapes principales :
+ * 1. Configure les interactions du menu responsive.
+ * 2. Configure les placeholders dynamiques sur le champ de date.
+ * 3. Ajoute les événements de clic pour la fermeture de la modale.
+ * 4. Configure la validation des champs du formulaire.
+ * 5. Ajoute un écouteur pour la soumission du formulaire.
+ * 
+ * @returns {void}
+ */
 function setupEventListeners() {
     logEvent('info', 'Configuration des écouteurs d\'événements.');
 
@@ -916,6 +1243,9 @@ function setupEventListeners() {
     // Validation des champs
     setupFieldValidation();
 
+    // Validation de la checkbox en temps réel
+    setupCheckboxListener();
+
     // Gestion de la soumission du formulaire
     const formElement = document.querySelector('form');
     if (formElement) {
@@ -931,20 +1261,34 @@ function setupEventListeners() {
     document.addEventListener('keydown', handleKeyDown);
 }
 
-
+/* ============ Configuration des Boutons de la Modale ============ */
+/**
+ * Ajoute les événements nécessaires pour gérer les interactions avec les boutons liés à la modale.
+ * 
+ * Étapes principales :
+ * 1. Ajoute un événement `click` pour chaque bouton permettant d'ouvrir la modale.
+ * 2. Ajoute un événement `click` pour le bouton permettant de fermer la modale principale.
+ * 3. Ajoute un événement `click` pour le bouton permettant de fermer la modale de confirmation.
+ * 4. Logue les événements pour suivi en cas de succès ou de problème.
+ * 
+ * @returns {void}
+ */
 function setupModalButtons() {
+    // Étape 1 : Configuration des boutons pour ouvrir la modale
     if (DOM.modalbtn) {
         DOM.modalbtn.forEach((btn) => btn.addEventListener('click', launchModal));
     } else {
         logEvent('warn', 'Boutons pour ouvrir la modale introuvables.');
     }
 
+    // Étape 2 : Configuration du bouton pour fermer la modale principale
     if (DOM.closeBtn) {
         DOM.closeBtn.addEventListener('click', closeModal);
     } else {
         logEvent('warn', 'Bouton de fermeture de modale introuvable.');
     }
 
+    // Étape 3 : Configuration du bouton pour fermer la modale de confirmation
     if (DOM.closeModalBtn) {
         DOM.closeModalBtn.addEventListener('click', closeConfirmationModal);
     } else {
@@ -952,8 +1296,19 @@ function setupModalButtons() {
     }
 }
 
-
+/* ============ Configuration des Écouteurs pour la Validation des Champs ============ */
+/**
+ * Ajoute des événements pour valider les champs du formulaire lors de la perte de focus ou de la modification d'état.
+ * 
+ * Étapes principales :
+ * 1. Configure les validations pour chaque champ en ajoutant un événement `blur` pour vérifier les entrées.
+ * 2. Ajoute un événement `change` pour valider la case à cocher des conditions générales.
+ * 3. Logue un avertissement si un champ ou une case à cocher est introuvable.
+ * 
+ * @returns {void}
+ */
 function setupFieldValidation() {
+    // Étape 1 : Configuration des validations pour les champs spécifiques
     const fields = {
         first: validateFirstName,
         last: validateLastName,
@@ -971,72 +1326,48 @@ function setupFieldValidation() {
         }
     });
 
+    // Étape 2 : Configuration de la validation pour la case à cocher
     const checkboxElement = document.getElementById('checkbox1');
     if (checkboxElement) {
         checkboxElement.addEventListener('change', validateCheckbox);
+
+        // Validation initiale au chargement
+        validateCheckbox({ target: checkboxElement });
     } else {
         logEvent('warn', 'Case à cocher "checkbox1" introuvable.');
     }
 }
 
-function handleBirthdateFocus() {
-    logEvent('info', 'Focus sur le champ de date.');
-    DOM.birthdateInput.placeholder = 'jj/mm/aaaa';
-}
-
-function handleBirthdateBlur() {
-    if (!DOM.birthdateInput.value) {
-        logEvent('info', 'Perte de focus avec champ vide.');
-        DOM.birthdateInput.placeholder = '';
-    }
-}
-
-function handleModalBackgroundClick(event) {
-    if (event.target === DOM.modalbg) {
-        logEvent('info', 'Clic détecté sur l\'arrière-plan de la modale.');
-        closeModal();
-    }
-}
-
-function handleFormSubmit(event) {
-    event.preventDefault();
-    logEvent('info', 'Soumission du formulaire détectée.');
-
-    const formValid = validateForm();
-
-    if (formValid) {
-        logEvent('info', 'Formulaire valide.');
-        openConfirmationModal();
-    } else {
-        logEvent('error', 'Échec de la validation du formulaire.');
-        showErrorModal();
-    }
-}
-
-function validateForm() {
-    let isValid = true;
-
-    const fields = ['first', 'last', 'email', 'birthdate', 'quantity'];
-    fields.forEach((fieldId) => {
-        const fieldElement = document.getElementById(fieldId);
-        if (fieldElement) {
-            const fieldIsValid = fieldElement.dispatchEvent(new Event('blur'));
-            if (!fieldIsValid) {
-                isValid = false;
-            }
-        }
-    });
-
+function setupCheckboxListener() {
     const checkboxElement = document.getElementById('checkbox1');
-    if (checkboxElement) {
-        const checkboxIsValid = checkboxElement.dispatchEvent(new Event('change'));
-        if (!checkboxIsValid) {
-            isValid = false;
-        }
-    }
 
-    return isValid;
+    if (checkboxElement) {
+        // Valide l'état initial de la checkbox
+        validateCheckbox({ target: checkboxElement });
+
+        // Ajouter un écouteur pour surveiller les changements d'état
+        checkboxElement.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                // La checkbox est cochée
+                logEvent('info', 'Checkbox cochée.');
+                removeError(checkboxElement); // Supprimer les erreurs éventuelles
+            } else {
+                // La checkbox n'est pas cochée
+                logEvent('warn', 'Checkbox non cochée.');
+                showError('Vous devez accepter les conditions d\'utilisation.', checkboxElement); // Afficher une erreur
+            }
+        });
+    } else {
+        logEvent('error', 'Checkbox introuvable dans le DOM.');
+    }
 }
+
+
+
+/*================================================================================================================================================*/
+/*======================================================================================*/
+/*                  ===========Point d'entrée du script =============                      */
+/*======================================================================================*/
 /**
  * Point d'entrée principal du script.
  * 
@@ -1074,4 +1405,10 @@ function main() {
 document.addEventListener('DOMContentLoaded', () => {
     logEvent('info', 'DOM entièrement chargé. Début de l\'exécution du script principal.'); // Log confirmant le chargement complet du DOM
     main(); // Appelle la fonction principale pour initialiser toutes les fonctionnalités
+    
+    // Vérifie que la checkbox est bien présente
+    const checkboxElement = document.querySelector('#checkbox1');
+    if (!checkboxElement) {
+        logEvent('error', 'Checkbox absente lors du chargement du DOM.');
+    }
 });

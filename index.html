@@ -152,7 +152,7 @@
                                 <legend class="sr-only">Consentement et notifications</legend> <!-- Légende pour le groupe de cases à cocher -->
                                 <ul class="consentement">
                                     <li>
-                                        <input class="checkbox-input2" type="checkbox" id="checkbox1" required> <!-- Case à cocher pour les conditions d'utilisation -->
+                                        <input class="checkbox-input2" type="checkbox" id="checkbox1" > <!-- Case à cocher pour les conditions d'utilisation -->
                                         <label class="checkbox-label2" for="checkbox1"><span class="checkbox-icon2"></span> <span class="condition"> J'ai lu et accepté les conditions d'utilisation.</span></label>
                                     </li>
                                     <li>
@@ -167,8 +167,12 @@
                                 <button type="button" id="close-modal-btn" aria-label="Fermer la fenêtre modale">Fermer</button>
                             </div> <!-- Message de confirmation caché -->
                             
-                            <div id="error-modal" > 
+                            <div id="error-modal" class="modal error-modal" aria-hidden="true" > 
                                 <p id="error-message"></p>
+                                <div class="modal-content">
+                                    <span class="close-btn" aria-label="Fermer la modale">&times;</span>
+                                    <p>Erreur : Veuillez corriger les champs invalides avant de soumettre le formulaire.</p>
+                                </div>
                             </div>
                         </form>
                     </div>
