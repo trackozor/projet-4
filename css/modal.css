@@ -2492,12 +2492,21 @@ header img {
     height: 71%; /* Occupe toute la hauteur disponible */
     border-radius: 1rem;
   }
+  #confirmation-modal span {
+  position: absolute;
+  width:50%;
+  font-size: 2rem;/* Grande taille pour mettre en évidence le texte */
+  top:35%;
+  font-weight: 500;
+  line-height: 4rem;
+}
 
   /*----------------------------------------------------------------*/
   /* Style pour les boutons dans la modale de confirmation */
   #confirmation-modal button {
     width: 8vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
     padding:3% 2%; /* Ajoute un espacement interne uniforme  */
+
   }
   
   #confirmation-modal .close {

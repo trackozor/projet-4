@@ -723,14 +723,8 @@ function removeError(inputElement) {
 /**
  * Affiche la modale et empêche le défilement en arrière-plan.
  * 
- * Étapes principales :
- * 1. Vérifie si l'élément `modalbg` est valide.
- * 2. Vérifie si la modale est déjà active ou si l'état global indique qu'elle est ouverte.
- * 3. Réinitialise le formulaire de la modale.
- * 4. Ajoute les classes CSS nécessaires pour afficher la modale.
- * 5. Empêche le défilement de la page.
- * 6. Met à jour l'état global de la modale (`modalOpen`).
- * 7. Journalise chaque étape pour le suivi.
+ * Si des erreurs sont présentes, la modale peut toujours s'ouvrir,
+ * mais le formulaire n'est pas réinitialisé pour conserver les champs remplis.
  * 
  * @returns {void}
  */
@@ -748,9 +742,17 @@ function launchModal() {
             return;
         }
 
-        // Étape 3 : Réinitialise le formulaire de la modale
-        resetForm();
-        logEvent('success', 'Formulaire réinitialisé avec succès.');
+        // Étape 3 : Vérifie s'il y a des erreurs de validation
+        const errors = document.querySelectorAll(`.${CONFIG.CSS_CLASSES.ERROR_INPUT}`);
+        if (errors.length > 0) {
+            logEvent('warn', `Modale ouverte avec ${errors.length} erreurs présentes dans les champs. Les données ne seront pas réinitialisées.`, {
+                errors: Array.from(errors).map((error) => error.id || error.name),
+            });
+        } else {
+            // Si aucune erreur, réinitialise le formulaire
+            resetForm();
+            logEvent('success', 'Formulaire réinitialisé avec succès.');
+        }
 
         // Étape 4 : Ajoute la classe CSS pour afficher la modale
         addClass(DOM.modalbg, CONFIG.CSS_CLASSES.MODAL_ACTIVE);
@@ -762,13 +764,12 @@ function launchModal() {
         modalOpen = true;
         logEvent('success', 'Modale affichée avec succès.');
 
-        // Étape 7 : Log final
-        logEvent('info', 'Lancement de la modale terminé avec succès.');
     } catch (error) {
-        // Étape 8 : Gestion des erreurs
+        // Étape 7 : Gestion des erreurs
         logEvent('error', 'Erreur lors de l\'affichage de la modale.', { error: error.message });
     }
 }
+
 
 
 /* ============ Fonction pour fermer la modale ============*/
@@ -918,7 +919,7 @@ function closeConfirmationModal() {
         logEvent('success', 'Défilement de l\'arrière-plan réactivé.', { bodyClasses: document.body.classList.value });
 
         // Étape 4 : Met à jour l'état global
-        modalOpen = false;
+        modalOpen = true;
         logEvent('info', 'État global mis à jour à "fermé".', { modalOpen });
         resetForm();
 
