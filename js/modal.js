@@ -22,8 +22,9 @@ const CONFIG = {
         info: true,  // Activer/Désactiver les logs d'information
         warn: true,  // Activer/Désactiver les avertissements
         error: true, // Activer/Désactiver les erreurs
-        success: false, // Activer/Désactiver les logs de succès
+        success: true, // Activer/Désactiver les logs de succès
         check: true, // Activer/Désactiver les logs de la checkbox info
+        checkfinal:true,
     },
 
     /*====== Classes CSS utilisées ======*/
@@ -40,6 +41,7 @@ const CONFIG = {
     },
 
 
+    /*====== styles tag log ======*/
     LOG_STYLES: {
         info: "color: blue; font-weight: bold;", // Style pour les messages d'information.
         warn: "color: orange; font-weight: bold;", // Style pour les avertissements.
@@ -47,9 +49,10 @@ const CONFIG = {
         success: "color: green; font-weight: bold;", // Style pour les messages indiquant une réussite.
         default: "color: black;", // Style par défaut pour les messages qui ne correspondent pas à un type spécifique.
         check: "background-color: pink; color: purple;font-weight: bold;", // Style pour la checkbox d'info
+        checkfinal:"background-color: green; color: white;font-weight: bold;", // Style pour la checkbox d'info
     },
 
-
+    /*====== styles icône log ======*/
     LOG_ICONS: {
         info: 'ℹ️',  // Icône pour les messages d'information.
         warn: '⚠️', // Icône pour les avertissements.
@@ -58,7 +61,7 @@ const CONFIG = {
         default: '🔵', // Icône par défaut si le type de message n'est pas défini.
     },
 
-    
+    /*====== Configuration des médias ======*/
     MEDIA: {
         isMobile: window.matchMedia("(max-width: 1023px)").matches, // Indique si l'utilisateur utilise un appareil avec un écran de taille inférieure ou égale à 1024px.
     },
@@ -109,7 +112,8 @@ const DOM = {
     birthdateInput: document.getElementById('birthdate'), 
     // Champ spécifique pour saisir la date de naissance.
 
-    // Récupérer la checkbox dans le DOM
+    
+    // Récupérer les checkbox dans le DOM
     checkboxElement: document.querySelector('#checkbox1'),
     checkboxElement1: document.querySelector('#checkbox2'),
     // ====== Modale de confirmation ======
@@ -850,15 +854,7 @@ function openConfirmationModal() {
             { modalState: 'active' }
         );
 
-        // Étape 4 : Désactive le défilement de l'arrière-plan
-        addClass(document.body, CONFIG.CSS_CLASSES.BODY_NO_SCROLL); // Empêche le défilement de la page principale
-        logEvent(
-            'info', 
-            'Défilement de l\'arrière-plan désactivé.', 
-            { scrollState: 'disabled' }
-        );
-
-        // Étape 5 : Place le focus sur un élément de la modale
+        // Étape 4 : Place le focus sur un élément de la modale
         const firstFocusableElement = DOM.confirmationModal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
         if (firstFocusableElement) {
             firstFocusableElement.focus(); // Place le focus sur le premier élément interactif
@@ -867,9 +863,9 @@ function openConfirmationModal() {
                 'Focus placé sur le premier élément interactif de la modale.'
             );
         }
-
+        
     } catch (error) {
-        // Étape 6 : Gestion des erreurs
+        // Étape 5 : Gestion des erreurs
         logEvent(
             'error', 
             'Erreur lors de l\'ouverture de la modale de confirmation.', 
@@ -931,99 +927,6 @@ function closeConfirmationModal() {
         // Étape 7 : Gestion des erreurs
         logEvent('error', 'Erreur lors de la fermeture de la modale.', { error: error.message });
         console.error('Erreur dans closeModal :', error);
-    }
-}
-/* ============ Affichage de la Modale d'Erreur ============ */
-/**
-/**
- * Affiche la modale d'erreur avec un message approprié.
- *
- * Étapes principales :
- * 1. Vérifie si la modale d'erreur est définie dans `DOM`.
- * 2. Si la modale n'existe pas, log une erreur et arrête le processus.
- * 3. Ajoute les classes nécessaires pour afficher la modale et désactiver le défilement.
- * 4. Configure le bouton de fermeture de la modale d'erreur.
- * 5. Log l'action pour le suivi.
- * 6. Gestion des erreurs imprévues.
- *
- * @returns {void}
- */
-function showErrorModal() {
-    try {
-        // Étape 1 : Vérifie si la modale d'erreur est définie dans `DOM`
-        if (!DOM.errorModal) {
-            logEvent(
-                'error',
-                'Modale d\'erreur introuvable dans l\'objet DOM. Vérifiez que l\'élément existe dans le HTML.'
-            );
-            return; // Arrête le processus si la modale n'est pas définie
-        }
-
-        // Étape 2 : Active la modale et empêche le défilement
-        DOM.errorModal.classList.add(CONFIG.CSS_CLASSES.MODAL_ACTIVE);
-        document.body.classList.add(CONFIG.CSS_CLASSES.BODY_NO_SCROLL);
-
-        // Étape 3 : Configure le bouton de fermeture
-        const closeErrorModalBtn = DOM.errorModal.querySelector('.close-btn');
-        if (closeErrorModalBtn) {
-            closeErrorModalBtn.addEventListener('click', () => {
-                closeErrorModal();
-            });
-        } else {
-            logEvent(
-                'warn',
-                'Bouton de fermeture introuvable dans la modale d\'erreur.'
-            );
-        }
-
-        logEvent('info', 'Modale d\'erreur affichée avec succès.');
-    } catch (error) {
-        // Étape 6 : Gestion des erreurs imprévues
-        logEvent(
-            'error',
-            'Erreur lors de l\'affichage de la modale d\'erreur.',
-            { error: error.message }
-        );
-        console.error('Erreur dans showErrorModal :', error);
-    }
-}
-
-/**
- * Ferme la modale d'erreur et réactive le défilement.
- *
- * Étapes principales :
- * 1. Vérifie si la modale d'erreur est définie dans `DOM`.
- * 2. Retire les classes CSS actives pour masquer la modale.
- * 3. Réactive le défilement de la page.
- * 4. Log l'action pour le suivi.
- * 5. Gestion des erreurs imprévues.
- *
- * @returns {void}
- */
-function closeErrorModal() {
-    try {
-        // Étape 1 : Vérifie si la modale d'erreur est définie dans `DOM`
-        if (!DOM.errorModal) {
-            logEvent(
-                'error',
-                'Modale d\'erreur introuvable dans l\'objet DOM. Impossible de la fermer.'
-            );
-            return; // Arrête le processus si la modale n'est pas définie
-        }
-
-        // Étape 2 : Désactive la modale et réactive le défilement
-        DOM.errorModal.classList.remove(CONFIG.CSS_CLASSES.MODAL_ACTIVE);
-        document.body.classList.remove(CONFIG.CSS_CLASSES.BODY_NO_SCROLL);
-
-        logEvent('info', 'Modale d\'erreur fermée avec succès.');
-    } catch (error) {
-        // Étape 5 : Gestion des erreurs imprévues
-        logEvent(
-            'error',
-            'Erreur lors de la fermeture de la modale d\'erreur.',
-            { error: error.message }
-        );
-        console.error('Erreur dans closeErrorModal :', error);
     }
 }
 
@@ -1101,6 +1004,19 @@ function handleFormSubmit(event) {
     logEvent('info', 'Soumission du formulaire détectée.');
 
     let hasEmptyFields = false;
+    // Vérification de la sélection d'un bouton radio pour "location"
+    const selectedRadio = document.querySelector('input[name="location"]:checked');
+
+    if (selectedRadio) {
+        // Log la localisation sélectionnée
+        logEvent('checkfinal', `Localisation sélectionnée lors de la soumission : ${selectedRadio.value}`, {
+            id: selectedRadio.id,
+            value: selectedRadio.value,
+        });
+    } else {
+        // Log informatif si aucune case n'est sélectionnée
+        logEvent('checkfinal', 'Aucune localisation sélectionnée lors de la soumission.');
+    }
 
     // Vérification des champs obligatoires
     const requiredFields = ['first', 'last', 'email', 'birthdate', 'quantity'];
@@ -1131,11 +1047,13 @@ function handleFormSubmit(event) {
     }
     const checkboxElement1 = document.getElementById('checkbox2');
     if (!checkboxElement.checked) {
-        logEvent('info', 'checkbox prévenu non activé');
+        logEvent('checkfinal', 'checkbox prévenu non activé');
     }else {
-        logEvent('info', 'checkbox prévenu active');
+        logEvent('checkfinal', 'checkbox prévenu active');
     }
     
+    
+
     // Si tous les champs sont remplis, passe à la validation globale
     const formValid = validateForm();
 
@@ -1144,7 +1062,6 @@ function handleFormSubmit(event) {
         openConfirmationModal();
     } else {
         logEvent('error', 'Échec de la validation du formulaire.');
-        showErrorModal(); // Affiche une modale d'erreur
     }
 }
 
@@ -1210,7 +1127,7 @@ function validateForm() {
         logEvent('error', 'Checkbox introuvable dans le DOM.');
         isValid = false;
     }
-
+    
     // === Étape 3 : Retourne le résultat global ===
     logEvent('info', 'Résultat final de la validation du formulaire.', { isValid });
     return isValid;
@@ -1283,6 +1200,9 @@ function setupEventListeners() {
 
     // Validation des champs
     setupFieldValidation();
+
+    //validation des boutons radios
+    setupRadioListeners();
 
     // Validation de la checkbox en temps réel
     setupCheckboxListener();
@@ -1375,6 +1295,7 @@ function setupFieldValidation() {
     } else {
         logEvent('warn', 'Case à cocher "checkbox1" introuvable.');
     }
+
 }
 
 function setupCheckboxListener() {
@@ -1382,8 +1303,6 @@ function setupCheckboxListener() {
     const checkboxElement1 = document.getElementById('checkbox1');
 
     if (checkboxElement1) {
-        // Valide l'état initial de la checkbox
-        validateCheckbox({ target: checkboxElement1 });
 
         // Ajouter un écouteur pour surveiller les changements d'état
         checkboxElement1.addEventListener('change', (event) => {
@@ -1420,6 +1339,46 @@ function setupCheckboxListener() {
     }
 }
 
+/**
+ * Configure les écouteurs d'événements pour les boutons radio du groupe "location".
+ * 
+ * Étapes principales :
+ * 1. Récupère tous les boutons radio du groupe "location".
+ * 2. Vérifie si des boutons radio sont trouvés. Si aucun n'est trouvé, logue un avertissement et arrête la fonction.
+ * 3. Ajoute un écouteur d'événement "change" à chaque bouton radio pour capturer les sélections.
+ * 4. Logue la valeur du bouton sélectionné avec des informations supplémentaires.
+ * 5. Indique dans les logs que les écouteurs ont été ajoutés avec succès.
+ * 
+ * @returns {void}
+ */
+function setupRadioListeners() {
+    // Étape 1 : Récupérer tous les boutons radio du groupe "location"
+    const radioButtons = document.querySelectorAll('input[name="location"]');
+
+    // Étape 2 : Vérifie si des boutons radio ont été trouvés
+    if (radioButtons.length === 0) {
+        // Aucun bouton radio trouvé, log un avertissement et arrête la fonction
+        logEvent('warn', 'Aucun bouton radio trouvé pour le groupe "location".');
+        return;
+    }
+
+    // Étape 3 : Ajouter un écouteur "change" à chaque bouton radio
+    radioButtons.forEach((radio) => {
+        radio.addEventListener('change', (event) => {
+            // Étape 4 : Lorsqu'un bouton est sélectionné, capture sa valeur
+            const selectedLocation = event.target.value; // Récupère la valeur du bouton sélectionné
+
+            // Logue la sélection avec des informations supplémentaires
+            logEvent('check', `Tournoi sélectionné : ${selectedLocation}`, {
+                id: event.target.id, // ID du bouton radio
+                value: selectedLocation, // Valeur sélectionnée
+            });
+        });
+    });
+
+    // Étape 5 : Logue le succès de l'ajout des écouteurs
+    logEvent('success', 'Écouteurs ajoutés aux boutons radio du groupe "location".');
+}
 
 
 
@@ -1465,9 +1424,4 @@ document.addEventListener('DOMContentLoaded', () => {
     logEvent('info', 'DOM entièrement chargé. Début de l\'exécution du script principal.'); // Log confirmant le chargement complet du DOM
     main(); // Appelle la fonction principale pour initialiser toutes les fonctionnalités
     
-    // Vérifie que la checkbox est bien présente
-    const checkboxElement = document.querySelector('#checkbox1');
-    if (!checkboxElement) {
-        logEvent('error', 'Checkbox absente lors du chargement du DOM.');
-    }
 });

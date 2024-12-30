@@ -32,13 +32,13 @@
   --font-size-base: 1rem; /* Taille de base, par défaut pour la plupart des textes */
   --font-size-large: 1.4rem; /* Grande taille de texte, idéale pour les titres */
   --font-size-xlarge: 2rem; /* Très grande taille, pour les titres principaux ou des éléments importants */
-  --log-info: color: blue; font-weight: bold;/* Logs d'informations */
-  --log-warn: color: orange; font-weight: bold;/* Logs d'avertissement */
-  --log-error: color: red; font-weight: bold;/* Logs d'erreurs */
-  --log-success: color: teal; font-weight: bold;/* Logs de validation */
-  --log-test-start: color: #FF69B4; font-weight: bold;/* Début des tests */
-  --log-test-end: color: purple; font-weight: bold;/* Fin des tests */
-  --log-default: color: black; /* Logs par défaut */
+  --log-info: ; color: blue; font-weight: bold;/* Logs d'informations */
+  --log-warn: ; color: orange; font-weight: bold;/* Logs d'avertissement */
+  --log-error: ; color: red; font-weight: bold;/* Logs d'erreurs */
+  --log-success: ; color: teal; font-weight: bold;/* Logs de validation */
+  --log-test-start: ; color: #FF69B4; font-weight: bold;/* Début des tests */
+  --log-test-end:  ; color: purple; font-weight: bold;/* Fin des tests */
+  --log-default:  ; color: black; /* Logs par défaut */
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -272,7 +272,7 @@ header img {
   flex-wrap: nowrap; /* Empêche le contenu de se diviser sur plusieurs lignes */
   justify-content: center; /* Centre le contenu horizontalement */
   margin: 0; /* Ajoute un espacement vertical entre les liens */
-  transition:  top 2  ease-in-out; /* Anime le déplacement vertical avec une transition fluide */
+  transition:  top 2s  ease-in-out; /* Anime le déplacement vertical avec une transition fluide */
 }
 
 
@@ -703,6 +703,18 @@ header img {
   color: white; /* Couleur de texte blanche pour un contraste sur fond sombre */
   border: none; /* Supprime les bordures par défaut pour un style minimaliste */
 }
+
+#confirmation-modal .close {
+  width:23vw;
+  position: absolute; /* Positionnement absolu */
+  font-size: 1.5rem; /* Taille de police augmentée */
+  right: 0; /* Positionnement à droite */
+  top:-3%; /* Positionnement en haut */
+  padding-right: 1%; /* Pas d'espace interne */
+  right:5%;
+  margin: 0; /* Pas de marge supplémentaire */
+  cursor: pointer; /* Affiche le curseur pointeur pour l'interaction */
+}
 /* Modale visible (active) */
 #confirmation-modal.active {
   display: flex; /* Affiche la modale */
@@ -825,8 +837,9 @@ header img {
     display: grid; /* Affiche les liens */
     grid-template-columns: repeat(4,25%);
     position: relative; /* Position relative pour un ajustement dynamique */
-    padding:0 ;
-    margin: 5% 0;
+    padding: 0 ;
+    padding-top:10%;
+    margin: 2% 0;
     opacity: 1; /* Rends les liens visibles */
     transition: all 0.3s ease-in-out; /* Transition fluide pour les propriétés */
   }
@@ -1100,7 +1113,7 @@ header img {
   /*----------------------------------------------------------------*/
   /* Style pour le texte à l'intérieur de la modale de confirmation */
   #confirmation-modal span {
-    font-size: 3.6rem;/* Grande taille pour mettre en évidence le texte */
+    font-size: 3rem;/* Grande taille pour mettre en évidence le texte */
     width:55%; /* Largeur relative à la fenêtre pour s'adapter aux écrans responsifs */
     text-align: center;/* Centre horizontalement le texte */
     font-weight: 500;
@@ -1113,11 +1126,21 @@ header img {
     position:relative;
     top:12%;
     font-size: 1.3rem;
-    width: 30vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
+    width: 25vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
     padding:2% 5%; /* Ajoute un espacement interne uniforme  */
     color: white; /* Couleur de texte blanche pour un contraste sur fond sombre */
     border: none; /* Supprime les bordures par défaut pour un style minimaliste */
   }
+
+    #confirmation-modal .close {
+    width:23vw;
+    right: 0; /* Positionnement à droite */
+    top:0%; /* Positionnement en haut */
+    padding-right: 1%; /* Pas d'espace interne */
+    right:6%;
+    margin: 0; /* Pas de marge supplémentaire */
+    cursor: pointer; /* Affiche le curseur pointeur pour l'interaction */
+    }
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- MODALE ERROR ------------------------------------------*/
   /*-----------------------------------------------------------------------------------*/
@@ -1361,7 +1384,7 @@ header img {
     font-size: 0.8rem; /* Taille de texte standard */
     margin: 0;
     padding:2% 5%;
-    width:45vw;
+    width:39vw;
     font-weight: 500;
   }
   
@@ -1376,6 +1399,7 @@ header img {
   /*---------------------------------------------------------*/
   /* Légendes des formulaires */
   .formData .legend {
+    width:39vw;
     font-size: 0.8rem; /* Taille de texte standard */
     padding-left: 3%; /* Espacement à gauche */
     padding-top:2%;
@@ -1410,11 +1434,11 @@ header img {
   
   /* Liste des localisations */
   .location-list {
-    width: 100%;
-    grid-template-columns: repeat(3, 13vw); /* 3 colonnes égales */
+    width: 39vw;
+    grid-template-columns: repeat(3, 21%); /* 3 colonnes égales */
     grid-template-rows: repeat(2, 3.5vh) ; 
     margin:2% ;
-    gap:2%;
+    gap:7.5%;
   }
 
   /*-------------------------------------------------------------*/
@@ -1429,7 +1453,9 @@ header img {
     width: 1rem;
     height: 1rem;
   }
-
+  .checkbox-label {
+    width: 10vw;
+  }
   /*--------------------------------------------------------------*/
   /* rond centrale*/
   .checkbox-icon::after {
@@ -1514,9 +1540,9 @@ header img {
   #confirmation-modal {
     display: none;
     left: 26.5%;
-    top:7%; /* Positionne la modale à gauche de la fenêtre */
+    top:9%; /* Positionne la modale à gauche de la fenêtre */
     width: 45vw; /* Occupe toute la largeur disponible */
-    height: 65%; /* Occupe toute la hauteur disponible */
+    height: 72%; /* Occupe toute la hauteur disponible */
     border-radius: 1rem;
   }
 
@@ -1528,6 +1554,15 @@ header img {
     padding:2% 4%; /* Ajoute un espacement interne uniforme  */
     position:relative; 
     top:20%;/**/
+  }
+  #confirmation-modal .close {
+    position: absolute; /* Positionnement absolu */
+    font-size: 1.5rem; /* Taille de police augmentée */
+    right: -5%; /* Positionnement à droite */
+    top: 0%; /* Positionnement en haut */
+    padding: 0; /* Pas d'espace interne */
+    margin: 0; /* Pas de marge supplémentaire */
+    cursor: pointer; /* Affiche le curseur pointeur pour l'interaction */
   }
 
   /*-----------------------------------------------------------*/
@@ -1882,7 +1917,6 @@ header img {
     grid-template-rows:repeat(2,3vh);
     padding: 0;
     margin:0; /* Centre horizontalement */
-    position: left;
   }
 
   /*---------------------------------------------------------*/
@@ -1982,9 +2016,9 @@ header img {
   #confirmation-modal {
     display: none;
     left: 38%;
-    top:8%; /* Positionne la modale à gauche de la fenêtre */
-    width: 29vw; /* Occupe toute la largeur disponible */
-    height: 70%; /* Occupe toute la hauteur disponible */
+    top:9%; /* Positionne la modale à gauche de la fenêtre */
+    width: 30vw; /* Occupe toute la largeur disponible */
+    height: 80%; /* Occupe toute la hauteur disponible */
     border-radius: 1rem;
   }
 
@@ -1994,7 +2028,19 @@ header img {
     width: 10vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
     padding:3% 4%; /* Ajoute un espacement interne uniforme  */
     position:relative; 
-    top:25%;/**/
+    top:23%;/**/
+  }
+  
+    #confirmation-modal .close {
+    width:23vw;
+    position: absolute; /* Positionnement absolu */
+    font-size: 1.5rem; /* Taille de police augmentée */
+    right: 0; /* Positionnement à droite */
+    top:-5%; /* Positionnement en haut */
+    padding-right: 1%; /* Pas d'espace interne */
+    right:0;
+    margin: 0; /* Pas de marge supplémentaire */
+    cursor: pointer; /* Affiche le curseur pointeur pour l'interaction */
   }
   /*-----------------------------------------------------------*/
   /*------------------------ FOOTER ---------------------------*/
@@ -2073,7 +2119,6 @@ header img {
   /*---------------------------------------------------------*/
   /* Menu textuel */
   .nav-links  {
-    gap: auto; /* Espacement entre les liens */
     display: flex; /* Affiche les liens sous forme de flexbox */
     flex-direction: row; /* Organise les liens en ligne */
     align-items: flex-end;
@@ -2333,7 +2378,7 @@ header img {
     grid-template-rows:repeat(2,3vh);
     padding: 0;
     margin:2% 0; /* Centre horizontalement */
-    position: left;
+  
   }
 
   /*---------------------------------------------------------*/
@@ -2454,8 +2499,17 @@ header img {
     width: 8vw; /* Bouton occupe 25% de la largeur de la fenêtre pour une bonne visibilité */
     padding:3% 2%; /* Ajoute un espacement interne uniforme  */
   }
-
-
+  
+  #confirmation-modal .close {
+    width:37vw;
+    position: absolute; /* Positionnement absolu */
+    font-size: 1.8rem; /* Taille de police augmentée */
+    right: 0%; /* Positionnement à droite */
+    top: 0%; /* Positionnement en haut */
+    padding-right: 1%; /* Pas d'espace interne */
+    margin: 0; /* Pas de marge supplémentaire */
+    cursor: pointer; /* Affiche le curseur pointeur pour l'interaction */
+  }
   /*-----------------------------------------------------------*/
   /*------------------------ FOOTER ---------------------------*/
   /*-----------------------------------------------------------*/
