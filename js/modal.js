@@ -19,7 +19,7 @@ const CONFIG = {
      /* ====== Niveaux de Logs ====== */
     LOG_LEVELS: {
         default: true,
-        info: true,  // Activer/Désactiver les logs d'information
+        info: false,  // Activer/Désactiver les logs d'information
         warn: true,  // Activer/Désactiver les avertissements
         error: true, // Activer/Désactiver les erreurs
         success: true, // Activer/Désactiver les logs de succès
@@ -1128,7 +1128,19 @@ function validateForm() {
         logEvent('error', 'Checkbox introuvable dans le DOM.');
         isValid = false;
     }
-    
+     // === Étape 3 : Validation des boutons radio ===
+    const selectedRadio = document.querySelector('input[name="location"]:checked');
+    if (!selectedRadio) {
+        logEvent('warn', 'Aucune localisation sélectionnée.');
+        showError('Vous devez sélectionner une localisation.', document.querySelector('input[name="location"]'));
+        isValid = false;
+    } else {
+        logEvent('success', `Localisation sélectionnée : ${selectedRadio.value}`, {
+            id: selectedRadio.id,
+            value: selectedRadio.value,
+        });
+    }
+
     // === Étape 3 : Retourne le résultat global ===
     logEvent('info', 'Résultat final de la validation du formulaire.', { isValid });
     return isValid;
