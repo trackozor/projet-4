@@ -544,12 +544,15 @@ header img {
 .checkbox-input:checked + .checkbox-icon::after {
   opacity: 1; /* Le point vert devient visible */ 
 }
+
+/*----------------------------------------------------------------*/
+/* message erreur*/
 .location-list .error-modal {
-  width:80%;
+  width:70%;
   position:absolute;
   top:59%;
   left:15%;
-  padding:0;
+  padding: 0;
   margin:3% 0;
 }
 /*------------------------------------------------------------------------------------*/
@@ -1059,6 +1062,16 @@ header img {
     height: 0.8em;
   }
 
+  /*----------------------------------------------------------------*/
+  /* message erreur*/
+  .location-list .error-modal {
+    width:70%;
+    position:absolute;
+    top:57%;
+    left:30%;
+    padding:0;
+    margin:3% 0;
+  }
   /*-----------------------------------------------------------------------------------*/
   /*--------------------------- SECTION CONSENTEMENT ----------------------------------*/
   /*-----------------------------------------------------------------------------------*/
