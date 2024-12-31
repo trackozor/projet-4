@@ -124,6 +124,7 @@ const DOM = {
     // ====== Bouton pour fermer la modale de confirmation ======
     closeModalBtn: document.getElementById('close-modal-btn'), 
     // Bouton utilisé pour fermer la modale de confirmation.
+    crossCloseBtn: document.getElementById('cross-close-btn'), 
 
      // ====== Modale d'erreur ======
     errorModal: {
@@ -920,7 +921,6 @@ function closeConfirmationModal() {
 
         // Étape 4 : Met à jour l'état global
         modalOpen = true;
-        logEvent('info', 'État global mis à jour à "fermé".', { modalOpen });
         resetForm();
 
 
@@ -1253,9 +1253,14 @@ function setupModalButtons() {
     // Étape 3 : Configuration du bouton pour fermer la modale de confirmation
     if (DOM.closeModalBtn) {
         DOM.closeModalBtn.addEventListener('click', closeConfirmationModal);
-    } else {
-        logEvent('warn', 'Bouton de fermeture de confirmation introuvable.');
     }
+    if (DOM.crossCloseBtn) {
+        DOM.crossCloseBtn.addEventListener('click', closeConfirmationModal);
+    } else {
+        logEvent('warm', 'Bouton de fermeture introuvable dans la modale de confirmation.');
+    }
+    
+
 }
 
 /* ============ Configuration des Écouteurs pour la Validation des Champs ============ */
