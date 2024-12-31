@@ -544,7 +544,14 @@ header img {
 .checkbox-input:checked + .checkbox-icon::after {
   opacity: 1; /* Le point vert devient visible */ 
 }
-
+.location-list .error-modal {
+  width:80%;
+  position:absolute;
+  top:59%;
+  left:15%;
+  padding:0;
+  margin:3% 0;
+}
 /*------------------------------------------------------------------------------------*/
 /*------------------ SECTION CONSENTEMENT --------------------------------------------*/
 /*------------------------------------------------------------------------------------*/
@@ -2341,7 +2348,7 @@ header img {
   .location-list {
     width:30vw;
     grid-template-columns: repeat(3, 8vw);
-    grid-template-rows:repeat(2,2.5vh); 
+    grid-template-rows:repeat(3,2.5vh); 
     margin:1% 0;
     padding: 0;
     gap:0.5vh;
@@ -2366,7 +2373,10 @@ header img {
     width: 0.8em;
     height: 0.8em;
   }
-
+  .localisation.error-modal {
+    font-size: 0.8rem;
+    width:50vw
+  }
   /*------------------------------------------------------------------------------------*/
   /*------------------ SECTION CONSENTEMENT --------------------------------------------*/
   /*------------------------------------------------------------------------------------*/

@@ -744,16 +744,7 @@ function launchModal() {
         }
 
         // Étape 3 : Vérifie s'il y a des erreurs de validation
-        const errors = document.querySelectorAll(`.${CONFIG.CSS_CLASSES.ERROR_INPUT}`);
-        if (errors.length > 0) {
-            logEvent('warn', `Modale ouverte avec ${errors.length} erreurs présentes dans les champs. Les données ne seront pas réinitialisées.`, {
-                errors: Array.from(errors).map((error) => error.id || error.name),
-            });
-        } else {
-            // Si aucune erreur, réinitialise le formulaire
-            resetForm();
-            logEvent('success', 'Formulaire réinitialisé avec succès.');
-        }
+        
 
         // Étape 4 : Ajoute la classe CSS pour afficher la modale
         addClass(DOM.modalbg, CONFIG.CSS_CLASSES.MODAL_ACTIVE);
@@ -1372,10 +1363,10 @@ function setupCheckboxListener() {
 function setupRadioListeners() {
     // Étape 1 : Récupérer tous les boutons radio du groupe "location"
     const radioButtons = document.querySelectorAll('input[name="location"]');
+    const radioGroupContainer = document.querySelector('.location-list'); // Conteneur parent des boutons radio
 
     // Étape 2 : Vérifie si des boutons radio ont été trouvés
     if (radioButtons.length === 0) {
-        // Aucun bouton radio trouvé, log un avertissement et arrête la fonction
         logEvent('warn', 'Aucun bouton radio trouvé pour le groupe "location".');
         return;
     }
@@ -1384,19 +1375,25 @@ function setupRadioListeners() {
     radioButtons.forEach((radio) => {
         radio.addEventListener('change', (event) => {
             // Étape 4 : Lorsqu'un bouton est sélectionné, capture sa valeur
-            const selectedLocation = event.target.value; // Récupère la valeur du bouton sélectionné
+            const selectedLocation = event.target.value;
 
-            // Logue la sélection avec des informations supplémentaires
+            // Étape 5 : Logue la sélection avec des informations supplémentaires
             logEvent('check', `Tournoi sélectionné : ${selectedLocation}`, {
-                id: event.target.id, // ID du bouton radio
-                value: selectedLocation, // Valeur sélectionnée
+                id: event.target.id,
+                value: selectedLocation,
             });
+
+            // Étape 6 : Supprimer les messages d'erreur globaux liés à la sélection
+            if (radioGroupContainer) {
+                removeError(radioGroupContainer); // Supprime les erreurs associées au groupe entier
+            }
         });
     });
 
-    // Étape 5 : Logue le succès de l'ajout des écouteurs
+    // Étape 7 : Logue que les écouteurs ont été ajoutés avec succès
     logEvent('success', 'Écouteurs ajoutés aux boutons radio du groupe "location".');
 }
+
 
 
 
@@ -1418,6 +1415,7 @@ function main() {
 
     // Étape 1 : Configure les gestionnaires d'événements
     setupEventListeners();
+    resetForm();
 
     // Étape 2 : Log l'état initial
     logEvent('info', 'Initialisation principale terminée.');
