@@ -743,9 +743,6 @@ function launchModal() {
             return;
         }
 
-        // Étape 3 : Vérifie s'il y a des erreurs de validation
-        
-
         // Étape 4 : Ajoute la classe CSS pour afficher la modale
         addClass(DOM.modalbg, CONFIG.CSS_CLASSES.MODAL_ACTIVE);
 
